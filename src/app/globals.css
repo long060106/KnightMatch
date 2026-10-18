@@ -106,8 +106,8 @@
   --color-urgent-wash: var(--urgent-wash);
 
   --font-sans: var(--font-public-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-instrument-serif), ui-serif, Georgia, serif;
-  --font-heading: var(--font-instrument-serif), ui-serif, Georgia, serif;
+  --font-serif: var(--font-newsreader), ui-serif, Georgia, serif;
+  --font-heading: var(--font-newsreader), ui-serif, Georgia, serif;
   --font-mono: var(--font-plex-mono), ui-monospace, monospace;
 
   --radius-sm: calc(var(--radius) * 0.6);
@@ -238,46 +238,26 @@ html[data-has-profile] .km-match-slot {
 .km-word {
   display: inline-block;
 }
-/* Headline lines wrap naturally on small screens. From 1024px each line runs edge to edge:
-   the first line's rule stretches to fill, the second line spreads its words (justified caps). */
+/* Headline lines wrap naturally on small screens. From 1024px each of the three lines is its own
+   row, left aligned, sized from the container so the longest line ("Find the research") fits. */
 .km-headline {
-  font-size: clamp(2.75rem, 11.5vw, 6.5rem);
+  font-size: clamp(2.5rem, 8.6vw, 5.5rem);
 }
 .km-headline-line {
   display: inline;
 }
-.km-headline-rule {
-  display: none;
-}
 @media (min-width: 1024px) {
   .km-headline {
-    /* Sized from the container width so both lines always fit on one row each. */
-    font-size: calc(min(100vw - 4rem, 72rem) / 11.2);
+    font-size: calc(min(100vw - 4rem, 72rem) / 12.6);
   }
   .km-headline-line {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    column-gap: 0.24em;
-  }
-  .km-headline-rule {
     display: block;
-    flex: 1 1 0;
-    min-width: 0.6em;
-    height: 1px;
-    margin-inline: 0.12em;
-    align-self: center;
-    background: currentColor;
-    transform-origin: left;
   }
 }
 @media (prefers-reduced-motion: no-preference) {
   .km-word {
     animation: km-word-rise 900ms var(--ease-out) both;
     animation-delay: calc(60ms + var(--i) * 55ms);
-  }
-  .km-headline-rule {
-    animation: km-draw 1000ms var(--ease-out) 260ms both;
   }
   .km-hero-in {
     animation:
@@ -310,11 +290,6 @@ html[data-has-profile] .km-match-slot {
 @keyframes km-word-rise {
   from {
     transform: translateY(110%);
-  }
-}
-@keyframes km-draw {
-  from {
-    transform: scaleX(0);
   }
 }
 @keyframes km-cell-pop {
@@ -597,4 +572,15 @@ html[data-has-profile] .km-story-compact {
   50% {
     transform: scaleX(-1);
   }
+}
+
+/* Inline lists of plain-text items (skills): a quiet "·" between items, never boxes. */
+.km-dots > * + *::before {
+  content: "·";
+  margin-right: 0.5rem;
+  color: var(--border-strong);
+  font-weight: 400;
+}
+.km-dots > .km-label + *::before {
+  content: none;
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { Pause, Play } from "lucide-react";
+import { ArrowRight, Pause, Play } from "lucide-react";
 import Link from "next/link";
 import { useState, type CSSProperties } from "react";
 import { useOnScreen } from "@/lib/use-in-view";
@@ -30,9 +30,13 @@ function TickerRow({ items, copy }: { items: TickerItem[]; copy: boolean }) {
               tabIndex={copy ? -1 : undefined}
               className="group flex items-baseline gap-3 px-5 py-4 whitespace-nowrap md:px-7 md:py-5"
             >
-              <span className="font-serif text-lg decoration-1 underline-offset-4 group-hover:underline md:text-2xl">
+              <span className="font-serif text-lg underline decoration-border-strong decoration-1 underline-offset-4 transition-[text-decoration-color] duration-[var(--dur-fast)] group-hover:decoration-foreground md:text-2xl">
                 {p.title}
               </span>
+              <ArrowRight
+                aria-hidden="true"
+                className="size-4 shrink-0 self-center text-muted-foreground transition-[translate,color] duration-[var(--dur-base)] group-hover:translate-x-0.5 group-hover:text-foreground"
+              />
               {meta && <span className="km-label text-muted-foreground">{meta}</span>}
             </Link>
             <span aria-hidden="true" className="size-1 rounded-full bg-border-strong" />

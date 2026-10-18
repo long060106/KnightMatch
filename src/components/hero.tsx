@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { Fragment, type CSSProperties, type MouseEvent } from "react";
 import { Button } from "@/components/ui/button";
@@ -16,10 +16,11 @@ import { RelativeTime } from "./relative-time";
 import { Scramble } from "./scramble";
 import { WireSphere } from "./wire-sphere";
 
-/** Two lines that run edge to edge from 1024px; "rule" is the hairline that stretches to fill line one. */
+/** Three rows from 1024px (left aligned, the globe fills the space on the right); wraps freely below. */
 const HEADLINE: string[][] = [
-  ["Find", "the", "rule", "research", "team"],
-  ["that’s", "looking", "for", "you."],
+  ["Find", "the", "research"],
+  ["team", "that’s"],
+  ["looking", "for", "you."],
 ];
 
 /** Each word rises out of its own mask, one after another (CSS only, so it runs before hydration). */
@@ -32,15 +33,11 @@ function RisingHeadline() {
         {line.map((word, w) => (
           <Fragment key={w}>
             {w > 0 && " "}
-            {word === "rule" ? (
-              <span className="km-headline-rule" aria-hidden="true" />
-            ) : (
-              <span className="km-word-mask">
-                <span className="km-word" style={{ "--i": i++ } as CSSProperties}>
-                  {word}
-                </span>
+            <span className="km-word-mask">
+              <span className="km-word" style={{ "--i": i++ } as CSSProperties}>
+                {word}
               </span>
-            )}
+            </span>
           </Fragment>
         ))}
       </span>
@@ -145,9 +142,13 @@ export function Hero({ totalCount, lastRunAt }: HeroProps) {
             </Button>
             <Link
               href="/match#resume"
-              className="inline-flex min-h-11 items-center text-sm text-muted-foreground underline decoration-border-strong underline-offset-[6px] hover:text-foreground hover:decoration-foreground"
+              className="group inline-flex min-h-11 items-center gap-1 text-sm text-muted-foreground underline decoration-border-strong underline-offset-[6px] hover:text-foreground hover:decoration-foreground"
             >
               or upload your resume
+              <ArrowRight
+                className="size-3.5 transition-transform duration-[var(--dur-base)] ease-[var(--ease-out)] group-hover:translate-x-0.5"
+                aria-hidden="true"
+              />
             </Link>
           </div>
         </div>
@@ -169,6 +170,10 @@ export function Hero({ totalCount, lastRunAt }: HeroProps) {
           className="group inline-flex min-h-11 items-center gap-1.5 text-foreground underline decoration-border-strong underline-offset-[6px] hover:decoration-foreground"
         >
           <HoverScramble text={`Browse all ${totalCount} projects`} />
+          <ArrowRight
+            className="size-3.5 transition-transform duration-[var(--dur-base)] ease-[var(--ease-out)] group-hover:translate-x-0.5"
+            aria-hidden="true"
+          />
         </Link>
       </div>
     </section>

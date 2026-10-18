@@ -58,19 +58,24 @@ export function BeginnerNote({ reason }: { reason: BeginnerReason }) {
 
 export type TagState = "neutral" | "have" | "missing";
 
-/** have = honey wash + check; missing = dashed outline, never red or an X. */
-/** `ai`: found by the AI step rather than the word list, marked so students know to check the wording. */
+/**
+ * Skills are plain text, never boxes, so they can't be mistaken for buttons (they aren't clickable).
+ * have = honey ink + check; missing = muted with a hollow ring (never red or an X); neutral = plain.
+ * `ai`: found by the AI step rather than the word list, marked so students know to check the wording.
+ * Put tags in a `km-dots` row to get the "·" separators.
+ */
 export function SkillTag({ label, state, ai = false }: { label: string; state: TagState; ai?: boolean }) {
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-1 rounded-sm border px-2 py-0.5 text-[0.8125rem] leading-5 transition-colors duration-[var(--dur-base)]",
-        state === "have" && "border-transparent bg-honey-wash font-medium text-honey-ink",
-        state === "missing" && "border-dashed border-border-strong text-muted-foreground",
-        state === "neutral" && "border-border bg-secondary text-foreground",
+        "inline-flex items-center gap-1 text-sm leading-6 transition-colors duration-[var(--dur-base)]",
+        state === "have" && "font-medium text-honey-ink",
+        state === "missing" && "text-muted-foreground",
+        state === "neutral" && "text-foreground/85",
       )}
     >
       {state === "have" && <Check className="size-3.5" aria-hidden="true" />}
+      {state === "missing" && <span className="size-2.5 rounded-full border border-current" aria-hidden="true" />}
       {label}
       {ai && (
         <span className="ml-0.5 font-mono text-[0.625rem] tracking-wide text-muted-foreground" aria-hidden="true">

@@ -37,20 +37,34 @@ No UCF logos, mascots or official brand styling. Footer always says "Not affilia
 
 Three voices, each with one job. Size says what to read first; the font says what kind of thing it is.
 
-- **Instrument Serif** (condensed display serif, one weight): headlines, big numbers, project titles,
-  step titles. It only has 400, so hierarchy comes from size, never from bold (no `font-semibold`,
-  the browser would fake it).
+- **Newsreader** (display serif, variable weight + optical size): headlines, big numbers, project
+  titles, step titles. Calm and readable at length; large sizes automatically get finer strokes.
+  Weight 400 for display; hierarchy still comes from size.
 - **Public Sans**: body text, buttons, form controls. Body 16px / 1.6.
 - **IBM Plex Mono**: small uppercase labels (`km-label`: 12px, 500, +0.06em tracking) for the dateline,
   nav links, section labels, stat captions and ticker meta; the short hero lead paragraph (`km-lead`:
   15px / 1.65, uppercase, justified from 640px, left aligned on phones); also UCF course codes (`COP3502C`).
 - Scale (px): 12 · 14 · 16 · 18 · 20 · 24 · 30 · 36 · 48, plus two display sizes:
-  hero headline `clamp(2.75rem, 11.5vw, 6.5rem)` below 1024px and container width ÷ 11.2 from 1024px
-  (≈103px), and the recruiting count `clamp(8rem, 5rem + 10vw, 13rem)`.
+  hero headline `clamp(2.5rem, 8.6vw, 5.5rem)` below 1024px and container width ÷ 12.6 from 1024px
+  (≈91px), project titles 28px / 34px from 768px, and the recruiting count `clamp(8rem, 5rem + 10vw, 13rem)`.
 - Uppercase is for the hero headline, `km-label` labels and the short `km-lead` hero paragraph.
   Everything else (project titles, body, buttons) is sentence case. Never use `km-lead` for more
   than a few lines.
 - No single highlighted word in headlines, no `→` appended to button text.
+
+## What you can click
+
+One rule, everywhere: **anything clickable carries a signal, anything that isn't never does.**
+
+- **Buttons**: a honey block (main action) or a 1px outline (secondary).
+- **Text links**: always a hairline underline that darkens on hover. Going to another page adds →,
+  leaving the site adds ↗. Mono label links follow the same rule ("Browse all 42 projects →").
+- **Project rows**: the title is underlined and followed by →; the whole row lightens a touch and its
+  top hairline draws across on hover. The full row is the link.
+- **Ticker items**: underlined titles with →.
+- **Never clickable, never styled like it**: skill tags are plain text separated by "·" (✓ honey ink =
+  you have it, hollow ring = not yet), mono labels (topic, College, Semester), numbers, the team grid.
+- Nav links are the one exception to the underline rule: the dot marks them (filled = here, hollow = hover).
 
 ## Layout
 
@@ -75,8 +89,8 @@ One screen tall (`100svh` minus header, and minus the tab bar on phones), with o
 to read, biggest first:
 
 1. **Headline** (display caps): "Find the research team that's looking for you." From 1024px it is
-   two lines justified edge to edge; the first line's hairline stretches to fill, the second spreads
-   its words. Phones and tablets wrap it naturally, left aligned (up to 104px).
+   three left-aligned rows (Find the research / team that's / looking for you.), with the globe in the
+   space on the right. Phones and tablets wrap it naturally.
 2. **One sentence** (`km-lead`) on what the site does, and the main button. From 1024px the sentence
    sits left and the button right, on the same baseline.
 3. **Dateline** (top) and **foot bar** (bottom, behind hairlines): what this is and when it was last

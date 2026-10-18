@@ -63,7 +63,7 @@ export function DetectedSkills({ data }: { data: DetailData }) {
       <div className="grid gap-2">
         <h3 className="text-sm font-semibold">{title}</h3>
         {note && <p className="-mt-1 text-xs text-muted-foreground">{note}</p>}
-        <div className="flex flex-wrap gap-1.5">
+        <div className="km-dots flex flex-wrap items-center gap-x-2 gap-y-1">
           {ids.map((id) => (
             <SkillTag key={id} label={skills[id].label} state={state(id)} ai={data.aiSkills.includes(id)} />
           ))}

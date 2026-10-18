@@ -1,4 +1,4 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { ViewTransition } from "react";
 import { shortCollege } from "@/lib/filters";
@@ -50,7 +50,7 @@ function SkillRow({ project, skills, have }: Pick<CardProps, "project" | "skills
   const shown = ids.slice(0, MAX_TAGS);
   const hidden = ids.length - shown.length;
   return (
-    <div className="mt-5 flex flex-wrap items-center gap-1.5">
+    <div className="km-dots mt-5 flex flex-wrap items-center gap-x-2 gap-y-1">
       {!required.length && <span className="km-label mr-1 text-muted-foreground">Nice to have</span>}
       {shown.map((id) => (
         <SkillTag
@@ -75,6 +75,17 @@ function spotsText(project: ListingProject): { text: string; urgent: boolean } |
   if (project.openSpots === null) return null;
   return project.openSpots === 1 ? { text: "1 left", urgent: true } : { text: `${project.openSpots} open`, urgent: false };
 }
+
+/**
+ * Option A of the clickability rules: anything that opens another page has a hairline underline
+ * and an arrow; things you can't click never do. The row also lightens a touch on hover.
+ */
+const TITLE_LINK =
+  "underline decoration-border-strong decoration-1 underline-offset-[0.14em] transition-[text-decoration-color] duration-[var(--dur-fast)] group-hover:decoration-foreground";
+const TITLE_ARROW =
+  "ml-[0.2em] inline size-[0.6em] -translate-y-[0.04em] align-baseline text-muted-foreground transition-[translate,color] duration-[var(--dur-base)] ease-[var(--ease-out)] group-hover:translate-x-1 group-hover:text-foreground motion-reduce:transition-none";
+const ROW_WASH =
+  "before:absolute before:inset-y-0 before:-inset-x-3 before:-z-10 before:bg-foreground/[0.03] before:opacity-0 before:transition-opacity before:duration-[var(--dur-fast)] hover:before:opacity-100";
 
 /** The hairline above a row that draws itself across on hover (the row's border stays underneath). */
 function HoverRule() {
@@ -115,7 +126,8 @@ export function ProjectCard({
     <article
       aria-labelledby={titleId}
       className={cn(
-        "group relative grid gap-x-10 gap-y-6 border-t py-6 md:grid-cols-[minmax(0,1fr)_15rem] md:py-8",
+        "group relative isolate grid gap-x-10 gap-y-6 border-t py-6 md:grid-cols-[minmax(0,1fr)_15rem] md:py-8",
+        ROW_WASH,
         "has-[a[data-card-link]:focus-visible]:outline-2 has-[a[data-card-link]:focus-visible]:outline-offset-4 has-[a[data-card-link]:focus-visible]:outline-ring",
       )}
     >
@@ -127,14 +139,15 @@ export function ProjectCard({
           {topicLabel && <span>{topicLabel}</span>}
           {isNew && <NewBadge />}
         </p>
-        <h3 id={titleId} className="mt-4 font-serif text-[2rem] leading-[1.02] md:text-[2.5rem]">
+        <h3 id={titleId} className="mt-4 font-serif text-[1.75rem] leading-[1.08] tracking-[-0.01em] md:text-[2.125rem]">
           <Link
             href={`/projects/${project.id}`}
             transitionTypes={[TO_DETAIL]}
             data-card-link
-            className="after:absolute after:inset-0 focus-visible:outline-none"
+            className={cn(TITLE_LINK, "after:absolute after:inset-0 focus-visible:outline-none")}
           >
             <ProjectTitle id={project.id} title={project.title} />
+            <ArrowRight aria-hidden="true" className={TITLE_ARROW} />
           </Link>
         </h3>
 
@@ -194,7 +207,7 @@ export function FullTeamRow({ project, index }: { project: ListingProject; index
   return (
     <article
       aria-labelledby={titleId}
-      className="group relative grid items-baseline gap-x-10 gap-y-1 border-t py-4 has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-offset-4 has-[a:focus-visible]:outline-ring md:grid-cols-[minmax(0,1fr)_15rem]"
+      className="group relative isolate grid items-baseline gap-x-10 gap-y-1 border-t py-4 before:absolute before:inset-y-0 before:-inset-x-3 before:-z-10 before:bg-foreground/[0.03] before:opacity-0 before:transition-opacity before:duration-[var(--dur-fast)] hover:before:opacity-100 has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-offset-4 has-[a:focus-visible]:outline-ring md:grid-cols-[minmax(0,1fr)_15rem]"
     >
       <HoverRule />
       <h3 id={titleId} className="flex items-baseline gap-4 font-serif text-xl leading-snug text-foreground/70">
@@ -202,9 +215,10 @@ export function FullTeamRow({ project, index }: { project: ListingProject; index
         <Link
           href={`/projects/${project.id}`}
           transitionTypes={[TO_DETAIL]}
-          className="after:absolute after:inset-0 focus-visible:outline-none"
+          className={cn(TITLE_LINK, "after:absolute after:inset-0 focus-visible:outline-none")}
         >
           <ProjectTitle id={project.id} title={project.title} />
+          <ArrowRight aria-hidden="true" className={TITLE_ARROW} />
         </Link>
       </h3>
       <p className="km-label flex justify-between gap-4 text-muted-foreground">

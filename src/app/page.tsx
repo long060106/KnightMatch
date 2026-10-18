@@ -1,3 +1,4 @@
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { DrawRule } from "@/components/draw-rule";
 import { Hero, RecruitingNow } from "@/components/hero";
@@ -58,9 +59,13 @@ export default function HomePage() {
             </Button>
             <Link
               href="/match"
-              className="km-label inline-flex min-h-11 items-center underline decoration-border-strong underline-offset-[6px] hover:decoration-foreground"
+              className="km-label group inline-flex min-h-11 items-center gap-1.5 underline decoration-border-strong underline-offset-[6px] hover:decoration-foreground"
             >
               Match me first
+              <ArrowRight
+                className="size-3.5 transition-transform duration-[var(--dur-base)] ease-[var(--ease-out)] group-hover:translate-x-0.5"
+                aria-hidden="true"
+              />
             </Link>
           </div>
         </div>

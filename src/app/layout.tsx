@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { IBM_Plex_Mono, Instrument_Serif, Public_Sans } from "next/font/google";
+import { IBM_Plex_Mono, Newsreader, Public_Sans } from "next/font/google";
 import { BackgroundGrid } from "@/components/background-grid";
 import { BottomTabs } from "@/components/main-nav";
 import { SiteFooter } from "@/components/site-footer";
@@ -9,11 +9,12 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { HEAD_SCRIPT } from "@/lib/profile-key";
 import "./globals.css";
 
-// Condensed display serif: headlines, big numbers, project titles. One weight; hierarchy comes from size.
-const instrumentSerif = Instrument_Serif({
-  variable: "--font-instrument-serif",
+// Display serif: headlines, big numbers, project titles. Variable weight plus optical size, so
+// large sizes get finer strokes and small ones stay sturdy.
+const newsreader = Newsreader({
+  variable: "--font-newsreader",
   subsets: ["latin"],
-  weight: "400",
+  axes: ["opsz"],
   display: "swap",
 });
 
@@ -52,7 +53,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${instrumentSerif.variable} ${publicSans.variable} ${plexMono.variable} antialiased`}
+      className={`${newsreader.variable} ${publicSans.variable} ${plexMono.variable} antialiased`}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: HEAD_SCRIPT }} />
