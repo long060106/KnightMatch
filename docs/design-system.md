@@ -91,6 +91,8 @@ No shadows, no pills. The only round things are status dots (the nav dot, the da
   on), label, count as two mono digits. The sidebar sits behind a vertical hairline.
 - **Background grid**: 48px hairline squares fixed to the screen (`.km-grid`), faded toward the bottom
   corners. With a mouse, a brighter patch of grid (220px) follows the pointer. Neutral colors only.
+  Ruled lists (`data-grid-quiet`: the project list, your matches) fade the grid out while they fill
+  the middle of the screen, so the background lines never cross the rows' own hairlines.
 
 ## Motion
 

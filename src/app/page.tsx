@@ -33,6 +33,7 @@ export default function HomePage() {
       <HowItWorks />
       <section
         id="projects"
+        data-grid-quiet
         tabIndex={-1}
         aria-labelledby="projects-heading"
         className="mx-auto max-w-[1200px] scroll-mt-4 px-4 pt-8 pb-16 outline-none md:px-6 lg:pt-12"

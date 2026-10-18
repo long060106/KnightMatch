@@ -523,6 +523,11 @@ html[data-has-profile] .km-story-compact {
   inset: 0;
   z-index: -1;
   pointer-events: none;
+  transition: opacity var(--dur-move) var(--ease-out);
+}
+/* A ruled list fills the screen: its own hairlines are the grid now. */
+.km-grid[data-quiet] {
+  opacity: 0;
 }
 .km-grid::before,
 .km-grid::after {

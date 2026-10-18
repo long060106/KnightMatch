@@ -202,6 +202,7 @@ export function MatchWorkbench({ projects, skills, groups, popular, courses, cou
         <section
           ref={resultsRef}
           id="matches"
+          data-grid-quiet
           tabIndex={-1}
           aria-labelledby="matches-heading"
           className="scroll-mt-4 outline-none"
