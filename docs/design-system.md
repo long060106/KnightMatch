@@ -88,6 +88,8 @@ One rule, everywhere: **anything clickable carries a signal, anything that isn't
   numbers → ticker → how it works → closing call to action ("See all N projects").
 - **`/projects` (the tool)**: page title, filters and the full list. Old links to `/?topic=…` or
   `/#projects` are forwarded here with their filters.
+- **`/about`**: "Developed by Long Nguyen", the portrait, and the four rules the site keeps (public pages
+  only, fixed rules, data stays on the device, you write the email). Linked from the footer, not the nav.
 - `/match`, `/projects/[id]` and `/other-places` as before. Nav: Home (`/`), Projects (`/projects`),
   Match me, Other places; the phone tab bar has the same four.
 
@@ -149,7 +151,15 @@ Ease-out `cubic-bezier(.2,.8,.2,1)` for arrivals; exits are ~65% of enter time.
    (ease-in-out, close to a cosine), offset along the cycle so together they turn like a globe.
    About 14s per half turn. Pure CSS from the prerendered HTML. Reduced motion: it holds still.
 
-Only `transform` and `opacity` animate. `prefers-reduced-motion` turns all of it off, including
+8. **About page shapes** (`FloatingShapes`): a cube, an elliptic paraboloid and a sphere as ink
+   hairlines on one canvas, spinning and drifting along slow orbits, a little with the pointer.
+   Far-side lines are fainter so they read as solid. Pauses off screen or in a background tab.
+   Reduced motion: one still frame.
+9. **About page portrait** (`Portrait`): the photo is uncovered tile by tile in the same square cells
+   as the team grid; with a mouse the frame leans up to 5° while the photo and the outline behind it
+   slide the other way. Reduced motion: no tiles, no lean.
+
+Only `transform` and `opacity` animate (the canvas shapes are drawn by script, not CSS). `prefers-reduced-motion` turns all of it off, including
 the New pulse. Browsers without View Transitions simply swap content instantly.
 
 ## Scroll

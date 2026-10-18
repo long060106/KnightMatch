@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 import { DrawRule } from "./draw-rule";
 
 export function SiteFooter() {
@@ -17,6 +18,11 @@ export function SiteFooter() {
             <ArrowUpRight className="size-3.5" aria-hidden="true" />
           </a>{" "}
           and are re-checked every day. The original listing is always the source of truth.
+        </p>
+        <p>
+          <Link href="/about" className="km-link font-medium text-foreground">
+            Developed by Long Nguyen
+          </Link>
         </p>
       </div>
     </footer>

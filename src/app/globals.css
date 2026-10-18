@@ -597,3 +597,48 @@ html[data-has-profile] .km-story-compact {
 .km-dots > .km-label + *::before {
   content: none;
 }
+
+/*
+  About page portrait (Portrait). On load the photo is uncovered tile by tile (.km-tile, paper
+  colored squares fading out in a scattered order). With a mouse the frame leans toward the pointer
+  (--px / --py are -1…1, set from JS) while the photo and the outline behind it slide the other way.
+  Only transform and opacity animate. Reduced motion: no tiles, no lean.
+*/
+.km-portrait-outline {
+  transform: translate(12px, 12px);
+}
+.km-tile {
+  display: none;
+  background: var(--background);
+  outline: 1px solid var(--background); /* hides hairline seams between tiles */
+}
+@media (prefers-reduced-motion: no-preference) {
+  .km-tile {
+    display: block;
+    animation: km-tile-out 600ms var(--ease-out) both;
+    animation-delay: calc(250ms + var(--d, 0ms));
+  }
+}
+@keyframes km-tile-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .km-portrait {
+    transform: perspective(1000px) rotateX(calc(var(--py, 0) * var(--tilt, 5deg) * -1))
+      rotateY(calc(var(--px, 0) * var(--tilt, 5deg)));
+    transition: transform 200ms var(--ease-out);
+  }
+  .km-portrait-img {
+    transform: translate(calc(var(--px, 0) * -8px), calc(var(--py, 0) * -8px)) scale(1.06);
+    transition: transform 200ms var(--ease-out);
+  }
+  .km-portrait-outline {
+    transform: translate(calc(12px + var(--px, 0) * -10px), calc(12px + var(--py, 0) * -10px));
+    transition: transform 200ms var(--ease-out);
+  }
+}
