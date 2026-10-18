@@ -190,6 +190,29 @@ def test_unreadable_answer_is_skipped_but_others_continue(dictionary):
     assert (report.status, report.failed, report.answered) == ("partial", 1, 1)
 
 
+GEMINI_400 = FakeResponse(400, [{"error": {"code": 400, "message": "Request contains an invalid argument."}}])
+
+
+def test_rejected_schema_switches_to_plain_json_for_the_rest_of_the_run(dictionary):
+    post = FakePost(GEMINI_400, chat(ANSWER))
+    annotator = Annotator(dictionary, TOPICS, {}, make_client(post), NOW)
+    assert annotate(annotator).topics == ["ai_ml"]
+    annotator.annotate("krsp-2", "Other", "Text", QUALS, [])
+    formats = [kwargs["json"]["response_format"]["type"] for _, kwargs in post.calls]
+    assert formats == ["json_schema", "json_object", "json_object"]
+    report = annotator.report()
+    assert (report.status, report.answered, report.response_format) == ("ok", 2, "json_object")
+
+
+def test_bad_request_in_plain_json_mode_stops_the_ai_step(dictionary):
+    post = FakePost(GEMINI_400)
+    annotator = Annotator(dictionary, TOPICS, {}, make_client(post), NOW)
+    annotate(annotator)
+    assert len(post.calls) == 2
+    report = annotator.report()
+    assert report.status == "stopped" and "invalid argument" in report.message
+
+
 def test_refused_key_stops_the_ai_step(dictionary):
     annotator = Annotator(dictionary, TOPICS, {}, make_client(FakePost(FakeResponse(403, {"error": {"message": "bad key"}}))), NOW)
     annotate(annotator)
