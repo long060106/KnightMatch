@@ -2,6 +2,7 @@
 
 No LLM here: every match comes from a hand-written alias pattern, so results are predictable
 and testable. Text that matches nothing is reported for human review, never auto-added.
+The optional AI step (ai.py) may only fill items this finds nothing in.
 
 Three fairness rules:
   - Parent skills: "Programming (any language)" is the parent of Python, C++, ... If an item
@@ -15,7 +16,8 @@ from __future__ import annotations
 
 import json
 import re
-from dataclasses import dataclass
+from collections.abc import Mapping
+from dataclasses import dataclass, field
 from pathlib import Path
 
 from .quals import QualsResult
@@ -104,9 +106,13 @@ class SkillDictionary:
                 skill_id, pos = (skill.parent or skill.id), min(positions)
             found[skill_id] = min(pos, found.get(skill_id, pos))
 
-        present = set(found)
-        kept = [s for s in found if not any(self.skills[c].parent == s for c in present)]
+        kept = self.drop_covered_parents(list(found))
         return sorted(kept, key=lambda s: (found[s], s))
+
+    def drop_covered_parents(self, ids: list[str]) -> list[str]:
+        """Drop a vague parent when a more specific child is in the same list."""
+        present = set(ids)
+        return [s for s in ids if not any(self.skills[c].parent == s for c in present if c in self.skills)]
 
 
 @dataclass
@@ -114,17 +120,29 @@ class ProjectSkills:
     required: list[str]
     preferred: list[str]
     unmatched: list[dict]
+    # Skills that came only from the AI step (no word-list match anywhere in the project).
+    ai: list[str] = field(default_factory=list)
 
 
-def extract_project_skills(dictionary: SkillDictionary, quals: QualsResult) -> ProjectSkills:
+def extract_project_skills(
+    dictionary: SkillDictionary,
+    quals: QualsResult,
+    filled: Mapping[str, list[str]] | None = None,
+) -> ProjectSkills:
+    """filled: skill ids from the AI step, keyed by item text. Used only for items the word list
+    found nothing in, so the AI can fill gaps but never overrule a literal match."""
     required: list[str] = []
     preferred: list[str] = []
     unmatched: list[dict] = []
+    from_words: set[str] = set()
     for bucket, items in (("required", quals.required), ("preferred", quals.preferred)):
         for item in items:
             if INTEREST_ONLY_RE.match(item):
                 continue  # an interest, attitude or access, not a skill
             ids = dictionary.extract(item)
+            from_words.update(ids)
+            if not ids and filled:
+                ids = dictionary.drop_covered_parents([s for s in filled.get(item, []) if s in dictionary.skills])
             if not ids:
                 unmatched.append({"bucket": bucket, "text": item})
             target = required if bucket == "required" and not EITHER_INTEREST_RE.search(item) else preferred
@@ -133,4 +151,5 @@ def extract_project_skills(dictionary: SkillDictionary, quals: QualsResult) -> P
                     target.append(skill_id)
     # A skill that is required should not also be listed as merely preferred.
     preferred = [s for s in preferred if s not in required]
-    return ProjectSkills(required, preferred, unmatched)
+    ai = [s for s in required + preferred if s not in from_words]
+    return ProjectSkills(required, preferred, unmatched, ai)

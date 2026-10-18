@@ -3,7 +3,7 @@
 import os
 from pathlib import Path
 
-SCRAPER_VERSION = "0.1.0"
+SCRAPER_VERSION = "0.2.0"
 
 BASE_URL = "https://knight.research.ucf.edu"
 LIST_URL = f"{BASE_URL}/project-list/"
@@ -16,6 +16,16 @@ MAX_RETRIES = 3
 
 # Abort without writing if the list page suddenly shows far fewer projects than last run.
 MIN_LISTED_RATIO = 0.5
+
+# Optional AI step (see ai.py). Any OpenAI-compatible endpoint works; the default is Gemini's.
+# The key only comes from the environment (a GitHub secret), never from a file.
+AI_DEFAULT_BASE_URL = "https://generativelanguage.googleapis.com/v1beta/openai"
+AI_DEFAULT_MODEL = "gemini-3.5-flash-lite"
+AI_MIN_INTERVAL_SECONDS = 6.0  # stays under free-tier requests-per-minute limits
+AI_TIMEOUT_SECONDS = 60
+AI_MAX_RETRIES = 3
+AI_MAX_CALLS_PER_RUN = 50  # projects left over are tagged on the next day's run
+AI_DESCRIPTION_CHARS = 3000
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 DATA_DIR = REPO_ROOT / "data"

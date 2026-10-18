@@ -30,7 +30,7 @@
         "id", "source", "wp_post_id", "title", "url", "status", "semester", "team_size",
         "open_spots", "affiliation", "team_leader", "co_leaders", "faculty_mentor",
         "required_quals", "preferred_quals", "quals_raw", "quals_hash", "required_skills",
-        "preferred_skills", "beginner_friendly", "beginner_reason", "description",
+        "preferred_skills", "ai_skills", "beginner_friendly", "beginner_reason", "topics", "description",
         "first_seen_at", "last_checked_at", "last_changed_at", "status_changed_at",
         "listed", "removed_at"
       ],
@@ -54,8 +54,15 @@
         "quals_hash": { "type": "string", "pattern": "^[0-9a-f]{16}$" },
         "required_skills": { "$ref": "#/$defs/skillIds" },
         "preferred_skills": { "$ref": "#/$defs/skillIds" },
+        "ai_skills": { "$ref": "#/$defs/skillIds" },
         "beginner_friendly": { "type": "boolean" },
         "beginner_reason": { "enum": ["explicit", "no_required_skills", null] },
+        "topics": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+          "uniqueItems": true,
+          "maxItems": 3
+        },
         "description": { "type": "string" },
         "first_seen_at": { "$ref": "#/$defs/timestamp" },
         "last_checked_at": { "$ref": "#/$defs/timestamp" },

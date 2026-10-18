@@ -24,6 +24,7 @@ def build_record(
     quals: QualsResult,
     skills: ProjectSkills,
     dictionary: SkillDictionary,
+    topics: list[str] | None = None,
 ) -> dict:
     """Record with history fields left for diff.merge_snapshot. Still contains emails:
     privacy.public_record must run before anything is written."""
@@ -50,8 +51,10 @@ def build_record(
         "quals_hash": quals.hash,
         "required_skills": skills.required,
         "preferred_skills": skills.preferred,
+        "ai_skills": skills.ai,
         "beginner_friendly": beginner,
         "beginner_reason": reason,
+        "topics": topics or [],
         "description": page.description,
     }
 
@@ -60,7 +63,7 @@ FIELD_ORDER = (
     "id", "source", "wp_post_id", "title", "url", "status", "semester", "team_size",
     "open_spots", "affiliation", "team_leader", "co_leaders", "faculty_mentor",
     "required_quals", "preferred_quals", "quals_raw", "quals_hash", "required_skills",
-    "preferred_skills", "beginner_friendly", "beginner_reason", "description",
+    "preferred_skills", "ai_skills", "beginner_friendly", "beginner_reason", "topics", "description",
     "first_seen_at", "last_checked_at", "last_changed_at", "status_changed_at",
     "listed", "removed_at",
 )

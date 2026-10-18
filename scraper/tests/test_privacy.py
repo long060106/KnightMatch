@@ -56,7 +56,10 @@ def test_full_pipeline_record_is_public_and_matches_schema(fixture_html):
 
 def test_published_data_files_contain_no_emails():
     """CI guard: fails if anything in data/ ever contains an email address."""
-    for name in (store.PROJECTS_FILE, store.EVENTS_FILE, store.META_FILE, store.REVIEW_FILE):
+    for name in (
+        store.PROJECTS_FILE, store.EVENTS_FILE, store.META_FILE, store.REVIEW_FILE,
+        store.AI_CACHE_FILE, store.AI_REVIEW_FILE, store.TOPICS_FILE,
+    ):
         path = store.data_path(name)
         if path.exists():
             assert_no_emails(store.read_json(path, None), path.name)

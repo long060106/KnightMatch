@@ -1,45 +1,19 @@
 [
   {
-    "project_id": "krsp-1100",
-    "title": "Individual Differences in High-Stakes Security Decision-Making",
+    "project_id": "krsp-643",
+    "title": "Exploration of Nozzle Design’s Influence on Plume Surface Interactions (PSI) Physics",
     "unmatched": [
       {
-        "bucket": "required",
-        "text": "able to follow research protocols"
+        "bucket": "preferred",
+        "text": "students with existing experience in this area would also be good fits for this project"
       },
       {
         "bucket": "preferred",
-        "text": "Applicants who are involved with relevant student organizations, academic programs, laboratories, or professional networks and can assist with identifying potential participant pools are especially encouraged to apply"
-      }
-    ]
-  },
-  {
-    "project_id": "krsp-1102",
-    "title": "The Impact of AI on College Students with Trauma History and Self-Disclosure",
-    "unmatched": [
+        "text": "PSI are encouraged but not required"
+      },
       {
         "bucket": "preferred",
-        "text": "trauma or AI"
-      }
-    ]
-  },
-  {
-    "project_id": "krsp-1094",
-    "title": "Captin: Sustainable Biopolymer Encapsulation for Biomedical and Agricultural Applications",
-    "unmatched": [
-      {
-        "bucket": "preferred",
-        "text": "a passion to start research"
-      }
-    ]
-  },
-  {
-    "project_id": "krsp-1082",
-    "title": "LVL CARL",
-    "unmatched": [
-      {
-        "bucket": "preferred",
-        "text": "video games"
+        "text": "Availability on Fridays is strongly preferred"
       }
     ]
   },
@@ -66,6 +40,30 @@
     ]
   },
   {
+    "project_id": "krsp-723",
+    "title": "Transfer Matrix Solver for Plasmonic Systems",
+    "unmatched": [
+      {
+        "bucket": "required",
+        "text": "A lot of time will probably be spent trying to understand and formulate the problem, so at the bare minimum an interest to learn something new is required"
+      }
+    ]
+  },
+  {
+    "project_id": "krsp-787",
+    "title": "Assessing Bioimpedance and Body Composition in Humans",
+    "unmatched": [
+      {
+        "bucket": "required",
+        "text": "Biomedical Research Investigators and Key Personnel"
+      },
+      {
+        "bucket": "preferred",
+        "text": "availability"
+      }
+    ]
+  },
+  {
     "project_id": "krsp-821",
     "title": "Lived Experiences of Students with Disabilities",
     "unmatched": [
@@ -84,6 +82,24 @@
       {
         "bucket": "preferred",
         "text": "FAILURE TO RESPOND TO EMAILS WITHIN 72 HOURS WILL RESULT IN REMOVAL FROM THE TEAM"
+      }
+    ]
+  },
+  {
+    "project_id": "krsp-832",
+    "title": "Neural and Autonomic Re-sponses to Linguistic Mirroring in Conversational AI",
+    "unmatched": [
+      {
+        "bucket": "required",
+        "text": "Time Commitment Ability to commit to in-person lab hours as required by the project"
+      },
+      {
+        "bucket": "required",
+        "text": "Respect for participant confidentiality and data security protocols"
+      },
+      {
+        "bucket": "preferred",
+        "text": "Technical & Research Readiness"
       }
     ]
   },
@@ -122,16 +138,50 @@
     ]
   },
   {
-    "project_id": "krsp-1030",
-    "title": "Constructing Domestic Violence Through Arresting Officer Narratives",
+    "project_id": "krsp-838",
+    "title": "Hemispheric Lateralization: A Comparative Analysis of Left and Right Brain Activation Patterns",
     "unmatched": [
       {
         "bucket": "required",
-        "text": "Applicants should have"
+        "text": "Time Commitment Ability to commit to in-person lab hours as required by the project"
       },
       {
         "bucket": "required",
-        "text": "availability of at least two hours per week during the Fall 2026 semester"
+        "text": "Respect for participant confidentiality and data security protocols"
+      }
+    ]
+  },
+  {
+    "project_id": "krsp-878",
+    "title": "Development of SafeFall Coach Mobile Application for AI-Based Fall Prevention and Safe Movement Training in Older Adults",
+    "unmatched": [
+      {
+        "bucket": "preferred",
+        "text": "related fields is preferred"
+      }
+    ]
+  },
+  {
+    "project_id": "krsp-885",
+    "title": "Understanding Digital File Organization Among Neurodivergent Users",
+    "unmatched": [
+      {
+        "bucket": "required",
+        "text": "Social/ Behavioral Research Investigators and Key Personnel"
+      },
+      {
+        "bucket": "preferred",
+        "text": "Ability to work online with structure"
+      }
+    ]
+  },
+  {
+    "project_id": "krsp-906",
+    "title": "From Faculty Intentions to Student Impact: Understanding Writing Feedback, Self-Efficacy, and Learned Helplessness",
+    "unmatched": [
+      {
+        "bucket": "required",
+        "text": "Understanding of learned helplessness (or willingness to learn)"
       }
     ]
   },
@@ -154,68 +204,12 @@
     ]
   },
   {
-    "project_id": "krsp-978",
-    "title": "Intention-Behavior Gap in Postpartum Women",
-    "unmatched": [
-      {
-        "bucket": "preferred",
-        "text": "Ability to travel off campus — willingness to visit local sites such as community centers or the Department of Health for recruitment or program support"
-      }
-    ]
-  },
-  {
-    "project_id": "krsp-976",
-    "title": "Physical Activity and Health Behaviors Across the Menstrual Cycle",
-    "unmatched": [
-      {
-        "bucket": "preferred",
-        "text": "Availability for at least 4 hours per week across a minimum of 2 days"
-      },
-      {
-        "bucket": "preferred",
-        "text": "Ability and willingness to travel off campus (for things like recruiting and/or programs at the department of health)"
-      }
-    ]
-  },
-  {
-    "project_id": "krsp-723",
-    "title": "Transfer Matrix Solver for Plasmonic Systems",
+    "project_id": "krsp-947",
+    "title": "Evaluating the Protective Role of Lactobacillus Postbiotic Metabolites Against Bile Acid-Induced Genotoxic Stress in Esophageal Disease Progression",
     "unmatched": [
       {
         "bucket": "required",
-        "text": "A lot of time will probably be spent trying to understand and formulate the problem, so at the bare minimum an interest to learn something new is required"
-      }
-    ]
-  },
-  {
-    "project_id": "krsp-968",
-    "title": "Preventing Falls Using a Person Centered Approach",
-    "unmatched": [
-      {
-        "bucket": "required",
-        "text": "3-hour windows of availability during the week"
-      },
-      {
-        "bucket": "preferred",
-        "text": "Our research is a community-based program that delivers fall risk screening to senior centers within a 30-minute driving radius from UCF"
-      }
-    ]
-  },
-  {
-    "project_id": "krsp-643",
-    "title": "Exploration of Nozzle Design’s Influence on Plume Surface Interactions (PSI) Physics",
-    "unmatched": [
-      {
-        "bucket": "preferred",
-        "text": "students with existing experience in this area would also be good fits for this project"
-      },
-      {
-        "bucket": "preferred",
-        "text": "PSI are encouraged but not required"
-      },
-      {
-        "bucket": "preferred",
-        "text": "Availability on Fridays is strongly preferred"
+        "text": "A commitment of at least 15 hours per week is required"
       }
     ]
   },
@@ -246,92 +240,98 @@
     ]
   },
   {
-    "project_id": "krsp-947",
-    "title": "Evaluating the Protective Role of Lactobacillus Postbiotic Metabolites Against Bile Acid-Induced Genotoxic Stress in Esophageal Disease Progression",
+    "project_id": "krsp-968",
+    "title": "Preventing Falls Using a Person Centered Approach",
     "unmatched": [
       {
         "bucket": "required",
-        "text": "A commitment of at least 15 hours per week is required"
-      }
-    ]
-  },
-  {
-    "project_id": "krsp-885",
-    "title": "Understanding Digital File Organization Among Neurodivergent Users",
-    "unmatched": [
-      {
-        "bucket": "required",
-        "text": "Social/ Behavioral Research Investigators and Key Personnel"
+        "text": "3-hour windows of availability during the week"
       },
       {
         "bucket": "preferred",
-        "text": "Ability to work online with structure"
+        "text": "Our research is a community-based program that delivers fall risk screening to senior centers within a 30-minute driving radius from UCF"
       }
     ]
   },
   {
-    "project_id": "krsp-838",
-    "title": "Hemispheric Lateralization: A Comparative Analysis of Left and Right Brain Activation Patterns",
-    "unmatched": [
-      {
-        "bucket": "required",
-        "text": "Time Commitment Ability to commit to in-person lab hours as required by the project"
-      },
-      {
-        "bucket": "required",
-        "text": "Respect for participant confidentiality and data security protocols"
-      }
-    ]
-  },
-  {
-    "project_id": "krsp-832",
-    "title": "Neural and Autonomic Re-sponses to Linguistic Mirroring in Conversational AI",
-    "unmatched": [
-      {
-        "bucket": "required",
-        "text": "Time Commitment Ability to commit to in-person lab hours as required by the project"
-      },
-      {
-        "bucket": "required",
-        "text": "Respect for participant confidentiality and data security protocols"
-      },
-      {
-        "bucket": "preferred",
-        "text": "Technical & Research Readiness"
-      }
-    ]
-  },
-  {
-    "project_id": "krsp-906",
-    "title": "From Faculty Intentions to Student Impact: Understanding Writing Feedback, Self-Efficacy, and Learned Helplessness",
-    "unmatched": [
-      {
-        "bucket": "required",
-        "text": "Understanding of learned helplessness (or willingness to learn)"
-      }
-    ]
-  },
-  {
-    "project_id": "krsp-878",
-    "title": "Development of SafeFall Coach Mobile Application for AI-Based Fall Prevention and Safe Movement Training in Older Adults",
+    "project_id": "krsp-976",
+    "title": "Physical Activity and Health Behaviors Across the Menstrual Cycle",
     "unmatched": [
       {
         "bucket": "preferred",
-        "text": "related fields is preferred"
+        "text": "Availability for at least 4 hours per week across a minimum of 2 days"
+      },
+      {
+        "bucket": "preferred",
+        "text": "Ability and willingness to travel off campus (for things like recruiting and/or programs at the department of health)"
       }
     ]
   },
   {
-    "project_id": "krsp-787",
-    "title": "Assessing Bioimpedance and Body Composition in Humans",
+    "project_id": "krsp-978",
+    "title": "Intention-Behavior Gap in Postpartum Women",
+    "unmatched": [
+      {
+        "bucket": "preferred",
+        "text": "Ability to travel off campus — willingness to visit local sites such as community centers or the Department of Health for recruitment or program support"
+      }
+    ]
+  },
+  {
+    "project_id": "krsp-1030",
+    "title": "Constructing Domestic Violence Through Arresting Officer Narratives",
     "unmatched": [
       {
         "bucket": "required",
-        "text": "Biomedical Research Investigators and Key Personnel"
+        "text": "Applicants should have"
+      },
+      {
+        "bucket": "required",
+        "text": "availability of at least two hours per week during the Fall 2026 semester"
+      }
+    ]
+  },
+  {
+    "project_id": "krsp-1082",
+    "title": "LVL CARL",
+    "unmatched": [
+      {
+        "bucket": "preferred",
+        "text": "video games"
+      }
+    ]
+  },
+  {
+    "project_id": "krsp-1094",
+    "title": "Captin: Sustainable Biopolymer Encapsulation for Biomedical and Agricultural Applications",
+    "unmatched": [
+      {
+        "bucket": "preferred",
+        "text": "a passion to start research"
+      }
+    ]
+  },
+  {
+    "project_id": "krsp-1100",
+    "title": "Individual Differences in High-Stakes Security Decision-Making",
+    "unmatched": [
+      {
+        "bucket": "required",
+        "text": "able to follow research protocols"
       },
       {
         "bucket": "preferred",
-        "text": "availability"
+        "text": "Applicants who are involved with relevant student organizations, academic programs, laboratories, or professional networks and can assist with identifying potential participant pools are especially encouraged to apply"
+      }
+    ]
+  },
+  {
+    "project_id": "krsp-1102",
+    "title": "The Impact of AI on College Students with Trauma History and Self-Disclosure",
+    "unmatched": [
+      {
+        "bucket": "preferred",
+        "text": "trauma or AI"
       }
     ]
   }

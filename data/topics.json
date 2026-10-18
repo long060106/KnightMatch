@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "note": "Fixed topic list for the Topic filter. The AI step may only pick ids from this list; each hint tells it what belongs where. Edit labels freely; changing ids or hints re-tags every project on the next run.",
+  "topics": [
+    {
+      "id": "ai_ml",
+      "label": "AI & machine learning",
+      "hint": "Building, training or testing AI models: machine learning, neural networks, LLMs, computer vision. Not studies of how people react to AI (that is hci)."
+    },
+    {
+      "id": "software",
+      "label": "Software, apps & web",
+      "hint": "Writing software: web apps, mobile apps, games engines, simulation software, tools."
+    },
+    {
+      "id": "devices_robotics",
+      "label": "Electronics, devices & robotics",
+      "hint": "Hardware: circuits, sensors, embedded systems, wearables, prosthetics, robots, mechanical design."
+    },
+    {
+      "id": "hci",
+      "label": "Human–computer interaction",
+      "hint": "How people use, trust or are affected by technology, including AI chatbots, explainable AI from the user's side, accessibility tech and digital tools."
+    },
+    {
+      "id": "materials_chemistry",
+      "label": "Materials & chemistry",
+      "hint": "New materials, polymers, coatings, chemical formulation, chemistry lab work."
+    },
+    {
+      "id": "physics_space",
+      "label": "Physics, optics & space",
+      "hint": "Physics, optics, photonics, plasmonics, fluid dynamics, plume and space physics."
+    },
+    {
+      "id": "biology",
+      "label": "Biology & life sciences",
+      "hint": "Plants, microbes, cells, animals, molecular biology, microbiology, anatomy."
+    },
+    {
+      "id": "environment",
+      "label": "Environment & climate",
+      "hint": "Climate, air quality, wildfires, agriculture and crop health, sustainability."
+    },
+    {
+      "id": "health",
+      "label": "Health & medicine",
+      "hint": "Patients, clinical or public health, nursing, caregiving, aging, disease, falls."
+    },
+    {
+      "id": "exercise",
+      "label": "Exercise & movement science",
+      "hint": "Physical activity, body composition, gait, kinesiology, strength and fitness."
+    },
+    {
+      "id": "psychology",
+      "label": "Psychology & the brain",
+      "hint": "Cognition, behavior, decision-making, language processing, emotion, neuroscience, EEG."
+    },
+    {
+      "id": "education",
+      "label": "Education & accessibility",
+      "hint": "Teaching, learning, students' experiences, disability and accessibility on campus."
+    },
+    {
+      "id": "society",
+      "label": "Society, law & security",
+      "hint": "Criminal justice, law and policy, violence, insurgent groups, security studies, social issues."
+    },
+    {
+      "id": "arts",
+      "label": "Animation, art & games",
+      "hint": "Animated films, 3D modeling, digital art, game art and design, creative media."
+    }
+  ]
+}

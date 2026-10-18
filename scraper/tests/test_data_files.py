@@ -41,3 +41,19 @@ def test_projects_only_use_known_skills():
     for project in store.read_json(store.data_path(store.PROJECTS_FILE), []):
         for skill_id in project["required_skills"] + project["preferred_skills"]:
             assert skill_id in dictionary.skills, f"{project['id']} uses unknown skill {skill_id}"
+        assert set(project["ai_skills"]) <= set(project["required_skills"] + project["preferred_skills"])
+
+
+def test_topics_file_and_tagged_projects():
+    from knightmatch_scraper.ai import load_topics
+
+    topics = load_topics(store.data_path(store.TOPICS_FILE))
+    ids = {t["id"] for t in topics}
+    for topic in topics:
+        assert re.match(r"^[a-z0-9_]+$", topic["id"]), topic["id"]
+        assert topic["label"].strip() and topic["hint"].strip()
+    for project in store.read_json(store.data_path(store.PROJECTS_FILE), []):
+        assert set(project["topics"]) <= ids, project["id"]
+    for project_id, entry in store.read_json(store.data_path(store.AI_CACHE_FILE), {}).items():
+        assert set(entry["topics"]) <= ids, project_id
+        assert all(set(item.keys()) == {"kind", "skills"} for item in entry["items"]), project_id

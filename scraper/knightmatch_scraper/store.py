@@ -16,6 +16,9 @@ META_FILE = "meta.json"
 REVIEW_FILE = "review/unmatched_quals.json"
 SCHEMA_FILE = "schema/project.schema.json"
 SKILLS_FILE = "skills.json"
+TOPICS_FILE = "topics.json"
+AI_CACHE_FILE = "ai_cache.json"
+AI_REVIEW_FILE = "review/ai_review.json"
 
 
 def data_path(name: str, data_dir: Path | None = None) -> Path:

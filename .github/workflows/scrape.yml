@@ -16,7 +16,8 @@ concurrency:
 jobs:
   scrape:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    # The first AI run tags every project (one call every 6s); later runs only ask about changes.
+    timeout-minutes: 30
     env:
       # Optional. Set it only if Vercel does not redeploy after the data commit (see README).
       VERCEL_DEPLOY_HOOK_URL: ${{ secrets.VERCEL_DEPLOY_HOOK_URL }}
@@ -36,11 +37,15 @@ jobs:
         working-directory: scraper
         run: python -m pytest
 
-      - name: Scrape KRSP (robots.txt checked, 2.5s between requests)
+      - name: Scrape KRSP (robots.txt checked, 2.5s between requests), then tag with AI
         working-directory: scraper
         env:
           SCRAPER_CONTACT_EMAIL: ${{ secrets.SCRAPER_CONTACT_EMAIL }}
           SCRAPER_REPO_URL: ${{ github.server_url }}/${{ github.repository }}
+          # Optional. Without the key the run still works, using the word list only.
+          AI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          # Optional repo variable to switch models without a code change.
+          AI_MODEL: ${{ vars.AI_MODEL }}
         run: python -m knightmatch_scraper
 
       - name: Make sure the new data has no emails and is consistent

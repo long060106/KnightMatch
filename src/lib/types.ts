@@ -28,8 +28,12 @@ export interface Project {
   quals_hash: string;
   required_skills: string[];
   preferred_skills: string[];
+  /** Skills only the AI step found (shown with an "AI" mark). */
+  ai_skills: string[];
   beginner_friendly: boolean;
   beginner_reason: BeginnerReason;
+  /** 0–3 ids from data/topics.json, most central first (tagged by the AI step). */
+  topics: string[];
   description: string;
   first_seen_at: string;
   last_checked_at: string;
@@ -45,6 +49,7 @@ export interface Meta {
   last_run_at: string;
   baseline_at: string;
   counts: { listed: number; open: number; full: number };
+  ai?: { status: "off" | "ok" | "partial" | "stopped"; model: string | null };
 }
 
 /** A skill as the UI needs it. `counts` = counts toward "You meet X of Y". */
