@@ -1,19 +1,18 @@
 import { cn } from "@/lib/utils";
 
-/** A chess knight, drawn for KnightMatch (not a UCF mark). The honey base is the one gold touch. */
+/**
+ * The chess knight (not a UCF mark). The PNG is only a mask: the shape is painted in the current
+ * text color, so it turns white in dark mode and ink in light mode with no second file.
+ */
 export function KnightMark({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className={cn("size-6", className)}>
-      <path
-        d="M7.6 18.6 8.7 14c-.9.3-2.4.3-3.1-.6L4.7 11.7l3.5-5 .7-2.5 1.9 1.4c4.5 0 7.1 3.6 6.8 8.2l-.6 4.8Z"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinejoin="round"
-      />
-      <circle cx="9.4" cy="8.7" r="0.85" fill="currentColor" />
-      <rect x="5.6" y="19.2" width="12.8" height="2.4" rx="1.2" fill="var(--honey)" />
-    </svg>
+    <span
+      aria-hidden="true"
+      className={cn(
+        "inline-block size-8 bg-current [mask:url(/knight-mark.png)_center/contain_no-repeat] [-webkit-mask:url(/knight-mark.png)_center/contain_no-repeat]",
+        className,
+      )}
+    />
   );
 }
 
