@@ -1,1 +1,1823 @@
-{}
+{
+  "krsp-1010": {
+    "key": "3e33f3d1e9667395",
+    "text_key": "17c22ed061094d85",
+    "model": "gemini-3.5-flash-lite",
+    "at": "2026-10-18T14:28:53Z",
+    "items": [
+      {
+        "kind": "skill",
+        "skills": [
+          "human_subjects",
+          "data_cleaning",
+          "statistics",
+          "literature_review"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "excel",
+          "spss",
+          "r_lang",
+          "python",
+          "qualtrics"
+        ]
+      }
+    ],
+    "topics": [
+      "hci",
+      "psychology",
+      "ai_ml"
+    ]
+  },
+  "krsp-1012": {
+    "key": "d86a1cb15706ba18",
+    "text_key": "4ada076af7e8bee2",
+    "model": "gemini-3.5-flash-lite",
+    "at": "2026-10-18T14:28:53Z",
+    "items": [
+      {
+        "kind": "skill",
+        "skills": [
+          "histology"
+        ]
+      }
+    ],
+    "topics": [
+      "biology"
+    ]
+  },
+  "krsp-1014": {
+    "key": "0a0b2e844cbf22cf",
+    "text_key": "56f703f181b35314",
+    "model": "gemini-3.5-flash-lite",
+    "at": "2026-10-18T14:28:53Z",
+    "items": [
+      {
+        "kind": "skill",
+        "skills": [
+          "research_methods",
+          "statistics"
+        ]
+      }
+    ],
+    "topics": [
+      "society"
+    ]
+  },
+  "krsp-1028": {
+    "key": "8290bedaec9b31bd",
+    "text_key": "018050ff33fa1085",
+    "model": "gemini-3.5-flash-lite",
+    "at": "2026-10-18T14:28:53Z",
+    "items": [
+      {
+        "kind": "logistics",
+        "skills": []
+      },
+      {
+        "kind": "logistics",
+        "skills": []
+      },
+      {
+        "kind": "interest",
+        "skills": []
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "communication",
+          "time_management",
+          "attention_to_detail",
+          "teamwork"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "excel",
+          "office_apps"
+        ]
+      },
+      {
+        "kind": "interest",
+        "skills": []
+      },
+      {
+        "kind": "interest",
+        "skills": []
+      }
+    ],
+    "topics": [
+      "health",
+      "psychology"
+    ]
+  },
+  "krsp-1030": {
+    "key": "cd0d7731d68e7d2a",
+    "text_key": "0cad11b20860eb91",
+    "model": "gemini-3.5-flash-lite",
+    "at": "2026-10-18T14:28:53Z",
+    "items": [
+      {
+        "kind": "other",
+        "skills": []
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "excel",
+          "office_apps"
+        ]
+      },
+      {
+        "kind": "logistics",
+        "skills": []
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "attention_to_detail"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "communication"
+        ]
+      },
+      {
+        "kind": "interest",
+        "skills": []
+      },
+      {
+        "kind": "interest",
+        "skills": []
+      },
+      {
+        "kind": "interest",
+        "skills": []
+      }
+    ],
+    "topics": [
+      "society"
+    ]
+  },
+  "krsp-1038": {
+    "key": "ddf98e7656af4420",
+    "text_key": "0f45357f346c6a33",
+    "model": "gemini-3.5-flash-lite",
+    "at": "2026-10-18T14:28:53Z",
+    "items": [
+      {
+        "kind": "logistics",
+        "skills": []
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "electrical_engineering",
+          "mechanical_engineering",
+          "biomedical_engineering"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "embedded_systems",
+          "circuits",
+          "sensors"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "c_cpp",
+          "sensors",
+          "signal_processing"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "mechanical_engineering",
+          "embedded_systems"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "cad",
+          "three_d_printing"
+        ]
+      }
+    ],
+    "topics": [
+      "devices_robotics",
+      "exercise",
+      "health"
+    ]
+  },
+  "krsp-1046": {
+    "key": "5ac3d249a13675f2",
+    "text_key": "403e7cf08a8984bd",
+    "model": "gemini-3.5-flash-lite",
+    "at": "2026-10-18T14:28:53Z",
+    "items": [
+      {
+        "kind": "skill",
+        "skills": [
+          "data_analysis",
+          "academic_writing",
+          "literature_review"
+        ]
+      },
+      {
+        "kind": "logistics",
+        "skills": []
+      }
+    ],
+    "topics": [
+      "software",
+      "hci",
+      "society"
+    ]
+  },
+  "krsp-1075": {
+    "key": "e9539d6778f79493",
+    "text_key": "c2dc41606823c006",
+    "model": "gemini-3.5-flash-lite",
+    "at": "2026-10-18T14:28:53Z",
+    "items": [
+      {
+        "kind": "logistics",
+        "skills": []
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "physics",
+          "materials_science"
+        ]
+      }
+    ],
+    "topics": [
+      "materials_chemistry",
+      "physics_space"
+    ]
+  },
+  "krsp-1082": {
+    "key": "1a91837cf6d3fc19",
+    "text_key": "30bdb91c79a5f430",
+    "model": "gemini-3.5-flash-lite",
+    "at": "2026-10-18T14:28:53Z",
+    "items": [
+      {
+        "kind": "skill",
+        "skills": [
+          "three_d_software"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "maya",
+          "blender"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "three_d_modeling"
+        ]
+      },
+      {
+        "kind": "interest",
+        "skills": []
+      },
+      {
+        "kind": "interest",
+        "skills": []
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "animation"
+        ]
+      }
+    ],
+    "topics": [
+      "arts",
+      "software"
+    ]
+  },
+  "krsp-1088": {
+    "key": "faef565f3eb8da8b",
+    "text_key": "3a0b8f9a009a61d9",
+    "model": "gemini-3.5-flash-lite",
+    "at": "2026-10-18T14:28:53Z",
+    "items": [
+      {
+        "kind": "skill",
+        "skills": [
+          "analytical_chemistry"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "data_cleaning"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "cad"
+        ]
+      }
+    ],
+    "topics": [
+      "materials_chemistry",
+      "devices_robotics"
+    ]
+  },
+  "krsp-1094": {
+    "key": "4930c3273e20ead7",
+    "text_key": "2eced65d9a2115f4",
+    "model": "gemini-3.5-flash-lite",
+    "at": "2026-10-18T14:28:53Z",
+    "items": [
+      {
+        "kind": "logistics",
+        "skills": []
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "chemistry"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "microbiology"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "chemistry",
+          "microbiology"
+        ]
+      },
+      {
+        "kind": "interest",
+        "skills": []
+      },
+      {
+        "kind": "interest",
+        "skills": []
+      }
+    ],
+    "topics": [
+      "materials_chemistry",
+      "biology",
+      "environment"
+    ]
+  },
+  "krsp-1096": {
+    "key": "6cc518358807e672",
+    "text_key": "67380826b855d305",
+    "model": "gemini-3.5-flash-lite",
+    "at": "2026-10-18T14:28:53Z",
+    "items": [
+      {
+        "kind": "interest",
+        "skills": []
+      }
+    ],
+    "topics": [
+      "environment",
+      "biology"
+    ]
+  },
+  "krsp-1098": {
+    "key": "7ff17872d3f7ed91",
+    "text_key": "04391b55c6480267",
+    "model": "gemini-3.5-flash-lite",
+    "at": "2026-10-18T14:28:53Z",
+    "items": [
+      {
+        "kind": "skill",
+        "skills": [
+          "materials_science",
+          "chemistry",
+          "engineering"
+        ]
+      }
+    ],
+    "topics": [
+      "materials_chemistry",
+      "environment"
+    ]
+  },
+  "krsp-1100": {
+    "key": "67e6247d8e2a4132",
+    "text_key": "25873e1c631b3a27",
+    "model": "gemini-3.5-flash-lite",
+    "at": "2026-10-18T14:28:53Z",
+    "items": [
+      {
+        "kind": "interest",
+        "skills": []
+      },
+      {
+        "kind": "interest",
+        "skills": []
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "research_methods"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "citi_training"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "psychology",
+          "human_factors",
+          "cybersecurity",
+          "security_studies"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "human_subjects",
+          "surveys",
+          "interviews",
+          "literature_review",
+          "data_analysis"
+        ]
+      },
+      {
+        "kind": "other",
+        "skills": []
+      }
+    ],
+    "topics": [
+      "society",
+      "psychology",
+      "hci"
+    ]
+  },
+  "krsp-1102": {
+    "key": "0ad2ed8c6bfbf75b",
+    "text_key": "ce7c09e2fadf7c74",
+    "model": "gemini-3.5-flash-lite",
+    "at": "2026-10-18T14:28:53Z",
+    "items": [
+      {
+        "kind": "skill",
+        "skills": [
+          "literature_review"
+        ]
+      },
+      {
+        "kind": "interest",
+        "skills": []
+      },
+      {
+        "kind": "interest",
+        "skills": []
+      }
+    ],
+    "topics": [
+      "psychology",
+      "hci"
+    ]
+  },
+  "krsp-534": {
+    "key": "fe6b4edc8fe8d86d",
+    "text_key": "d0b89370c4b18fa1",
+    "model": "gemini-3.5-flash-lite",
+    "at": "2026-10-18T14:28:53Z",
+    "items": [
+      {
+        "kind": "skill",
+        "skills": [
+          "c_cpp",
+          "python"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "llms"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "embedded_systems"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "machine_learning"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "cybersecurity"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "fault_tolerance"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "java",
+          "swift"
+        ]
+      }
+    ],
+    "topics": [
+      "ai_ml",
+      "devices_robotics",
+      "software"
+    ]
+  },
+  "krsp-643": {
+    "key": "afcace14190c2a2b",
+    "text_key": "d9a2b6ea425708a4",
+    "model": "gemini-3.5-flash-lite",
+    "at": "2026-10-18T14:28:53Z",
+    "items": [
+      {
+        "kind": "skill",
+        "skills": [
+          "cad",
+          "three_d_printing",
+          "programming_basics"
+        ]
+      },
+      {
+        "kind": "other",
+        "skills": []
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "computer_vision",
+          "data_analysis"
+        ]
+      },
+      {
+        "kind": "interest",
+        "skills": []
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "physics"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "fluid_mechanics"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "materials_science"
+        ]
+      },
+      {
+        "kind": "interest",
+        "skills": []
+      },
+      {
+        "kind": "logistics",
+        "skills": []
+      }
+    ],
+    "topics": [
+      "physics_space",
+      "devices_robotics"
+    ]
+  },
+  "krsp-660": {
+    "key": "3566be50ed11f8b1",
+    "text_key": "71e6557c770c4f66",
+    "model": "gemini-3.5-flash-lite",
+    "at": "2026-10-18T14:28:53Z",
+    "items": [
+      {
+        "kind": "skill",
+        "skills": [
+          "animation",
+          "maya",
+          "substance_painter",
+          "zbrush",
+          "photoshop"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "teamwork"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "communication"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "animation"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "three_d_modeling"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "compositing"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": []
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "three_d_modeling"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "rigging"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "creative_writing"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "research_methods"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": []
+      },
+      {
+        "kind": "logistics",
+        "skills": []
+      },
+      {
+        "kind": "other",
+        "skills": []
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "digital_art"
+        ]
+      },
+      {
+        "kind": "other",
+        "skills": []
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "creative_writing"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "three_d_modeling"
+        ]
+      },
+      {
+        "kind": "other",
+        "skills": []
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "storyboarding"
+        ]
+      },
+      {
+        "kind": "other",
+        "skills": []
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "rigging"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "digital_art"
+        ]
+      }
+    ],
+    "topics": [
+      "arts"
+    ]
+  },
+  "krsp-713": {
+    "key": "a62e1502fd8f8425",
+    "text_key": "eac34c2de57a67ea",
+    "model": "gemini-3.5-flash-lite",
+    "at": "2026-10-18T14:28:53Z",
+    "items": [
+      {
+        "kind": "skill",
+        "skills": [
+          "mechanical_engineering"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "solidworks"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "programming_basics"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "fea"
+        ]
+      }
+    ],
+    "topics": [
+      "devices_robotics",
+      "health"
+    ]
+  },
+  "krsp-723": {
+    "key": "1404c0bbbb034521",
+    "text_key": "ecc8a3db9d92e921",
+    "model": "gemini-3.5-flash-lite",
+    "at": "2026-10-18T14:28:53Z",
+    "items": [
+      {
+        "kind": "interest",
+        "skills": []
+      },
+      {
+        "kind": "interest",
+        "skills": []
+      },
+      {
+        "kind": "interest",
+        "skills": []
+      },
+      {
+        "kind": "interest",
+        "skills": []
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "python"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "linear_algebra",
+          "differential_equations"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "git"
+        ]
+      }
+    ],
+    "topics": [
+      "physics_space",
+      "software"
+    ]
+  },
+  "krsp-787": {
+    "key": "37cc025e0d9151c2",
+    "text_key": "68f53ecea619fed5",
+    "model": "gemini-3.5-flash-lite",
+    "at": "2026-10-18T14:28:53Z",
+    "items": [
+      {
+        "kind": "skill",
+        "skills": [
+          "citi_training"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": []
+      },
+      {
+        "kind": "skill",
+        "skills": []
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "ehs_safety"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "ehs_safety"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "communication"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "attention_to_detail"
+        ]
+      },
+      {
+        "kind": "logistics",
+        "skills": []
+      }
+    ],
+    "topics": [
+      "exercise",
+      "health",
+      "biology"
+    ]
+  },
+  "krsp-821": {
+    "key": "6b6dc4d56438a5b8",
+    "text_key": "aaae8d11d4dc4c63",
+    "model": "gemini-3.5-flash-lite",
+    "at": "2026-10-18T14:28:53Z",
+    "items": [
+      {
+        "kind": "skill",
+        "skills": [
+          "apa_style"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "research_methods"
+        ]
+      },
+      {
+        "kind": "logistics",
+        "skills": []
+      },
+      {
+        "kind": "logistics",
+        "skills": []
+      },
+      {
+        "kind": "logistics",
+        "skills": []
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "statistics",
+          "data_cleaning"
+        ]
+      },
+      {
+        "kind": "interest",
+        "skills": []
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "citi_training"
+        ]
+      },
+      {
+        "kind": "other",
+        "skills": []
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "apa_style"
+        ]
+      },
+      {
+        "kind": "logistics",
+        "skills": []
+      },
+      {
+        "kind": "logistics",
+        "skills": []
+      }
+    ],
+    "topics": [
+      "education",
+      "society"
+    ]
+  },
+  "krsp-830": {
+    "key": "cf9c2c7a0c018c1a",
+    "text_key": "ff669eb34b792a4b",
+    "model": "gemini-3.5-flash-lite",
+    "at": "2026-10-18T14:28:53Z",
+    "items": [
+      {
+        "kind": "skill",
+        "skills": [
+          "human_subjects",
+          "communication",
+          "attention_to_detail"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "irb_training"
+        ]
+      },
+      {
+        "kind": "interest",
+        "skills": []
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "psychology",
+          "cognitive_science",
+          "human_factors",
+          "simulation",
+          "computer_science"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "research_methods",
+          "qualtrics",
+          "e_prime",
+          "data_cleaning"
+        ]
+      },
+      {
+        "kind": "interest",
+        "skills": []
+      }
+    ],
+    "topics": [
+      "hci",
+      "psychology"
+    ]
+  },
+  "krsp-832": {
+    "key": "c9ac742f8bd52287",
+    "text_key": "b76d2df9de3fa19e",
+    "model": "gemini-3.5-flash-lite",
+    "at": "2026-10-18T14:28:53Z",
+    "items": [
+      {
+        "kind": "skill",
+        "skills": [
+          "citi_training",
+          "irb_training"
+        ]
+      },
+      {
+        "kind": "logistics",
+        "skills": []
+      },
+      {
+        "kind": "logistics",
+        "skills": []
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "time_management"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "communication"
+        ]
+      },
+      {
+        "kind": "other",
+        "skills": []
+      },
+      {
+        "kind": "other",
+        "skills": []
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "attention_to_detail"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "teamwork"
+        ]
+      },
+      {
+        "kind": "other",
+        "skills": []
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "research_methods"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "surveys",
+          "data_cleaning",
+          "office_apps"
+        ]
+      }
+    ],
+    "topics": [
+      "hci",
+      "psychology"
+    ]
+  },
+  "krsp-836": {
+    "key": "323beba19b5b7ee4",
+    "text_key": "5eab60b5b2ae9811",
+    "model": "gemini-3.5-flash-lite",
+    "at": "2026-10-18T14:28:53Z",
+    "items": [
+      {
+        "kind": "other",
+        "skills": []
+      },
+      {
+        "kind": "logistics",
+        "skills": []
+      },
+      {
+        "kind": "logistics",
+        "skills": []
+      },
+      {
+        "kind": "logistics",
+        "skills": []
+      },
+      {
+        "kind": "interest",
+        "skills": []
+      },
+      {
+        "kind": "interest",
+        "skills": []
+      },
+      {
+        "kind": "interest",
+        "skills": []
+      },
+      {
+        "kind": "interest",
+        "skills": []
+      },
+      {
+        "kind": "interest",
+        "skills": []
+      },
+      {
+        "kind": "other",
+        "skills": []
+      },
+      {
+        "kind": "interest",
+        "skills": []
+      }
+    ],
+    "topics": [
+      "psychology",
+      "hci"
+    ]
+  },
+  "krsp-838": {
+    "key": "d437a682966e9abd",
+    "text_key": "602f4acbeb567b94",
+    "model": "gemini-3.5-flash-lite",
+    "at": "2026-10-18T14:28:53Z",
+    "items": [
+      {
+        "kind": "skill",
+        "skills": [
+          "citi_training"
+        ]
+      },
+      {
+        "kind": "logistics",
+        "skills": []
+      },
+      {
+        "kind": "logistics",
+        "skills": []
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "time_management"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "communication"
+        ]
+      },
+      {
+        "kind": "interest",
+        "skills": []
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "attention_to_detail"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "attention_to_detail"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "teamwork"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "eeg",
+          "research_methods",
+          "surveys",
+          "data_cleaning",
+          "simulation",
+          "teamwork"
+        ]
+      }
+    ],
+    "topics": [
+      "psychology",
+      "health",
+      "hci"
+    ]
+  },
+  "krsp-850": {
+    "key": "3778f64874f9c22b",
+    "text_key": "0971e21b3a07e6b2",
+    "model": "gemini-3.5-flash-lite",
+    "at": "2026-10-18T14:28:53Z",
+    "items": [
+      {
+        "kind": "skill",
+        "skills": [
+          "citi_training"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "research_methods"
+        ]
+      },
+      {
+        "kind": "interest",
+        "skills": []
+      },
+      {
+        "kind": "logistics",
+        "skills": []
+      }
+    ],
+    "topics": [
+      "health",
+      "exercise",
+      "society"
+    ]
+  },
+  "krsp-878": {
+    "key": "61644e09929b87ff",
+    "text_key": "d3057abd44ae041a",
+    "model": "gemini-3.5-flash-lite",
+    "at": "2026-10-18T14:28:53Z",
+    "items": [
+      {
+        "kind": "interest",
+        "skills": []
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "machine_learning"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "computer_vision"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "app_dev"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "computer_science"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "engineering"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "kinesiology"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "health_sciences"
+        ]
+      },
+      {
+        "kind": "other",
+        "skills": []
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "python"
+        ]
+      }
+    ],
+    "topics": [
+      "health",
+      "ai_ml",
+      "hci"
+    ]
+  },
+  "krsp-885": {
+    "key": "07530e8e8c20692c",
+    "text_key": "955f9c7616f0997e",
+    "model": "gemini-3.5-flash-lite",
+    "at": "2026-10-18T14:28:53Z",
+    "items": [
+      {
+        "kind": "skill",
+        "skills": [
+          "human_subjects"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "human_subjects"
+        ]
+      },
+      {
+        "kind": "other",
+        "skills": []
+      },
+      {
+        "kind": "logistics",
+        "skills": []
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "citi_training"
+        ]
+      }
+    ],
+    "topics": [
+      "psychology",
+      "hci"
+    ]
+  },
+  "krsp-906": {
+    "key": "fa1089f47a11050f",
+    "text_key": "8dc0cfe9ce884f23",
+    "model": "gemini-3.5-flash-lite",
+    "at": "2026-10-18T14:28:53Z",
+    "items": [
+      {
+        "kind": "interest",
+        "skills": []
+      }
+    ],
+    "topics": [
+      "education",
+      "psychology"
+    ]
+  },
+  "krsp-919": {
+    "key": "1da88826ebf78db8",
+    "text_key": "347864077ccbe1e8",
+    "model": "gemini-3.5-flash-lite",
+    "at": "2026-10-18T14:28:53Z",
+    "items": [
+      {
+        "kind": "other",
+        "skills": []
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "office_apps"
+        ]
+      },
+      {
+        "kind": "logistics",
+        "skills": []
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "communication"
+        ]
+      },
+      {
+        "kind": "interest",
+        "skills": []
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "reliability"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "literature_review",
+          "academic_writing"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "citi_training"
+        ]
+      },
+      {
+        "kind": "logistics",
+        "skills": []
+      }
+    ],
+    "topics": [
+      "society",
+      "health"
+    ]
+  },
+  "krsp-928": {
+    "key": "2ba19d3ddf230320",
+    "text_key": "56a2d50746c60e16",
+    "model": "gemini-3.5-flash-lite",
+    "at": "2026-10-18T14:28:53Z",
+    "items": [
+      {
+        "kind": "skill",
+        "skills": [
+          "pytorch"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "deep_learning"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "deep_learning"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "computer_vision"
+        ]
+      }
+    ],
+    "topics": [
+      "ai_ml",
+      "devices_robotics",
+      "hci"
+    ]
+  },
+  "krsp-930": {
+    "key": "7fa88ad422398909",
+    "text_key": "e54883e012f75c55",
+    "model": "gemini-3.5-flash-lite",
+    "at": "2026-10-18T14:28:53Z",
+    "items": [
+      {
+        "kind": "skill",
+        "skills": [
+          "three_d_modeling",
+          "rigging"
+        ]
+      }
+    ],
+    "topics": [
+      "arts",
+      "society"
+    ]
+  },
+  "krsp-947": {
+    "key": "e5104e842454b8c8",
+    "text_key": "bc38d9560b538595",
+    "model": "gemini-3.5-flash-lite",
+    "at": "2026-10-18T14:28:53Z",
+    "items": [
+      {
+        "kind": "logistics",
+        "skills": []
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "cell_culture",
+          "pcr",
+          "histology"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "microbiology"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "r_lang",
+          "data_analysis"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "immunology",
+          "molecular_biology",
+          "microbiology"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "citi_training",
+          "ehs_safety"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "ehs_safety",
+          "attention_to_detail"
+        ]
+      }
+    ],
+    "topics": [
+      "biology",
+      "health"
+    ]
+  },
+  "krsp-949": {
+    "key": "d7b4d6613eb5060d",
+    "text_key": "41b8ff20adaa41e4",
+    "model": "gemini-3.5-flash-lite",
+    "at": "2026-10-18T14:28:53Z",
+    "items": [
+      {
+        "kind": "skill",
+        "skills": [
+          "vr"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "python",
+          "csharp",
+          "unity"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "computer_science",
+          "engineering",
+          "kinesiology",
+          "health_sciences"
+        ]
+      },
+      {
+        "kind": "interest",
+        "skills": []
+      }
+    ],
+    "topics": [
+      "hci",
+      "health",
+      "software"
+    ]
+  },
+  "krsp-957": {
+    "key": "92a7819d022b765f",
+    "text_key": "546e86176c42b371",
+    "model": "gemini-3.5-flash-lite",
+    "at": "2026-10-18T14:28:53Z",
+    "items": [
+      {
+        "kind": "other",
+        "skills": []
+      },
+      {
+        "kind": "other",
+        "skills": []
+      },
+      {
+        "kind": "other",
+        "skills": []
+      },
+      {
+        "kind": "interest",
+        "skills": []
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "organic_chemistry"
+        ]
+      },
+      {
+        "kind": "interest",
+        "skills": []
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "environmental_science"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "environmental_science"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "environmental_science"
+        ]
+      },
+      {
+        "kind": "other",
+        "skills": []
+      },
+      {
+        "kind": "interest",
+        "skills": []
+      },
+      {
+        "kind": "logistics",
+        "skills": []
+      }
+    ],
+    "topics": [
+      "environment",
+      "materials_chemistry",
+      "physics_space"
+    ]
+  },
+  "krsp-968": {
+    "key": "f9655e1aeb1ae559",
+    "text_key": "5bc0264e2dd8e91f",
+    "model": "gemini-3.5-flash-lite",
+    "at": "2026-10-18T14:28:53Z",
+    "items": [
+      {
+        "kind": "logistics",
+        "skills": []
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "citi_training"
+        ]
+      },
+      {
+        "kind": "logistics",
+        "skills": []
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "human_subjects",
+          "data_cleaning"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "surveys",
+          "human_subjects"
+        ]
+      }
+    ],
+    "topics": [
+      "health",
+      "exercise",
+      "psychology"
+    ]
+  },
+  "krsp-970": {
+    "key": "af58d3760208cf33",
+    "text_key": "c9ceb2286cba75e8",
+    "model": "gemini-3.5-flash-lite",
+    "at": "2026-10-18T14:28:53Z",
+    "items": [],
+    "topics": [
+      "hci",
+      "education"
+    ]
+  },
+  "krsp-972": {
+    "key": "4065ee6ffc50283e",
+    "text_key": "58bb3aaf3a90f4ca",
+    "model": "gemini-3.5-flash-lite",
+    "at": "2026-10-18T14:28:53Z",
+    "items": [],
+    "topics": [
+      "education",
+      "society"
+    ]
+  },
+  "krsp-974": {
+    "key": "af3829c20cc21c39",
+    "text_key": "35c054f29235bd7e",
+    "model": "gemini-3.5-flash-lite",
+    "at": "2026-10-18T14:28:53Z",
+    "items": [],
+    "topics": [
+      "education",
+      "hci",
+      "psychology"
+    ]
+  },
+  "krsp-976": {
+    "key": "3637b35f1d75253f",
+    "text_key": "be9d60dc76a5ea5b",
+    "model": "gemini-3.5-flash-lite",
+    "at": "2026-10-18T14:28:53Z",
+    "items": [
+      {
+        "kind": "skill",
+        "skills": [
+          "citi_training"
+        ]
+      },
+      {
+        "kind": "logistics",
+        "skills": []
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "research_methods"
+        ]
+      },
+      {
+        "kind": "logistics",
+        "skills": []
+      },
+      {
+        "kind": "skill",
+        "skills": []
+      },
+      {
+        "kind": "interest",
+        "skills": []
+      }
+    ],
+    "topics": [
+      "exercise",
+      "health"
+    ]
+  },
+  "krsp-978": {
+    "key": "3596b18d31ccf5af",
+    "text_key": "148ebaef8cbf07c4",
+    "model": "gemini-3.5-flash-lite",
+    "at": "2026-10-18T14:28:53Z",
+    "items": [
+      {
+        "kind": "skill",
+        "skills": [
+          "citi_training",
+          "human_subjects"
+        ]
+      },
+      {
+        "kind": "logistics",
+        "skills": []
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "research_methods"
+        ]
+      },
+      {
+        "kind": "logistics",
+        "skills": []
+      },
+      {
+        "kind": "interest",
+        "skills": []
+      }
+    ],
+    "topics": [
+      "health",
+      "exercise",
+      "psychology"
+    ]
+  }
+}

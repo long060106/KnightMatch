@@ -1,1 +1,1044 @@
-[]
+[
+  {
+    "project_id": "krsp-534",
+    "title": "Secure and Fault-Tolerant Large Language Models for Embedded Systems",
+    "filled": [],
+    "differs": [
+      {
+        "bucket": "preferred",
+        "text": "LLM model training",
+        "word_list": [
+          "llms"
+        ],
+        "ai": [
+          "machine_learning"
+        ],
+        "kind": "skill"
+      }
+    ]
+  },
+  {
+    "project_id": "krsp-643",
+    "title": "Exploration of Nozzle Design’s Influence on Plume Surface Interactions (PSI) Physics",
+    "filled": [],
+    "differs": [
+      {
+        "bucket": "required",
+        "text": "Students should have some familiarity with nozzle design basics (or be willing to self-study), CAD modeling of nozzles for 3D printing, and basic familiarity with computer-based analysis techniques",
+        "word_list": [
+          "cad",
+          "three_d_printing"
+        ],
+        "ai": [
+          "cad",
+          "three_d_printing",
+          "programming_basics"
+        ],
+        "kind": "skill"
+      },
+      {
+        "bucket": "required",
+        "text": "Lab safety training",
+        "word_list": [
+          "ehs_safety"
+        ],
+        "ai": [],
+        "kind": "other"
+      },
+      {
+        "bucket": "preferred",
+        "text": "There is additional opportunity for exploring methods of data collection and analysis using computer science techniques for image analysis such as edge detection and particle tracking",
+        "word_list": [
+          "computer_science",
+          "computer_vision"
+        ],
+        "ai": [
+          "computer_vision",
+          "data_analysis"
+        ],
+        "kind": "skill"
+      },
+      {
+        "bucket": "preferred",
+        "text": "Background in plume physics",
+        "word_list": [
+          "fluid_mechanics",
+          "physics"
+        ],
+        "ai": [
+          "physics"
+        ],
+        "kind": "skill"
+      },
+      {
+        "bucket": "preferred",
+        "text": "granular mechanics",
+        "word_list": [
+          "fluid_mechanics"
+        ],
+        "ai": [
+          "materials_science"
+        ],
+        "kind": "skill"
+      }
+    ]
+  },
+  {
+    "project_id": "krsp-660",
+    "title": "NEON SOUL (3D Animated Short Film)",
+    "filled": [
+      {
+        "bucket": "required",
+        "text": "research",
+        "ai": [
+          "research_methods"
+        ]
+      }
+    ],
+    "differs": [
+      {
+        "bucket": "required",
+        "text": "Applicants must be familiar with the 3D animation pipeline and have a basic knowledge of 3D animation and software, such as Maya, Substance Painter, Z Brush, and Photoshop",
+        "word_list": [
+          "animation",
+          "three_d_software",
+          "digital_art"
+        ],
+        "ai": [
+          "animation",
+          "maya",
+          "substance_painter",
+          "zbrush",
+          "photoshop"
+        ],
+        "kind": "skill"
+      },
+      {
+        "bucket": "preferred",
+        "text": "Graphics Designer (Open)",
+        "word_list": [
+          "digital_art"
+        ],
+        "ai": [],
+        "kind": "other"
+      },
+      {
+        "bucket": "preferred",
+        "text": "Background artist (open)",
+        "word_list": [
+          "digital_art"
+        ],
+        "ai": [],
+        "kind": "other"
+      },
+      {
+        "bucket": "preferred",
+        "text": "Concept Artist (open)",
+        "word_list": [
+          "digital_art"
+        ],
+        "ai": [],
+        "kind": "other"
+      },
+      {
+        "bucket": "preferred",
+        "text": "Character Designer (Close)",
+        "word_list": [
+          "digital_art"
+        ],
+        "ai": [],
+        "kind": "other"
+      }
+    ]
+  },
+  {
+    "project_id": "krsp-787",
+    "title": "Assessing Bioimpedance and Body Composition in Humans",
+    "filled": [],
+    "differs": [
+      {
+        "bucket": "required",
+        "text": "Biomedical Responsible Conduct of Research)",
+        "word_list": [
+          "citi_training"
+        ],
+        "ai": [],
+        "kind": "skill"
+      }
+    ]
+  },
+  {
+    "project_id": "krsp-821",
+    "title": "Lived Experiences of Students with Disabilities",
+    "filled": [],
+    "differs": [
+      {
+        "bucket": "required",
+        "text": "You must be able to use APA 7th edition, and are responsive to emails (within 72 hours)",
+        "word_list": [
+          "apa_style",
+          "communication"
+        ],
+        "ai": [
+          "apa_style"
+        ],
+        "kind": "skill"
+      },
+      {
+        "bucket": "required",
+        "text": "Please be aware as previously mentioned repeated absences without notification may result in a warning/strike, and continued instances could lead to removal from the group due to the type of work we are doing that requires full timely commitment",
+        "word_list": [
+          "reliability"
+        ],
+        "ai": [],
+        "kind": "logistics"
+      },
+      {
+        "bucket": "preferred",
+        "text": "Some of the data involves statistical analysis, transcription (listening back to the data and correcting), and collection",
+        "word_list": [
+          "statistics",
+          "qualitative_methods"
+        ],
+        "ai": [
+          "statistics",
+          "data_cleaning"
+        ],
+        "kind": "skill"
+      },
+      {
+        "bucket": "preferred",
+        "text": "I am looking for timely, reliable, determined and detailed oriented students",
+        "word_list": [
+          "reliability",
+          "attention_to_detail"
+        ],
+        "ai": [],
+        "kind": "interest"
+      },
+      {
+        "bucket": "preferred",
+        "text": "APA 7th edition, detailed oriented, responsive to emails (within 72 hours)",
+        "word_list": [
+          "apa_style",
+          "attention_to_detail",
+          "communication"
+        ],
+        "ai": [
+          "apa_style"
+        ],
+        "kind": "skill"
+      },
+      {
+        "bucket": "preferred",
+        "text": "FAILURE TO FINISH TASKS BY THE ASSIGNED DATES WITHOUT COMMUNICATING A MINIMUM OF 2 DAYS PRIOR TO THE DEADLINE (if it will not be done) WILL RESULT IN REMOVAL FROM TEAM",
+        "word_list": [
+          "communication"
+        ],
+        "ai": [],
+        "kind": "logistics"
+      }
+    ]
+  },
+  {
+    "project_id": "krsp-830",
+    "title": "How Should AI Explain?",
+    "filled": [],
+    "differs": [
+      {
+        "bucket": "required",
+        "text": "Team members must be able to follow standardized protocols precisely, communicate professionally with participants, maintain confidentiality, troubleshoot basic technical issues, and support accurate data collection",
+        "word_list": [
+          "communication"
+        ],
+        "ai": [
+          "human_subjects",
+          "communication",
+          "attention_to_detail"
+        ],
+        "kind": "skill"
+      },
+      {
+        "bucket": "required",
+        "text": "You need to complete the Human Research (Curriculum Group) Human Subjects Research- Group 2.Social / Behavioral Research Investigators and Key Personnel (Course Learner Group) 1 - Basic Course (Stage, as well as Human Research (Curriculum Group) Research and HIPAA Privacy Protections (Course Learner Group) 1 - Basic Course (Stage)",
+        "word_list": [
+          "citi_training"
+        ],
+        "ai": [
+          "irb_training"
+        ],
+        "kind": "skill"
+      },
+      {
+        "bucket": "preferred",
+        "text": "We seek research assistants who demonstrate professionalism, attention to detail, and strong interest in human subjects research, human–AI interaction, and cognitive or simulation-based research",
+        "word_list": [
+          "reliability",
+          "attention_to_detail",
+          "citi_training",
+          "human_factors",
+          "simulation"
+        ],
+        "ai": [],
+        "kind": "interest"
+      },
+      {
+        "bucket": "preferred",
+        "text": "Familiarity with IRB protocols, experimental software (e.g., E-Prime, Qualtrics), and basic research methods and data handling is beneficial",
+        "word_list": [
+          "irb_training",
+          "e_prime",
+          "qualtrics",
+          "research_methods",
+          "data_analysis"
+        ],
+        "ai": [
+          "research_methods",
+          "qualtrics",
+          "e_prime",
+          "data_cleaning"
+        ],
+        "kind": "skill"
+      },
+      {
+        "bucket": "preferred",
+        "text": "We value reliability, strong organizational skills, and interest in contributing to future research involving AI systems, cognitive performance, and advanced simulation technologies",
+        "word_list": [
+          "reliability",
+          "time_management"
+        ],
+        "ai": [],
+        "kind": "interest"
+      }
+    ]
+  },
+  {
+    "project_id": "krsp-832",
+    "title": "Neural and Autonomic Re-sponses to Linguistic Mirroring in Conversational AI",
+    "filled": [],
+    "differs": [
+      {
+        "bucket": "required",
+        "text": "Reliable availability throughout the agreed-upon research period",
+        "word_list": [
+          "reliability"
+        ],
+        "ai": [],
+        "kind": "logistics"
+      },
+      {
+        "bucket": "required",
+        "text": "Task Completion & Communication Commitment to completing assigned tasks by set deadlines",
+        "word_list": [
+          "communication",
+          "time_management"
+        ],
+        "ai": [
+          "time_management"
+        ],
+        "kind": "skill"
+      },
+      {
+        "bucket": "required",
+        "text": "Professional & Ethical Conduct Adherence to ethical standards for human subjects research",
+        "word_list": [
+          "citi_training"
+        ],
+        "ai": [],
+        "kind": "other"
+      },
+      {
+        "bucket": "required",
+        "text": "Organizational & Collaborative Skills Ability to follow protocols accurately and maintain organized records",
+        "word_list": [
+          "time_management",
+          "teamwork"
+        ],
+        "ai": [
+          "attention_to_detail"
+        ],
+        "kind": "skill"
+      },
+      {
+        "bucket": "preferred",
+        "text": "Comfort using common research tools (e.g., surveys, data entry platforms, scheduling tools)",
+        "word_list": [
+          "surveys",
+          "data_cleaning"
+        ],
+        "ai": [
+          "surveys",
+          "data_cleaning",
+          "office_apps"
+        ],
+        "kind": "skill"
+      }
+    ]
+  },
+  {
+    "project_id": "krsp-836",
+    "title": "Accent Processing as Parallel Phonological Systems and Cognitive Dissonance",
+    "filled": [],
+    "differs": [
+      {
+        "bucket": "required",
+        "text": "CITI Training Certification (or willingness to complete it immediately upon acceptance) Human Subjects Research training must be completed before beginning work with participants",
+        "word_list": [
+          "citi_training"
+        ],
+        "ai": [],
+        "kind": "other"
+      },
+      {
+        "bucket": "preferred",
+        "text": "Reliable attendance is critical as sessions involve human participants and specialized equipment",
+        "word_list": [
+          "reliability"
+        ],
+        "ai": [],
+        "kind": "logistics"
+      }
+    ]
+  },
+  {
+    "project_id": "krsp-838",
+    "title": "Hemispheric Lateralization: A Comparative Analysis of Left and Right Brain Activation Patterns",
+    "filled": [
+      {
+        "bucket": "required",
+        "text": "Respect for participant confidentiality and data security protocols",
+        "ai": [
+          "attention_to_detail"
+        ]
+      }
+    ],
+    "differs": [
+      {
+        "bucket": "required",
+        "text": "CITI Training Human Subjects Research – Group 2: Social/Behavioral Research Investigators and Key Personnel Research and HIPAA Privacy Protections University Research Authorization Completion and approval of the URA (Undergraduate Research Authorization) form prior to participation",
+        "word_list": [
+          "citi_training",
+          "irb_training"
+        ],
+        "ai": [
+          "citi_training"
+        ],
+        "kind": "skill"
+      },
+      {
+        "bucket": "required",
+        "text": "Reliable availability throughout the agreed-upon research period",
+        "word_list": [
+          "reliability"
+        ],
+        "ai": [],
+        "kind": "logistics"
+      },
+      {
+        "bucket": "required",
+        "text": "Task Completion & Communication Commitment to completing assigned tasks by set deadlines",
+        "word_list": [
+          "communication",
+          "time_management"
+        ],
+        "ai": [
+          "time_management"
+        ],
+        "kind": "skill"
+      },
+      {
+        "bucket": "required",
+        "text": "Professional & Ethical Conduct Adherence to ethical standards for human subjects research",
+        "word_list": [
+          "citi_training"
+        ],
+        "ai": [],
+        "kind": "interest"
+      },
+      {
+        "bucket": "required",
+        "text": "Organizational & Collaborative Skills Ability to follow protocols accurately and maintain organized records",
+        "word_list": [
+          "time_management",
+          "teamwork"
+        ],
+        "ai": [
+          "attention_to_detail"
+        ],
+        "kind": "skill"
+      },
+      {
+        "bucket": "preferred",
+        "text": "The willingness to work with an EEG headset (no previous knowledge of how to set one up is required, just openness to the process of setting it up, helping participant put it on, cleaning it, etc.), basic familiarity with research methods in social/behavioral science, willingness to use common research tools (e.g., surveys, data entry platforms, scheduling tools), able to work with others in a group setting, willingness to work with a driving simulator (knowledge of how to work with one is not required), willingness to learn about study and help with tasks regarding EEG, driving simulation, collecting of data, clean data, etc., able to work in-person for when we do have participants sign up to do study and be able to show up at requested time to do study",
+        "word_list": [
+          "eeg",
+          "research_methods",
+          "surveys",
+          "data_cleaning",
+          "teamwork"
+        ],
+        "ai": [
+          "eeg",
+          "research_methods",
+          "surveys",
+          "data_cleaning",
+          "simulation",
+          "teamwork"
+        ],
+        "kind": "skill"
+      }
+    ]
+  },
+  {
+    "project_id": "krsp-878",
+    "title": "Development of SafeFall Coach Mobile Application for AI-Based Fall Prevention and Safe Movement Training in Older Adults",
+    "filled": [],
+    "differs": [
+      {
+        "bucket": "preferred",
+        "text": "Team members applying to this project are expected to have experience or interest in research related to AI, healthcare technology, aging, or computer vision",
+        "word_list": [
+          "computer_vision"
+        ],
+        "ai": [],
+        "kind": "interest"
+      }
+    ]
+  },
+  {
+    "project_id": "krsp-885",
+    "title": "Understanding Digital File Organization Among Neurodivergent Users",
+    "filled": [
+      {
+        "bucket": "required",
+        "text": "Social/ Behavioral Research Investigators and Key Personnel",
+        "ai": [
+          "human_subjects"
+        ]
+      }
+    ],
+    "differs": [
+      {
+        "bucket": "required",
+        "text": "Human Subjects Research- Group 2",
+        "word_list": [
+          "citi_training"
+        ],
+        "ai": [
+          "human_subjects"
+        ],
+        "kind": "skill"
+      },
+      {
+        "bucket": "required",
+        "text": "Research and HIPPAA Privacy Protections",
+        "word_list": [
+          "citi_training"
+        ],
+        "ai": [],
+        "kind": "other"
+      }
+    ]
+  },
+  {
+    "project_id": "krsp-947",
+    "title": "Evaluating the Protective Role of Lactobacillus Postbiotic Metabolites Against Bile Acid-Induced Genotoxic Stress in Esophageal Disease Progression",
+    "filled": [],
+    "differs": [
+      {
+        "bucket": "preferred",
+        "text": "Wet Lab Techniques: Familiarity with basic molecular biology and histology workflows, such as mammalian cell culture, RNA extraction, qPCR, or tissue processing/sectioning",
+        "word_list": [
+          "molecular_biology",
+          "histology"
+        ],
+        "ai": [
+          "cell_culture",
+          "pcr",
+          "histology"
+        ],
+        "kind": "skill"
+      },
+      {
+        "bucket": "preferred",
+        "text": "Data Analysis & Imaging: Exposure to or interest in computational tools for data analysis (such as R programming) or digital image analysis/quantification software (such as Fiji/ImageJ)",
+        "word_list": [
+          "data_analysis",
+          "programming_basics",
+          "computer_vision"
+        ],
+        "ai": [
+          "r_lang",
+          "data_analysis"
+        ],
+        "kind": "skill"
+      },
+      {
+        "bucket": "preferred",
+        "text": "CITI Training Requirements: Successful completion of the CITI \"Responsible Conduct of Research (RCR) - Biomedical\" course, EHS course \"Bloodborne Pathogens,\" and the relevant Laboratory Animal Research/IACUC modules for mouse handling (only if interested in mice work)",
+        "word_list": [
+          "citi_training",
+          "ehs_safety",
+          "animal_handling"
+        ],
+        "ai": [
+          "citi_training",
+          "ehs_safety"
+        ],
+        "kind": "skill"
+      },
+      {
+        "bucket": "preferred",
+        "text": "Core Competencies: Basic laboratory safety awareness, proper personal protective equipment (PPE) compliance, and strong organizational skills for documenting experimental data",
+        "word_list": [
+          "wet_lab",
+          "ehs_safety",
+          "time_management"
+        ],
+        "ai": [
+          "ehs_safety",
+          "attention_to_detail"
+        ],
+        "kind": "skill"
+      }
+    ]
+  },
+  {
+    "project_id": "krsp-949",
+    "title": "A Community-Informed Cyber-Physical Simulation Framework for Aging-Related Caregiving Interaction",
+    "filled": [],
+    "differs": [
+      {
+        "bucket": "preferred",
+        "text": "Basic programming skills (e.g., Python, C#, or Unity-based development) are preferred but not required",
+        "word_list": [
+          "programming_basics",
+          "unity"
+        ],
+        "ai": [
+          "python",
+          "csharp",
+          "unity"
+        ],
+        "kind": "skill"
+      }
+    ]
+  },
+  {
+    "project_id": "krsp-957",
+    "title": "From Wildfires to Clouds: Understanding How Smoke Particles Influence Climate and Air Quality",
+    "filled": [],
+    "differs": [
+      {
+        "bucket": "preferred",
+        "text": "We welcome students who are eager to learn, dependable, and enthusiastic about hands-on laboratory work and data analysis",
+        "word_list": [
+          "reliability",
+          "wet_lab",
+          "data_analysis"
+        ],
+        "ai": [],
+        "kind": "interest"
+      },
+      {
+        "bucket": "preferred",
+        "text": "Comprehensive training in research methods and instrumentation will be provided",
+        "word_list": [
+          "research_methods"
+        ],
+        "ai": [],
+        "kind": "logistics"
+      }
+    ]
+  },
+  {
+    "project_id": "krsp-968",
+    "title": "Preventing Falls Using a Person Centered Approach",
+    "filled": [],
+    "differs": [
+      {
+        "bucket": "preferred",
+        "text": "Data collection will involve administering questionnaires and physical function and cognitive assessments",
+        "word_list": [
+          "surveys"
+        ],
+        "ai": [
+          "surveys",
+          "human_subjects"
+        ],
+        "kind": "skill"
+      }
+    ]
+  },
+  {
+    "project_id": "krsp-976",
+    "title": "Physical Activity and Health Behaviors Across the Menstrual Cycle",
+    "filled": [],
+    "differs": [
+      {
+        "bucket": "preferred",
+        "text": "Background in strength training",
+        "word_list": [
+          "kinesiology"
+        ],
+        "ai": [],
+        "kind": "skill"
+      }
+    ]
+  },
+  {
+    "project_id": "krsp-978",
+    "title": "Intention-Behavior Gap in Postpartum Women",
+    "filled": [],
+    "differs": [
+      {
+        "bucket": "required",
+        "text": "CITI Human Subjects Research Group 2 Social/Behavioral Research",
+        "word_list": [
+          "citi_training"
+        ],
+        "ai": [
+          "citi_training",
+          "human_subjects"
+        ],
+        "kind": "skill"
+      },
+      {
+        "bucket": "preferred",
+        "text": "Consistent availability — at least two days per week with a minimum of three hours each day to support recruitment activities, interviews, and participant coordination",
+        "word_list": [
+          "interviews",
+          "human_subjects"
+        ],
+        "ai": [],
+        "kind": "logistics"
+      }
+    ]
+  },
+  {
+    "project_id": "krsp-1010",
+    "title": "Enhanced Supervisory Control of Autonomous, AI-enabled Systems",
+    "filled": [],
+    "differs": [
+      {
+        "bucket": "preferred",
+        "text": "Experience with in-person human-subjects data collection, pilot testing, data entry and cleaning, statistical analysis, literature reviews, and research documentation",
+        "word_list": [
+          "human_subjects",
+          "data_cleaning",
+          "statistics",
+          "literature_review",
+          "academic_writing"
+        ],
+        "ai": [
+          "human_subjects",
+          "data_cleaning",
+          "statistics",
+          "literature_review"
+        ],
+        "kind": "skill"
+      }
+    ]
+  },
+  {
+    "project_id": "krsp-1014",
+    "title": "Insurgent Groups’ Innovation and Adaptation",
+    "filled": [],
+    "differs": [
+      {
+        "bucket": "required",
+        "text": "Research and Quantitative Skills",
+        "word_list": [
+          "statistics"
+        ],
+        "ai": [
+          "research_methods",
+          "statistics"
+        ],
+        "kind": "skill"
+      }
+    ]
+  },
+  {
+    "project_id": "krsp-1028",
+    "title": "The ACCESS Study",
+    "filled": [],
+    "differs": [
+      {
+        "bucket": "required",
+        "text": "Once students are selected to join the team, they will be asked to complete 3 CITI Training Courses (Social & Behavioral Research Investigators, Responsible Conduct of Research, and Good Clinical Practice) and ensure they have completed the necessary UCF IRB training",
+        "word_list": [
+          "citi_training",
+          "irb_training"
+        ],
+        "ai": [],
+        "kind": "logistics"
+      },
+      {
+        "bucket": "required",
+        "text": "Once students are selected to join the team, they will be required to complete 3 CITI Training Courses (Social & Behavioral Research Investigators, Responsible Conduct of Research, and Good Clinical Practice) and ensure they have completed the necessary UCF IRB training",
+        "word_list": [
+          "citi_training",
+          "irb_training"
+        ],
+        "ai": [],
+        "kind": "logistics"
+      },
+      {
+        "bucket": "preferred",
+        "text": "For students interested in this study, we are looking for those eager to learn about mixed methods and passionate about research",
+        "word_list": [
+          "qualitative_methods"
+        ],
+        "ai": [],
+        "kind": "interest"
+      },
+      {
+        "bucket": "preferred",
+        "text": "Helpful skills for joining this lab include clear communication, dedication, strong time management, organization, teamwork, and collaboration",
+        "word_list": [
+          "communication",
+          "time_management",
+          "teamwork"
+        ],
+        "ai": [
+          "communication",
+          "time_management",
+          "attention_to_detail",
+          "teamwork"
+        ],
+        "kind": "skill"
+      },
+      {
+        "bucket": "preferred",
+        "text": "Students will receive training in qualitative interviewing to conduct participant interviews effectively as part of the study process",
+        "word_list": [
+          "interviews",
+          "human_subjects"
+        ],
+        "ai": [],
+        "kind": "interest"
+      },
+      {
+        "bucket": "preferred",
+        "text": "Students will receive training in qualitative interviewing to conduct participant interviews effectively as part of the study process",
+        "word_list": [
+          "interviews",
+          "human_subjects"
+        ],
+        "ai": [],
+        "kind": "interest"
+      }
+    ]
+  },
+  {
+    "project_id": "krsp-1030",
+    "title": "Constructing Domestic Violence Through Arresting Officer Narratives",
+    "filled": [],
+    "differs": [
+      {
+        "bucket": "required",
+        "text": "a strong work ethic and ability to complete assigned tasks independently",
+        "word_list": [
+          "reliability"
+        ],
+        "ai": [],
+        "kind": "interest"
+      }
+    ]
+  },
+  {
+    "project_id": "krsp-1038",
+    "title": "Development and Evaluation of a Wearable Smart Insole for At-Home Gait Monitoring",
+    "filled": [],
+    "differs": [
+      {
+        "bucket": "required",
+        "text": "Team members must consistently demonstrate timely and responsive communication",
+        "word_list": [
+          "reliability",
+          "communication"
+        ],
+        "ai": [],
+        "kind": "logistics"
+      },
+      {
+        "bucket": "preferred",
+        "text": "Familiarity with Arduino/C++, IMUs, analog sensors, SPI/I2C communication, PCB or perfboard prototyping, and basic signal processing is beneficial",
+        "word_list": [
+          "embedded_systems",
+          "c_cpp",
+          "sensors",
+          "communication",
+          "circuits",
+          "signal_processing"
+        ],
+        "ai": [
+          "c_cpp",
+          "sensors",
+          "signal_processing"
+        ],
+        "kind": "skill"
+      }
+    ]
+  },
+  {
+    "project_id": "krsp-1046",
+    "title": "Creating Web Apps That Limit Attention Harm Based on the A.S.M. Models",
+    "filled": [],
+    "differs": [
+      {
+        "bucket": "preferred",
+        "text": "You should also be very good at time management",
+        "word_list": [
+          "time_management"
+        ],
+        "ai": [],
+        "kind": "logistics"
+      }
+    ]
+  },
+  {
+    "project_id": "krsp-1075",
+    "title": "Development of Optoelectronic Materials for Synapse Devices",
+    "filled": [],
+    "differs": [
+      {
+        "bucket": "required",
+        "text": "Need EHS labs safety courses",
+        "word_list": [
+          "ehs_safety"
+        ],
+        "ai": [],
+        "kind": "logistics"
+      }
+    ]
+  },
+  {
+    "project_id": "krsp-1082",
+    "title": "LVL CARL",
+    "filled": [],
+    "differs": [
+      {
+        "bucket": "required",
+        "text": "Knowledge of 3D modeling software",
+        "word_list": [
+          "three_d_modeling",
+          "three_d_software"
+        ],
+        "ai": [
+          "three_d_software"
+        ],
+        "kind": "skill"
+      },
+      {
+        "bucket": "required",
+        "text": "Blender, Maya, etc",
+        "word_list": [
+          "three_d_software"
+        ],
+        "ai": [
+          "maya",
+          "blender"
+        ],
+        "kind": "skill"
+      }
+    ]
+  },
+  {
+    "project_id": "krsp-1088",
+    "title": "Engineering Next-Generation Materials to Solve Real-World Problems",
+    "filled": [],
+    "differs": [
+      {
+        "bucket": "required",
+        "text": "data processing",
+        "word_list": [
+          "data_analysis"
+        ],
+        "ai": [
+          "data_cleaning"
+        ],
+        "kind": "skill"
+      }
+    ]
+  },
+  {
+    "project_id": "krsp-1094",
+    "title": "Captin: Sustainable Biopolymer Encapsulation for Biomedical and Agricultural Applications",
+    "filled": [],
+    "differs": [
+      {
+        "bucket": "required",
+        "text": "Complete all university required EHS courses for laboratory safety",
+        "word_list": [
+          "ehs_safety"
+        ],
+        "ai": [],
+        "kind": "logistics"
+      },
+      {
+        "bucket": "required",
+        "text": "chemical safety",
+        "word_list": [
+          "ehs_safety"
+        ],
+        "ai": [
+          "chemistry"
+        ],
+        "kind": "skill"
+      },
+      {
+        "bucket": "required",
+        "text": "biohazard safety",
+        "word_list": [
+          "ehs_safety"
+        ],
+        "ai": [
+          "microbiology"
+        ],
+        "kind": "skill"
+      }
+    ]
+  },
+  {
+    "project_id": "krsp-1096",
+    "title": "Enhancing Fruit Tree Crops Health Using Probiotic Targeted Delivery System",
+    "filled": [],
+    "differs": [
+      {
+        "bucket": "preferred",
+        "text": "Preference will be given to students in the biology department, those who have studied Botany or related courses, or students who are excited about improving plant health",
+        "word_list": [
+          "botany"
+        ],
+        "ai": [],
+        "kind": "interest"
+      }
+    ]
+  },
+  {
+    "project_id": "krsp-1100",
+    "title": "Individual Differences in High-Stakes Security Decision-Making",
+    "filled": [
+      {
+        "bucket": "required",
+        "text": "able to follow research protocols",
+        "ai": [
+          "research_methods"
+        ]
+      }
+    ],
+    "differs": [
+      {
+        "bucket": "required",
+        "text": "Applicants should be reliable",
+        "word_list": [
+          "reliability"
+        ],
+        "ai": [],
+        "kind": "interest"
+      }
+    ]
+  }
+]

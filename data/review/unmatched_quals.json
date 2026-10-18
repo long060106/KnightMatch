@@ -27,10 +27,6 @@
       },
       {
         "bucket": "required",
-        "text": "research"
-      },
-      {
-        "bucket": "required",
         "text": "development"
       },
       {
@@ -144,10 +140,6 @@
       {
         "bucket": "required",
         "text": "Time Commitment Ability to commit to in-person lab hours as required by the project"
-      },
-      {
-        "bucket": "required",
-        "text": "Respect for participant confidentiality and data security protocols"
       }
     ]
   },
@@ -165,10 +157,6 @@
     "project_id": "krsp-885",
     "title": "Understanding Digital File Organization Among Neurodivergent Users",
     "unmatched": [
-      {
-        "bucket": "required",
-        "text": "Social/ Behavioral Research Investigators and Key Personnel"
-      },
       {
         "bucket": "preferred",
         "text": "Ability to work online with structure"
@@ -315,10 +303,6 @@
     "project_id": "krsp-1100",
     "title": "Individual Differences in High-Stakes Security Decision-Making",
     "unmatched": [
-      {
-        "bucket": "required",
-        "text": "able to follow research protocols"
-      },
       {
         "bucket": "preferred",
         "text": "Applicants who are involved with relevant student organizations, academic programs, laboratories, or professional networks and can assist with identifying potential participant pools are especially encouraged to apply"
