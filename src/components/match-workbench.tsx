@@ -13,6 +13,8 @@ import { useOnScreen } from "@/lib/use-in-view";
 import { CoursePicker } from "./course-picker";
 import { DrawRule } from "./draw-rule";
 import { ProjectCard } from "./project-card";
+import type { ResumePicks } from "./resume-review";
+import { ResumeUpload } from "./resume-upload";
 import { Scramble } from "./scramble";
 import { SkillPicker, type SkillGroup } from "./skill-picker";
 import { StickyPanel } from "./sticky-panel";
@@ -29,6 +31,14 @@ interface WorkbenchProps {
 
 const EMPTY: Profile = { skills: [], courses: [], updatedAt: "" };
 const UNDO_MS = 6000;
+
+/** The last bulk change, kept for a few seconds so it can be undone. */
+interface UndoState {
+  previous: Profile;
+  message: string;
+  /** Where the change was made, so the Undo shows up next to it. */
+  from: "clear" | "resume";
+}
 
 function toggle(list: string[], value: string): string[] {
   return list.includes(value) ? list.filter((v) => v !== value) : [...list, value];
@@ -54,7 +64,7 @@ function reasons(profile: Profile, courseSkills: Record<string, string[]>, skill
 export function MatchWorkbench({ projects, skills, groups, popular, courses, courseSkills, baselineAt }: WorkbenchProps) {
   const stored = useProfile();
   const [edits, setEdits] = useState<Profile | null>(null);
-  const [undo, setUndo] = useState<Profile | null>(null);
+  const [undo, setUndo] = useState<UndoState | null>(null);
   const profile = edits ?? stored ?? EMPTY;
   const now = useNow();
 
@@ -75,6 +85,34 @@ export function MatchWorkbench({ projects, skills, groups, popular, courses, cou
       setEdits({ ...next, updatedAt: new Date().toISOString() });
     });
   }
+
+  function addFromResume(picks: ResumePicks) {
+    const courses = picks.courses.filter((code) => !profile.courses.includes(code));
+    const skills = picks.skills.filter((id) => !profile.skills.includes(id));
+    const added = courses.length + skills.length;
+    if (added === 0) return;
+    setUndo({ previous: profile, message: `Added ${added} from your resume`, from: "resume" });
+    change({ ...profile, courses: [...profile.courses, ...courses], skills: [...profile.skills, ...skills] });
+  }
+
+  const undoLine = (state: UndoState) => (
+    <div className="flex min-h-11 flex-wrap items-center gap-x-2 text-sm">
+      <span className="text-muted-foreground">{state.message}</span>
+      <span className="text-muted-foreground" aria-hidden="true">
+        ·
+      </span>
+      <button
+        type="button"
+        onClick={() => {
+          change(state.previous);
+          setUndo(null);
+        }}
+        className="inline-flex min-h-11 items-center font-medium underline underline-offset-4 hover:text-honey-ink"
+      >
+        Undo
+      </button>
+    </div>
+  );
 
   const hasProfile = profile.skills.length > 0 || profile.courses.length > 0;
   const have = useMemo(() => profileSkills(profile, courseSkills, skills), [profile, courseSkills, skills]);
@@ -114,6 +152,14 @@ export function MatchWorkbench({ projects, skills, groups, popular, courses, cou
               <p className="text-xs text-muted-foreground">Saved in this browser only</p>
             </div>
 
+            <ResumeUpload
+              profile={profile}
+              skills={skills}
+              courses={courses}
+              onAdd={addFromResume}
+              undo={undo?.from === "resume" ? undoLine(undo) : null}
+            />
+
             <CoursePicker
               courses={courses}
               skills={skills}
@@ -131,27 +177,15 @@ export function MatchWorkbench({ projects, skills, groups, popular, courses, cou
               onToggle={(id) => change({ ...profile, skills: toggle(profile.skills, id) })}
             />
 
-            {(hasProfile || undo) && (
+            {(hasProfile || undo?.from === "clear") && (
               <div className="flex min-h-11 flex-wrap items-center gap-3 text-sm" aria-live="polite">
-                {undo ? (
-                  <>
-                    <span className="text-muted-foreground">Cleared your profile.</span>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        change(undo);
-                        setUndo(null);
-                      }}
-                      className="inline-flex min-h-11 items-center font-medium underline underline-offset-4 hover:text-honey-ink"
-                    >
-                      Undo
-                    </button>
-                  </>
+                {undo?.from === "clear" ? (
+                  undoLine(undo)
                 ) : (
                   <button
                     type="button"
                     onClick={() => {
-                      setUndo(profile);
+                      setUndo({ previous: profile, message: "Cleared your profile", from: "clear" });
                       change(EMPTY);
                     }}
                     className="inline-flex min-h-11 items-center gap-2 rounded-md px-2 font-medium text-muted-foreground hover:bg-accent hover:text-foreground active:scale-[0.97]"

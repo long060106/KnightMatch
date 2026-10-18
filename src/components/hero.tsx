@@ -47,14 +47,22 @@ export function Hero({ openCount, openFirstSeen, lastRunAt, baselineAt }: HeroPr
         )}
         Last check: <RelativeTime iso={lastRunAt} className="text-foreground" />.
       </p>
-      <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3 md:mt-7">
-        <Button asChild className="h-12 px-5 text-base font-semibold active:scale-[0.97]">
-          <Link href="/match">{profile ? "Update my skills and courses" : "Add my skills and courses"}</Link>
-        </Button>
+      <div className="mt-6 flex flex-wrap items-start gap-x-6 gap-y-1 md:mt-7">
+        <div className="grid justify-items-start">
+          <Button asChild className="h-12 px-5 text-base font-semibold active:scale-[0.97]">
+            <Link href="/match">{profile ? "Update my skills and courses" : "Add my skills and courses"}</Link>
+          </Button>
+          <Link
+            href="/match#resume"
+            className="inline-flex min-h-11 items-center text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground"
+          >
+            or upload your resume
+          </Link>
+        </div>
         <a
           href="#projects"
           onClick={skipToProjects}
-          className="inline-flex min-h-11 items-center gap-1.5 text-sm font-medium text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+          className="inline-flex min-h-12 items-center gap-1.5 text-sm font-medium text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
         >
           Skip to projects
           <ArrowDown className="size-4" aria-hidden="true" />
