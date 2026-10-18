@@ -31,7 +31,7 @@
   --border-strong: #a8a29e;
   --input: #8c8681; /* 3.6:1 so form controls are visible */
   --ring: #8a6100;
-  --radius: 0.625rem; /* card 10px, buttons 8px, tags 6px */
+  --radius: 0; /* square everywhere: hairlines and rectangles, never pills */
 
   --honey: #f2c14e;
   --honey-ink: #8a6100; /* honey-colored text on light, 5:1 */
@@ -503,4 +503,48 @@ html[data-has-profile] .km-story-compact {
   .js .km-rule-v:not([data-inview]) {
     transform: none;
   }
+}
+
+/*
+  Background grid: faint hairlines on a 48px square grid, fixed to the screen so content slides over
+  it. With a mouse, a brighter patch of the same grid follows the pointer (BackgroundGrid sets --mx/--my).
+  Neutral on purpose: honey stays reserved for good news.
+*/
+:root {
+  --grid-line: rgb(28 25 23 / 0.055);
+  --grid-glow: rgb(28 25 23 / 0.2);
+}
+.dark {
+  --grid-line: rgb(245 245 244 / 0.045);
+  --grid-glow: rgb(245 245 244 / 0.16);
+}
+.km-grid {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+.km-grid::before,
+.km-grid::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 48px 48px;
+  background-position: calc(50% - 0.5px) -1px;
+}
+/* Fade toward the bottom corners so the grid frames the page instead of filling it like graph paper. */
+.km-grid::before {
+  mask-image: radial-gradient(ellipse 110% 85% at 50% 0%, #000 45%, transparent 100%);
+}
+.km-grid::after {
+  --grid-line: var(--grid-glow);
+  opacity: 0;
+  mask-image: radial-gradient(220px circle at var(--mx, -999px) var(--my, -999px), #000, transparent);
+  transition: opacity var(--dur-base) var(--ease-out);
+}
+.km-grid[data-active]::after {
+  opacity: 1;
 }

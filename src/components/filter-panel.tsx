@@ -49,7 +49,9 @@ function SearchField({ value, onCommit }: { value: string; onCommit: (q: string)
 
   return (
     <div className="grid gap-2">
-      <Label htmlFor={id}>Search</Label>
+      <Label htmlFor={id} className="km-label text-muted-foreground">
+        Search
+      </Label>
       <div className="relative">
         <Search className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" aria-hidden="true" />
         <Input
@@ -59,7 +61,7 @@ function SearchField({ value, onCommit }: { value: string; onCommit: (q: string)
           onChange={(e) => setDraft(e.target.value)}
           placeholder="Topic, skill or keyword"
           autoComplete="off"
-          className="h-11 bg-card pl-9 text-base md:text-sm"
+          className="h-11 bg-background pl-9 text-base md:text-sm"
         />
       </div>
     </div>
@@ -67,8 +69,8 @@ function SearchField({ value, onCommit }: { value: string; onCommit: (q: string)
 }
 
 /**
- * A group of toggle chips. Chips wrap side by side, so the whole panel stays short enough to fit
- * the screen without a scrollbar of its own.
+ * A group of toggles drawn as a ruled list: square marker, label, count. Hairlines instead of
+ * pills; a filled honey square means the filter is on (shape, not only color).
  */
 function ChipGroup({
   legend,
@@ -96,38 +98,47 @@ function ChipGroup({
     collapsible && !expanded ? visible.filter((o, i) => i < limit || selected.includes(o.value)) : visible;
   return (
     <fieldset>
-      <legend className="mb-2 text-sm font-semibold">{legend}</legend>
-      <div className="flex flex-wrap gap-2">
+      <legend className="km-label mb-2 text-muted-foreground">{legend}</legend>
+      <ul className="border-t">
         {shown.map((option) => {
           const on = selected.includes(option.value);
           return (
-            <button
-              key={option.value}
-              type="button"
-              aria-pressed={on}
-              onClick={() => onToggle(option.value)}
-              className={cn(
-                "inline-flex min-h-11 items-center gap-1.5 rounded-full border px-3 py-1 text-left text-sm leading-snug transition-[background-color,border-color,color,transform] duration-[var(--dur-fast)] active:scale-[0.97] lg:min-h-9",
-                on ? "border-transparent bg-honey-wash font-medium text-honey-ink" : "bg-card hover:border-border-strong",
-              )}
-            >
-              {on && <Check className="size-3.5 shrink-0" aria-hidden="true" />}
-              <span>{format ? format(option.value) : option.value}</span>
-              <span className={cn("tabular-nums", on ? "text-honey-ink/80" : "text-muted-foreground")}>{option.count}</span>
-            </button>
+            <li key={option.value}>
+              <button
+                type="button"
+                aria-pressed={on}
+                onClick={() => onToggle(option.value)}
+                className={cn(
+                  "group flex min-h-11 w-full items-center gap-3 border-b py-2 text-left text-sm leading-snug transition-colors duration-[var(--dur-fast)] lg:min-h-9",
+                  on ? "text-foreground" : "text-muted-foreground hover:text-foreground",
+                )}
+              >
+                <span
+                  aria-hidden="true"
+                  className={cn(
+                    "flex size-3 shrink-0 items-center justify-center border transition-colors duration-[var(--dur-fast)]",
+                    on ? "border-primary bg-primary text-primary-foreground" : "border-border-strong group-hover:border-foreground",
+                  )}
+                >
+                  {on && <Check className="size-2.5" strokeWidth={3} />}
+                </span>
+                <span className="flex-1">{format ? format(option.value) : option.value}</span>
+                <span className="font-mono text-xs tabular-nums">{String(option.count).padStart(2, "0")}</span>
+              </button>
+            </li>
           );
         })}
-        {collapsible && (
-          <button
-            type="button"
-            aria-expanded={expanded}
-            onClick={() => setExpanded(!expanded)}
-            className="inline-flex min-h-11 items-center rounded-full px-2 text-sm font-medium text-muted-foreground underline-offset-4 hover:text-foreground hover:underline lg:min-h-9"
-          >
-            {expanded ? "Show fewer" : `Show all ${visible.length}`}
-          </button>
-        )}
-      </div>
+      </ul>
+      {collapsible && (
+        <button
+          type="button"
+          aria-expanded={expanded}
+          onClick={() => setExpanded(!expanded)}
+          className="km-label mt-1 inline-flex min-h-11 items-center text-muted-foreground underline decoration-border-strong underline-offset-[6px] hover:text-foreground hover:decoration-foreground lg:min-h-9"
+        >
+          {expanded ? "Show fewer" : `Show all ${visible.length}`}
+        </button>
+      )}
     </fieldset>
   );
 }
@@ -142,17 +153,17 @@ export function FilterPanel({ filters, onChange, topics, topicLabels, colleges, 
   const active = activeFilterCount(filters) > 0;
 
   return (
-    <div className="grid gap-5">
+    <div className="grid gap-6">
       <SearchField value={filters.q} onCommit={(q) => onChange({ ...filters, q })} />
 
-      <div className="grid gap-1">
-        <div className="flex min-h-11 items-center justify-between gap-3 lg:min-h-9">
+      <div className="grid border-y">
+        <div className="flex min-h-11 items-center justify-between gap-3 border-b lg:min-h-10">
           <Label htmlFor={openId} className="cursor-pointer text-sm font-normal">
             Open teams only
           </Label>
           <Switch id={openId} checked={filters.openOnly} onCheckedChange={(openOnly) => onChange({ ...filters, openOnly })} />
         </div>
-        <div className="flex min-h-11 items-start gap-3 py-1 lg:min-h-9">
+        <div className="flex min-h-11 items-start gap-3 py-2.5 lg:min-h-10">
           <Checkbox
             id={beginnerId}
             className="mt-0.5"
@@ -161,7 +172,7 @@ export function FilterPanel({ filters, onChange, topics, topicLabels, colleges, 
           />
           <Label htmlFor={beginnerId} className="flex flex-1 cursor-pointer flex-col items-start gap-0.5 text-sm font-normal">
             <span className="flex w-full justify-between gap-3">
-              Beginner-friendly <span className="text-muted-foreground tabular-nums">{beginnerCount}</span>
+              Beginner-friendly <span className="font-mono text-xs text-muted-foreground tabular-nums">{String(beginnerCount).padStart(2, "0")}</span>
             </span>
             <span className="text-xs text-muted-foreground">No experience required, or no specific skills listed</span>
           </Label>
@@ -194,9 +205,9 @@ export function FilterPanel({ filters, onChange, topics, topicLabels, colleges, 
         <button
           type="button"
           onClick={() => onChange({ ...DEFAULT_FILTERS, sort: filters.sort })}
-          className="inline-flex h-11 items-center gap-2 justify-self-start rounded-md px-2 text-sm font-medium text-muted-foreground hover:bg-accent hover:text-foreground active:scale-[0.97]"
+          className="km-label inline-flex h-11 items-center gap-2 justify-self-start text-muted-foreground hover:text-foreground active:scale-[0.97]"
         >
-          <RotateCcw className="size-4" aria-hidden="true" />
+          <RotateCcw className="size-3.5" aria-hidden="true" />
           Clear filters
         </button>
       )}

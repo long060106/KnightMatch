@@ -42,7 +42,7 @@ export default function MatchPage() {
   return (
     <div className="mx-auto max-w-[1200px] px-4 md:px-6">
       <header className="pt-10 pb-6 md:pt-14 md:pb-8">
-        <h1 className="max-w-[22ch] font-serif text-[clamp(2rem,1.2rem+3.2vw,3.25rem)] leading-[1.06] font-medium tracking-[-0.015em]">
+        <h1 className="max-w-[22ch] font-serif text-[clamp(2rem,1.2rem+3.2vw,3.25rem)] leading-[1.06] tracking-[-0.015em]">
           Add what you already know.
         </h1>
         <p className="mt-4 max-w-[62ch] text-base leading-relaxed text-muted-foreground md:text-lg">

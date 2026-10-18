@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 
 export function NewBadge() {
   return (
-    <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-honey-wash px-2 py-0.5 text-xs font-semibold text-honey-ink">
+    <span className="km-label inline-flex shrink-0 items-center gap-1.5 border border-honey-ink/40 bg-honey-wash px-1.5 py-0.5 text-honey-ink">
       <span className="relative flex size-2" aria-hidden="true">
         <span className="km-pulse-ring absolute inset-0 rounded-full bg-meter-on" />
         <span className="relative size-2 rounded-full bg-meter-on" />
@@ -89,9 +89,9 @@ export function MatchMeter({ met, total, className }: { met: number; total: numb
   return (
     <span className={cn("flex shrink-0 gap-1", className)} aria-hidden="true">
       {Array.from({ length: total }, (_, i) => (
-        <span key={i} className={cn("h-2 overflow-hidden rounded-full bg-meter-off", total > 6 ? "w-3" : "w-5")}>
+        <span key={i} className={cn("h-2 overflow-hidden rounded-none bg-meter-off", total > 6 ? "w-3" : "w-5")}>
           <span
-            className="block h-full origin-left rounded-full bg-meter-on transition-transform duration-[var(--dur-base)] ease-[var(--ease-out)]"
+            className="block h-full origin-left rounded-none bg-meter-on transition-transform duration-[var(--dur-base)] ease-[var(--ease-out)]"
             style={{ transform: `scaleX(${i < met ? 1 : 0})`, transitionDelay: `${i * 40}ms` }}
           />
         </span>

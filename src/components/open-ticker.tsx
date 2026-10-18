@@ -72,7 +72,7 @@ export function OpenTicker({ items }: { items: TickerItem[] }) {
           type="button"
           onClick={() => setPaused((p) => !p)}
           aria-label={paused ? "Play the moving list of teams" : "Pause the moving list of teams"}
-          className="inline-flex size-11 items-center justify-center rounded-full text-muted-foreground transition-colors duration-[var(--dur-fast)] hover:bg-muted hover:text-foreground"
+          className="inline-flex size-11 items-center justify-center rounded-none text-muted-foreground transition-colors duration-[var(--dur-fast)] hover:bg-muted hover:text-foreground"
         >
           {paused ? <Play className="size-4" aria-hidden="true" /> : <Pause className="size-4" aria-hidden="true" />}
         </button>

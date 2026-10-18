@@ -53,7 +53,7 @@ function Callout({ callout }: { callout: NonNullable<PlaceSection["callout"]> })
   const [workshop, mentor, positions] = callout.steps;
   return (
     <div className="mt-6 rounded-lg border bg-card p-5 md:p-6">
-      <h3 className="font-serif text-2xl font-medium">{callout.title}</h3>
+      <h3 className="font-serif text-2xl">{callout.title}</h3>
       <p className="mt-2 max-w-[66ch] text-muted-foreground">{callout.body}</p>
       <p className="mt-5 text-sm font-semibold">Get access through OUR</p>
       <div className="mt-2 flex flex-wrap items-center gap-3">
@@ -88,7 +88,7 @@ export default function OtherPlacesPage() {
   return (
     <div className="mx-auto max-w-[1200px] px-4 pb-20 md:px-6">
       <header className="pt-10 pb-6 md:pt-14 md:pb-8">
-        <h1 className="max-w-[22ch] font-serif text-[clamp(2rem,1.2rem+3.2vw,3.25rem)] leading-[1.06] font-medium tracking-[-0.015em]">
+        <h1 className="max-w-[22ch] font-serif text-[clamp(2rem,1.2rem+3.2vw,3.25rem)] leading-[1.06] tracking-[-0.015em]">
           Other places to look.
         </h1>
         <p className="mt-4 max-w-[62ch] text-base leading-relaxed text-muted-foreground md:text-lg">
@@ -109,7 +109,7 @@ export default function OtherPlacesPage() {
               <DrawRule className="mt-3" />
               <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,320px)_minmax(0,1fr)] lg:gap-12">
                 <div>
-                  <h2 id={`${section.id}-heading`} className="font-serif text-2xl leading-snug font-medium">
+                  <h2 id={`${section.id}-heading`} className="font-serif text-2xl leading-snug">
                     {section.title}
                   </h2>
                   <p className="mt-2 text-muted-foreground">{section.intro}</p>

@@ -1,11 +1,11 @@
-import { ArrowUpRight, CalendarDays } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { ViewTransition } from "react";
 import { shortCollege } from "@/lib/filters";
 import type { MatchResult } from "@/lib/match";
 import type { ListingProject, SkillMap } from "@/lib/types";
 import { cn } from "@/lib/utils";
-import { BeginnerNote, MatchMeter, NewBadge, SkillTag, SpotsBadge, type TagState } from "./project-bits";
+import { MatchMeter, NewBadge, SkillTag, type TagState } from "./project-bits";
 import { RelativeTime } from "./relative-time";
 
 const MAX_TAGS = 4;
@@ -50,8 +50,8 @@ function SkillRow({ project, skills, have }: Pick<CardProps, "project" | "skills
   const shown = ids.slice(0, MAX_TAGS);
   const hidden = ids.length - shown.length;
   return (
-    <div className="mt-3 flex flex-wrap items-center gap-1.5">
-      {!required.length && <span className="mr-1 text-sm text-muted-foreground">Nice to have</span>}
+    <div className="mt-5 flex flex-wrap items-center gap-1.5">
+      {!required.length && <span className="km-label mr-1 text-muted-foreground">Nice to have</span>}
       {shown.map((id) => (
         <SkillTag
           key={id}
@@ -65,95 +65,140 @@ function SkillRow({ project, skills, have }: Pick<CardProps, "project" | "skills
   );
 }
 
-export function ProjectCard({ project, skills, match, have, isNew, topicLabel = project.topicLabel }: CardProps) {
+/** Two-digit running number in the list ("01", "02"…), like an index in a printed catalogue. */
+function indexLabel(index: number | undefined): string | null {
+  return index === undefined ? null : String(index + 1).padStart(2, "0");
+}
+
+function spotsText(project: ListingProject): { text: string; urgent: boolean } | null {
+  if (project.status === "full") return { text: "Full team", urgent: false };
+  if (project.openSpots === null) return null;
+  return project.openSpots === 1 ? { text: "1 left", urgent: true } : { text: `${project.openSpots} open`, urgent: false };
+}
+
+/** The hairline above a row that draws itself across on hover (the row's border stays underneath). */
+function HoverRule() {
+  return (
+    <span
+      aria-hidden="true"
+      className="pointer-events-none absolute inset-x-0 -top-px h-px origin-left scale-x-0 bg-foreground transition-transform duration-[var(--dur-move)] ease-[var(--ease-out)] group-hover:scale-x-100 motion-reduce:transition-none"
+    />
+  );
+}
+
+/**
+ * One open project as a ruled row: running number and topic, the title large in the display serif,
+ * the skills below it, and a right-hand column of facts set as mono labels (college, semester,
+ * spots). No box: hairlines separate the rows.
+ */
+export function ProjectCard({
+  project,
+  skills,
+  match,
+  have,
+  isNew,
+  topicLabel = project.topicLabel,
+  index,
+}: CardProps & { index?: number }) {
   const titleId = `title-${project.id}`;
   // Known at build time, so only cards that will show a meter reserve space for it.
   const hasScoredRequirements = project.requiredSkills.some((id) => skills[id]?.counts);
+  const number = indexLabel(index);
+  const spots = spotsText(project);
+  const facts: { label: string; value: string; urgent?: boolean }[] = [
+    { label: "College", value: project.colleges.map(shortCollege).join(", ") },
+    ...(project.semester ? [{ label: "Semester", value: project.semester }] : []),
+    ...(spots ? [{ label: "Spots", value: spots.text, urgent: spots.urgent }] : []),
+    ...(project.beginnerReason ? [{ label: "Experience", value: "None needed" }] : []),
+  ];
   return (
     <article
       aria-labelledby={titleId}
       className={cn(
-        "relative rounded-lg border bg-card p-4 md:p-5",
-        "transition-[transform,border-color] duration-[var(--dur-fast)] ease-[var(--ease-out)]",
-        "hover:-translate-y-0.5 hover:border-border-strong active:translate-y-0",
-        "has-[a[data-card-link]:focus-visible]:outline-2 has-[a[data-card-link]:focus-visible]:outline-offset-2 has-[a[data-card-link]:focus-visible]:outline-ring",
+        "group relative grid gap-x-10 gap-y-6 border-t py-6 md:grid-cols-[minmax(0,1fr)_15rem] md:py-8",
+        "has-[a[data-card-link]:focus-visible]:outline-2 has-[a[data-card-link]:focus-visible]:outline-offset-4 has-[a[data-card-link]:focus-visible]:outline-ring",
       )}
     >
-      <div className="flex items-start justify-between gap-3">
-        <h3 id={titleId} className="font-serif text-2xl leading-tight">
+      <HoverRule />
+      <div className="min-w-0">
+        <p className="km-label flex flex-wrap items-center gap-x-3 gap-y-1 text-muted-foreground">
+          {number && <span className="text-foreground tabular-nums">{number}</span>}
+          {number && topicLabel && <span aria-hidden="true">—</span>}
+          {topicLabel && <span>{topicLabel}</span>}
+          {isNew && <NewBadge />}
+        </p>
+        <h3 id={titleId} className="mt-4 font-serif text-[2rem] leading-[1.02] md:text-[2.5rem]">
           <Link
             href={`/projects/${project.id}`}
             transitionTypes={[TO_DETAIL]}
             data-card-link
-            className="after:absolute after:inset-0 after:rounded-lg focus-visible:outline-none"
+            className="after:absolute after:inset-0 focus-visible:outline-none"
           >
             <ProjectTitle id={project.id} title={project.title} />
           </Link>
         </h3>
-        {isNew && <NewBadge />}
-      </div>
-      <p className="mt-1 text-sm text-muted-foreground">
-        {[topicLabel, project.colleges.map(shortCollege).join(", ")].filter(Boolean).join(" · ")}
-      </p>
 
-      <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
-        {project.semester && (
-          <span className="inline-flex items-center gap-1.5">
-            <CalendarDays className="size-4 text-muted-foreground" aria-hidden="true" />
-            {project.semester}
+        <SkillRow project={project} skills={skills} have={have} />
+
+        <div className={cn(hasScoredRequirements && "km-match-slot")}>
+          {match && match.total > 0 && (
+            <div className="mt-4 flex items-center gap-3">
+              <MatchMeter met={match.met.length} total={match.total} />
+              <p className="text-sm">
+                <span className="font-medium">
+                  You meet {match.met.length} of {match.total}
+                </span>{" "}
+                listed {match.total === 1 ? "requirement" : "requirements"}
+                {match.preferredMet.length > 0 && (
+                  <span className="text-muted-foreground">, plus {match.preferredMet.length} nice-to-have</span>
+                )}
+              </p>
+            </div>
+          )}
+        </div>
+      </div>
+
+      <div className="km-label flex flex-col gap-6 text-muted-foreground">
+        <dl className="grid grid-cols-[auto_minmax(0,1fr)] gap-x-6 gap-y-2.5">
+          {facts.map((fact) => (
+            <div key={fact.label} className="contents">
+              <dt>{fact.label}</dt>
+              <dd className={cn("text-right", fact.urgent ? "text-urgent-ink" : "text-foreground")}>{fact.value}</dd>
+            </div>
+          ))}
+        </dl>
+        <div className="relative z-10 flex flex-wrap items-center justify-between gap-x-4 gap-y-1 md:mt-auto">
+          <span>
+            Checked <RelativeTime iso={project.lastCheckedAt} />
           </span>
-        )}
-        <SpotsBadge status={project.status} openSpots={project.openSpots} />
-        <BeginnerNote reason={project.beginnerReason} />
-      </div>
-
-      <SkillRow project={project} skills={skills} have={have} />
-
-      <div className={cn(hasScoredRequirements && "km-match-slot")}>
-        {match && match.total > 0 && (
-          <div className="mt-3 flex items-center gap-3">
-            <MatchMeter met={match.met.length} total={match.total} />
-            <p className="text-sm">
-              <span className="font-medium">
-                You meet {match.met.length} of {match.total}
-              </span>{" "}
-              listed {match.total === 1 ? "requirement" : "requirements"}
-              {match.preferredMet.length > 0 && (
-                <span className="text-muted-foreground">, plus {match.preferredMet.length} nice-to-have</span>
-              )}
-            </p>
-          </div>
-        )}
-      </div>
-
-      <div className="relative z-10 mt-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-1 text-xs text-muted-foreground">
-        <span>
-          Checked <RelativeTime iso={project.lastCheckedAt} />
-        </span>
-        <a
-          href={project.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex min-h-6 items-center gap-0.5 font-medium underline-offset-4 hover:text-foreground hover:underline"
-        >
-          Original KRSP listing
-          <ArrowUpRight className="size-3.5" aria-hidden="true" />
-          <span className="sr-only">(opens in a new tab)</span>
-        </a>
+          <a
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex min-h-11 items-center gap-0.5 underline decoration-border-strong underline-offset-[5px] hover:text-foreground hover:decoration-foreground md:min-h-6"
+          >
+            KRSP listing
+            <ArrowUpRight className="size-3.5" aria-hidden="true" />
+            <span className="sr-only">(original page, opens in a new tab)</span>
+          </a>
+        </div>
       </div>
     </article>
   );
 }
 
 /** Full teams collapse to one quiet row: you can still read them, but they don't compete. */
-export function FullTeamRow({ project }: { project: ListingProject }) {
+export function FullTeamRow({ project, index }: { project: ListingProject; index?: number }) {
   const titleId = `title-${project.id}`;
+  const number = indexLabel(index);
   return (
     <article
       aria-labelledby={titleId}
-      className="relative flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 rounded-lg border border-dashed px-4 py-3 transition-colors duration-[var(--dur-fast)] hover:border-border-strong has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-offset-2 has-[a:focus-visible]:outline-ring"
+      className="group relative grid items-baseline gap-x-10 gap-y-1 border-t py-4 has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-offset-4 has-[a:focus-visible]:outline-ring md:grid-cols-[minmax(0,1fr)_15rem]"
     >
-      <h3 id={titleId} className="font-serif text-lg leading-snug text-foreground/80">
+      <HoverRule />
+      <h3 id={titleId} className="flex items-baseline gap-4 font-serif text-xl leading-snug text-foreground/70">
+        {number && <span className="km-label text-muted-foreground tabular-nums">{number}</span>}
         <Link
           href={`/projects/${project.id}`}
           transitionTypes={[TO_DETAIL]}
@@ -162,9 +207,9 @@ export function FullTeamRow({ project }: { project: ListingProject }) {
           <ProjectTitle id={project.id} title={project.title} />
         </Link>
       </h3>
-      <p className="flex gap-3 text-xs text-muted-foreground">
+      <p className="km-label flex justify-between gap-4 text-muted-foreground">
         <span>{project.colleges.map(shortCollege).join(", ")}</span>
-        <span className="font-medium">Full team</span>
+        <span>Full team</span>
       </p>
     </article>
   );

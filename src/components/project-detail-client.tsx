@@ -164,7 +164,7 @@ export function ProjectSidebar({ data }: { data: DetailData }) {
       </section>
 
       <section id="apply" tabIndex={-1} aria-labelledby="apply-heading" className="scroll-mt-4 rounded-lg border bg-card p-5 outline-none">
-        <h2 id="apply-heading" className="font-serif text-2xl font-medium">
+        <h2 id="apply-heading" className="font-serif text-2xl">
           {data.status === "open" ? "How to apply" : "This team is full right now"}
         </h2>
         {data.status === "open" ? (

@@ -213,7 +213,7 @@ export function MatchWorkbench({ projects, skills, groups, popular, courses, cou
           <div aria-live="polite" className="mt-4 grid gap-1">
             {hasProfile ? (
               <>
-                <p className="font-serif text-2xl leading-snug font-medium">
+                <p className="font-serif text-2xl leading-snug">
                   {full > 0
                     ? `You meet every listed requirement for ${full} ${full === 1 ? "project" : "projects"}.`
                     : partial > 0
@@ -229,7 +229,7 @@ export function MatchWorkbench({ projects, skills, groups, popular, courses, cou
               </>
             ) : (
               <>
-                <p className="font-serif text-2xl leading-snug font-medium">Add a course or a skill to see your matches.</p>
+                <p className="font-serif text-2xl leading-snug">Add a course or a skill to see your matches.</p>
                 <p className="text-muted-foreground">
                   Until then, here are all {projects.length} open projects, newest first.
                 </p>
@@ -237,8 +237,8 @@ export function MatchWorkbench({ projects, skills, groups, popular, courses, cou
             )}
           </div>
 
-          <ul className="mt-6 grid gap-3">
-            {ranked.map(({ project, result }) => (
+          <ul className="mt-6 border-b">
+            {ranked.map(({ project, result }, i) => (
               <ViewTransition
                 key={project.id}
                 name={`card-${project.id}`}
@@ -252,6 +252,7 @@ export function MatchWorkbench({ projects, skills, groups, popular, courses, cou
                     have={hasProfile ? have : null}
                     match={hasProfile ? result : null}
                     isNew={now !== null && isNewThisWeek(project.firstSeenAt, baselineAt, now)}
+                    index={i}
                   />
                 </li>
               </ViewTransition>

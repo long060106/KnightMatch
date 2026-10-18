@@ -194,7 +194,7 @@ export function ResumeReview({
           className="flex max-h-[85dvh] w-[calc(100%-2rem)] max-w-xl flex-col gap-0 p-0 sm:max-w-xl"
         >
           <DialogHeader className="border-b p-6 pb-4 text-left">
-            <DialogTitle className="font-serif text-2xl font-medium">{title}</DialogTitle>
+            <DialogTitle className="font-serif text-2xl">{title}</DialogTitle>
             <DialogDescription>{description}</DialogDescription>
           </DialogHeader>
           <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-6 py-4">{body}</div>
@@ -208,7 +208,7 @@ export function ResumeReview({
     <Drawer open={open} onOpenChange={onOpenChange}>
       <DrawerContent data-lenis-prevent onCloseAutoFocus={onCloseAutoFocus} className="max-h-[88dvh]">
         <DrawerHeader className="text-left group-data-[vaul-drawer-direction=bottom]/drawer-content:text-left">
-          <DrawerTitle className="font-serif text-xl font-medium">{title}</DrawerTitle>
+          <DrawerTitle className="font-serif text-xl">{title}</DrawerTitle>
           <DrawerDescription>{description}</DrawerDescription>
         </DrawerHeader>
         <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 pb-2">{body}</div>

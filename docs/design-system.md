@@ -9,8 +9,8 @@ Source of truth for the UI. Tokens live in `src/app/globals.css`; this file expl
    Everything else stays neutral, so gold is never decoration.
 2. **The source is always one click away.** Every card shows when it was last checked and links
    to the original KRSP page, which stays the source of truth.
-3. **Quiet chrome.** Hairline borders, no drop shadows, no gradients. Hierarchy comes from type
-   size, weight and spacing, not boxes.
+3. **Quiet chrome.** Hairline borders, square corners, no drop shadows, no gradients. Hierarchy
+   comes from type size and spacing, not boxes: lists are ruled rows, not cards.
 4. **Encouraging, never gatekeeping.** Say "You meet 2 of 4 listed requirements" and invite people
    to reach out. Never write "not qualified" or "not a fit".
 5. **Form follows state.** Open projects get full cards; full teams collapse to one quiet row.
@@ -79,7 +79,18 @@ Reading order, biggest to smallest:
 
 ## Shape
 
-Card radius 10px, buttons 8px, tags 6px. Borders 1px. No shadows.
+Square everywhere (`--radius: 0`): buttons, inputs, tags, the switch, the match meter. Borders 1px.
+No shadows, no pills. The only round things are status dots (the nav dot, the dateline dot, the New dot).
+
+- **Project list**: each project is a ruled row (hairline above, one below the list). Left: running
+  number and topic as a mono label ("01 — Biology & life sciences"), the title in the display serif
+  (32px phones, 40px from 768px), skills below. Right (15rem from 768px, stacked on phones): facts as
+  label/value pairs (College, Semester, Spots, Experience), then "Checked …" and the KRSP link.
+  Full teams are one short row with the title at 20px, dimmed.
+- **Filters**: ruled lists, not chips. Each option is a row: square marker (honey fill + check when
+  on), label, count as two mono digits. The sidebar sits behind a vertical hairline.
+- **Background grid**: 48px hairline squares fixed to the screen (`.km-grid`), faded toward the bottom
+  corners. With a mouse, a brighter patch of grid (220px) follows the pointer. Neutral colors only.
 
 ## Motion
 
@@ -90,7 +101,7 @@ Ease-out `cubic-bezier(.2,.8,.2,1)` for arrivals; exits are ~65% of enter time.
    browser-native, transition type `filter`).
 2. **Match segments fill** one by one (40ms stagger) and tags turn from dashed to ✓.
 3. **Title morph** from card to detail page heading (`title-<id>`).
-4. **Hover/press**: card lifts 2px with a stronger border (pointer devices only), buttons press to 0.97.
+4. **Hover/press**: a project row's top hairline draws across in ink (300ms), buttons press to 0.97.
 5. **Hero entrance** (CSS keyframes only, plays from the prerendered HTML): headline words rise out
    of their own masks (55ms stagger), the headline rule draws, the lead and buttons fade up, then the
    open cells fill one by one (45ms stagger). Plays once per page load.

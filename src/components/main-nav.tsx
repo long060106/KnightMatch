@@ -85,7 +85,7 @@ export function BottomTabs() {
               >
                 <span
                   className={cn(
-                    "flex h-7 w-12 items-center justify-center rounded-full transition-colors duration-[var(--dur-fast)]",
+                    "flex h-7 w-12 items-center justify-center rounded-none transition-colors duration-[var(--dur-fast)]",
                     active && "bg-honey-wash text-honey-ink",
                   )}
                 >

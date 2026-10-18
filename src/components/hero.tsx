@@ -71,7 +71,7 @@ function TeamGrid({ open, total }: { open: number; total: number }) {
       {Array.from({ length: total }, (_, i) => (
         <span
           key={i}
-          className={cn("aspect-square rounded-[3px]", i < open ? "km-cell bg-meter-on" : "border border-border-strong")}
+          className={cn("aspect-square rounded-none", i < open ? "km-cell bg-meter-on" : "border border-border-strong")}
           style={i < open ? ({ "--i": i } as CSSProperties) : undefined}
         />
       ))}
@@ -83,7 +83,7 @@ function LegendSwatch({ open }: { open: boolean }) {
   return (
     <span
       aria-hidden="true"
-      className={cn("size-2.5 rounded-[2px]", open ? "bg-meter-on" : "border border-border-strong")}
+      className={cn("size-2.5 rounded-none", open ? "bg-meter-on" : "border border-border-strong")}
     />
   );
 }

@@ -158,7 +158,7 @@ export function ProjectExplorer({ projects, skills, courseSkills, topics, baseli
 
   return (
     <div className="lg:grid lg:grid-cols-[260px_minmax(0,1fr)] lg:gap-10">
-      <aside aria-label="Filters" className="hidden lg:block">
+      <aside aria-label="Filters" className="hidden lg:block lg:border-r lg:pr-8">
         <StickyPanel className="pb-6">
           <FilterPanel {...panelProps} />
         </StickyPanel>
@@ -174,7 +174,7 @@ export function ProjectExplorer({ projects, skills, courseSkills, topics, baseli
                   <SlidersHorizontal className="size-4" aria-hidden="true" />
                   Filters
                   {activeCount > 0 && (
-                    <span className="rounded-full bg-primary px-1.5 text-xs font-semibold text-primary-foreground tabular-nums">
+                    <span className="rounded-none bg-primary px-1.5 text-xs font-semibold text-primary-foreground tabular-nums">
                       {activeCount}
                     </span>
                   )}
@@ -199,8 +199,8 @@ export function ProjectExplorer({ projects, skills, courseSkills, topics, baseli
             </Drawer>
           </div>
 
-          <p aria-live="polite" className="order-3 basis-full text-sm text-muted-foreground lg:order-1 lg:basis-auto">
-            <span className="font-semibold text-foreground tabular-nums">{visible.length}</span>{" "}
+          <p aria-live="polite" className="km-label order-3 basis-full text-muted-foreground lg:order-1 lg:basis-auto">
+            <span className="text-foreground tabular-nums">{visible.length}</span>{" "}
             {visible.length === 1 ? "project" : "projects"}
           </p>
 
@@ -209,7 +209,7 @@ export function ProjectExplorer({ projects, skills, courseSkills, topics, baseli
               Sort projects
             </Label>
             <Select value={sort} onValueChange={(value) => update({ ...filters, sort: value as SortKey })}>
-              <SelectTrigger id="km-sort" className="gap-2 bg-card px-3 data-[size=default]:h-11 lg:data-[size=default]:h-9">
+              <SelectTrigger id="km-sort" className="gap-2 bg-background px-3 data-[size=default]:h-11 lg:data-[size=default]:h-9">
                 <span className="text-muted-foreground" aria-hidden="true">
                   Sort:
                 </span>
@@ -236,7 +236,7 @@ export function ProjectExplorer({ projects, skills, courseSkills, topics, baseli
                   type="button"
                   onClick={chip.remove}
                   aria-label={`Remove filter: ${chip.label}`}
-                  className="inline-flex h-9 items-center gap-1.5 rounded-full border bg-card pr-2 pl-3 text-sm hover:border-border-strong active:scale-[0.97]"
+                  className="inline-flex h-9 items-center gap-1.5 border bg-background pr-2 pl-3 text-sm hover:border-border-strong active:scale-[0.97]"
                 >
                   {chip.label}
                   <X className="size-3.5 text-muted-foreground" aria-hidden="true" />
@@ -257,8 +257,8 @@ export function ProjectExplorer({ projects, skills, courseSkills, topics, baseli
         )}
 
         {visible.length > 0 ? (
-          <ul className="mt-4 grid gap-3">
-            {visible.map((p) => (
+          <ul className="mt-6 border-b">
+            {visible.map((p, i) => (
               <ViewTransition
                 key={p.id}
                 name={`card-${p.id}`}
@@ -276,9 +276,10 @@ export function ProjectExplorer({ projects, skills, courseSkills, topics, baseli
                       match={matches?.get(p.id) ?? null}
                       isNew={now !== null && isNewThisWeek(p.firstSeenAt, baselineAt, now)}
                       topicLabel={topics[p.topics.find((t) => filters.topics.includes(t)) ?? ""] ?? p.topicLabel}
+                      index={i}
                     />
                   ) : (
-                    <FullTeamRow project={p} />
+                    <FullTeamRow project={p} index={i} />
                   )}
                 </li>
               </ViewTransition>

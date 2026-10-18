@@ -66,7 +66,7 @@ export function EmailDraftDialog({ input, leaderName, krspUrl }: EmailDraftDialo
         className="max-h-[90dvh] w-[calc(100%-2rem)] max-w-2xl overflow-y-auto overscroll-contain p-5 sm:max-w-2xl md:p-6"
       >
         <DialogHeader className="text-left">
-          <DialogTitle className="font-serif text-2xl font-medium">Draft your first email</DialogTitle>
+          <DialogTitle className="font-serif text-2xl">Draft your first email</DialogTitle>
           <DialogDescription>
             Edit it, then send it from your own email. KnightMatch never sends anything for you.
           </DialogDescription>

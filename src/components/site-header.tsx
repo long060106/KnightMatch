@@ -6,7 +6,7 @@ import { ThemeToggle } from "./theme-toggle";
 
 export function SiteHeader() {
   return (
-    <header className="relative bg-background">
+    <header className="relative">
       <div className="mx-auto flex h-16 max-w-[1200px] items-center justify-between gap-4 px-4 md:px-6">
         <Link href="/" className="-ml-1 rounded-md px-1 py-2" aria-label="KnightMatch home">
           <Logo />

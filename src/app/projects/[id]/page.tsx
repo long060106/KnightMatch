@@ -128,7 +128,7 @@ export default async function ProjectPage({ params }: Params) {
         <div className="mt-2 flex flex-wrap items-start gap-x-4 gap-y-2">
           <h1
             id="project-title"
-            className="max-w-[30ch] font-serif text-[clamp(1.75rem,1.1rem+2.4vw,2.75rem)] leading-[1.1] font-medium tracking-[-0.01em]"
+            className="max-w-[30ch] font-serif text-[clamp(1.75rem,1.1rem+2.4vw,2.75rem)] leading-[1.1] tracking-[-0.01em]"
           >
             <ProjectTitle id={project.id} title={project.title} />
           </h1>

@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { IBM_Plex_Mono, Instrument_Serif, Public_Sans } from "next/font/google";
+import { BackgroundGrid } from "@/components/background-grid";
 import { BottomTabs } from "@/components/main-nav";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -64,6 +65,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           >
             Skip to content
           </a>
+          <BackgroundGrid />
           <SiteHeader />
           <main id="main" className="flex-1">
             {children}

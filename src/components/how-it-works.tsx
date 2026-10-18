@@ -132,9 +132,9 @@ function DemoTag({ label, a, b }: { label: string; a?: number; b?: number }) {
 
 function MeterSegment({ a, b }: { a?: number; b?: number }) {
   return (
-    <span className="h-2 w-5 overflow-hidden rounded-full bg-meter-off">
+    <span className="h-2 w-5 overflow-hidden rounded-none bg-meter-off">
       {a !== undefined && b !== undefined && (
-        <span className="km-scrub-fill block h-full rounded-full bg-meter-on" style={{ "--a": a, "--b": b } as CSSProperties} />
+        <span className="km-scrub-fill block h-full rounded-none bg-meter-on" style={{ "--a": a, "--b": b } as CSSProperties} />
       )}
     </span>
   );
@@ -145,27 +145,27 @@ function StoryDemo() {
   return (
     <div className="grid gap-4" aria-hidden="true">
       {/* Phones show only the example card; the step text already explains the rest. */}
-      <div className="hidden rounded-lg border bg-card p-4 lg:block">
-        <Scrub a={0} b={0.04} className="block text-xs font-medium text-muted-foreground">
+      <div className="hidden border bg-background p-4 lg:block">
+        <Scrub a={0} b={0.04} className="km-label block text-muted-foreground">
           Your profile
         </Scrub>
         <div className="mt-2 flex flex-wrap gap-1.5">
-          <Scrub a={0.02} b={0.08} className="rounded-full border bg-secondary px-2.5 py-0.5 text-sm">
+          <Scrub a={0.02} b={0.08} className="rounded-none border bg-secondary px-2.5 py-0.5 text-sm">
             Python
           </Scrub>
-          <Scrub a={0.07} b={0.13} className="rounded-full border bg-secondary px-2.5 py-0.5 font-mono text-xs leading-6">
+          <Scrub a={0.07} b={0.13} className="rounded-none border bg-secondary px-2.5 py-0.5 font-mono text-xs leading-6">
             COP3502C
           </Scrub>
-          <Scrub a={0.12} b={0.18} className="rounded-full border bg-secondary px-2.5 py-0.5 font-mono text-xs leading-6">
+          <Scrub a={0.12} b={0.18} className="rounded-none border bg-secondary px-2.5 py-0.5 font-mono text-xs leading-6">
             STA2023
           </Scrub>
         </div>
       </div>
 
-      <Scrub a={0.24} b={0.3} className="block rounded-lg border bg-card p-4">
+      <Scrub a={0.24} b={0.3} className="block border bg-background p-4">
         <span className="flex items-start justify-between gap-3">
-          <span className="font-serif text-lg leading-snug font-medium">Example: Robot vision for safer walking aids</span>
-          <Scrub a={0.82} b={0.88} className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-honey-wash px-2 py-0.5 text-xs font-semibold text-honey-ink">
+          <span className="font-serif text-xl leading-snug">Example: Robot vision for safer walking aids</span>
+          <Scrub a={0.82} b={0.88} className="km-label inline-flex shrink-0 items-center gap-1.5 border border-honey-ink/40 bg-honey-wash px-1.5 py-0.5 text-honey-ink">
             <span className="size-2 rounded-full bg-meter-on" />
             New
           </Scrub>
@@ -254,7 +254,7 @@ function ProgressRail() {
   return (
     <div aria-hidden="true" className="km-rail absolute top-0 bottom-0 left-0 hidden w-[3px] flex-col gap-2">
       {STEPS.map((_, i) => (
-        <span key={i} className="relative flex-1 overflow-hidden rounded-full bg-meter-off">
+        <span key={i} className="relative flex-1 overflow-hidden rounded-none bg-meter-off">
           <span className="km-rail-fill absolute inset-0 origin-top bg-foreground" style={{ "--i": i } as CSSProperties} />
         </span>
       ))}
@@ -266,10 +266,10 @@ function StepItem({ index, active, title, body }: { index: number; active: boole
   const [ref, inView] = useInView<HTMLLIElement>();
   return (
     <li ref={ref} className="km-step" data-active={active ? "" : undefined} data-inview={inView ? "" : undefined}>
-      <p className="km-step-number font-serif leading-none font-medium tracking-tight" aria-hidden="true">
+      <p className="km-step-number font-serif leading-none tracking-tight" aria-hidden="true">
         <Scramble text={`0${index + 1}`} replayKey={active ? `on-${index}` : "off"} />
       </p>
-      <h3 className="mt-1 font-serif text-xl leading-tight font-medium lg:mt-6 lg:text-4xl">{title}</h3>
+      <h3 className="mt-1 font-serif text-xl leading-tight lg:mt-6 lg:text-4xl">{title}</h3>
       <p className="mt-2 max-w-[46ch] text-[0.9375rem] text-muted-foreground lg:mt-3 lg:text-lg">{body}</p>
     </li>
   );
@@ -321,7 +321,7 @@ export function HowItWorks() {
         <ol className="mt-2 mb-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {STEPS.map((s, i) => (
             <li key={s.title} className="rounded-lg border bg-card p-4">
-              <p className="font-serif text-2xl leading-none font-medium">0{i + 1}</p>
+              <p className="font-serif text-2xl leading-none">0{i + 1}</p>
               <p className="mt-2 font-medium">{s.title}</p>
               <p className="mt-1 text-sm text-muted-foreground">{s.body}</p>
             </li>
