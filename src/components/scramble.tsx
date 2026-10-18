@@ -10,7 +10,7 @@ const LOWER = "abcdefghijklmnopqrstuvwxyz";
 const DURATION_MS = 650;
 const FRAME_MS = 45; // swap glyphs every ~3 frames so it reads as "decoding", not noise
 
-function randomLike(ch: string): string {
+export function randomLike(ch: string): string {
   const set = /\d/.test(ch) ? DIGITS : /[A-Z]/.test(ch) ? UPPER : /[a-z]/.test(ch) ? LOWER : null;
   return set ? set[Math.floor(Math.random() * set.length)] : ch;
 }

@@ -10,6 +10,7 @@ import { scrollToElement } from "@/lib/smooth-scroll";
 import { useNow } from "@/lib/time";
 import { cn } from "@/lib/utils";
 import { DrawRule } from "./draw-rule";
+import { HoverScramble } from "./hover-scramble";
 import { RelativeTime } from "./relative-time";
 import { Scramble } from "./scramble";
 
@@ -153,7 +154,7 @@ export function Hero({
               onClick={skipToProjects}
               className="km-label group inline-flex min-h-12 items-center gap-1.5 underline decoration-border-strong underline-offset-[6px] hover:decoration-foreground"
             >
-              Browse all {totalCount} projects
+              <HoverScramble text={`Browse all ${totalCount} projects`} />
               <ArrowDown
                 className="size-3.5 transition-transform duration-[var(--dur-fast)] ease-[var(--ease-out)] group-hover:translate-y-0.5"
                 aria-hidden="true"

@@ -4,6 +4,7 @@ import { Compass, LayoutList, ListChecks, type LucideIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { HoverScramble } from "./hover-scramble";
 
 interface NavItem {
   href: string;
@@ -47,7 +48,7 @@ export function HeaderNav() {
                     active ? "scale-100" : "scale-0",
                   )}
                 />
-                {item.label}
+                <HoverScramble text={item.label} />
               </Link>
             </li>
           );

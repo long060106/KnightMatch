@@ -118,6 +118,9 @@ Inspired by the scroll storytelling on 3d-discovery.fr, adapted for a tool that 
 4. **Hairlines draw themselves** from the left when they enter view (header, section dividers, footer).
 5. **Decode text**: short labels and numbers (the hero count, step numbers, section labels)
    resolve from random characters. Never on paragraphs. Screen readers always get the real text.
-6. "Skip to projects" in the hero jumps past the story and moves focus to the list.
+6. **Hover scramble** (`HoverScramble`): nav links and the hero "Browse all N projects" link shuffle into
+   random characters and settle back left to right (~0.5s) on hover or focus. Mono labels only, so
+   widths never change. Reduced motion: no effect.
+7. "Skip to projects" in the hero jumps past the story and moves focus to the list.
 
 Without JavaScript nothing is hidden: hidden start states only apply under `html.js`.
