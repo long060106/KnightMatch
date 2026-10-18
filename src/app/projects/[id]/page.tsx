@@ -1,4 +1,4 @@
-import { ArrowLeft, CalendarDays, Users } from "lucide-react";
+import { ArrowLeft, ArrowRight, CalendarDays, Users } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -102,28 +102,34 @@ export default async function ProjectPage({ params }: Params) {
       <Link
         href="/projects"
         transitionTypes={[TO_DETAIL]}
-        className="-ml-1 inline-flex min-h-11 items-center gap-1.5 rounded-md px-1 text-sm font-medium text-muted-foreground hover:text-foreground"
+        className="km-link group inline-flex min-h-11 items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground"
       >
-        <ArrowLeft className="size-4" aria-hidden="true" />
+        <ArrowLeft
+          className="size-4 transition-transform duration-[var(--dur-base)] ease-[var(--ease-out)] group-hover:-translate-x-0.5"
+          aria-hidden="true"
+        />
         All projects
       </Link>
 
       <header className="mt-4 md:mt-8">
-        <p className="text-sm text-muted-foreground">
+        {/* Topics link to the list filtered by that topic; colleges are plain text. */}
+        <p className="km-label flex flex-wrap items-center gap-x-3 gap-y-1 text-muted-foreground">
           {project.topics
             .filter((id) => id in topics)
             .map((id) => (
-              <span key={id}>
-                <Link
-                  href={`/projects?topic=${id}`}
-                  className="underline decoration-border-strong underline-offset-4 hover:text-foreground hover:decoration-foreground"
-                >
-                  {topics[id]}
-                </Link>
-                {" · "}
-              </span>
+              <Link
+                key={id}
+                href={`/projects?topic=${id}`}
+                className="km-link group inline-flex min-h-11 items-center gap-1 hover:text-foreground md:min-h-6"
+              >
+                {topics[id]}
+                <ArrowRight
+                  className="size-3.5 transition-transform duration-[var(--dur-base)] ease-[var(--ease-out)] group-hover:translate-x-0.5"
+                  aria-hidden="true"
+                />
+              </Link>
             ))}
-          {colleges.join(", ")}
+          {colleges.length > 0 && <span>{colleges.join(", ")}</span>}
         </p>
         <div className="mt-2 flex flex-wrap items-start gap-x-4 gap-y-2">
           <h1

@@ -161,6 +161,19 @@
   text-transform: uppercase;
 }
 
+/* Text links (and inline text buttons like Undo): a hairline underline that darkens on hover.
+   Add → for another page, ↗ for leaving the site (see "What you can click"). */
+@utility km-link {
+  text-decoration-line: underline;
+  text-decoration-color: var(--border-strong);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+  transition: text-decoration-color var(--dur-fast);
+  &:hover {
+    text-decoration-color: var(--foreground);
+  }
+}
+
 /* Short mono paragraph (hero lead). Uppercase and justified from 640px; left aligned on phones,
    where a narrow justified column leaves big gaps. Only for a few lines, never long text. */
 .km-lead {

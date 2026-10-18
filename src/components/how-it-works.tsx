@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight, CalendarDays, Check, Copy, Mail, Timer, Users } from "lucide-react";
+import { CalendarDays, Check, ChevronDown, Mail, Timer, Users } from "lucide-react";
 import { useEffect, useRef, useState, useSyncExternalStore, type CSSProperties, type ReactNode, type RefObject } from "react";
 import { useInView } from "@/lib/use-in-view";
 import { cn } from "@/lib/utils";
@@ -101,33 +101,45 @@ function Scrub({ a, b, children, className, mode = "in" }: ScrubProps) {
   );
 }
 
-const MISSING_TAG =
-  "col-start-1 row-start-1 inline-flex items-center rounded-sm border border-dashed border-border-strong px-2 py-0.5 text-[0.8125rem] leading-5 text-muted-foreground";
+/** Same look as SkillTag (plain text, never a box): hollow ring = not yet, honey ✓ = you have it. */
+const MISSING_TAG = "col-start-1 row-start-1 inline-flex items-center gap-1 text-sm leading-6 text-muted-foreground";
+const RING = <span className="size-2.5 rounded-full border border-current" />;
 
 function DemoTag({ label, a, b }: { label: string; a?: number; b?: number }) {
   if (a === undefined || b === undefined) {
-    return <span className={MISSING_TAG}>{label}</span>;
+    return (
+      <span className={MISSING_TAG}>
+        {RING}
+        {label}
+      </span>
+    );
   }
-  // The ✓ shifts the label, so the two states never show at once: the dashed tag fades out
-  // over the first half of the range, then the checked tag fades in over the second half.
+  // The ✓ replaces the ring, so the two states never show at once: the ring fades out over the
+  // first half of the range, then the checked tag fades in over the second half.
   const mid = (a + b) / 2;
   return (
     // Both states share one grid cell, so the cell is as wide as the wider (checked) one.
     <span className="inline-grid">
       <Scrub a={a} b={mid} mode="out" className={MISSING_TAG}>
+        {RING}
         {label}
       </Scrub>
       <Scrub
         a={mid}
         b={b}
         mode="fade"
-        className="col-start-1 row-start-1 inline-flex items-center gap-1 rounded-sm border border-transparent bg-honey-wash px-2 py-0.5 text-[0.8125rem] leading-5 font-medium text-honey-ink"
+        className="col-start-1 row-start-1 inline-flex items-center gap-1 text-sm leading-6 font-medium text-honey-ink"
       >
         <Check className="size-3.5" aria-hidden="true" />
         {label}
       </Scrub>
     </span>
   );
+}
+
+/** The "·" between demo tags (km-dots can't be used: each tag is its own little grid). */
+function Dot() {
+  return <span className="text-border-strong">·</span>;
 }
 
 function MeterSegment({ a, b }: { a?: number; b?: number }) {
@@ -149,27 +161,27 @@ function StoryDemo() {
         <Scrub a={0} b={0.04} className="km-label block text-muted-foreground">
           Your profile
         </Scrub>
-        <div className="mt-2 flex flex-wrap gap-1.5">
-          <Scrub a={0.02} b={0.08} className="rounded-none border bg-secondary px-2.5 py-0.5 text-sm">
-            Python
+        <div className="mt-2 flex flex-wrap items-baseline gap-x-2 text-sm">
+          <Scrub a={0.02} b={0.08}>Python</Scrub>
+          <Scrub a={0.07} b={0.13}>
+            <Dot /> <span className="font-mono text-xs">COP3502C</span>
           </Scrub>
-          <Scrub a={0.07} b={0.13} className="rounded-none border bg-secondary px-2.5 py-0.5 font-mono text-xs leading-6">
-            COP3502C
-          </Scrub>
-          <Scrub a={0.12} b={0.18} className="rounded-none border bg-secondary px-2.5 py-0.5 font-mono text-xs leading-6">
-            STA2023
+          <Scrub a={0.12} b={0.18}>
+            <Dot /> <span className="font-mono text-xs">STA2023</span>
           </Scrub>
         </div>
       </div>
 
       <Scrub a={0.24} b={0.3} className="block border bg-background p-4">
-        <span className="flex items-start justify-between gap-3">
-          <span className="font-serif text-xl leading-snug">Example: Robot vision for safer walking aids</span>
+        {/* A made-up project: labelled as such, and nothing on it is styled like a link or button. */}
+        <span className="flex items-center justify-between gap-3">
+          <span className="km-label text-muted-foreground">Example · not a real project</span>
           <Scrub a={0.82} b={0.88} className="km-label inline-flex shrink-0 items-center gap-1.5 border border-honey-ink/40 bg-honey-wash px-1.5 py-0.5 text-honey-ink">
             <span className="size-2 rounded-full bg-meter-on" />
             New
           </Scrub>
         </span>
+        <span className="mt-3 block font-serif text-xl leading-snug">Robot vision for safer walking aids</span>
         <span className="mt-1 block text-sm text-muted-foreground">Engineering and Computer Science</span>
         <span className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
           <span className="inline-flex items-center gap-1.5">
@@ -190,10 +202,13 @@ function StoryDemo() {
             </Scrub>
           </span>
         </span>
-        <span className="mt-3 flex flex-wrap gap-1.5">
+        <span className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1">
           <DemoTag label="C/C++" a={0.31} b={0.35} />
+          <Dot />
           <DemoTag label="Python" a={0.35} b={0.39} />
+          <Dot />
           <DemoTag label="Computer vision" />
+          <Dot />
           <DemoTag label="Embedded systems" />
         </span>
         <span className="mt-3 flex items-center gap-3">
@@ -212,10 +227,7 @@ function StoryDemo() {
             <Check className="size-3.5 text-honey-ink" />
             Checked today
           </Scrub>
-          <span className="inline-flex items-center gap-0.5">
-            Original KRSP listing
-            <ArrowUpRight className="size-3.5" />
-          </span>
+          <span>Links to the KRSP listing</span>
         </span>
       </Scrub>
 
@@ -236,14 +248,8 @@ function StoryDemo() {
             the robot vision project this fall.
           </Scrub>
         </span>
-        <Scrub a={0.67} b={0.72} className="mt-3 flex gap-2">
-          <span className="inline-flex h-8 items-center gap-1.5 rounded-md border px-3 text-xs font-medium">
-            <Copy className="size-3.5" />
-            Copy
-          </span>
-          <span className="inline-flex h-8 items-center gap-1.5 rounded-md bg-primary px-3 text-xs font-semibold text-primary-foreground">
-            Open in email app
-          </span>
+        <Scrub a={0.67} b={0.72} className="km-label mt-3 block text-muted-foreground">
+          Then copy it, or open it in your email app
         </Scrub>
       </Scrub>
     </div>
@@ -314,9 +320,13 @@ export function HowItWorks() {
         </div>
       </section>
 
-      <details className="km-story-compact mx-auto max-w-[1200px] px-4 md:px-6">
-        <summary className="inline-flex min-h-11 cursor-pointer items-center text-sm font-medium text-muted-foreground hover:text-foreground">
+      <details className="km-story-compact group mx-auto max-w-[1200px] px-4 md:px-6">
+        <summary className="km-link inline-flex min-h-11 cursor-pointer list-none items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground [&::-webkit-details-marker]:hidden">
           How KnightMatch works
+          <ChevronDown
+            className="size-4 transition-transform duration-[var(--dur-base)] group-open:rotate-180"
+            aria-hidden="true"
+          />
         </summary>
         <ol className="mt-2 mb-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {STEPS.map((s, i) => (

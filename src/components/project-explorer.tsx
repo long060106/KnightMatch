@@ -1,6 +1,6 @@
 "use client";
 
-import { SlidersHorizontal, X } from "lucide-react";
+import { ArrowRight, SlidersHorizontal, X } from "lucide-react";
 import Link from "next/link";
 import { ViewTransition, addTransitionType, startTransition, useMemo, useState, useSyncExternalStore } from "react";
 import { Button } from "@/components/ui/button";
@@ -250,8 +250,12 @@ export function ProjectExplorer({ projects, skills, courseSkills, topics, baseli
           <p className="mt-4 rounded-lg border border-dashed px-4 py-3 text-sm text-muted-foreground">
             Matching against the skills and courses you added.{" "}
             <span className="text-foreground">Many teams still take students who are eager to learn. Reach out.</span>{" "}
-            <Link href="/match" className="font-medium text-foreground underline underline-offset-4 hover:text-honey-ink">
+            <Link href="/match" className="km-link group inline-flex items-center gap-1 font-medium text-foreground">
               Edit my skills
+              <ArrowRight
+                className="size-3.5 transition-transform duration-[var(--dur-base)] ease-[var(--ease-out)] group-hover:translate-x-0.5"
+                aria-hidden="true"
+              />
             </Link>
           </p>
         )}

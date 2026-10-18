@@ -80,7 +80,7 @@ export function CoursePicker({ courses, skills, selected, onAdd, onRemove }: Cou
                 onClick={() => onRemove(code)}
                 title={titleOf.get(code)}
                 aria-label={`Remove ${code}${titleOf.get(code) ? `, ${titleOf.get(code)}` : ""}`}
-                className="inline-flex min-h-11 items-center gap-2 rounded-none border bg-card pr-2.5 pl-3 transition-colors duration-[var(--dur-fast)] hover:border-border-strong active:scale-[0.97] lg:min-h-9"
+                className="inline-flex min-h-11 items-center gap-2 rounded-none border border-input bg-card pr-2.5 pl-3 transition-colors duration-[var(--dur-fast)] hover:border-foreground active:scale-[0.97] lg:min-h-9"
               >
                 <span className="font-mono text-xs">{code}</span>
                 <X className="size-3.5 text-muted-foreground" aria-hidden="true" />

@@ -47,7 +47,7 @@ function SkillChip({
         "inline-flex min-h-11 items-center gap-1.5 rounded-none border px-3 text-sm transition-[background-color,border-color,color,transform] duration-[var(--dur-fast)] active:scale-[0.97] lg:min-h-9",
         on && "border-transparent bg-honey-wash font-medium text-honey-ink",
         implied && "border-dashed border-meter-on bg-card text-honey-ink",
-        !on && !implied && "bg-card hover:border-border-strong",
+        !on && !implied && "border-input bg-card hover:border-foreground",
       )}
     >
       {(on || implied) && <Check className="size-3.5" aria-hidden="true" />}

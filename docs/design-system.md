@@ -56,9 +56,17 @@ Three voices, each with one job. Size says what to read first; the font says wha
 
 One rule, everywhere: **anything clickable carries a signal, anything that isn't never does.**
 
-- **Buttons**: a honey block (main action) or a 1px outline (secondary).
-- **Text links**: always a hairline underline that darkens on hover. Going to another page adds →,
-  leaving the site adds ↗. Mono label links follow the same rule ("Browse all 42 projects →").
+- **Buttons**: a honey block (main action) or a 1px outline in `--input` (secondary, ≥3:1). No ghost
+  buttons: Cancel, Start over and Clear my profile are outlines too.
+- **Text links**: always a hairline underline that darkens on hover (`km-link`). Going to another page
+  adds →, leaving the site adds ↗, going back ("All projects") starts with ←. Mono label links follow
+  the same rule ("Browse all 42 projects →", the topics above a project title). Inline text actions
+  that stay on the page (Undo, Paste text instead) get the underline and no arrow.
+- **Toggles in the match picker** (skills, added courses) are clickable, so they are 1px-outline boxes;
+  that is the only place a skill is boxed. Disclosures (skill groups, the collapsed "How it works")
+  carry a chevron.
+- **Examples**: the How-it-works demo card is labelled "Example · not a real project" and nothing on it
+  is underlined, arrowed or shaped like a button.
 - **Project rows**: the title is underlined and followed by →; the whole row lightens a touch and its
   top hairline draws across on hover. The full row is the link.
 - **Ticker items**: underlined titles with →.

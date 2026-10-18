@@ -87,7 +87,7 @@ export function EmailDraftDialog({ input, leaderName, krspUrl }: EmailDraftDialo
             href={krspUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-0.5 font-medium text-foreground underline underline-offset-4 hover:text-honey-ink"
+            className="km-link inline-flex items-center gap-0.5 font-medium text-foreground"
           >
             {leaderName ? `${leaderName.split(",")[0]}'s email is on the KRSP listing` : "the team leader's email is on the KRSP listing"}
             <ArrowUpRight className="size-3.5" aria-hidden="true" />
@@ -134,9 +134,9 @@ export function EmailDraftDialog({ input, leaderName, krspUrl }: EmailDraftDialo
             {copied ? "Copied" : "Copy email"}
           </Button>
           <Button
-            variant="ghost"
+            variant="outline"
             onClick={() => setDraft(buildEmailDraft(input))}
-            className="h-11 gap-2 px-3 text-muted-foreground active:scale-[0.97]"
+            className="h-11 gap-2 px-4 active:scale-[0.97]"
           >
             <RotateCcw className="size-4" aria-hidden="true" />
             Start over

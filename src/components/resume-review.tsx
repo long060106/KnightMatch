@@ -171,7 +171,7 @@ export function ResumeReview({
         Your {source} never left this device.
       </p>
       <div className="flex flex-col-reverse gap-2 md:flex-row md:items-center">
-        <Button variant="ghost" onClick={() => onOpenChange(false)} className="h-11 px-4 text-muted-foreground active:scale-[0.97]">
+        <Button variant="outline" onClick={() => onOpenChange(false)} className="h-11 px-4 active:scale-[0.97]">
           Cancel
         </Button>
         <Button

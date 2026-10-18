@@ -29,16 +29,16 @@ function PlaceRow({ link, compact }: { link: PlaceLink; compact?: boolean }) {
         href={link.url}
         target="_blank"
         rel="noopener noreferrer"
-        className={cn(
-          "group grid min-h-11 grid-cols-[1fr_auto] gap-x-4 gap-y-1 rounded-lg px-3 py-3 transition-colors duration-[var(--dur-fast)] hover:bg-card",
-          compact ? "items-center" : "items-start",
-        )}
+        className="group grid min-h-11 content-center gap-y-1 px-3 py-3 transition-colors duration-[var(--dur-fast)] hover:bg-card"
       >
-        <span className="font-medium underline-offset-4 group-hover:underline">{link.title}</span>
-        <ArrowUpRight
-          className="row-span-2 mt-1 size-4 text-muted-foreground transition-transform duration-[var(--dur-fast)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-foreground"
-          aria-hidden="true"
-        />
+        {/* The ↗ follows the title, like every other link that leaves the site. */}
+        <span className="font-medium">
+          <span className="km-link group-hover:decoration-foreground">{link.title}</span>
+          <ArrowUpRight
+            className="ml-1 inline size-4 -translate-y-px text-muted-foreground transition-[translate,color] duration-[var(--dur-fast)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-foreground"
+            aria-hidden="true"
+          />
+        </span>
         <span className="text-sm text-muted-foreground">
           {!compact && <span className="block max-w-[60ch]">{link.description}</span>}
           <span className="text-xs">{host(link.url)}</span>
@@ -73,7 +73,7 @@ function Callout({ callout }: { callout: NonNullable<PlaceSection["callout"]> })
           href={positions.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex min-h-11 items-center gap-0.5 font-medium text-foreground underline underline-offset-4 hover:text-honey-ink"
+          className="km-link inline-flex min-h-11 items-center gap-0.5 font-medium text-foreground"
         >
           {positions.label}
           <ArrowUpRight className="size-3.5" aria-hidden="true" />

@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowDown, RotateCcw } from "lucide-react";
+import { ArrowDown, ArrowRight, RotateCcw } from "lucide-react";
 import Link from "next/link";
 import { ViewTransition, addTransitionType, startTransition, useEffect, useMemo, useState } from "react";
 import { isNewThisWeek } from "@/lib/filters";
@@ -107,7 +107,7 @@ export function MatchWorkbench({ projects, skills, groups, popular, courses, cou
           change(state.previous);
           setUndo(null);
         }}
-        className="inline-flex min-h-11 items-center font-medium underline underline-offset-4 hover:text-honey-ink"
+        className="km-link inline-flex min-h-11 items-center font-medium"
       >
         Undo
       </button>
@@ -188,7 +188,7 @@ export function MatchWorkbench({ projects, skills, groups, popular, courses, cou
                       setUndo({ previous: profile, message: "Cleared your profile", from: "clear" });
                       change(EMPTY);
                     }}
-                    className="inline-flex min-h-11 items-center gap-2 rounded-md px-2 font-medium text-muted-foreground hover:bg-accent hover:text-foreground active:scale-[0.97]"
+                    className="inline-flex h-11 items-center gap-2 border border-input px-3 font-medium text-muted-foreground transition-colors duration-[var(--dur-fast)] hover:bg-muted hover:text-foreground active:scale-[0.97]"
                   >
                     <RotateCcw className="size-4" aria-hidden="true" />
                     Clear my profile
@@ -263,9 +263,13 @@ export function MatchWorkbench({ projects, skills, groups, popular, courses, cou
             Looking for full teams too?
             <Link
               href="/projects?full=1"
-              className="inline-flex min-h-11 items-center font-medium text-foreground underline underline-offset-4 hover:text-honey-ink"
+              className="km-link group inline-flex min-h-11 items-center gap-1 font-medium text-foreground"
             >
               Browse every project
+              <ArrowRight
+                className="size-3.5 transition-transform duration-[var(--dur-base)] ease-[var(--ease-out)] group-hover:translate-x-0.5"
+                aria-hidden="true"
+              />
             </Link>
           </p>
         </section>

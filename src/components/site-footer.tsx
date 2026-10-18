@@ -11,7 +11,7 @@ export function SiteFooter() {
           KnightMatch is a student-built tool. Project details come from the public{" "}
           <a
             href="https://knight.research.ucf.edu/project-list/"
-            className="inline-flex items-center gap-0.5 font-medium text-foreground underline underline-offset-4 hover:text-honey-ink"
+            className="km-link inline-flex items-center gap-0.5 font-medium text-foreground"
           >
             Knight Research Scholars Program list
             <ArrowUpRight className="size-3.5" aria-hidden="true" />

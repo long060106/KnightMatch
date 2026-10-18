@@ -219,7 +219,7 @@ export function ResumeUpload({ profile, skills, courses, onAdd, undo }: ResumeUp
                     setPasting(true);
                     setNotice(null);
                   }}
-                  className="inline-flex min-h-11 items-center gap-2 justify-self-start font-medium underline underline-offset-4 hover:text-honey-ink"
+                  className="km-link inline-flex min-h-11 items-center gap-2 justify-self-start font-medium"
                 >
                   <ClipboardPaste className="size-4" aria-hidden="true" />
                   Paste text instead
@@ -252,13 +252,13 @@ export function ResumeUpload({ profile, skills, courses, onAdd, undo }: ResumeUp
                 Find courses and skills
               </Button>
               <Button
-                variant="ghost"
+                variant="outline"
                 onClick={() => {
                   setPasting(false);
                   setPasted("");
                   setNotice(null);
                 }}
-                className="h-11 px-3 text-muted-foreground active:scale-[0.97]"
+                className="h-11 px-4 active:scale-[0.97]"
               >
                 Cancel
               </Button>
