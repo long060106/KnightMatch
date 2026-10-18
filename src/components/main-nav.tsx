@@ -36,16 +36,19 @@ export function HeaderNav() {
                 href={item.href}
                 aria-current={active ? "page" : undefined}
                 className={cn(
-                  "km-label inline-flex h-11 items-center gap-2 rounded-md px-3 transition-colors duration-[var(--dur-fast)]",
-                  active ? "text-foreground" : "text-muted-foreground hover:bg-accent hover:text-foreground",
+                  "group km-label inline-flex h-11 items-center gap-2 px-3 transition-colors duration-[var(--dur-fast)]",
+                  active ? "text-foreground" : "text-muted-foreground hover:text-foreground focus-visible:text-foreground",
                 )}
               >
-                {/* The dot marks where you are (shape, not only color). */}
+                {/* Filled dot = where you are, hollow dot = where you're pointing (shape, not only color).
+                    The slot is always there, so every label sits the same distance from its neighbors. */}
                 <span
                   aria-hidden="true"
                   className={cn(
-                    "size-2 rounded-full bg-foreground transition-transform duration-[var(--dur-base)] ease-[var(--ease-out)]",
-                    active ? "scale-100" : "scale-0",
+                    "size-2 rounded-full transition-transform duration-[var(--dur-base)] ease-[var(--ease-out)]",
+                    active
+                      ? "bg-foreground"
+                      : "scale-0 border border-current group-hover:scale-100 group-focus-visible:scale-100",
                   )}
                 />
                 <HoverScramble text={item.label} />
