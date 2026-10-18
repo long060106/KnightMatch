@@ -15,6 +15,7 @@ import { DrawRule } from "./draw-rule";
 import { ProjectCard } from "./project-card";
 import { Scramble } from "./scramble";
 import { SkillPicker, type SkillGroup } from "./skill-picker";
+import { StickyPanel } from "./sticky-panel";
 
 interface WorkbenchProps {
   projects: ListingProject[];
@@ -104,11 +105,8 @@ export function MatchWorkbench({ projects, skills, groups, popular, courses, cou
   return (
     <>
       <div className="grid gap-10 py-8 lg:grid-cols-[minmax(0,380px)_minmax(0,1fr)] lg:gap-12">
-        <section aria-labelledby="profile-heading" className="lg:sticky lg:top-6 lg:self-start">
-          <div
-            data-lenis-prevent
-            className="grid gap-8 lg:-m-1 lg:max-h-[calc(100dvh-3rem)] lg:overflow-y-auto lg:overscroll-contain lg:p-1 lg:pr-3 lg:pb-6 lg:[scrollbar-width:thin]"
-          >
+        <section aria-labelledby="profile-heading">
+          <StickyPanel className="grid gap-8 lg:pb-6">
             <div className="flex items-baseline justify-between gap-3">
               <h2 id="profile-heading" className="text-sm font-medium text-muted-foreground">
                 <Scramble text="Your profile" />
@@ -164,7 +162,7 @@ export function MatchWorkbench({ projects, skills, groups, popular, courses, cou
                 )}
               </div>
             )}
-          </div>
+          </StickyPanel>
         </section>
 
         <section

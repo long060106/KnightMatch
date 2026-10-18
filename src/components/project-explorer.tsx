@@ -36,6 +36,7 @@ import { useNow } from "@/lib/time";
 import type { ListingProject, SkillMap } from "@/lib/types";
 import { FilterPanel, type FacetOption } from "./filter-panel";
 import { FullTeamRow, ProjectCard } from "./project-card";
+import { StickyPanel } from "./sticky-panel";
 
 interface ExplorerProps {
   projects: ListingProject[];
@@ -145,14 +146,9 @@ export function ProjectExplorer({ projects, skills, courseSkills, baselineAt }: 
   return (
     <div className="lg:grid lg:grid-cols-[260px_minmax(0,1fr)] lg:gap-10">
       <aside aria-label="Filters" className="hidden lg:block">
-        {/* Never taller than the screen: if the filters don't fit, the sidebar scrolls on its own,
-            so the last group (Semester) is always reachable. data-lenis-prevent = native wheel here. */}
-        <div
-          data-lenis-prevent
-          className="sticky top-6 -m-1 max-h-[calc(100dvh-3rem)] overflow-y-auto overscroll-contain p-1 pb-6 [scrollbar-width:thin]"
-        >
+        <StickyPanel className="pb-6">
           <FilterPanel {...panelProps} />
-        </div>
+        </StickyPanel>
       </aside>
 
       <div>

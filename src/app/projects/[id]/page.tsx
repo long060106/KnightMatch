@@ -12,6 +12,7 @@ import {
   ProjectSidebar,
 } from "@/components/project-detail-client";
 import { Scramble } from "@/components/scramble";
+import { StickyPanel } from "@/components/sticky-panel";
 import { courseSkills, getProject, meta, projects, skills } from "@/lib/data";
 import { shortCollege } from "@/lib/filters";
 import type { Project, SkillMap } from "@/lib/types";
@@ -192,11 +193,11 @@ export default async function ProjectPage({ params }: Params) {
           </section>
         </div>
 
-        <aside aria-label="Your match and how to apply" className="lg:sticky lg:top-6 lg:self-start">
+        <aside aria-label="Your match and how to apply">
           <MobileApplyBar open={project.status === "open"} />
-          <div data-lenis-prevent className="lg:-m-1 lg:max-h-[calc(100dvh-3rem)] lg:overflow-y-auto lg:overscroll-contain lg:p-1 lg:[scrollbar-width:thin]">
+          <StickyPanel>
             <ProjectSidebar data={data} />
-          </div>
+          </StickyPanel>
         </aside>
       </div>
     </article>

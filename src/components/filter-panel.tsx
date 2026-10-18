@@ -1,12 +1,13 @@
 "use client";
 
-import { RotateCcw, Search } from "lucide-react";
+import { Check, RotateCcw, Search } from "lucide-react";
 import { useEffect, useId, useRef, useState } from "react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { DEFAULT_FILTERS, activeFilterCount, shortCollege, type Filters } from "@/lib/filters";
+import { cn } from "@/lib/utils";
 
 export interface FacetOption {
   value: string;
@@ -62,7 +63,11 @@ function SearchField({ value, onCommit }: { value: string; onCommit: (q: string)
   );
 }
 
-function CheckboxGroup({
+/**
+ * A group of toggle chips. Chips wrap side by side, so the whole panel stays short enough to fit
+ * the screen without a scrollbar of its own.
+ */
+function ChipGroup({
   legend,
   options,
   selected,
@@ -75,26 +80,33 @@ function CheckboxGroup({
   format?: (value: string) => string;
   onToggle: (value: string) => void;
 }) {
-  const baseId = useId();
-  // Options with no projects under the current filters are hidden (unless already ticked),
-  // which keeps the panel short; they come back when e.g. full teams are included.
+  // Options with no projects under the current filters are hidden (unless already selected);
+  // they come back when e.g. full teams are included.
   const visible = options.filter((o) => o.count > 0 || selected.includes(o.value));
   return (
-    <fieldset className="grid gap-0.5">
-      <legend className="mb-1 text-sm font-semibold">{legend}</legend>
-      {visible.map((option, i) => {
-        const id = `${baseId}-${i}`;
-        const checked = selected.includes(option.value);
-        return (
-          <div key={option.value} className="flex min-h-11 items-center gap-3 lg:min-h-9">
-            <Checkbox id={id} checked={checked} onCheckedChange={() => onToggle(option.value)} />
-            <Label htmlFor={id} className="flex flex-1 cursor-pointer justify-between gap-3 py-1 text-sm font-normal leading-snug">
+    <fieldset>
+      <legend className="mb-2 text-sm font-semibold">{legend}</legend>
+      <div className="flex flex-wrap gap-2">
+        {visible.map((option) => {
+          const on = selected.includes(option.value);
+          return (
+            <button
+              key={option.value}
+              type="button"
+              aria-pressed={on}
+              onClick={() => onToggle(option.value)}
+              className={cn(
+                "inline-flex min-h-11 items-center gap-1.5 rounded-full border px-3 py-1 text-left text-sm leading-snug transition-[background-color,border-color,color,transform] duration-[var(--dur-fast)] active:scale-[0.97] lg:min-h-9",
+                on ? "border-transparent bg-honey-wash font-medium text-honey-ink" : "bg-card hover:border-border-strong",
+              )}
+            >
+              {on && <Check className="size-3.5 shrink-0" aria-hidden="true" />}
               <span>{format ? format(option.value) : option.value}</span>
-              <span className="text-muted-foreground tabular-nums">{option.count}</span>
-            </Label>
-          </div>
-        );
-      })}
+              <span className={cn("tabular-nums", on ? "text-honey-ink/80" : "text-muted-foreground")}>{option.count}</span>
+            </button>
+          );
+        })}
+      </div>
     </fieldset>
   );
 }
@@ -109,7 +121,7 @@ export function FilterPanel({ filters, onChange, colleges, semesters, beginnerCo
   const active = activeFilterCount(filters) > 0;
 
   return (
-    <div className="grid gap-6">
+    <div className="grid gap-5">
       <SearchField value={filters.q} onCommit={(q) => onChange({ ...filters, q })} />
 
       <div className="grid gap-1">
@@ -135,14 +147,14 @@ export function FilterPanel({ filters, onChange, colleges, semesters, beginnerCo
         </div>
       </div>
 
-      <CheckboxGroup
+      <ChipGroup
         legend="College"
         options={colleges}
         selected={filters.colleges}
         format={shortCollege}
         onToggle={(value) => onChange({ ...filters, colleges: toggle(filters.colleges, value) })}
       />
-      <CheckboxGroup
+      <ChipGroup
         legend="Semester"
         options={semesters}
         selected={filters.semesters}
