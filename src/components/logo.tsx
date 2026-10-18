@@ -21,7 +21,7 @@ export function Logo({ className }: { className?: string }) {
   return (
     <span className={cn("inline-flex items-center gap-2", className)}>
       <KnightMark />
-      <span className="font-serif text-xl font-semibold tracking-tight">KnightMatch</span>
+      <span className="font-serif text-2xl leading-none">KnightMatch</span>
     </span>
   );
 }

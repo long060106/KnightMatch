@@ -35,12 +35,20 @@ No UCF logos, mascots or official brand styling. Footer always says "Not affilia
 
 ## Type
 
-- **Newsreader** (serif, optical sizes): page titles and project titles. Weight 500–600.
-- **Public Sans**: everything else. Body 16px / 1.6.
-- **Martian Mono**: only for UCF course codes (`COP3502C`).
-- Scale (px): 12 · 14 · 16 · 18 · 20 · 24 · 30 · 36 · 48. Hero uses `clamp(2rem, 1.2rem + 3.2vw, 3.25rem)`.
-- Sentence case everywhere. No all-caps labels, no single highlighted word in headlines,
-  no `→` appended to button text.
+Three voices, each with one job. Size says what to read first; the font says what kind of thing it is.
+
+- **Instrument Serif** (condensed display serif, one weight): headlines, big numbers, project titles,
+  step titles. It only has 400, so hierarchy comes from size, never from bold (no `font-semibold`,
+  the browser would fake it).
+- **Public Sans**: body text, buttons, form controls. Body 16px / 1.6, hero lead 18–20px.
+- **IBM Plex Mono**: small uppercase labels (`km-label`: 12px, 500, +0.06em tracking) for the dateline,
+  nav links, section labels, stat captions and ticker meta; also UCF course codes (`COP3502C`).
+- Scale (px): 12 · 14 · 16 · 18 · 20 · 24 · 30 · 36 · 48, plus two display sizes:
+  hero headline `clamp(2.75rem, 11.5vw, 5rem)` on phones and container width ÷ 11.2 from 1024px
+  (≈103px), and the hero count `clamp(6rem, 4.5rem + 4vw, 8.5rem)`.
+- Uppercase is for exactly two things: the hero headline and `km-label` labels. Everything else
+  (project titles, body, buttons) is sentence case. Never uppercase a sentence of body text.
+- No single highlighted word in headlines, no `→` appended to button text.
 
 ## Layout
 
@@ -49,6 +57,23 @@ No UCF logos, mascots or official brand styling. Footer always says "Not affilia
 - <1024px: "Filters" button opens a bottom sheet.
 - <768px: bottom tab bar (Projects, Match me, Other places); ≥768px: links in the header.
 - Touch targets ≥44px on phones; spacing on a 4px grid.
+
+## Homepage hero
+
+Reading order, biggest to smallest:
+
+1. **Headline** (display caps): "Find the research team that's looking for you." From 1024px it is
+   two lines justified edge to edge; the first line's hairline stretches to fill, the second spreads
+   its words. Phones wrap it naturally, left aligned.
+2. **Lead + main button** (left): what to do and the one primary action. "Browse all N projects" is a
+   mono label link, clearly secondary.
+3. **Proof panel** (right, behind a column rule): the open count huge, "of N teams have open spots",
+   one cell per listed team (honey fill = recruiting, outline = full; shape differs, not only color),
+   and spots · colleges · new this week as a label row.
+4. **Dateline** (top, mono label): "Unofficial guide to Knight Research Scholars" and when the list
+   was last checked. Small on purpose: it frames the page, it doesn't lead it.
+5. **Ticker** (full bleed under the hero): the recruiting teams' real titles drifting slowly, each a
+   link to its project. Pauses on hover, on keyboard focus, off screen and with its own button.
 
 ## Shape
 
@@ -64,6 +89,11 @@ Ease-out `cubic-bezier(.2,.8,.2,1)` for arrivals; exits are ~65% of enter time.
 2. **Match segments fill** one by one (40ms stagger) and tags turn from dashed to ✓.
 3. **Title morph** from card to detail page heading (`title-<id>`).
 4. **Hover/press**: card lifts 2px with a stronger border (pointer devices only), buttons press to 0.97.
+5. **Hero entrance** (CSS keyframes only, plays from the prerendered HTML): headline words rise out
+   of their own masks (55ms stagger), the headline rule draws, the lead and buttons fade up, then the
+   open cells fill one by one (45ms stagger). Plays once per page load.
+6. **Ticker**: one row duplicated and slid by half its width, `linear`, about 10s per team.
+   Reduced motion: it stands still and scrolls sideways instead, and the pause button is hidden.
 
 Only `transform` and `opacity` animate. `prefers-reduced-motion` turns all of it off, including
 the New pulse. Browsers without View Transitions simply swap content instantly.

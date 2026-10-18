@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Martian_Mono, Newsreader, Public_Sans } from "next/font/google";
+import { IBM_Plex_Mono, Instrument_Serif, Public_Sans } from "next/font/google";
 import { BottomTabs } from "@/components/main-nav";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -8,10 +8,11 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { HEAD_SCRIPT } from "@/lib/profile-key";
 import "./globals.css";
 
-const newsreader = Newsreader({
-  variable: "--font-newsreader",
+// Condensed display serif: headlines, big numbers, project titles. One weight; hierarchy comes from size.
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-instrument-serif",
   subsets: ["latin"],
-  axes: ["opsz"],
+  weight: "400",
   display: "swap",
 });
 
@@ -21,11 +22,12 @@ const publicSans = Public_Sans({
   display: "swap",
 });
 
-const martianMono = Martian_Mono({
-  variable: "--font-martian-mono",
+// Uppercase labels (dateline, nav, section labels) and UCF course codes.
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-plex-mono",
   subsets: ["latin"],
+  weight: ["400", "500"],
   display: "swap",
-  preload: false, // only used for course codes, never above the fold
 });
 
 export const metadata: Metadata = {
@@ -49,7 +51,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${newsreader.variable} ${publicSans.variable} ${martianMono.variable} antialiased`}
+      className={`${instrumentSerif.variable} ${publicSans.variable} ${plexMono.variable} antialiased`}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: HEAD_SCRIPT }} />

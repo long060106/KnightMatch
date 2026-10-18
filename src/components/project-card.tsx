@@ -78,7 +78,7 @@ export function ProjectCard({ project, skills, match, have, isNew }: CardProps) 
       )}
     >
       <div className="flex items-start justify-between gap-3">
-        <h3 id={titleId} className="font-serif text-xl leading-snug font-medium">
+        <h3 id={titleId} className="font-serif text-2xl leading-tight">
           <Link
             href={`/projects/${project.id}`}
             transitionTypes={[TO_DETAIL]}
@@ -149,7 +149,7 @@ export function FullTeamRow({ project }: { project: ListingProject }) {
       aria-labelledby={titleId}
       className="relative flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 rounded-lg border border-dashed px-4 py-3 transition-colors duration-[var(--dur-fast)] hover:border-border-strong has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-offset-2 has-[a:focus-visible]:outline-ring"
     >
-      <h3 id={titleId} className="font-serif text-base leading-snug text-foreground/80">
+      <h3 id={titleId} className="font-serif text-lg leading-snug text-foreground/80">
         <Link
           href={`/projects/${project.id}`}
           transitionTypes={[TO_DETAIL]}

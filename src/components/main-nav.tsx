@@ -35,11 +35,19 @@ export function HeaderNav() {
                 href={item.href}
                 aria-current={active ? "page" : undefined}
                 className={cn(
-                  "inline-flex h-11 items-center rounded-md px-3 text-sm font-medium transition-colors duration-[var(--dur-fast)]",
+                  "km-label inline-flex h-11 items-center gap-2 rounded-md px-3 transition-colors duration-[var(--dur-fast)]",
                   active ? "text-foreground" : "text-muted-foreground hover:bg-accent hover:text-foreground",
                 )}
               >
-                <span className={cn("border-b-2 py-1", active ? "border-honey" : "border-transparent")}>{item.label}</span>
+                {/* The dot marks where you are (shape, not only color). */}
+                <span
+                  aria-hidden="true"
+                  className={cn(
+                    "size-2 rounded-full bg-foreground transition-transform duration-[var(--dur-base)] ease-[var(--ease-out)]",
+                    active ? "scale-100" : "scale-0",
+                  )}
+                />
+                {item.label}
               </Link>
             </li>
           );

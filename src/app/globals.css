@@ -106,9 +106,9 @@
   --color-urgent-wash: var(--urgent-wash);
 
   --font-sans: var(--font-public-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-newsreader), ui-serif, Georgia, serif;
-  --font-heading: var(--font-newsreader), ui-serif, Georgia, serif;
-  --font-mono: var(--font-martian-mono), ui-monospace, monospace;
+  --font-serif: var(--font-instrument-serif), ui-serif, Georgia, serif;
+  --font-heading: var(--font-instrument-serif), ui-serif, Georgia, serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
 
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
@@ -151,6 +151,16 @@
   }
 }
 
+/* Small uppercase mono labels: dateline, nav, section labels, stat captions. Never for sentences. */
+@utility km-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
 /* Returning students: reserve the match row before React reads localStorage (no layout shift). */
 html[data-has-profile] .km-match-slot {
   min-height: 2rem; /* the meter row: 0.75rem margin + 1.25rem line */
@@ -184,6 +194,131 @@ html[data-has-profile] .km-match-slot {
 }
 .js .km-rule:not([data-inview]) {
   transform: scaleX(0);
+}
+/* The same, as a column rule drawn from the top. */
+.km-rule-v {
+  width: 1px;
+  background: var(--border);
+  transform-origin: top;
+  transition: transform 1100ms var(--ease-out);
+}
+.js .km-rule-v:not([data-inview]) {
+  transform: scaleY(0);
+}
+
+/* ---- Hero ----
+   Pure CSS keyframes (no JS), so it plays from the prerendered HTML and ends fully visible.
+   Order: headline words rise one by one, then the lead and buttons, then the open cells fill. */
+.km-word-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  /* Room on every side (ascenders, descenders, overhanging serifs), so the mask never clips letters. */
+  padding: 0.08em 0.08em 0.18em;
+  margin: -0.08em -0.08em -0.18em;
+  /* As a flex item (justified lines), overflow: hidden would otherwise let it shrink below the word. */
+  flex-shrink: 0;
+}
+.km-word {
+  display: inline-block;
+}
+/* Headline lines wrap naturally on small screens. From 1024px each line runs edge to edge:
+   the first line's rule stretches to fill, the second line spreads its words (justified caps). */
+.km-headline {
+  font-size: clamp(2.75rem, 11.5vw, 5rem);
+}
+.km-headline-line {
+  display: inline;
+}
+.km-headline-rule {
+  display: none;
+}
+@media (min-width: 1024px) {
+  .km-headline {
+    /* Sized from the container width so both lines always fit on one row each. */
+    font-size: calc(min(100vw - 4rem, 72rem) / 11.2);
+  }
+  .km-headline-line {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    column-gap: 0.24em;
+  }
+  .km-headline-rule {
+    display: block;
+    flex: 1 1 0;
+    min-width: 0.6em;
+    height: 1px;
+    margin-inline: 0.12em;
+    align-self: center;
+    background: currentColor;
+    transform-origin: left;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .km-word {
+    animation: km-word-rise 900ms var(--ease-out) both;
+    animation-delay: calc(60ms + var(--i) * 55ms);
+  }
+  .km-headline-rule {
+    animation: km-draw 1000ms var(--ease-out) 260ms both;
+  }
+  .km-hero-in {
+    animation:
+      km-fade-in 600ms var(--ease-out) both,
+      km-rise 700ms var(--ease-out) both;
+    animation-delay: var(--d, 0ms);
+  }
+  .km-cell {
+    animation: km-cell-pop 420ms var(--ease-out) both;
+    animation-delay: calc(650ms + var(--i) * 45ms);
+  }
+}
+@keyframes km-word-rise {
+  from {
+    transform: translateY(110%);
+  }
+}
+@keyframes km-draw {
+  from {
+    transform: scaleX(0);
+  }
+}
+@keyframes km-cell-pop {
+  from {
+    transform: scale(0.25);
+    opacity: 0;
+  }
+}
+
+/* Ticker of recruiting teams: two identical rows, the track slides by one row and loops. */
+.km-ticker-viewport {
+  mask-image: linear-gradient(to right, transparent, #000 2.5rem, #000 calc(100% - 4rem), transparent);
+}
+.km-ticker-track {
+  animation: km-marquee calc(var(--n) * 10s) linear infinite;
+}
+.km-ticker:hover .km-ticker-track,
+.km-ticker:focus-within .km-ticker-track,
+.km-ticker[data-paused] .km-ticker-track {
+  animation-play-state: paused;
+}
+@keyframes km-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .km-ticker-track {
+    animation: none;
+  }
+  .km-ticker-viewport {
+    overflow-x: auto;
+  }
+  .km-ticker-copy,
+  .km-ticker-toggle {
+    display: none;
+  }
 }
 
 /* Scroll-scrubbed pieces of the How-it-works demo. --p (0..1) is the scroll progress through the
@@ -348,7 +483,8 @@ html[data-has-profile] .km-story-compact {
   .km-pulse-ring {
     display: none;
   }
-  .js .km-rule:not([data-inview]) {
+  .js .km-rule:not([data-inview]),
+  .js .km-rule-v:not([data-inview]) {
     transform: none;
   }
 }

@@ -301,7 +301,7 @@ export function HowItWorks() {
         <div className="km-story-pin">
           <div className="mx-auto grid w-full max-w-[1200px] items-center gap-10 px-4 md:px-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
             <div className="order-1 lg:order-2">
-              <h2 id="how-title" className="text-sm font-medium text-muted-foreground">
+              <h2 id="how-title" className="km-label text-muted-foreground">
                 <Scramble text="How KnightMatch works" />
               </h2>
               <StepList active={step} />
