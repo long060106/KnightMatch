@@ -1,6 +1,6 @@
 "use client";
 
-import { Compass, House, LayoutList, ListChecks, type LucideIcon } from "lucide-react";
+import { Compass, House, Info, LayoutList, ListChecks, type LucideIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
@@ -17,6 +17,7 @@ const ITEMS: NavItem[] = [
   { href: "/projects", label: "Projects", icon: LayoutList },
   { href: "/match", label: "Match me", icon: ListChecks },
   { href: "/other-places", label: "Other places", icon: Compass },
+  { href: "/about", label: "About", icon: Info },
 ];
 
 function isActive(pathname: string, href: string): boolean {
@@ -37,7 +38,7 @@ export function HeaderNav() {
                 href={item.href}
                 aria-current={active ? "page" : undefined}
                 className={cn(
-                  "group km-label inline-flex h-11 items-center gap-2 px-3 transition-colors duration-[var(--dur-fast)]",
+                  "group km-label inline-flex h-11 items-center gap-2 px-2 lg:px-3 transition-colors duration-[var(--dur-fast)]",
                   active ? "text-foreground" : "text-muted-foreground hover:text-foreground focus-visible:text-foreground",
                 )}
               >
@@ -70,7 +71,7 @@ export function BottomTabs() {
       aria-label="Main"
       className="fixed inset-x-0 bottom-0 z-40 border-t bg-card pb-[env(safe-area-inset-bottom)] md:hidden"
     >
-      <ul className="mx-auto grid max-w-md grid-cols-4">
+      <ul className="mx-auto grid max-w-md grid-cols-5">
         {ITEMS.map((item) => {
           const active = isActive(pathname, item.href);
           const Icon = item.icon;
@@ -80,7 +81,7 @@ export function BottomTabs() {
                 href={item.href}
                 aria-current={active ? "page" : undefined}
                 className={cn(
-                  "flex h-16 flex-col items-center justify-center gap-1 text-xs font-medium transition-colors duration-[var(--dur-fast)]",
+                  "flex h-16 flex-col items-center justify-center gap-1 text-xs font-medium whitespace-nowrap max-[359px]:text-[11px] transition-colors duration-[var(--dur-fast)]",
                   active ? "text-foreground" : "text-muted-foreground",
                 )}
               >

@@ -79,7 +79,7 @@ One rule, everywhere: **anything clickable carries a signal, anything that isn't
 - Breakpoints: 375 / 768 / 1024 / 1440. Container max 1200px, 16px side gutter on phones.
 - ≥1024px: sticky filter sidebar (260px) + one column of cards.
 - <1024px: "Filters" button opens a bottom sheet.
-- <768px: bottom tab bar (Projects, Match me, Other places); ≥768px: links in the header.
+- <768px: bottom tab bar (Home, Projects, Match me, Other places, About); ≥768px: links in the header.
 - Touch targets ≥44px on phones; spacing on a 4px grid.
 
 ## Pages
@@ -89,9 +89,9 @@ One rule, everywhere: **anything clickable carries a signal, anything that isn't
 - **`/projects` (the tool)**: page title, filters and the full list. Old links to `/?topic=…` or
   `/#projects` are forwarded here with their filters.
 - **`/about`**: "Developed by Long Nguyen", the portrait, and the four rules the site keeps (public pages
-  only, fixed rules, data stays on the device, you write the email). Linked from the footer, not the nav.
+  only, fixed rules, data stays on the device, you write the email). Last item in the nav and the tab bar, and linked from the footer.
 - `/match`, `/projects/[id]` and `/other-places` as before. Nav: Home (`/`), Projects (`/projects`),
-  Match me, Other places; the phone tab bar has the same four.
+  Match me, Other places, About; the phone tab bar has the same five.
 
 ## Homepage title page
 
