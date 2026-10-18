@@ -134,16 +134,24 @@ export function Hero({
             Scholars project and help you email the team.
           </p>
           <div
-            className="km-hero-in mt-8 flex flex-wrap items-center gap-x-8 gap-y-3"
+            className="km-hero-in mt-8 flex flex-wrap items-start gap-x-8 gap-y-1"
             style={{ "--d": "620ms" } as CSSProperties}
           >
-            <Button asChild className="h-12 px-6 text-base font-semibold active:scale-[0.97]">
-              <Link href="/match">{profile ? "Update my skills and courses" : "Add my skills and courses"}</Link>
-            </Button>
+            <div className="grid justify-items-start">
+              <Button asChild className="h-12 px-6 text-base font-semibold active:scale-[0.97]">
+                <Link href="/match">{profile ? "Update my skills and courses" : "Add my skills and courses"}</Link>
+              </Button>
+              <Link
+                href="/match#resume"
+                className="inline-flex min-h-11 items-center text-sm text-muted-foreground underline decoration-border-strong underline-offset-[6px] hover:text-foreground hover:decoration-foreground"
+              >
+                or upload your resume
+              </Link>
+            </div>
             <a
               href="#projects"
               onClick={skipToProjects}
-              className="km-label group inline-flex min-h-11 items-center gap-1.5 underline decoration-border-strong underline-offset-[6px] hover:decoration-foreground"
+              className="km-label group inline-flex min-h-12 items-center gap-1.5 underline decoration-border-strong underline-offset-[6px] hover:decoration-foreground"
             >
               Browse all {totalCount} projects
               <ArrowDown
