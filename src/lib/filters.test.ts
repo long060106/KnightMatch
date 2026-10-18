@@ -22,6 +22,8 @@ function project(overrides: Partial<ListingProject>): ListingProject {
     semester: "Fall 2026",
     openSpots: 2,
     colleges: ["College of Sciences"],
+    topics: [],
+    topicLabel: null,
     requiredSkills: [],
     preferredSkills: [],
     beginnerReason: null,
@@ -33,10 +35,10 @@ function project(overrides: Partial<ListingProject>): ListingProject {
 }
 
 const list = [
-  project({ id: "a", colleges: ["College of Sciences"], semester: "Fall 2026", searchText: "plant regeneration botany" }),
-  project({ id: "b", colleges: ["College of Sciences"], semester: "Spring 2027", beginnerReason: "explicit", searchText: "security decisions" }),
-  project({ id: "c", colleges: ["College of Medicine"], semester: null, status: "full", openSpots: 0, searchText: "lactobacillus" }),
-  project({ id: "d", colleges: ["College of Engineering and Computer Science"], semester: "Fall 2026", searchText: "llms embedded python" }),
+  project({ id: "a", colleges: ["College of Sciences"], topics: ["biology"], semester: "Fall 2026", searchText: "plant regeneration botany" }),
+  project({ id: "b", colleges: ["College of Sciences"], topics: ["society", "psychology"], semester: "Spring 2027", beginnerReason: "explicit", searchText: "security decisions" }),
+  project({ id: "c", colleges: ["College of Medicine"], topics: ["biology", "health"], semester: null, status: "full", openSpots: 0, searchText: "lactobacillus" }),
+  project({ id: "d", colleges: ["College of Engineering and Computer Science"], topics: ["ai_ml", "devices_robotics"], semester: "Fall 2026", searchText: "llms embedded python" }),
 ];
 
 describe("URL round trip", () => {
@@ -46,8 +48,12 @@ describe("URL round trip", () => {
   });
 
   it("keeps every filter through serialize -> parse", () => {
-    const f = { q: "python", openOnly: false, beginner: true, colleges: ["College of Sciences", "College of Medicine"], semesters: ["Fall 2026"], sort: "spots" as const };
+    const f = { q: "python", openOnly: false, beginner: true, topics: ["ai_ml", "health"], colleges: ["College of Sciences", "College of Medicine"], semesters: ["Fall 2026"], sort: "spots" as const };
     expect(parseFilters(serializeFilters(f))).toEqual(f);
+  });
+
+  it("writes topics as repeated topic= params", () => {
+    expect(serializeFilters({ ...DEFAULT_FILTERS, topics: ["ai_ml", "hci"] })).toBe("?topic=ai_ml&topic=hci");
   });
 
   it("ignores an unknown sort value", () => {
@@ -68,6 +74,30 @@ describe("passes", () => {
   it("colleges and semesters are OR within a group, AND across groups", () => {
     const f = { ...DEFAULT_FILTERS, colleges: ["College of Sciences", "College of Engineering and Computer Science"], semesters: ["Fall 2026"] };
     expect(list.filter((p) => passes(p, f)).map((p) => p.id)).toEqual(["a", "d"]);
+  });
+});
+
+describe("topics", () => {
+  it("a project passes when any of its topics is chosen (OR), and AND with other groups", () => {
+    const f = { ...DEFAULT_FILTERS, topics: ["biology", "ai_ml"] };
+    expect(list.filter((p) => passes(p, f)).map((p) => p.id)).toEqual(["a", "d"]);
+    expect(list.filter((p) => passes(p, { ...f, semesters: ["Spring 2027"] })).map((p) => p.id)).toEqual([]);
+  });
+
+  it("topic counts count every topic of a project and ignore the topic filter itself", () => {
+    const f = { ...DEFAULT_FILTERS, topics: ["biology"] };
+    expect(Object.fromEntries(facetCounts(list, f, "topics"))).toEqual({
+      biology: 1,
+      society: 1,
+      psychology: 1,
+      ai_ml: 1,
+      devices_robotics: 1,
+    });
+    expect(Object.fromEntries(facetCounts(list, f, "colleges"))).toEqual({ "College of Sciences": 1 });
+  });
+
+  it("chosen topics add to the active filter count", () => {
+    expect(activeFilterCount({ ...DEFAULT_FILTERS, topics: ["hci", "health"] })).toBe(2);
   });
 });
 

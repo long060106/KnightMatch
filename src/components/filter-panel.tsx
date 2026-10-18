@@ -17,12 +17,15 @@ export interface FacetOption {
 interface FilterPanelProps {
   filters: Filters;
   onChange: (next: Filters) => void;
+  topics: FacetOption[];
+  topicLabels: Record<string, string>;
   colleges: FacetOption[];
   semesters: FacetOption[];
   beginnerCount: number;
 }
 
 const SEARCH_DELAY_MS = 250;
+const TOPICS_SHOWN = 6;
 
 /** Typing updates the list after a short pause, so cards don't reshuffle on every key. */
 function SearchField({ value, onCommit }: { value: string; onCommit: (q: string) => void }) {
@@ -73,21 +76,29 @@ function ChipGroup({
   selected,
   format,
   onToggle,
+  limit,
 }: {
   legend: string;
   options: FacetOption[];
   selected: string[];
   format?: (value: string) => string;
   onToggle: (value: string) => void;
+  /** Show only the first `limit` options (plus any selected ones) until "Show all" is pressed. */
+  limit?: number;
 }) {
+  const [expanded, setExpanded] = useState(false);
   // Options with no projects under the current filters are hidden (unless already selected);
   // they come back when e.g. full teams are included.
   const visible = options.filter((o) => o.count > 0 || selected.includes(o.value));
+  if (!visible.length) return null;
+  const collapsible = limit !== undefined && visible.length > limit + 1;
+  const shown =
+    collapsible && !expanded ? visible.filter((o, i) => i < limit || selected.includes(o.value)) : visible;
   return (
     <fieldset>
       <legend className="mb-2 text-sm font-semibold">{legend}</legend>
       <div className="flex flex-wrap gap-2">
-        {visible.map((option) => {
+        {shown.map((option) => {
           const on = selected.includes(option.value);
           return (
             <button
@@ -106,6 +117,16 @@ function ChipGroup({
             </button>
           );
         })}
+        {collapsible && (
+          <button
+            type="button"
+            aria-expanded={expanded}
+            onClick={() => setExpanded(!expanded)}
+            className="inline-flex min-h-11 items-center rounded-full px-2 text-sm font-medium text-muted-foreground underline-offset-4 hover:text-foreground hover:underline lg:min-h-9"
+          >
+            {expanded ? "Show fewer" : `Show all ${visible.length}`}
+          </button>
+        )}
       </div>
     </fieldset>
   );
@@ -115,7 +136,7 @@ function toggle(list: string[], value: string): string[] {
   return list.includes(value) ? list.filter((v) => v !== value) : [...list, value];
 }
 
-export function FilterPanel({ filters, onChange, colleges, semesters, beginnerCount }: FilterPanelProps) {
+export function FilterPanel({ filters, onChange, topics, topicLabels, colleges, semesters, beginnerCount }: FilterPanelProps) {
   const openId = useId();
   const beginnerId = useId();
   const active = activeFilterCount(filters) > 0;
@@ -147,6 +168,14 @@ export function FilterPanel({ filters, onChange, colleges, semesters, beginnerCo
         </div>
       </div>
 
+      <ChipGroup
+        legend="Topic"
+        options={topics}
+        selected={filters.topics}
+        format={(id) => topicLabels[id] ?? id}
+        onToggle={(value) => onChange({ ...filters, topics: toggle(filters.topics, value) })}
+        limit={TOPICS_SHOWN}
+      />
       <ChipGroup
         legend="College"
         options={colleges}

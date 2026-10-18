@@ -8,6 +8,7 @@ import metaJson from "../../data/meta.json";
 import otherPlacesJson from "../../data/other-places.json";
 import projectsJson from "../../data/projects.json";
 import skillsJson from "../../data/skills.json";
+import topicsJson from "../../data/topics.json";
 import type { Course, ListingProject, Meta, OtherPlaces, Project, SkillMap } from "./types";
 
 /** Hand-checked links for the Other places page (see scraper/knightmatch_scraper/check_links.py). */
@@ -38,6 +39,11 @@ export const skills: SkillMap = Object.fromEntries(
   ]),
 );
 
+/** Topic id -> label, in the order of data/topics.json. */
+export const topics: Record<string, string> = Object.fromEntries(
+  (topicsJson as { topics: { id: string; label: string }[] }).topics.map((t) => [t.id, t.label]),
+);
+
 export const courses: Course[] = (coursesJson as { courses: Course[] }).courses;
 
 export const courseSkills: Record<string, string[]> = Object.fromEntries(courses.map((c) => [c.code, c.skills]));
@@ -54,6 +60,7 @@ export function toListing(p: Project): ListingProject {
   const searchText = [
     p.title,
     ...colleges,
+    ...p.topics.map((id) => topics[id] ?? ""),
     p.semester ?? "",
     ...skillLabels,
     p.quals_raw,
@@ -69,6 +76,8 @@ export function toListing(p: Project): ListingProject {
     semester: p.semester,
     openSpots: p.open_spots,
     colleges,
+    topics: p.topics.filter((id) => id in topics),
+    topicLabel: topics[p.topics.find((id) => id in topics) ?? ""] ?? null,
     requiredSkills: p.required_skills,
     preferredSkills: p.preferred_skills,
     beginnerReason: p.beginner_reason,

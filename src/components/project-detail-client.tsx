@@ -23,6 +23,8 @@ interface DetailData {
   leaderName: string | null;
   requiredSkills: string[];
   preferredSkills: string[];
+  /** Skills the AI step added for wording the word list missed. */
+  aiSkills: string[];
   lastCheckedAt: string;
   skills: SkillMap;
   courseSkills: Record<string, string[]>;
@@ -63,7 +65,7 @@ export function DetectedSkills({ data }: { data: DetailData }) {
         {note && <p className="-mt-1 text-xs text-muted-foreground">{note}</p>}
         <div className="flex flex-wrap gap-1.5">
           {ids.map((id) => (
-            <SkillTag key={id} label={skills[id].label} state={state(id)} />
+            <SkillTag key={id} label={skills[id].label} state={state(id)} ai={data.aiSkills.includes(id)} />
           ))}
         </div>
       </div>
@@ -83,7 +85,8 @@ export function DetectedSkills({ data }: { data: DetailData }) {
       {group("Also mentioned", [...soft, ...tools], () => "neutral")}
       {group("Training you complete after joining", training, () => "neutral", "Teams walk new members through these.")}
       <p className="border-t pt-3 text-xs text-muted-foreground">
-        Detected automatically from the team&apos;s text. The original wording is what counts.
+        Skills and topics are detected automatically (word list, plus AI for wording the list misses). The original
+        wording on KRSP is what counts.
       </p>
     </div>
   );

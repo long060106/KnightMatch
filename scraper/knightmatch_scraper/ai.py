@@ -427,7 +427,8 @@ class Annotator:
         report = AiReport(
             model=self.model,
             requests=self.client.requests if self.client else 0,
-            response_format=self.client.response_format if self.client else None,
+            # Only meaningful once a request was made (a fully cached run never asks).
+            response_format=self.client.response_format if self.client and self.client.requests else None,
             answered=self.answered,
             cached=self.cached,
             failed=self.failed,

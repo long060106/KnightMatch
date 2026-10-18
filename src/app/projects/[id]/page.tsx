@@ -13,7 +13,7 @@ import {
 } from "@/components/project-detail-client";
 import { Scramble } from "@/components/scramble";
 import { StickyPanel } from "@/components/sticky-panel";
-import { courseSkills, getProject, meta, projects, skills } from "@/lib/data";
+import { courseSkills, getProject, meta, projects, skills, topics } from "@/lib/data";
 import { shortCollege } from "@/lib/filters";
 import type { Project, SkillMap } from "@/lib/types";
 
@@ -90,6 +90,7 @@ export default async function ProjectPage({ params }: Params) {
     leaderName: project.team_leader?.name ?? null,
     requiredSkills: project.required_skills,
     preferredSkills: project.preferred_skills,
+    aiSkills: project.ai_skills,
     lastCheckedAt: project.last_checked_at,
     skills: skillsFor(project),
     courseSkills,
@@ -108,7 +109,22 @@ export default async function ProjectPage({ params }: Params) {
       </Link>
 
       <header className="mt-4 md:mt-8">
-        <p className="text-sm text-muted-foreground">{colleges.join(", ")}</p>
+        <p className="text-sm text-muted-foreground">
+          {project.topics
+            .filter((id) => id in topics)
+            .map((id) => (
+              <span key={id}>
+                <Link
+                  href={`/?topic=${id}#projects`}
+                  className="underline decoration-border-strong underline-offset-4 hover:text-foreground hover:decoration-foreground"
+                >
+                  {topics[id]}
+                </Link>
+                {" · "}
+              </span>
+            ))}
+          {colleges.join(", ")}
+        </p>
         <div className="mt-2 flex flex-wrap items-start gap-x-4 gap-y-2">
           <h1
             id="project-title"

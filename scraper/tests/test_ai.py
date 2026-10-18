@@ -150,6 +150,8 @@ def test_cached_answer_makes_no_new_request(dictionary):
     note = annotate(second)
     assert post.calls == []
     assert note.topics == ["ai_ml"] and second.report().cached == 1
+    assert first.report().response_format == "json_schema"
+    assert second.report().response_format is None  # nothing was asked, so no format to report
 
 
 def test_changed_text_is_asked_again(dictionary):

@@ -17,6 +17,8 @@ interface CardProps {
   match: MatchResult | null;
   have: Set<string> | null;
   isNew: boolean;
+  /** Overrides the project's first topic, e.g. with the topic the list is filtered by. */
+  topicLabel?: string | null;
 }
 
 /** Navigation type set by card links; only these navigations morph the title. */
@@ -63,7 +65,7 @@ function SkillRow({ project, skills, have }: Pick<CardProps, "project" | "skills
   );
 }
 
-export function ProjectCard({ project, skills, match, have, isNew }: CardProps) {
+export function ProjectCard({ project, skills, match, have, isNew, topicLabel = project.topicLabel }: CardProps) {
   const titleId = `title-${project.id}`;
   // Known at build time, so only cards that will show a meter reserve space for it.
   const hasScoredRequirements = project.requiredSkills.some((id) => skills[id]?.counts);
@@ -90,7 +92,9 @@ export function ProjectCard({ project, skills, match, have, isNew }: CardProps) 
         </h3>
         {isNew && <NewBadge />}
       </div>
-      <p className="mt-1 text-sm text-muted-foreground">{project.colleges.map(shortCollege).join(", ")}</p>
+      <p className="mt-1 text-sm text-muted-foreground">
+        {[topicLabel, project.colleges.map(shortCollege).join(", ")].filter(Boolean).join(" · ")}
+      </p>
 
       <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
         {project.semester && (

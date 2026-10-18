@@ -8,6 +8,7 @@ export interface Filters {
   q: string;
   openOnly: boolean;
   beginner: boolean;
+  topics: string[];
   colleges: string[];
   semesters: string[];
   /** null = automatic: best match when the student added skills, otherwise newest. */
@@ -18,6 +19,7 @@ export const DEFAULT_FILTERS: Filters = {
   q: "",
   openOnly: true,
   beginner: false,
+  topics: [],
   colleges: [],
   semesters: [],
   sort: null,
@@ -32,6 +34,7 @@ export function parseFilters(search: string): Filters {
     q: params.get("q")?.trim() ?? "",
     openOnly: params.get("full") !== "1",
     beginner: params.get("beginner") === "1",
+    topics: params.getAll("topic"),
     colleges: params.getAll("college"),
     semesters: params.getAll("semester"),
     sort: sort && SORT_KEYS.includes(sort) ? sort : null,
@@ -44,6 +47,7 @@ export function serializeFilters(f: Filters): string {
   if (f.q.trim()) params.set("q", f.q.trim());
   if (!f.openOnly) params.set("full", "1");
   if (f.beginner) params.set("beginner", "1");
+  for (const t of f.topics) params.append("topic", t);
   for (const c of f.colleges) params.append("college", c);
   for (const s of f.semesters) params.append("semester", s);
   if (f.sort) params.set("sort", f.sort);
@@ -57,17 +61,20 @@ export function activeFilterCount(f: Filters): number {
     (f.q.trim() ? 1 : 0) +
     (f.openOnly ? 0 : 1) +
     (f.beginner ? 1 : 0) +
+    f.topics.length +
     f.colleges.length +
     f.semesters.length
   );
 }
 
-type FacetKey = "q" | "openOnly" | "beginner" | "colleges" | "semesters";
+type FacetKey = "q" | "openOnly" | "beginner" | "topics" | "colleges" | "semesters";
+type GroupKey = "topics" | "colleges" | "semesters";
 
 /** Does p pass every filter except `skip`? (Skipping one gives correct facet counts.) */
 export function passes(p: ListingProject, f: Filters, skip?: FacetKey): boolean {
   if (skip !== "openOnly" && f.openOnly && p.status !== "open") return false;
   if (skip !== "beginner" && f.beginner && !p.beginnerReason) return false;
+  if (skip !== "topics" && f.topics.length && !p.topics.some((t) => f.topics.includes(t))) return false;
   if (skip !== "colleges" && f.colleges.length && !p.colleges.some((c) => f.colleges.includes(c))) return false;
   if (skip !== "semesters" && f.semesters.length && !(p.semester && f.semesters.includes(p.semester))) return false;
   if (skip !== "q" && f.q.trim()) {
@@ -81,12 +88,12 @@ export function passes(p: ListingProject, f: Filters, skip?: FacetKey): boolean 
 export function facetCounts(
   projects: ListingProject[],
   f: Filters,
-  key: "colleges" | "semesters",
+  key: GroupKey,
 ): Map<string, number> {
   const counts = new Map<string, number>();
   for (const p of projects) {
     if (!passes(p, f, key)) continue;
-    const values = key === "colleges" ? p.colleges : p.semester ? [p.semester] : [];
+    const values = key === "semesters" ? (p.semester ? [p.semester] : []) : p[key];
     for (const v of values) counts.set(v, (counts.get(v) ?? 0) + 1);
   }
   return counts;

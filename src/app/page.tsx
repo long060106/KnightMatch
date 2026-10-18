@@ -4,7 +4,7 @@ import { HowItWorks } from "@/components/how-it-works";
 import { OpenTicker } from "@/components/open-ticker";
 import { ProjectExplorer } from "@/components/project-explorer";
 import { Scramble } from "@/components/scramble";
-import { courseSkills, meta, projects, skillsUsedBy, toListing } from "@/lib/data";
+import { courseSkills, meta, projects, skillsUsedBy, toListing, topics } from "@/lib/data";
 import { shortCollege } from "@/lib/filters";
 
 export default function HomePage() {
@@ -45,6 +45,7 @@ export default function HomePage() {
           projects={listing}
           skills={skillsUsedBy(listing)}
           courseSkills={courseSkills}
+          topics={topics}
           baselineAt={meta.baseline_at}
         />
       </section>

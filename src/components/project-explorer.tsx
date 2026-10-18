@@ -42,6 +42,8 @@ interface ExplorerProps {
   projects: ListingProject[];
   skills: SkillMap;
   courseSkills: Record<string, string[]>;
+  /** Topic id -> label, in display order. */
+  topics: Record<string, string>;
   baselineAt: string;
 }
 
@@ -83,7 +85,7 @@ function sortProjects(
   return sorted.sort((a, b) => Number(a.status === "full") - Number(b.status === "full"));
 }
 
-export function ProjectExplorer({ projects, skills, courseSkills, baselineAt }: ExplorerProps) {
+export function ProjectExplorer({ projects, skills, courseSkills, topics, baselineAt }: ExplorerProps) {
   const search = useLocationSearch();
   const [chosen, setChosen] = useState<Filters | null>(null);
   const filters = chosen ?? (search ? parseFilters(search) : DEFAULT_FILTERS);
@@ -105,6 +107,15 @@ export function ProjectExplorer({ projects, skills, courseSkills, baselineAt }: 
     () => sortProjects(projects.filter((p) => passes(p, filters)), sort, matches),
     [projects, filters, sort, matches],
   );
+
+  const topicOptions: FacetOption[] = useMemo(() => {
+    const counts = facetCounts(projects, filters, "topics");
+    const order = Object.keys(topics);
+    return order
+      .filter((value) => projects.some((p) => p.topics.includes(value)))
+      .map((value) => ({ value, count: counts.get(value) ?? 0 }))
+      .sort((a, b) => b.count - a.count || order.indexOf(a.value) - order.indexOf(b.value));
+  }, [projects, filters, topics]);
 
   const collegeOptions: FacetOption[] = useMemo(() => {
     const counts = facetCounts(projects, filters, "colleges");
@@ -136,12 +147,14 @@ export function ProjectExplorer({ projects, skills, courseSkills, baselineAt }: 
   const panelProps = {
     filters,
     onChange: update,
+    topics: topicOptions,
+    topicLabels: topics,
     colleges: collegeOptions,
     semesters: semesterOptions,
     beginnerCount,
   };
   const activeCount = activeFilterCount(filters);
-  const chips = activeChips(filters, update);
+  const chips = activeChips(filters, update, topics);
 
   return (
     <div className="lg:grid lg:grid-cols-[260px_minmax(0,1fr)] lg:gap-10">
@@ -262,6 +275,7 @@ export function ProjectExplorer({ projects, skills, courseSkills, baselineAt }: 
                       have={have}
                       match={matches?.get(p.id) ?? null}
                       isNew={now !== null && isNewThisWeek(p.firstSeenAt, baselineAt, now)}
+                      topicLabel={topics[p.topics.find((t) => filters.topics.includes(t)) ?? ""] ?? p.topicLabel}
                     />
                   ) : (
                     <FullTeamRow project={p} />
@@ -298,11 +312,14 @@ interface Chip {
   remove: () => void;
 }
 
-function activeChips(f: Filters, update: (next: Filters) => void): Chip[] {
+function activeChips(f: Filters, update: (next: Filters) => void, topics: Record<string, string>): Chip[] {
   const chips: Chip[] = [];
   if (f.q.trim()) chips.push({ key: "q", label: `“${f.q.trim()}”`, remove: () => update({ ...f, q: "" }) });
   if (!f.openOnly) chips.push({ key: "full", label: "Including full teams", remove: () => update({ ...f, openOnly: true }) });
   if (f.beginner) chips.push({ key: "beginner", label: "Beginner-friendly", remove: () => update({ ...f, beginner: false }) });
+  for (const t of f.topics) {
+    chips.push({ key: `t-${t}`, label: topics[t] ?? t, remove: () => update({ ...f, topics: f.topics.filter((x) => x !== t) }) });
+  }
   for (const c of f.colleges) {
     chips.push({ key: `c-${c}`, label: shortCollege(c), remove: () => update({ ...f, colleges: f.colleges.filter((x) => x !== c) }) });
   }

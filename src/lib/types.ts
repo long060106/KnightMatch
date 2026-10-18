@@ -77,6 +77,10 @@ export interface ListingProject {
   semester: string | null;
   openSpots: number | null;
   colleges: string[];
+  /** Topic ids, most central first (tagged by the AI step in the daily update). */
+  topics: string[];
+  /** Label of the first topic, shown on the card. */
+  topicLabel: string | null;
   requiredSkills: string[];
   preferredSkills: string[];
   beginnerReason: BeginnerReason;

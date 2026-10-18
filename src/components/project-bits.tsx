@@ -59,7 +59,8 @@ export function BeginnerNote({ reason }: { reason: BeginnerReason }) {
 export type TagState = "neutral" | "have" | "missing";
 
 /** have = honey wash + check; missing = dashed outline, never red or an X. */
-export function SkillTag({ label, state }: { label: string; state: TagState }) {
+/** `ai`: found by the AI step rather than the word list, marked so students know to check the wording. */
+export function SkillTag({ label, state, ai = false }: { label: string; state: TagState; ai?: boolean }) {
   return (
     <span
       className={cn(
@@ -71,6 +72,12 @@ export function SkillTag({ label, state }: { label: string; state: TagState }) {
     >
       {state === "have" && <Check className="size-3.5" aria-hidden="true" />}
       {label}
+      {ai && (
+        <span className="ml-0.5 font-mono text-[0.625rem] tracking-wide text-muted-foreground" aria-hidden="true">
+          AI
+        </span>
+      )}
+      {ai && <span className="sr-only"> (found by AI)</span>}
       {state === "have" && <span className="sr-only"> (you have this)</span>}
       {state === "missing" && <span className="sr-only"> (not in your profile yet)</span>}
     </span>
