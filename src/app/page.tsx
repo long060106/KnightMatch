@@ -5,6 +5,7 @@ import { HowItWorks } from "@/components/how-it-works";
 import { LegacyListRedirect } from "@/components/legacy-list-redirect";
 import { OpenTicker } from "@/components/open-ticker";
 import { Button } from "@/components/ui/button";
+import { WireSphere } from "@/components/wire-sphere";
 import { meta, projects, toListing } from "@/lib/data";
 import { shortCollege } from "@/lib/filters";
 
@@ -49,6 +50,9 @@ export default function HomePage() {
             See all {listing.length} projects
           </h2>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-1 lg:col-span-4 lg:justify-end">
+            <div className="mb-6 hidden basis-full justify-end lg:flex">
+              <WireSphere meridians={7} parallels={5} seconds={10} className="w-28 text-foreground/40" />
+            </div>
             <Button asChild className="h-12 px-6 text-base font-semibold active:scale-[0.97]">
               <Link href="/projects">Browse projects</Link>
             </Button>

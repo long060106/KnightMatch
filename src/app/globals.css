@@ -570,3 +570,31 @@ html[data-has-profile] .km-story-compact {
 .km-grid[data-active]::after {
   opacity: 1;
 }
+
+/*
+  Wireframe sphere (WireSphere): meridians squash with scaleX, swinging 1 → -1 → 1. Each one starts
+  part-way through the cycle (--k), so together they read as a globe turning. Reduced motion keeps
+  the inline scaleX (a still globe).
+*/
+.km-sphere-meridian {
+  transform-box: view-box;
+  transform-origin: center;
+}
+.km-sphere-lat {
+  opacity: 0.6;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .km-sphere-meridian {
+    animation: km-spin-x var(--spin, 28s) ease-in-out infinite;
+    animation-delay: calc(var(--k) * var(--spin, 28s) / -2);
+  }
+}
+@keyframes km-spin-x {
+  0%,
+  100% {
+    transform: scaleX(1);
+  }
+  50% {
+    transform: scaleX(-1);
+  }
+}

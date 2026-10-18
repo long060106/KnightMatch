@@ -1,6 +1,6 @@
 "use client";
 
-import { Compass, LayoutList, ListChecks, type LucideIcon } from "lucide-react";
+import { Compass, House, LayoutList, ListChecks, type LucideIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
@@ -13,13 +13,14 @@ interface NavItem {
 }
 
 const ITEMS: NavItem[] = [
+  { href: "/", label: "Home", icon: House },
   { href: "/projects", label: "Projects", icon: LayoutList },
   { href: "/match", label: "Match me", icon: ListChecks },
   { href: "/other-places", label: "Other places", icon: Compass },
 ];
 
 function isActive(pathname: string, href: string): boolean {
-  return pathname.startsWith(href);
+  return href === "/" ? pathname === "/" : pathname.startsWith(href);
 }
 
 /** Header links from 768px up. */
@@ -69,7 +70,7 @@ export function BottomTabs() {
       aria-label="Main"
       className="fixed inset-x-0 bottom-0 z-40 border-t bg-card pb-[env(safe-area-inset-bottom)] md:hidden"
     >
-      <ul className="mx-auto grid max-w-md grid-cols-3">
+      <ul className="mx-auto grid max-w-md grid-cols-4">
         {ITEMS.map((item) => {
           const active = isActive(pathname, item.href);
           const Icon = item.icon;

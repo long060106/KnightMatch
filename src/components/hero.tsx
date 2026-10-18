@@ -14,6 +14,7 @@ import { DrawRule } from "./draw-rule";
 import { HoverScramble } from "./hover-scramble";
 import { RelativeTime } from "./relative-time";
 import { Scramble } from "./scramble";
+import { WireSphere } from "./wire-sphere";
 
 /** Two lines that run edge to edge from 1024px; "rule" is the hairline that stretches to fill line one. */
 const HEADLINE: string[][] = [
@@ -114,7 +115,16 @@ export function Hero({ totalCount, lastRunAt }: HeroProps) {
       </div>
       <DrawRule />
 
-      <div className="flex flex-1 flex-col justify-center py-16 md:py-20">
+      <div className="relative isolate flex flex-1 flex-col justify-center py-16 md:py-20">
+        {/* A slowly turning wireframe globe behind the headline: the type sits over it, like a title
+            over a cover image. Faint ink only, so the words stay the loudest thing on screen. */}
+        <div
+          aria-hidden="true"
+          className="km-hero-in pointer-events-none absolute top-6 right-0 -z-10 w-[72vw] max-w-[620px] text-foreground/20 md:top-1/2 md:w-[52vw] md:-translate-y-1/2 lg:right-[4%] lg:w-[46vw]"
+          style={{ "--d": "300ms" } as CSSProperties}
+        >
+          <WireSphere className="w-full" />
+        </div>
         <h1 id="hero-title" className="km-headline font-serif leading-[0.9] tracking-[-0.01em] uppercase">
           <RisingHeadline />
         </h1>

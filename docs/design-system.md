@@ -66,7 +66,8 @@ Three voices, each with one job. Size says what to read first; the font says wha
   numbers → ticker → how it works → closing call to action ("See all N projects").
 - **`/projects` (the tool)**: page title, filters and the full list. Old links to `/?topic=…` or
   `/#projects` are forwarded here with their filters.
-- `/match`, `/projects/[id]` and `/other-places` as before. Nav "Projects" points at `/projects`.
+- `/match`, `/projects/[id]` and `/other-places` as before. Nav: Home (`/`), Projects (`/projects`),
+  Match me, Other places; the phone tab bar has the same four.
 
 ## Homepage title page
 
@@ -80,6 +81,10 @@ to read, biggest first:
    sits left and the button right, on the same baseline.
 3. **Dateline** (top) and **foot bar** (bottom, behind hairlines): what this is and when it was last
    checked; "Scroll" with a nudging arrow, and "Browse all N projects". Small on purpose.
+
+Behind the headline, a **wireframe sphere** (`WireSphere`, ink at 20%) turns slowly: the type sits over
+it like a title over a cover image. A small one (ink at 40%) sits above the closing call to action.
+Black and white only, decoration only (aria-hidden).
 
 Below it, **Recruiting right now** has its own section: the open count huge (up to 208px), one
 sentence, spots · colleges · new this week, and one cell per listed team (honey fill = recruiting,
@@ -116,6 +121,9 @@ Ease-out `cubic-bezier(.2,.8,.2,1)` for arrivals; exits are ~65% of enter time.
 5. **Hero entrance** (CSS keyframes only, plays from the prerendered HTML): headline words rise out
    of their own masks (55ms stagger), the headline rule draws, the lead and button fade up. Plays once
    per page load. The recruiting cells fill one by one (45ms stagger) when their section enters view.
+7. **Wireframe sphere**: each meridian is a circle squashed with `scaleX`, swinging 1 → -1 → 1
+   (ease-in-out, close to a cosine), offset along the cycle so together they turn like a globe.
+   About 14s per half turn. Pure CSS from the prerendered HTML. Reduced motion: it holds still.
 6. **Ticker**: one row duplicated and slid by half its width, `linear`, about 10s per team.
    Reduced motion: it stands still and scrolls sideways instead, and the pause button is hidden.
 
