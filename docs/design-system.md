@@ -121,11 +121,11 @@ Ease-out `cubic-bezier(.2,.8,.2,1)` for arrivals; exits are ~65% of enter time.
 5. **Hero entrance** (CSS keyframes only, plays from the prerendered HTML): headline words rise out
    of their own masks (55ms stagger), the headline rule draws, the lead and button fade up. Plays once
    per page load. The recruiting cells fill one by one (45ms stagger) when their section enters view.
+6. **Ticker**: one row duplicated and slid by half its width, `linear`, about 10s per team.
+   Reduced motion: it stands still and scrolls sideways instead, and the pause button is hidden.
 7. **Wireframe sphere**: each meridian is a circle squashed with `scaleX`, swinging 1 → -1 → 1
    (ease-in-out, close to a cosine), offset along the cycle so together they turn like a globe.
    About 14s per half turn. Pure CSS from the prerendered HTML. Reduced motion: it holds still.
-6. **Ticker**: one row duplicated and slid by half its width, `linear`, about 10s per team.
-   Reduced motion: it stands still and scrolls sideways instead, and the pause button is hidden.
 
 Only `transform` and `opacity` animate. `prefers-reduced-motion` turns all of it off, including
 the New pulse. Browsers without View Transitions simply swap content instantly.
