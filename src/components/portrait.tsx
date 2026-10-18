@@ -47,7 +47,7 @@ export function Portrait() {
     <figure
       onPointerMove={lean}
       onPointerLeave={settle}
-      className="relative mx-auto w-full max-w-[420px] lg:mx-0 lg:ml-auto"
+      className="relative mx-auto w-full max-w-[340px] lg:mx-0 lg:ml-auto"
       style={{ "--tilt": `${MAX_TILT}deg` } as CSSProperties}
     >
       <div ref={frameRef} className="km-portrait relative">
@@ -60,7 +60,7 @@ export function Portrait() {
             alt="Black-and-white portrait of Long Nguyen standing beside a stone column at night."
             width={1000}
             height={1333}
-            sizes="(min-width: 1024px) 420px, 90vw"
+            sizes="340px"
             unoptimized
             preload
             className="km-portrait-img size-full object-cover object-[50%_58%]"

@@ -259,6 +259,22 @@ html[data-has-profile] .km-match-slot {
 .km-headline-line {
   display: inline;
 }
+/* About page headline: two lines ("Developed by" / "Long Nguyen") that never wrap, sized from the
+   width they have. From 1024px that is the 8-of-12 text column beside the portrait. */
+.km-about-headline {
+  --about-r: 7.9; /* each line is about 7.75em wide */
+  font-size: min(5.25rem, calc((100vw - 2rem) / var(--about-r)));
+}
+@media (min-width: 768px) {
+  .km-about-headline {
+    font-size: min(5.25rem, calc((100vw - 3rem) / var(--about-r)));
+  }
+}
+@media (min-width: 1024px) {
+  .km-about-headline {
+    font-size: min(5.25rem, calc(((min(100vw, 1200px) - 3rem) * 8 / 12 - 2.5rem) / var(--about-r)));
+  }
+}
 @media (min-width: 1024px) {
   .km-headline {
     font-size: calc(min(100vw - 4rem, 72rem) / 12.6);

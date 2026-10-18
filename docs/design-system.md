@@ -88,7 +88,8 @@ One rule, everywhere: **anything clickable carries a signal, anything that isn't
   numbers → ticker → how it works → closing call to action ("See all N projects").
 - **`/projects` (the tool)**: page title, filters and the full list. Old links to `/?topic=…` or
   `/#projects` are forwarded here with their filters.
-- **`/about`**: "Developed by Long Nguyen", the portrait, and the four rules the site keeps (public pages
+- **`/about`**: "Developed by / Long Nguyen" as two lines that never wrap (sized to the 8-column
+  text block, up to 84px), the portrait (340px wide) in the other 4 columns, and the four rules the site keeps (public pages
   only, fixed rules, data stays on the device, you write the email). Last item in the nav and the tab bar, and linked from the footer.
 - `/match`, `/projects/[id]` and `/other-places` as before. Nav: Home (`/`), Projects (`/projects`),
   Match me, Other places, About; the phone tab bar has the same five.

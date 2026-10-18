@@ -41,7 +41,7 @@ const PROMISES = [
 function RisingHeadline() {
   let i = 0;
   return HEADLINE.map((line, l) => (
-    <span key={l} className="block">
+    <span key={l} className="block whitespace-nowrap">
       {line.map((word, w) => (
         <Fragment key={w}>
           {w > 0 && " "}
@@ -77,10 +77,10 @@ export default function AboutPage() {
           </div>
 
           <div className="grid items-center gap-14 lg:grid-cols-12 lg:gap-0">
-            <div className="lg:col-span-7 lg:pr-10">
+            <div className="lg:col-span-8 lg:pr-10">
               <h1
                 id="about-title"
-                className="font-serif text-[clamp(2.5rem,1rem+7.2vw,5.25rem)] leading-[0.92] tracking-[-0.01em] uppercase"
+                className="km-about-headline font-serif leading-[0.92] tracking-[-0.01em] uppercase"
               >
                 <RisingHeadline />
               </h1>
@@ -120,7 +120,7 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <div className="km-hero-in lg:col-span-5" style={{ "--d": "250ms" } as CSSProperties}>
+            <div className="km-hero-in lg:col-span-4" style={{ "--d": "250ms" } as CSSProperties}>
               <Portrait />
             </div>
           </div>
