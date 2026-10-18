@@ -241,7 +241,7 @@ html[data-has-profile] .km-match-slot {
 /* Headline lines wrap naturally on small screens. From 1024px each line runs edge to edge:
    the first line's rule stretches to fill, the second line spreads its words (justified caps). */
 .km-headline {
-  font-size: clamp(2.75rem, 11.5vw, 5rem);
+  font-size: clamp(2.75rem, 11.5vw, 6.5rem);
 }
 .km-headline-line {
   display: inline;
@@ -285,9 +285,26 @@ html[data-has-profile] .km-match-slot {
       km-rise 700ms var(--ease-out) both;
     animation-delay: var(--d, 0ms);
   }
-  .km-cell {
-    animation: km-cell-pop 420ms var(--ease-out) both;
-    animation-delay: calc(650ms + var(--i) * 45ms);
+  /* Open cells pop in one by one once the recruiting section is in view (hidden only with JS). */
+  html.js .km-cells .km-cell {
+    animation: km-cell-pop 420ms var(--ease-out) both paused;
+    animation-delay: calc(150ms + var(--i) * 45ms);
+  }
+  html.js .km-cells[data-inview] .km-cell {
+    animation-play-state: running;
+  }
+  /* "Scroll" arrow at the foot of the title page: a slow nudge downward. */
+  .km-nudge {
+    animation: km-nudge 1.8s var(--ease-out) infinite;
+  }
+}
+@keyframes km-nudge {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(3px);
   }
 }
 @keyframes km-word-rise {

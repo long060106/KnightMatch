@@ -1,25 +1,31 @@
+import Link from "next/link";
 import { DrawRule } from "@/components/draw-rule";
-import { Hero } from "@/components/hero";
+import { Hero, RecruitingNow } from "@/components/hero";
 import { HowItWorks } from "@/components/how-it-works";
+import { LegacyListRedirect } from "@/components/legacy-list-redirect";
 import { OpenTicker } from "@/components/open-ticker";
-import { ProjectExplorer } from "@/components/project-explorer";
-import { Scramble } from "@/components/scramble";
-import { courseSkills, meta, projects, skillsUsedBy, toListing, topics } from "@/lib/data";
+import { Button } from "@/components/ui/button";
+import { meta, projects, toListing } from "@/lib/data";
 import { shortCollege } from "@/lib/filters";
 
+/**
+ * The introduction: what KnightMatch is for, the proof that teams are recruiting, and how it works.
+ * The list itself lives on /projects.
+ */
 export default function HomePage() {
   const listing = projects.map(toListing);
   const open = listing.filter((p) => p.status === "open");
 
   return (
     <>
-      <Hero
+      <LegacyListRedirect />
+      <Hero totalCount={listing.length} lastRunAt={meta.last_run_at} />
+      <RecruitingNow
         openCount={open.length}
         totalCount={listing.length}
         openSpots={open.reduce((sum, p) => sum + (p.openSpots ?? 0), 0)}
         collegeCount={new Set(open.flatMap((p) => p.colleges)).size}
         openFirstSeen={open.map((p) => p.firstSeenAt)}
-        lastRunAt={meta.last_run_at}
         baselineAt={meta.baseline_at}
       />
       <OpenTicker
@@ -31,24 +37,29 @@ export default function HomePage() {
         }))}
       />
       <HowItWorks />
-      <section
-        id="projects"
-        data-grid-quiet
-        tabIndex={-1}
-        aria-labelledby="projects-heading"
-        className="mx-auto max-w-[1200px] scroll-mt-4 px-4 pt-8 pb-16 outline-none md:px-6 lg:pt-12"
-      >
-        <h2 id="projects-heading" className="km-label text-muted-foreground">
-          <Scramble text="All projects" />
-        </h2>
-        <DrawRule className="mt-3 mb-6" />
-        <ProjectExplorer
-          projects={listing}
-          skills={skillsUsedBy(listing)}
-          courseSkills={courseSkills}
-          topics={topics}
-          baselineAt={meta.baseline_at}
-        />
+
+      {/* Closing call to action: the one next step, as large as a headline. */}
+      <section aria-labelledby="cta-title" className="mx-auto max-w-[1200px] px-4 pt-20 pb-24 md:px-6 md:pt-28 md:pb-32">
+        <DrawRule />
+        <div className="grid gap-8 pt-10 md:pt-14 lg:grid-cols-12 lg:items-end lg:gap-0">
+          <h2
+            id="cta-title"
+            className="font-serif text-[clamp(2.75rem,1.5rem+5vw,5.5rem)] leading-[0.9] tracking-[-0.01em] uppercase lg:col-span-8"
+          >
+            See all {listing.length} projects
+          </h2>
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-1 lg:col-span-4 lg:justify-end">
+            <Button asChild className="h-12 px-6 text-base font-semibold active:scale-[0.97]">
+              <Link href="/projects">Browse projects</Link>
+            </Button>
+            <Link
+              href="/match"
+              className="km-label inline-flex min-h-11 items-center underline decoration-border-strong underline-offset-[6px] hover:decoration-foreground"
+            >
+              Match me first
+            </Link>
+          </div>
+        </div>
       </section>
     </>
   );

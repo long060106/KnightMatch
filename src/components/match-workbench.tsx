@@ -262,7 +262,7 @@ export function MatchWorkbench({ projects, skills, groups, popular, courses, cou
           <p className="mt-6 flex flex-wrap items-center gap-x-2 text-sm text-muted-foreground">
             Looking for full teams too?
             <Link
-              href="/?full=1"
+              href="/projects?full=1"
               className="inline-flex min-h-11 items-center font-medium text-foreground underline underline-offset-4 hover:text-honey-ink"
             >
               Browse every project

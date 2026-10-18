@@ -45,8 +45,8 @@ Three voices, each with one job. Size says what to read first; the font says wha
   nav links, section labels, stat captions and ticker meta; the short hero lead paragraph (`km-lead`:
   15px / 1.65, uppercase, justified from 640px, left aligned on phones); also UCF course codes (`COP3502C`).
 - Scale (px): 12 · 14 · 16 · 18 · 20 · 24 · 30 · 36 · 48, plus two display sizes:
-  hero headline `clamp(2.75rem, 11.5vw, 5rem)` on phones and container width ÷ 11.2 from 1024px
-  (≈103px), and the hero count `clamp(6rem, 4.5rem + 4vw, 8.5rem)`.
+  hero headline `clamp(2.75rem, 11.5vw, 6.5rem)` below 1024px and container width ÷ 11.2 from 1024px
+  (≈103px), and the recruiting count `clamp(8rem, 5rem + 10vw, 13rem)`.
 - Uppercase is for the hero headline, `km-label` labels and the short `km-lead` hero paragraph.
   Everything else (project titles, body, buttons) is sentence case. Never use `km-lead` for more
   than a few lines.
@@ -60,22 +60,31 @@ Three voices, each with one job. Size says what to read first; the font says wha
 - <768px: bottom tab bar (Projects, Match me, Other places); ≥768px: links in the header.
 - Touch targets ≥44px on phones; spacing on a 4px grid.
 
-## Homepage hero
+## Pages
 
-Reading order, biggest to smallest:
+- **`/` (introduction)**: says what KnightMatch is for and gets out of the way. Title page → recruiting
+  numbers → ticker → how it works → closing call to action ("See all N projects").
+- **`/projects` (the tool)**: page title, filters and the full list. Old links to `/?topic=…` or
+  `/#projects` are forwarded here with their filters.
+- `/match`, `/projects/[id]` and `/other-places` as before. Nav "Projects" points at `/projects`.
+
+## Homepage title page
+
+One screen tall (`100svh` minus header, and minus the tab bar on phones), with only three things
+to read, biggest first:
 
 1. **Headline** (display caps): "Find the research team that's looking for you." From 1024px it is
    two lines justified edge to edge; the first line's hairline stretches to fill, the second spreads
-   its words. Phones wrap it naturally, left aligned.
-2. **Lead + main button** (left): what to do and the one primary action. "Browse all N projects" is a
-   mono label link, clearly secondary.
-3. **Proof panel** (right, behind a column rule): the open count huge, "of N teams have open spots",
-   one cell per listed team (honey fill = recruiting, outline = full; shape differs, not only color),
-   and spots · colleges · new this week as a label row.
-4. **Dateline** (top, mono label): "Unofficial guide to Knight Research Scholars" and when the list
-   was last checked. Small on purpose: it frames the page, it doesn't lead it.
-5. **Ticker** (full bleed under the hero): the recruiting teams' real titles drifting slowly, each a
-   link to its project. Pauses on hover, on keyboard focus, off screen and with its own button.
+   its words. Phones and tablets wrap it naturally, left aligned (up to 104px).
+2. **One sentence** (`km-lead`) on what the site does, and the main button. From 1024px the sentence
+   sits left and the button right, on the same baseline.
+3. **Dateline** (top) and **foot bar** (bottom, behind hairlines): what this is and when it was last
+   checked; "Scroll" with a nudging arrow, and "Browse all N projects". Small on purpose.
+
+Below it, **Recruiting right now** has its own section: the open count huge (up to 208px), one
+sentence, spots · colleges · new this week, and one cell per listed team (honey fill = recruiting,
+outline = full). The cells pop in when the section scrolls into view.
+The **ticker** follows: recruiting teams' real titles drifting slowly, each a link to its project.
 
 ## Shape
 
@@ -105,8 +114,8 @@ Ease-out `cubic-bezier(.2,.8,.2,1)` for arrivals; exits are ~65% of enter time.
 3. **Title morph** from card to detail page heading (`title-<id>`).
 4. **Hover/press**: a project row's top hairline draws across in ink (300ms), buttons press to 0.97.
 5. **Hero entrance** (CSS keyframes only, plays from the prerendered HTML): headline words rise out
-   of their own masks (55ms stagger), the headline rule draws, the lead and buttons fade up, then the
-   open cells fill one by one (45ms stagger). Plays once per page load.
+   of their own masks (55ms stagger), the headline rule draws, the lead and button fade up. Plays once
+   per page load. The recruiting cells fill one by one (45ms stagger) when their section enters view.
 6. **Ticker**: one row duplicated and slid by half its width, `linear`, about 10s per team.
    Reduced motion: it stands still and scrolls sideways instead, and the pause button is hidden.
 
@@ -134,6 +143,5 @@ Inspired by the scroll storytelling on 3d-discovery.fr, adapted for a tool that 
 6. **Hover scramble** (`HoverScramble`): nav links and the hero "Browse all N projects" link shuffle into
    random characters and settle back left to right (~0.5s) on hover or focus. Mono labels only, so
    widths never change. Reduced motion: no effect.
-7. "Skip to projects" in the hero jumps past the story and moves focus to the list.
 
 Without JavaScript nothing is hidden: hidden start states only apply under `html.js`.

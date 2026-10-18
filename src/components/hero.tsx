@@ -8,35 +8,18 @@ import { isNewThisWeek } from "@/lib/filters";
 import { useProfile } from "@/lib/profile-store";
 import { scrollToElement } from "@/lib/smooth-scroll";
 import { useNow } from "@/lib/time";
+import { useInView } from "@/lib/use-in-view";
 import { cn } from "@/lib/utils";
 import { DrawRule } from "./draw-rule";
 import { HoverScramble } from "./hover-scramble";
 import { RelativeTime } from "./relative-time";
 import { Scramble } from "./scramble";
 
-interface HeroProps {
-  openCount: number;
-  totalCount: number;
-  openSpots: number;
-  collegeCount: number;
-  openFirstSeen: string[];
-  lastRunAt: string;
-  baselineAt: string;
-}
-
 /** Two lines that run edge to edge from 1024px; "rule" is the hairline that stretches to fill line one. */
 const HEADLINE: string[][] = [
   ["Find", "the", "rule", "research", "team"],
   ["that’s", "looking", "for", "you."],
 ];
-
-function skipToProjects(event: MouseEvent<HTMLAnchorElement>) {
-  const target = document.getElementById("projects");
-  if (!target) return;
-  event.preventDefault();
-  scrollToElement(target);
-  window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}#projects`);
-}
 
 /** Each word rises out of its own mask, one after another (CSS only, so it runs before hydration). */
 function RisingHeadline() {
@@ -88,21 +71,34 @@ function LegendSwatch({ open }: { open: boolean }) {
   );
 }
 
-export function Hero({
-  openCount,
-  totalCount,
-  openSpots,
-  collegeCount,
-  openFirstSeen,
-  lastRunAt,
-  baselineAt,
-}: HeroProps) {
+interface HeroProps {
+  totalCount: number;
+  lastRunAt: string;
+}
+
+/** Scrolls smoothly to a section and keeps the hash in the URL, like a normal anchor would. */
+function jumpTo(id: string) {
+  return (event: MouseEvent<HTMLAnchorElement>) => {
+    const target = document.getElementById(id);
+    if (!target) return;
+    event.preventDefault();
+    scrollToElement(target);
+    window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}#${id}`);
+  };
+}
+
+/**
+ * The title page: one screen tall, with only three things to read. The headline, one sentence on
+ * what the site does, and the main action. Everything else (numbers, the list) waits below.
+ */
+export function Hero({ totalCount, lastRunAt }: HeroProps) {
   const profile = useProfile();
-  const now = useNow();
-  const newCount = now === null ? 0 : openFirstSeen.filter((t) => isNewThisWeek(t, baselineAt, now)).length;
 
   return (
-    <section aria-labelledby="hero-title" className="mx-auto max-w-[1200px] px-4 md:px-6">
+    <section
+      aria-labelledby="hero-title"
+      className="mx-auto flex min-h-[calc(100svh-8rem)] max-w-[1200px] flex-col px-4 md:min-h-[calc(100svh-4rem)] md:px-6"
+    >
       {/* Dateline: what this is and how fresh it is, small and quiet so the headline leads. */}
       <div className="km-label flex flex-wrap items-center justify-between gap-x-6 gap-y-1 pt-5 pb-3 text-muted-foreground md:pt-6">
         <p className="inline-flex items-center gap-2">
@@ -118,91 +114,127 @@ export function Hero({
       </div>
       <DrawRule />
 
-      <h1
-        id="hero-title"
-        className="km-headline pt-10 font-serif leading-[0.9] tracking-[-0.01em] uppercase md:pt-14 lg:pt-12"
-      >
-        <RisingHeadline />
-      </h1>
+      <div className="flex flex-1 flex-col justify-center py-16 md:py-20">
+        <h1 id="hero-title" className="km-headline font-serif leading-[0.9] tracking-[-0.01em] uppercase">
+          <RisingHeadline />
+        </h1>
 
-      <div className="grid gap-10 pt-8 pb-12 md:gap-12 md:pt-12 md:pb-16 lg:grid-cols-12 lg:gap-0 lg:pt-14 lg:pb-14">
-        <div className="lg:col-span-6 lg:pr-14">
+        <div className="mt-10 grid gap-8 md:mt-14 lg:grid-cols-12 lg:items-end lg:gap-0">
           <p
-            className="km-hero-in km-lead max-w-[46ch] text-muted-foreground"
+            className="km-hero-in km-lead max-w-[40ch] text-muted-foreground lg:col-span-5"
             style={{ "--d": "520ms" } as CSSProperties}
           >
-            Add the skills and courses you already have. We&apos;ll show how well you fit each open Knight Research
-            Scholars project and help you email the team.
+            See which UCF research teams fit the skills and courses you already have, then email them.
           </p>
           <div
-            className="km-hero-in mt-8 flex flex-wrap items-start gap-x-8 gap-y-1"
+            className="km-hero-in flex flex-wrap items-center gap-x-6 gap-y-1 lg:col-span-6 lg:col-start-7 lg:justify-end"
             style={{ "--d": "620ms" } as CSSProperties}
           >
-            <div className="grid justify-items-start">
-              <Button asChild className="h-12 px-6 text-base font-semibold active:scale-[0.97]">
-                <Link href="/match">{profile ? "Update my skills and courses" : "Add my skills and courses"}</Link>
-              </Button>
-              <Link
-                href="/match#resume"
-                className="inline-flex min-h-11 items-center text-sm text-muted-foreground underline decoration-border-strong underline-offset-[6px] hover:text-foreground hover:decoration-foreground"
-              >
-                or upload your resume
-              </Link>
-            </div>
-            <a
-              href="#projects"
-              onClick={skipToProjects}
-              className="km-label group inline-flex min-h-12 items-center gap-1.5 underline decoration-border-strong underline-offset-[6px] hover:decoration-foreground"
+            <Button asChild className="h-12 px-6 text-base font-semibold active:scale-[0.97]">
+              <Link href="/match">{profile ? "Update my skills and courses" : "Add my skills and courses"}</Link>
+            </Button>
+            <Link
+              href="/match#resume"
+              className="inline-flex min-h-11 items-center text-sm text-muted-foreground underline decoration-border-strong underline-offset-[6px] hover:text-foreground hover:decoration-foreground"
             >
-              <HoverScramble text={`Browse all ${totalCount} projects`} />
-              <ArrowDown
-                className="size-3.5 transition-transform duration-[var(--dur-fast)] ease-[var(--ease-out)] group-hover:translate-y-0.5"
-                aria-hidden="true"
-              />
-            </a>
+              or upload your resume
+            </Link>
           </div>
         </div>
+      </div>
 
-        <aside aria-label="Teams recruiting right now" className="relative lg:col-span-5 lg:col-start-8 lg:pl-14">
-          <DrawRule className="mb-8 lg:hidden" />
-          <DrawRule vertical delay={200} className="absolute inset-y-0 left-0 hidden lg:block" />
-          <p className="km-label text-muted-foreground">Recruiting right now</p>
-          <p className="mt-6 flex items-end gap-4">
-            <span className="font-serif text-[clamp(6rem,4.5rem+4vw,8.5rem)] leading-[0.74] tracking-[-0.02em]">
-              <Scramble text={String(openCount)} />
-            </span>
-            <span className="km-lead">
-              of {totalCount} teams have
-              <br />
-              open spots for undergrads
-            </span>
+      {/* Foot of the title page: a nudge to scroll, and the shortcut for people who just want the list. */}
+      <DrawRule />
+      <div className="km-label flex items-center justify-between gap-6 py-3 text-muted-foreground">
+        <a
+          href="#recruiting"
+          onClick={jumpTo("recruiting")}
+          className="group inline-flex min-h-11 items-center gap-2 hover:text-foreground"
+        >
+          <ArrowDown className="km-nudge size-3.5" aria-hidden="true" />
+          <HoverScramble text="Scroll" />
+        </a>
+        <Link
+          href="/projects"
+          className="group inline-flex min-h-11 items-center gap-1.5 text-foreground underline decoration-border-strong underline-offset-[6px] hover:decoration-foreground"
+        >
+          <HoverScramble text={`Browse all ${totalCount} projects`} />
+        </Link>
+      </div>
+    </section>
+  );
+}
+
+interface RecruitingProps {
+  openCount: number;
+  totalCount: number;
+  openSpots: number;
+  collegeCount: number;
+  openFirstSeen: string[];
+  baselineAt: string;
+}
+
+/**
+ * The proof, on its own screen below the title page: how many teams are recruiting, shown huge,
+ * and one cell per listed team. The cells fill in when the section scrolls into view.
+ */
+export function RecruitingNow({
+  openCount,
+  totalCount,
+  openSpots,
+  collegeCount,
+  openFirstSeen,
+  baselineAt,
+}: RecruitingProps) {
+  const now = useNow();
+  const newCount = now === null ? 0 : openFirstSeen.filter((t) => isNewThisWeek(t, baselineAt, now)).length;
+  const [cellsRef, cellsInView] = useInView<HTMLDivElement>("0px 0px -15% 0px");
+
+  return (
+    <section
+      id="recruiting"
+      aria-labelledby="recruiting-title"
+      className="mx-auto max-w-[1200px] scroll-mt-4 px-4 py-20 md:px-6 md:py-28 lg:py-32"
+    >
+      <div className="grid gap-12 lg:grid-cols-12 lg:gap-0">
+        <div className="lg:col-span-5 lg:pr-14">
+          <h2 id="recruiting-title" className="km-label text-muted-foreground">
+            <Scramble text="Recruiting right now" />
+          </h2>
+          <p className="mt-8 font-serif text-[clamp(8rem,5rem+10vw,13rem)] leading-[0.74] tracking-[-0.02em]">
+            <Scramble text={String(openCount)} />
           </p>
-          <div className="mt-7">
+          <p className="km-lead mt-8 max-w-[32ch]">
+            of the {totalCount} Knight Research Scholars teams have open spots for undergrads.
+          </p>
+          <p className="km-label mt-6 text-muted-foreground">
+            <span className="text-foreground">{openSpots}</span> {openSpots === 1 ? "spot" : "spots"} ·{" "}
+            <span className="text-foreground">{collegeCount}</span> {collegeCount === 1 ? "college" : "colleges"}
+            {newCount > 0 && (
+              <>
+                {" "}
+                · <span className="text-honey-ink">{newCount} new this week</span>
+              </>
+            )}
+          </p>
+        </div>
+
+        <div className="relative lg:col-span-7 lg:flex lg:flex-col lg:justify-end lg:pl-14">
+          <DrawRule vertical delay={200} className="absolute inset-y-0 left-0 hidden lg:block" />
+          <div ref={cellsRef} data-inview={cellsInView ? "" : undefined} className="km-cells">
             <TeamGrid open={openCount} total={totalCount} />
           </div>
-          <div className="km-label mt-4 flex flex-wrap items-center justify-between gap-x-6 gap-y-2 text-muted-foreground">
-            <p className="flex gap-4">
-              <span className="inline-flex items-center gap-1.5">
-                <LegendSwatch open />
-                Recruiting
-              </span>
-              <span className="inline-flex items-center gap-1.5">
-                <LegendSwatch open={false} />
-                Full
-              </span>
-            </p>
-            <p>
-              <span className="text-foreground">{openSpots}</span> {openSpots === 1 ? "spot" : "spots"} ·{" "}
-              <span className="text-foreground">{collegeCount}</span> {collegeCount === 1 ? "college" : "colleges"}
-              {newCount > 0 && (
-                <>
-                  {" "}
-                  · <span className="text-honey-ink">{newCount} new this week</span>
-                </>
-              )}
-            </p>
-          </div>
-        </aside>
+          <p className="km-label mt-4 flex gap-4 text-muted-foreground">
+            <span className="inline-flex items-center gap-1.5">
+              <LegendSwatch open />
+              Recruiting
+            </span>
+            <span className="inline-flex items-center gap-1.5">
+              <LegendSwatch open={false} />
+              Full
+            </span>
+          </p>
+        </div>
       </div>
     </section>
   );

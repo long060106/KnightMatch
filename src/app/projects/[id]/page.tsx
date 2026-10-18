@@ -100,7 +100,7 @@ export default async function ProjectPage({ params }: Params) {
   return (
     <article aria-labelledby="project-title" className="mx-auto max-w-[1200px] px-4 pt-4 pb-16 md:px-6 md:pt-6">
       <Link
-        href="/"
+        href="/projects"
         transitionTypes={[TO_DETAIL]}
         className="-ml-1 inline-flex min-h-11 items-center gap-1.5 rounded-md px-1 text-sm font-medium text-muted-foreground hover:text-foreground"
       >
@@ -115,7 +115,7 @@ export default async function ProjectPage({ params }: Params) {
             .map((id) => (
               <span key={id}>
                 <Link
-                  href={`/?topic=${id}#projects`}
+                  href={`/projects?topic=${id}`}
                   className="underline decoration-border-strong underline-offset-4 hover:text-foreground hover:decoration-foreground"
                 >
                   {topics[id]}

@@ -13,13 +13,13 @@ interface NavItem {
 }
 
 const ITEMS: NavItem[] = [
-  { href: "/", label: "Projects", icon: LayoutList },
+  { href: "/projects", label: "Projects", icon: LayoutList },
   { href: "/match", label: "Match me", icon: ListChecks },
   { href: "/other-places", label: "Other places", icon: Compass },
 ];
 
 function isActive(pathname: string, href: string): boolean {
-  return href === "/" ? pathname === "/" || pathname.startsWith("/projects") : pathname.startsWith(href);
+  return pathname.startsWith(href);
 }
 
 /** Header links from 768px up. */

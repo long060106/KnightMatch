@@ -14,7 +14,7 @@ export default function NotFound() {
       </p>
       <div className="mt-7 flex flex-wrap gap-3">
         <Button asChild className="h-12 px-5 text-base font-semibold active:scale-[0.97]">
-          <Link href="/">Browse open projects</Link>
+          <Link href="/projects">Browse open projects</Link>
         </Button>
         <Button asChild variant="outline" className="h-12 px-5 text-base active:scale-[0.97]">
           <Link href="/match">Match me</Link>
