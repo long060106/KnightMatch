@@ -1,7 +1,7 @@
 {
-  "scraper_version": "0.1.0",
+  "scraper_version": "0.2.0",
   "source_url": "https://knight.research.ucf.edu/project-list/",
-  "last_run_at": "2026-10-18T04:04:33Z",
+  "last_run_at": "2026-10-18T14:20:27Z",
   "baseline_at": "2026-10-17T22:19:03Z",
   "counts": {
     "listed": 42,
@@ -9,5 +9,15 @@
     "full": 28
   },
   "request_count": 44,
-  "errors": []
+  "errors": [],
+  "ai": {
+    "status": "stopped",
+    "model": "gemini-3.5-flash-lite",
+    "requests": 1,
+    "answered": 0,
+    "cached": 0,
+    "failed": 0,
+    "waiting": 42,
+    "message": "HTTP 400: [{ \"error\": { \"code\": 400, \"message\": \"Request contains an invalid argument.\", \"status\": \"INVALID_ARGUMENT\" } } ]. Projects without an answer are retried on the next run."
+  }
 }
