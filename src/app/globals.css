@@ -307,6 +307,27 @@ html[data-has-profile] .km-match-slot {
     animation: km-nudge 1.8s var(--ease-out) infinite;
   }
 }
+/* Page entrance (Projects, Match me, Other places): pieces fade up one after another (--d), the
+   headline words rise as above. `backwards` fill, so nothing is left on the element once it has
+   played: a lingering transform would trap position: fixed children. Use km-page-fade (opacity
+   only) for blocks that contain fixed elements, like the phone "See N matches" button. */
+@media (prefers-reduced-motion: no-preference) {
+  .km-page-in {
+    animation:
+      km-fade-in 700ms var(--ease-out) backwards,
+      km-rise-in 900ms var(--ease-out) backwards;
+    animation-delay: var(--d, 0ms);
+  }
+  .km-page-fade {
+    animation: km-fade-in 900ms var(--ease-out) backwards;
+    animation-delay: var(--d, 0ms);
+  }
+}
+@keyframes km-rise-in {
+  from {
+    transform: translateY(18px);
+  }
+}
 @keyframes km-nudge {
   0%,
   100% {

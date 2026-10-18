@@ -47,8 +47,8 @@ function paraboloid(): Wire {
   return lines;
 }
 
-/** Latitude rings and meridians of a unit sphere. */
-function sphere(): Wire {
+/** Latitude rings and meridians of a unit sphere, stretched to an ellipsoid when the radii differ. */
+function sphere([rx, ry, rz]: V3 = [1, 1, 1]): Wire {
   const lines: Wire = [];
   const steps = 48;
   for (let k = 1; k <= 6; k++) {
@@ -56,7 +56,7 @@ function sphere(): Wire {
     lines.push(
       Array.from({ length: steps + 1 }, (_, i): V3 => {
         const t = (i / steps) * TAU;
-        return [Math.cos(phi) * Math.cos(t), Math.sin(phi), Math.cos(phi) * Math.sin(t)];
+        return [rx * Math.cos(phi) * Math.cos(t), ry * Math.sin(phi), rz * Math.cos(phi) * Math.sin(t)];
       }),
     );
   }
@@ -65,16 +65,63 @@ function sphere(): Wire {
     lines.push(
       Array.from({ length: steps + 1 }, (_, i): V3 => {
         const t = (i / steps) * TAU;
-        return [Math.cos(t) * Math.cos(theta), Math.sin(t), Math.cos(t) * Math.sin(theta)];
+        return [rx * Math.cos(t) * Math.cos(theta), ry * Math.sin(t), rz * Math.cos(t) * Math.sin(theta)];
       }),
     );
   }
   return lines;
 }
 
+/**
+ * Hyperbolic paraboloid (saddle) y = (x² − z²) / 2 over a square: both families of grid lines are
+ * parabolas, one opening up and one opening down.
+ */
+function saddle(): Wire {
+  const n = 8;
+  const steps = 24;
+  const point = (x: number, z: number): V3 => [x, (z * z - x * x) * 0.55, z];
+  const lines: Wire = [];
+  for (let k = 0; k <= n; k++) {
+    const c = -1 + (2 * k) / n;
+    lines.push(Array.from({ length: steps + 1 }, (_, i) => point(-1 + (2 * i) / steps, c)));
+    lines.push(Array.from({ length: steps + 1 }, (_, i) => point(c, -1 + (2 * i) / steps)));
+  }
+  return lines;
+}
+
+/**
+ * Hyperboloid of one sheet, drawn the way it is built: straight lines between a bottom and a top
+ * ring, each twisted by the same angle (both families, so they cross in a lattice), plus the two
+ * rings and the narrow waist.
+ */
+function hyperboloid(): Wire {
+  const r = 0.8;
+  const h = 1;
+  const twist = Math.PI / 3;
+  const rulings = 18;
+  const steps = 48;
+  const ring = (radius: number, y: number) =>
+    Array.from({ length: steps + 1 }, (_, i): V3 => {
+      const t = (i / steps) * TAU;
+      return [radius * Math.cos(t), y, radius * Math.sin(t)];
+    });
+  const lines: Wire = [ring(r, -h), ring(r, h), ring(r * Math.cos(twist / 2), 0)];
+  for (let k = 0; k < rulings; k++) {
+    const t = (k / rulings) * TAU;
+    for (const dir of [1, -1]) {
+      lines.push([
+        [r * Math.cos(t), -h, r * Math.sin(t)],
+        [r * Math.cos(t + dir * twist), h, r * Math.sin(t + dir * twist)],
+      ]);
+    }
+  }
+  return lines;
+}
+
 interface Body {
   wire: Wire;
-  /** Resting place as a fraction of the canvas: [wide screens, narrow screens]. */
+  /** Resting place as a fraction of the canvas: [wide screens, narrow screens]. Edges are fine:
+   *  the shape is clamped to stay whole inside the canvas. */
   home: [[number, number], [number, number]];
   /** How far it wanders, as a fraction of the canvas. */
   wander: [number, number];
@@ -89,24 +136,60 @@ interface Body {
   depth: number;
 }
 
-const BODIES: Body[] = [
-  { wire: cube(), home: [[0.55, 0.26], [0.86, 0.1]], wander: [0.06, 0.08], pace: 0.21, phase: 0.4, spin: [0.31, 0.47, 0.12], size: 0.82, depth: 1 },
-  { wire: paraboloid(), home: [[0.8, 0.5], [0.12, 0.58]], wander: [0.16, 0.2], pace: 0.17, phase: 2.2, spin: [0.08, 0.36, 0.05], size: 1.1, depth: 0.6 },
-  { wire: sphere(), home: [[0.67, 0.86], [0.86, 0.5]], wander: [0.07, 0.05], pace: 0.13, phase: 4.1, spin: [0.1, 0.28, 0.07], size: 1, depth: 1.4 },
-];
+export type ShapeSet = "about" | "projects" | "match" | "places";
+
+/**
+ * Each page gets its own few shapes. `unit` scales them all (page headers are shorter than the
+ * About hero, so their shapes are smaller). On phones the page shapes sit in the top-right corner,
+ * above the headline, and `narrowWander` keeps them from drifting down onto it.
+ */
+const SETS: Record<ShapeSet, { unit: number; narrowWander?: number; bodies: Body[] }> = {
+  about: {
+    unit: 1,
+    bodies: [
+      { wire: cube(), home: [[0.55, 0.26], [0.86, 0.1]], wander: [0.06, 0.08], pace: 0.21, phase: 0.4, spin: [0.31, 0.47, 0.12], size: 0.82, depth: 1 },
+      { wire: paraboloid(), home: [[0.8, 0.5], [0.12, 0.58]], wander: [0.16, 0.2], pace: 0.17, phase: 2.2, spin: [0.08, 0.36, 0.05], size: 1.1, depth: 0.6 },
+      { wire: sphere(), home: [[0.67, 0.86], [0.86, 0.5]], wander: [0.07, 0.05], pace: 0.13, phase: 4.1, spin: [0.1, 0.28, 0.07], size: 1, depth: 1.4 },
+    ],
+  },
+  projects: {
+    unit: 0.72,
+    narrowWander: 0.2,
+    bodies: [
+      { wire: saddle(), home: [[0.76, 0.42], [0.92, 0]], wander: [0.05, 0.1], pace: 0.15, phase: 1.1, spin: [0.12, 0.33, 0.04], size: 1, depth: 0.8 },
+      { wire: sphere(), home: [[0.93, 0.7], [0.76, 0]], wander: [0.03, 0.08], pace: 0.12, phase: 3.6, spin: [0.1, 0.26, 0.06], size: 0.6, depth: 1.3 },
+    ],
+  },
+  match: {
+    unit: 0.72,
+    narrowWander: 0.2,
+    bodies: [
+      { wire: paraboloid(), home: [[0.78, 0.45], [0.92, 0]], wander: [0.05, 0.1], pace: 0.16, phase: 2.6, spin: [0.09, 0.34, 0.05], size: 1, depth: 0.8 },
+      { wire: sphere([1.35, 0.75, 0.9]), home: [[0.94, 0.78], [0.76, 0]], wander: [0.03, 0.07], pace: 0.13, phase: 0.8, spin: [0.14, 0.29, 0.09], size: 0.62, depth: 1.3 },
+    ],
+  },
+  places: {
+    unit: 0.72,
+    narrowWander: 0.2,
+    bodies: [
+      { wire: hyperboloid(), home: [[0.8, 0.42], [0.92, 0]], wander: [0.05, 0.1], pace: 0.14, phase: 1.9, spin: [0.11, 0.3, 0.05], size: 1, depth: 0.8 },
+      { wire: sphere([1.3, 0.8, 0.8]), home: [[0.95, 0.74], [0.76, 0]], wander: [0.03, 0.07], pace: 0.12, phase: 4.4, spin: [0.13, 0.27, 0.08], size: 0.55, depth: 1.3 },
+    ],
+  },
+};
 
 const FOCAL = 4;
 const clamp = (v: number, lo: number, hi: number) => Math.min(Math.max(v, lo), hi);
 const BUCKETS = 4;
 
 /**
- * A cube, an elliptic paraboloid and a sphere drawn as hairlines that turn slowly and drift around
- * the page, a little with the pointer. Canvas 2D with a hand-made perspective projection, so it
+ * A few math surfaces (cube, paraboloids, sphere, ellipsoid, saddle, hyperboloid; which ones depends
+ * on `set`) drawn as hairlines that turn slowly and drift around the page, a little with the pointer. Canvas 2D with a hand-made perspective projection, so it
  * adds no library. Lines on the far side of each shape are fainter, which is what makes them read
  * as solid. Ink color only (follows light/dark), decorative (aria-hidden).
  * It stops while off screen or in a background tab; reduced motion draws one still frame.
  */
-export function FloatingShapes({ className }: { className?: string }) {
+export function FloatingShapes({ className, set = "about" }: { className?: string; set?: ShapeSet }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -126,20 +209,22 @@ export function FloatingShapes({ className }: { className?: string }) {
     const draw = (t: number) => {
       ctx.clearRect(0, 0, width, height);
       const narrow = width < 768;
-      const unit = Math.min(Math.max(width * 0.085, 36), 118);
+      const { unit: unitScale, narrowWander = 1, bodies } = SETS[set];
+      const wanderScale = narrow ? narrowWander : 1;
+      const unit = Math.min(Math.max(width * 0.085, 36), 118) * unitScale;
       ctx.strokeStyle = ink;
       ctx.lineWidth = 1;
       ctx.lineJoin = "round";
 
-      for (const body of BODIES) {
+      for (const body of bodies) {
         const [hx, hy] = body.home[narrow ? 1 : 0];
         const a = t * body.pace + body.phase;
         const scale = unit * body.size;
         // Keep the whole shape inside the canvas (its farthest corner is about 1.5 units out), so
         // nothing is ever cut off by the edge of the section.
         const reach = Math.min(scale * 1.5, width / 2, height / 2);
-        const cx = clamp(width * (hx + body.wander[0] * Math.sin(a)) + pointer.x * 22 * body.depth, reach, width - reach);
-        const cy = clamp(height * (hy + body.wander[1] * Math.cos(a * 0.8 + 1)) + pointer.y * 16 * body.depth, reach, height - reach);
+        const cx = clamp(width * (hx + body.wander[0] * wanderScale * Math.sin(a)) + pointer.x * 22 * body.depth, reach, width - reach);
+        const cy = clamp(height * (hy + body.wander[1] * wanderScale * Math.cos(a * 0.8 + 1)) + pointer.y * 16 * body.depth, reach, height - reach);
         const [sx, sy, sz] = body.spin;
         const cosX = Math.cos(t * sx + body.phase);
         const sinX = Math.sin(t * sx + body.phase);
@@ -243,7 +328,7 @@ export function FloatingShapes({ className }: { className?: string }) {
       document.removeEventListener("visibilitychange", onVisibility);
       window.removeEventListener("pointermove", onMove);
     };
-  }, []);
+  }, [set]);
 
   return <canvas ref={canvasRef} aria-hidden="true" className={cn("block size-full text-foreground", className)} />;
 }

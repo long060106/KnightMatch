@@ -1,6 +1,9 @@
 import { ArrowUpRight } from "lucide-react";
 import type { Metadata } from "next";
+import type { CSSProperties } from "react";
 import { DrawRule } from "@/components/draw-rule";
+import { FloatingShapes } from "@/components/floating-shapes";
+import { RisingWords } from "@/components/rising-words";
 import { Scramble } from "@/components/scramble";
 import { Button } from "@/components/ui/button";
 import { otherPlaces } from "@/lib/data";
@@ -87,22 +90,39 @@ function Callout({ callout }: { callout: NonNullable<PlaceSection["callout"]> })
 export default function OtherPlacesPage() {
   return (
     <div className="mx-auto max-w-[1200px] px-4 pb-20 md:px-6">
-      <header className="pt-10 pb-6 md:pt-14 md:pb-8">
+      <header className="relative isolate pt-16 pb-6 md:pt-14 md:pb-8">
+        <div
+          aria-hidden="true"
+          className="km-page-fade pointer-events-none absolute inset-0 -z-10"
+          style={{ "--d": "350ms" } as CSSProperties}
+        >
+          <FloatingShapes set="places" />
+        </div>
         <h1 className="max-w-[22ch] font-serif text-[clamp(2rem,1.2rem+3.2vw,3.25rem)] leading-[1.06] tracking-[-0.015em]">
-          Other places to look.
+          <RisingWords text="Other places to look." />
         </h1>
-        <p className="mt-4 max-w-[62ch] text-base leading-relaxed text-muted-foreground md:text-lg">
+        <p
+          className="km-page-in mt-4 max-w-[62ch] text-base leading-relaxed text-muted-foreground md:text-lg"
+          style={{ "--d": "300ms" } as CSSProperties}
+        >
           KRSP is one way in. These official pages cover the rest: advice, course credit, paid positions, college labs
           and summer programs. We only link to them, so each site always has the latest details.
         </p>
-        <p className="mt-3 text-sm text-muted-foreground">Links checked on {checkedOn(otherPlaces.checked_on)}.</p>
+        <p className="km-page-in mt-3 text-sm text-muted-foreground" style={{ "--d": "380ms" } as CSSProperties}>
+          Links checked on {checkedOn(otherPlaces.checked_on)}.</p>
       </header>
 
       <div className="grid gap-16">
-        {otherPlaces.sections.map((section) => {
+        {otherPlaces.sections.map((section, i) => {
           const compact = section.id === "colleges";
           return (
-            <section key={section.id} aria-labelledby={`${section.id}-heading`}>
+            <section
+              key={section.id}
+              aria-labelledby={`${section.id}-heading`}
+              className="km-page-in"
+              // The first two sections are on screen at load: they follow the header one by one.
+              style={{ "--d": `${460 + Math.min(i, 2) * 120}ms` } as CSSProperties}
+            >
               <p className="text-sm font-medium text-muted-foreground" aria-hidden="true">
                 <Scramble text={section.label} />
               </p>

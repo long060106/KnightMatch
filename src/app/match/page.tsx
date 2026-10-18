@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
+import type { CSSProperties } from "react";
 import { DrawRule } from "@/components/draw-rule";
+import { FloatingShapes } from "@/components/floating-shapes";
 import { MatchWorkbench } from "@/components/match-workbench";
+import { RisingWords } from "@/components/rising-words";
 import type { SkillGroup } from "@/components/skill-picker";
 import { courseSkills, courses, meta, projects, skillCategories, skills, toListing } from "@/lib/data";
 
@@ -41,25 +44,38 @@ export default function MatchPage() {
 
   return (
     <div className="mx-auto max-w-[1200px] px-4 md:px-6">
-      <header className="pt-10 pb-6 md:pt-14 md:pb-8">
+      <header className="relative isolate pt-16 pb-6 md:pt-14 md:pb-8">
+        <div
+          aria-hidden="true"
+          className="km-page-fade pointer-events-none absolute inset-0 -z-10"
+          style={{ "--d": "350ms" } as CSSProperties}
+        >
+          <FloatingShapes set="match" />
+        </div>
         <h1 className="max-w-[22ch] font-serif text-[clamp(2rem,1.2rem+3.2vw,3.25rem)] leading-[1.06] tracking-[-0.015em]">
-          Add what you already know.
+          <RisingWords text="Add what you already know." />
         </h1>
-        <p className="mt-4 max-w-[62ch] text-base leading-relaxed text-muted-foreground md:text-lg">
+        <p
+          className="km-page-in mt-4 max-w-[62ch] text-base leading-relaxed text-muted-foreground md:text-lg"
+          style={{ "--d": "300ms" } as CSSProperties}
+        >
           Tick your skills and the UCF courses you&apos;ve finished. Each open project then shows how many of its listed
           requirements you meet, using the team&apos;s own words. Nothing leaves this browser: no account, no email.
         </p>
       </header>
       <DrawRule />
-      <MatchWorkbench
-        projects={open}
-        skills={skills}
-        groups={groups}
-        popular={popular}
-        courses={courses}
-        courseSkills={courseSkills}
-        baselineAt={meta.baseline_at}
-      />
+      {/* Fade only: the workbench holds the fixed "See N matches" button on phones. */}
+      <div className="km-page-fade" style={{ "--d": "420ms" } as CSSProperties}>
+        <MatchWorkbench
+          projects={open}
+          skills={skills}
+          groups={groups}
+          popular={popular}
+          courses={courses}
+          courseSkills={courseSkills}
+          baselineAt={meta.baseline_at}
+        />
+      </div>
     </div>
   );
 }

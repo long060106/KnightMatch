@@ -156,7 +156,15 @@ Ease-out `cubic-bezier(.2,.8,.2,1)` for arrivals; exits are ~65% of enter time.
    hairlines on one canvas, spinning and drifting along slow orbits, a little with the pointer.
    Far-side lines are fainter so they read as solid. Pauses off screen or in a background tab.
    Reduced motion: one still frame.
-9. **About page portrait** (`Portrait`): the photo is uncovered tile by tile in the same square cells
+   The page headers of Projects, Match me and Other places get two smaller ones each (`set` prop), to
+   the right of the headline (on phones: a band in the top-right corner above it): a hyperbolic
+   paraboloid (saddle) and a sphere; an elliptic paraboloid and an ellipsoid; a hyperboloid of one
+   sheet and an ellipsoid. Never more than two per page header.
+9. **Page entrance** (Projects, Match me, Other places): the headline words rise out of their masks
+   (`RisingWords`, same as the home page), then the intro, the shapes and the content fade up one after
+   another (`km-page-in`, ~0.3–0.7s apart). Plays on load and on every in-app navigation. `backwards`
+   fill so nothing lingers; blocks with fixed children (the Match workbench) only fade (`km-page-fade`).
+10. **About page portrait** (`Portrait`): the photo is uncovered tile by tile in the same square cells
    as the team grid; with a mouse the frame leans up to 5° while the photo and the outline behind it
    slide the other way. Reduced motion: no tiles, no lean.
 
