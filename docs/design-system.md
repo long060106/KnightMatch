@@ -40,14 +40,16 @@ Three voices, each with one job. Size says what to read first; the font says wha
 - **Instrument Serif** (condensed display serif, one weight): headlines, big numbers, project titles,
   step titles. It only has 400, so hierarchy comes from size, never from bold (no `font-semibold`,
   the browser would fake it).
-- **Public Sans**: body text, buttons, form controls. Body 16px / 1.6, hero lead 18–20px.
+- **Public Sans**: body text, buttons, form controls. Body 16px / 1.6.
 - **IBM Plex Mono**: small uppercase labels (`km-label`: 12px, 500, +0.06em tracking) for the dateline,
-  nav links, section labels, stat captions and ticker meta; also UCF course codes (`COP3502C`).
+  nav links, section labels, stat captions and ticker meta; the short hero lead paragraph (`km-lead`:
+  15px / 1.65, uppercase, justified from 640px, left aligned on phones); also UCF course codes (`COP3502C`).
 - Scale (px): 12 · 14 · 16 · 18 · 20 · 24 · 30 · 36 · 48, plus two display sizes:
   hero headline `clamp(2.75rem, 11.5vw, 5rem)` on phones and container width ÷ 11.2 from 1024px
   (≈103px), and the hero count `clamp(6rem, 4.5rem + 4vw, 8.5rem)`.
-- Uppercase is for exactly two things: the hero headline and `km-label` labels. Everything else
-  (project titles, body, buttons) is sentence case. Never uppercase a sentence of body text.
+- Uppercase is for the hero headline, `km-label` labels and the short `km-lead` hero paragraph.
+  Everything else (project titles, body, buttons) is sentence case. Never use `km-lead` for more
+  than a few lines.
 - No single highlighted word in headlines, no `→` appended to button text.
 
 ## Layout

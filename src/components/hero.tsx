@@ -127,7 +127,7 @@ export function Hero({
       <div className="grid gap-10 pt-8 pb-12 md:gap-12 md:pt-12 md:pb-16 lg:grid-cols-12 lg:gap-0 lg:pt-14 lg:pb-14">
         <div className="lg:col-span-6 lg:pr-14">
           <p
-            className="km-hero-in max-w-[44ch] text-lg leading-relaxed text-muted-foreground md:text-xl md:leading-relaxed"
+            className="km-hero-in km-lead max-w-[46ch] text-muted-foreground"
             style={{ "--d": "520ms" } as CSSProperties}
           >
             Add the skills and courses you already have. We&apos;ll show how well you fit each open Knight Research
@@ -162,7 +162,7 @@ export function Hero({
             <span className="font-serif text-[clamp(6rem,4.5rem+4vw,8.5rem)] leading-[0.74] tracking-[-0.02em]">
               <Scramble text={String(openCount)} />
             </span>
-            <span className="text-lg leading-snug">
+            <span className="km-lead">
               of {totalCount} teams have
               <br />
               open spots for undergrads

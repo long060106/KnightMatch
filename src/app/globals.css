@@ -161,6 +161,22 @@
   text-transform: uppercase;
 }
 
+/* Short mono paragraph (hero lead). Uppercase and justified from 640px; left aligned on phones,
+   where a narrow justified column leaves big gaps. Only for a few lines, never long text. */
+.km-lead {
+  font-family: var(--font-mono);
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-wrap: pretty;
+}
+@media (min-width: 640px) {
+  .km-lead {
+    text-align: justify;
+  }
+}
+
 /* Returning students: reserve the match row before React reads localStorage (no layout shift). */
 html[data-has-profile] .km-match-slot {
   min-height: 2rem; /* the meter row: 0.75rem margin + 1.25rem line */
