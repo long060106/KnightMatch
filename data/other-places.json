@@ -1,0 +1,197 @@
+{
+  "checked_on": "2026-10-18",
+  "note": "Links only. Descriptions are written by KnightMatch; each site is the source of truth. Re-check with: python -m knightmatch_scraper.check_links",
+  "sections": [
+    {
+      "id": "our",
+      "label": "Start here",
+      "title": "Start with the Office of Undergraduate Research",
+      "intro": "OUR is UCF's home base for undergraduate research. If you're new to research, start here before emailing anyone.",
+      "links": [
+        {
+          "title": "Office of Undergraduate Research",
+          "url": "https://academicsuccess.ucf.edu/our/",
+          "description": "Advising, workshops, funding, conferences and everything else OUR runs."
+        },
+        {
+          "title": "How to get started",
+          "url": "https://academicsuccess.ucf.edu/our/prospective/how-to-get-started/",
+          "description": "OUR's guide to finding a first position, including how to write to a possible faculty mentor."
+        },
+        {
+          "title": "Workshops and deadlines",
+          "url": "https://academicsuccess.ucf.edu/our/about/calendar/",
+          "description": "Dates for workshops like How to: Get Started in Undergraduate Research, plus grant and conference deadlines."
+        },
+        {
+          "title": "Meet a peer mentor",
+          "url": "https://academicsuccess.ucf.edu/our/advising/",
+          "description": "Students who already do research. Drop in or book through myKnightSTAR; the page has the hours and steps."
+        }
+      ],
+      "callout": {
+        "title": "The OUR research positions database",
+        "url": "https://academicsuccess.ucf.edu/our/prospective/positions/",
+        "body": "OUR keeps its own list of faculty research positions. It is for UCF students only, and faculty contact details are protected on purpose. You get access by attending a How to: Get Started in Undergraduate Research workshop or meeting with an OUR peer mentor. KnightMatch never copies this database.",
+        "steps": [
+          {
+            "label": "Find a workshop date",
+            "url": "https://academicsuccess.ucf.edu/our/about/calendar/"
+          },
+          {
+            "label": "Meet a peer mentor",
+            "url": "https://academicsuccess.ucf.edu/our/advising/"
+          },
+          {
+            "label": "Open the positions page",
+            "url": "https://academicsuccess.ucf.edu/our/prospective/positions/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "credit-pay",
+      "label": "Credit and pay",
+      "title": "Get credit, pay or funding",
+      "intro": "Research can count toward your degree, be a paid job, or come with money for supplies and travel.",
+      "links": [
+        {
+          "title": "Course credit for research (4912)",
+          "url": "https://academicsuccess.ucf.edu/our/current/courses/",
+          "description": "Directed Independent Research courses put research with a faculty mentor on your transcript."
+        },
+        {
+          "title": "Federal Work Study for research assistants",
+          "url": "https://academicsuccess.ucf.edu/our/federal-work-study/",
+          "description": "If work study is in your aid package, it can pay your wages as a research assistant."
+        },
+        {
+          "title": "Student research grants",
+          "url": "https://academicsuccess.ucf.edu/our/research-grants/",
+          "description": "Money for materials, equipment or research travel, applied for through InfoReady."
+        },
+        {
+          "title": "Summer Undergraduate Research Fellowship",
+          "url": "https://academicsuccess.ucf.edu/our/summer-undergraduate-research-fellowship/",
+          "description": "Spend a summer on your own project with a faculty mentor, ending in a poster presentation."
+        }
+      ]
+    },
+    {
+      "id": "colleges",
+      "label": "By college",
+      "title": "Research pages by college",
+      "intro": "Each college lists its labs, centers and faculty interests. Find a lab whose work excites you, then read a few of its papers before you reach out.",
+      "links": [
+        {
+          "title": "Arts and Humanities",
+          "url": "https://cah.ucf.edu/research/",
+          "description": "College of Arts and Humanities research."
+        },
+        {
+          "title": "Business",
+          "url": "https://business.ucf.edu/faculty-research/",
+          "description": "Barry S. Miller College of Business faculty research."
+        },
+        {
+          "title": "Community Innovation and Education",
+          "url": "https://ccie.ucf.edu/research/",
+          "description": "CCIE research home."
+        },
+        {
+          "title": "Engineering and Computer Science",
+          "url": "https://www.cecs.ucf.edu/research/",
+          "description": "CECS research areas, centers and labs."
+        },
+        {
+          "title": "Health Professions and Sciences",
+          "url": "https://healthprofessions.ucf.edu/research/",
+          "description": "The college's Office of Research."
+        },
+        {
+          "title": "Hospitality (Rosen College)",
+          "url": "https://hospitality.ucf.edu/research/",
+          "description": "Research and innovation at Rosen College."
+        },
+        {
+          "title": "Medicine",
+          "url": "https://med.ucf.edu/research/",
+          "description": "College of Medicine research."
+        },
+        {
+          "title": "Nursing",
+          "url": "https://nursing.ucf.edu/research/",
+          "description": "College of Nursing research."
+        },
+        {
+          "title": "Optics and Photonics (CREOL)",
+          "url": "https://creol.ucf.edu/research/",
+          "description": "Research groups at CREOL."
+        },
+        {
+          "title": "Sciences",
+          "url": "https://sciences.ucf.edu/research/",
+          "description": "College of Sciences research and facilities."
+        },
+        {
+          "title": "Simulation and Training (IST)",
+          "url": "https://www.ist.ucf.edu/",
+          "description": "Institute for Simulation and Training."
+        },
+        {
+          "title": "UCF Office of Research",
+          "url": "https://www.research.ucf.edu/",
+          "description": "University-wide research news, centers and institutes."
+        }
+      ]
+    },
+    {
+      "id": "programs",
+      "label": "Programs",
+      "title": "Programs with research built in",
+      "intro": "Structured programs that pair you with a team or a mentor.",
+      "links": [
+        {
+          "title": "Knight Research Scholars Program",
+          "url": "https://knight.research.ucf.edu/",
+          "description": "The program behind every project on KnightMatch: grad students and postdocs lead teams of undergrads."
+        },
+        {
+          "title": "Honors Undergraduate Thesis",
+          "url": "https://honors.ucf.edu/honors-research/honors-undergraduate-thesis/",
+          "description": "Juniors and seniors in any major research, write and defend an original thesis over two to four semesters."
+        },
+        {
+          "title": "McNair Scholars Program",
+          "url": "https://mcnair.ucf.edu/",
+          "description": "A federally funded program that prepares eligible first-generation, low-income and underrepresented students for doctoral study."
+        }
+      ]
+    },
+    {
+      "id": "summer",
+      "label": "Summer",
+      "title": "Summer research beyond UCF",
+      "intro": "Paid summer programs at other universities. Many apply in winter for the following summer.",
+      "links": [
+        {
+          "title": "OUR guide to summer research",
+          "url": "https://academicsuccess.ucf.edu/our/current/summer-off-campus-research/",
+          "description": "How summer programs work, when they run and how to pick one."
+        },
+        {
+          "title": "NSF REU site directory",
+          "url": "https://www.nsf.gov/funding/initiatives/reu/search",
+          "description": "Research Experiences for Undergraduates sites across the US. You apply to each site directly. Most require US citizenship or permanent residency.",
+          "robots_blocks_check": true
+        },
+        {
+          "title": "NSF REU: information for students",
+          "url": "https://www.nsf.gov/funding/initiatives/reu/students",
+          "description": "Who can take part and how applications work.",
+          "robots_blocks_check": true
+        }
+      ]
+    }
+  ]
+}

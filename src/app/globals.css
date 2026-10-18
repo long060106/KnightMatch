@@ -1,0 +1,354 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "lenis/dist/lenis.css";
+
+/* Dark mode is a class on <html>, set by next-themes (follows the OS by default). */
+@custom-variant dark (&:is(.dark *));
+
+/*
+  KnightMatch tokens (see docs/design-system.md).
+  Rule of thumb: honey only appears where something is good news for the student
+  (a skill they have, a filled match segment, a new opening, the main action).
+*/
+:root {
+  --background: #fafaf9; /* paper */
+  --foreground: #1c1917; /* ink */
+  --card: #ffffff;
+  --card-foreground: #1c1917;
+  --popover: #ffffff;
+  --popover-foreground: #1c1917;
+  --primary: #f2c14e; /* honey: main action, checked controls */
+  --primary-foreground: #1c1917;
+  --secondary: #f5f5f4;
+  --secondary-foreground: #1c1917;
+  --muted: #f5f5f4;
+  --muted-foreground: #57534e; /* graphite, 7:1 on paper */
+  --accent: #f5f5f4;
+  --accent-foreground: #1c1917;
+  --destructive: #b91c1c;
+  --border: #e7e5e4; /* rule */
+  --border-strong: #a8a29e;
+  --input: #8c8681; /* 3.6:1 so form controls are visible */
+  --ring: #8a6100;
+  --radius: 0.625rem; /* card 10px, buttons 8px, tags 6px */
+
+  --honey: #f2c14e;
+  --honey-ink: #8a6100; /* honey-colored text on light, 5:1 */
+  --honey-wash: #fdf3d7;
+  --meter-on: #b8860b; /* 3.3:1 against white */
+  --meter-off: #e7e5e4;
+  --urgent-ink: #9a3412;
+  --urgent-wash: #ffedd5;
+
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --dur-fast: 150ms;
+  --dur-base: 220ms;
+  --dur-move: 300ms;
+}
+
+.dark {
+  --background: #0c0a09;
+  --foreground: #f5f5f4;
+  --card: #161412;
+  --card-foreground: #f5f5f4;
+  --popover: #1c1917;
+  --popover-foreground: #f5f5f4;
+  --primary: #f2c14e;
+  --primary-foreground: #1c1917;
+  --secondary: #292524;
+  --secondary-foreground: #f5f5f4;
+  --muted: #292524;
+  --muted-foreground: #a8a29e;
+  --accent: #292524;
+  --accent-foreground: #f5f5f4;
+  --destructive: #f87171;
+  --border: #292524;
+  --border-strong: #57534e;
+  --input: #78716c;
+  --ring: #f2c14e;
+
+  --honey-ink: #f2c14e;
+  --honey-wash: #352c1a;
+  --meter-on: #f2c14e;
+  --meter-off: #3b3632;
+  --urgent-ink: #fdba74;
+  --urgent-wash: #3b2412;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-honey: var(--honey);
+  --color-honey-ink: var(--honey-ink);
+  --color-honey-wash: var(--honey-wash);
+  --color-meter-on: var(--meter-on);
+  --color-meter-off: var(--meter-off);
+  --color-urgent-ink: var(--urgent-ink);
+  --color-urgent-wash: var(--urgent-wash);
+
+  --font-sans: var(--font-public-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-newsreader), ui-serif, Georgia, serif;
+  --font-heading: var(--font-newsreader), ui-serif, Georgia, serif;
+  --font-mono: var(--font-martian-mono), ui-monospace, monospace;
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-background text-foreground;
+    line-height: 1.6;
+    font-variant-numeric: lining-nums;
+  }
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+  a,
+  button,
+  [role="button"],
+  label {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+}
+
+/* Returning students: reserve the match row before React reads localStorage (no layout shift). */
+html[data-has-profile] .km-match-slot {
+  min-height: 2rem; /* the meter row: 0.75rem margin + 1.25rem line */
+}
+
+/* "New this week" dot: one gentle pulse loop, off for reduced motion. */
+@keyframes km-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+.km-pulse-ring {
+  animation: km-pulse 2s var(--ease-out) infinite;
+}
+
+/* ---- Scroll effects (see docs/design-system.md, "Scroll") ----
+   `.js` is added to <html> by the inline head script, so without JavaScript nothing is hidden. */
+
+/* Hairlines that draw themselves from the left when they scroll into view. */
+.km-rule {
+  height: 1px;
+  background: var(--border);
+  transform-origin: left;
+  transition: transform 1100ms var(--ease-out);
+}
+.js .km-rule:not([data-inview]) {
+  transform: scaleX(0);
+}
+
+/* Scroll-scrubbed pieces of the How-it-works demo. --p (0..1) is the scroll progress through the
+   section; each piece fades in between its own --a and --b. Default --p is 1 = finished demo. */
+.km-story {
+  --p: 1;
+}
+.km-scrub,
+.km-scrub-fade,
+.km-scrub-out,
+.km-scrub-fill {
+  --t: clamp(0, calc((var(--p) - var(--a)) / (var(--b) - var(--a))), 1);
+}
+.km-scrub {
+  opacity: var(--t);
+  transform: translateY(calc((1 - var(--t)) * 10px));
+}
+.km-scrub-fade {
+  opacity: var(--t);
+}
+.km-scrub-out {
+  opacity: calc(1 - var(--t));
+}
+.km-scrub-fill {
+  transform: scaleX(var(--t));
+  transform-origin: left;
+}
+
+.km-story-compact {
+  display: none;
+}
+/* Returning students already know how it works: collapse it (set before paint, no layout shift). */
+html[data-has-profile] .km-story {
+  display: none;
+}
+html[data-has-profile] .km-story-compact {
+  display: block;
+}
+
+.km-step-number {
+  font-size: 2.25rem;
+}
+.km-story {
+  padding-block: 3rem 4rem;
+}
+
+/* Wide screens with motion: pin the section and walk through the steps as you scroll. */
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+  .km-story {
+    --p: 0;
+    height: 400vh;
+    padding-block: 0;
+  }
+  .km-story-pin {
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+  }
+  .km-steps {
+    gap: 0;
+  }
+  .km-step {
+    grid-area: 1 / 1;
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity 160ms var(--ease-in),
+      transform 160ms var(--ease-in);
+  }
+  .km-step[data-active] {
+    opacity: 1;
+    transform: none;
+    /* The old step leaves first, then the new one arrives. */
+    transition:
+      opacity 280ms var(--ease-out) 120ms,
+      transform 420ms var(--ease-out) 120ms;
+  }
+  .km-step-number {
+    font-size: 7rem;
+  }
+  .km-rail {
+    display: flex;
+  }
+  .km-rail-fill {
+    transform: scaleY(clamp(0, calc(var(--p) * 4 - var(--i)), 1));
+  }
+}
+
+/* Phones and tablets with motion: steps fade up as they scroll into view, nothing is pinned. */
+@media (max-width: 1023.98px) and (prefers-reduced-motion: no-preference) {
+  .km-step {
+    transition:
+      opacity 500ms var(--ease-out),
+      transform 600ms var(--ease-out);
+  }
+  .js .km-step:not([data-inview]) {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+/* ---- View transitions (React <ViewTransition>, browser-native, no JS library) ---- */
+::view-transition {
+  pointer-events: none;
+}
+/* The page itself never crossfades; only named elements animate. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+}
+/* Cards gliding to their new place when filters or sort change. */
+::view-transition-group(.card-move) {
+  animation-duration: var(--dur-move);
+  animation-timing-function: var(--ease-out);
+}
+::view-transition-new(.card-enter) {
+  animation:
+    var(--dur-base) var(--ease-out) 60ms both km-fade-in,
+    var(--dur-move) var(--ease-out) both km-rise;
+}
+::view-transition-old(.card-exit) {
+  animation: 140ms var(--ease-in) both km-fade-out;
+}
+/* Project title morphing from its card into the detail page heading. */
+::view-transition-group(.title-morph) {
+  animation-duration: 360ms;
+  animation-timing-function: var(--ease-out);
+}
+@keyframes km-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes km-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes km-rise {
+  from {
+    transform: translateY(8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+  .km-pulse-ring {
+    display: none;
+  }
+  .js .km-rule:not([data-inview]) {
+    transform: none;
+  }
+}

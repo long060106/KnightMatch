@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://knightmatch/schema/projects.schema.json",
+  "title": "KnightMatch projects.json",
+  "type": "array",
+  "items": { "$ref": "#/$defs/project" },
+  "$defs": {
+    "timestamp": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+    },
+    "person": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "role"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "role": { "type": ["string", "null"] }
+      }
+    },
+    "skillIds": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+      "uniqueItems": true
+    },
+    "project": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id", "source", "wp_post_id", "title", "url", "status", "semester", "team_size",
+        "open_spots", "affiliation", "team_leader", "co_leaders", "faculty_mentor",
+        "required_quals", "preferred_quals", "quals_raw", "quals_hash", "required_skills",
+        "preferred_skills", "beginner_friendly", "beginner_reason", "description",
+        "first_seen_at", "last_checked_at", "last_changed_at", "status_changed_at",
+        "listed", "removed_at"
+      ],
+      "properties": {
+        "id": { "type": "string", "pattern": "^krsp-\\d+$" },
+        "source": { "const": "krsp" },
+        "wp_post_id": { "type": "integer", "minimum": 1 },
+        "title": { "type": "string", "minLength": 1 },
+        "url": { "type": "string", "pattern": "^https://knight\\.research\\.ucf\\.edu/krsp-project/" },
+        "status": { "enum": ["open", "full"] },
+        "semester": { "type": ["string", "null"] },
+        "team_size": { "type": ["integer", "null"], "minimum": 0 },
+        "open_spots": { "type": ["integer", "null"], "minimum": 0 },
+        "affiliation": { "type": ["string", "null"] },
+        "team_leader": { "oneOf": [{ "$ref": "#/$defs/person" }, { "type": "null" }] },
+        "co_leaders": { "type": "array", "items": { "$ref": "#/$defs/person" } },
+        "faculty_mentor": { "type": ["string", "null"] },
+        "required_quals": { "type": "array", "items": { "type": "string" } },
+        "preferred_quals": { "type": "array", "items": { "type": "string" } },
+        "quals_raw": { "type": "string" },
+        "quals_hash": { "type": "string", "pattern": "^[0-9a-f]{16}$" },
+        "required_skills": { "$ref": "#/$defs/skillIds" },
+        "preferred_skills": { "$ref": "#/$defs/skillIds" },
+        "beginner_friendly": { "type": "boolean" },
+        "beginner_reason": { "enum": ["explicit", "no_required_skills", null] },
+        "description": { "type": "string" },
+        "first_seen_at": { "$ref": "#/$defs/timestamp" },
+        "last_checked_at": { "$ref": "#/$defs/timestamp" },
+        "last_changed_at": { "$ref": "#/$defs/timestamp" },
+        "status_changed_at": { "$ref": "#/$defs/timestamp" },
+        "listed": { "type": "boolean" },
+        "removed_at": { "oneOf": [{ "$ref": "#/$defs/timestamp" }, { "type": "null" }] }
+      }
+    }
+  }
+}

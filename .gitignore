@@ -1,0 +1,32 @@
+# dependencies
+node_modules/
+scraper/.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# build output
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
+
+# env / local
+.env
+.env*.local
+.vercel
+.DS_Store
+Thumbs.db
+
+# local scraper scratch (never commit raw pages with emails)
+scraper/.cache/
+
+# next.js / node (from create-next-app)
+/coverage
+/build
+*.pem
+npm-debug.log*
+.vercel
+
+# personal Claude Code settings (launch.json is shared on purpose)
+.claude/settings.local.json

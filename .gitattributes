@@ -1,0 +1,5 @@
+# Same line endings on Windows and on the Linux GitHub Action that commits data/ daily.
+* text=auto eol=lf
+*.png binary
+*.ico binary
+*.svg text eol=lf

@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "verified_on": "2026-10-17",
+  "how_verified": "Each code and title was checked against public UCF pages (www.ucf.edu/degree/* program pages and the UCF course catalog). Only add a course after checking it the same way.",
+  "courses": [
+    { "code": "COP3223C", "title": "Introduction to Programming with C", "skills": ["c_cpp"] },
+    { "code": "COP3502C", "title": "Computer Science I", "skills": ["c_cpp"] },
+    { "code": "COP3503C", "title": "Computer Science II", "skills": ["programming_basics"] },
+    { "code": "COP3330", "title": "Object Oriented Programming", "skills": ["programming_basics"] },
+    { "code": "COP4710", "title": "Database Systems", "skills": ["sql"] },
+    { "code": "CEN4360", "title": "Mobile Device Software Development", "skills": ["app_dev"] },
+    { "code": "CIS3360", "title": "Security in Computing", "skills": ["cybersecurity"] },
+    { "code": "CIS3362", "title": "Cryptography and Information Security", "skills": ["cybersecurity"] },
+    { "code": "CAP4611", "title": "Algorithms for Machine Learning", "skills": ["machine_learning"] },
+    { "code": "CAP4641", "title": "Natural Language Processing", "skills": ["machine_learning"] },
+    { "code": "CAP4453", "title": "Robot Vision", "skills": ["computer_vision"] },
+    { "code": "ENC3241", "title": "Writing for the Technical Professional", "skills": ["academic_writing"] },
+
+    { "code": "MAS3105", "title": "Matrix and Linear Algebra", "skills": ["linear_algebra"] },
+    { "code": "MAP2302", "title": "Differential Equations", "skills": ["differential_equations"] },
+    { "code": "STA2023", "title": "Statistical Methods I", "skills": ["statistics"] },
+    { "code": "STA4163", "title": "Statistical Methods II", "skills": ["statistics"] },
+    { "code": "STA4102", "title": "Computer Processing of Statistical Data", "skills": ["statistics", "data_analysis"] },
+
+    { "code": "PSY2012", "title": "General Psychology", "skills": ["psychology"] },
+    { "code": "PSY3204C", "title": "Statistical Methods in Psychology", "skills": ["statistics", "psychology"] },
+    { "code": "PSY3213C", "title": "Research Methods in Psychology", "skills": ["research_methods", "apa_style", "psychology"] },
+    { "code": "SYA4310C", "title": "Qualitative Research Analysis in Sociology", "skills": ["qualitative_methods", "research_methods"] },
+    { "code": "HSA4702", "title": "Health Sciences Research Methods", "skills": ["research_methods", "health_sciences"] },
+
+    { "code": "BSC2010C", "title": "Biology I", "skills": ["biology", "wet_lab"] },
+    { "code": "BSC2011C", "title": "Biology II", "skills": ["biology"] },
+    { "code": "BSC4422L", "title": "Biology Laboratory Techniques", "skills": ["wet_lab"] },
+    { "code": "PCB3063", "title": "Genetics", "skills": ["biology"] },
+    { "code": "PCB3703C", "title": "Human Physiology", "skills": ["biology"] },
+    { "code": "MCB3020C", "title": "General Microbiology", "skills": ["microbiology", "wet_lab"] },
+
+    { "code": "CHM2045C", "title": "Chemistry Fundamentals I", "skills": ["chemistry", "wet_lab"] },
+    { "code": "CHM2046", "title": "Chemistry Fundamentals II", "skills": ["chemistry"] },
+    { "code": "CHM2046L", "title": "Chemistry Fundamentals Laboratory", "skills": ["chemistry", "wet_lab"] },
+    { "code": "CHM2210", "title": "Organic Chemistry I", "skills": ["organic_chemistry"] },
+    { "code": "CHM2211", "title": "Organic Chemistry II", "skills": ["organic_chemistry"] },
+    { "code": "CHM2211L", "title": "Organic Laboratory Techniques I", "skills": ["organic_chemistry", "wet_lab"] },
+
+    { "code": "PHY2048C", "title": "General Physics Using Calculus I", "skills": ["physics"] },
+    { "code": "PHY2049C", "title": "General Physics Using Calculus II", "skills": ["physics"] },
+    { "code": "PHY2053C", "title": "College Physics I", "skills": ["physics"] },
+    { "code": "PHY2054C", "title": "College Physics II", "skills": ["physics"] }
+  ]
+}

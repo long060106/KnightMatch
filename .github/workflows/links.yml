@@ -1,0 +1,29 @@
+name: Weekly link check
+
+on:
+  schedule:
+    # Mondays, 12:41 UTC.
+    - cron: "41 12 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: scraper/requirements.txt
+      - run: pip install -r scraper/requirements.txt
+      - name: Check every link on the Other places page (fails if one is broken)
+        working-directory: scraper
+        env:
+          SCRAPER_CONTACT_EMAIL: ${{ secrets.SCRAPER_CONTACT_EMAIL }}
+          SCRAPER_REPO_URL: ${{ github.server_url }}/${{ github.repository }}
+        run: python -m knightmatch_scraper.check_links

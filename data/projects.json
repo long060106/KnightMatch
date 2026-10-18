@@ -1,0 +1,1982 @@
+[
+  {
+    "id": "krsp-1012",
+    "source": "krsp",
+    "wp_post_id": 1012,
+    "title": "Evolutionary Insights into the Anatomical Basis of Regeneration from Leaf Cuttings in Scilloideae",
+    "url": "https://knight.research.ucf.edu/krsp-project/evolutionary-insights-into-the-anatomical-basis-of-regeneration-from-leaf-cuttings-in-scilloideae/",
+    "status": "open",
+    "semester": "Fall 2026",
+    "team_size": 4,
+    "open_spots": 2,
+    "affiliation": "College of Sciences",
+    "team_leader": {
+      "name": "Goodnews Onyeweaku",
+      "role": "Biology"
+    },
+    "co_leaders": [],
+    "faculty_mentor": "Cody Howard, PhD",
+    "required_quals": [
+      "Plant micro technique"
+    ],
+    "preferred_quals": [],
+    "quals_raw": "Plant micro technique",
+    "quals_hash": "19e9a1c3f83c8b79",
+    "required_skills": [
+      "histology"
+    ],
+    "preferred_skills": [],
+    "beginner_friendly": false,
+    "beginner_reason": null,
+    "description": "Project Overview:\n\nThis project investigates the evolution and underlying anatomical mechanisms that allow plants to regenerate from leaf tissue. The study system is the Ledebouriinae, a group of plants within the monocot family Asparagaceae subfamily Scilloideae. Students will generate anatomical slides of plant leaf tissue, analyze the resulting anatomical slides, and analyze data using the R coding language.\n\nStudent Responsibilities:\n\nPlant propagation; tissue sectioning; microscopy; plant anatomical identification and analysis; comparative phylogenetic analyses\n\nWhat you will learn\n\nplant anatomical micro technique; light microscopy; digital imaging; image analysis",
+    "first_seen_at": "2026-10-17T22:19:03Z",
+    "last_checked_at": "2026-10-17T22:33:56Z",
+    "last_changed_at": "2026-10-17T22:19:03Z",
+    "status_changed_at": "2026-10-17T22:19:03Z",
+    "listed": true,
+    "removed_at": null
+  },
+  {
+    "id": "krsp-1075",
+    "source": "krsp",
+    "wp_post_id": 1075,
+    "title": "Development of Optoelectronic Materials for Synapse Devices",
+    "url": "https://knight.research.ucf.edu/krsp-project/development-of-optoelectronic-materials-for-synapse-devices/",
+    "status": "open",
+    "semester": "Fall 2026",
+    "team_size": 2,
+    "open_spots": 2,
+    "affiliation": "College of Engineering and Computer Science",
+    "team_leader": {
+      "name": "Ravinder Sharma",
+      "role": "Nanomaterials Synthesis & Device Fabrication"
+    },
+    "co_leaders": [],
+    "faculty_mentor": "Jayan Thomas, PhD",
+    "required_quals": [
+      "Need EHS labs safety courses"
+    ],
+    "preferred_quals": [
+      "Must have some basic knowledge of physics and materials science"
+    ],
+    "quals_raw": "Preferred: Must have some basic knowledge of physics and materials science.\nRequired: Need EHS labs safety courses.",
+    "quals_hash": "984a2b587e3db51e",
+    "required_skills": [
+      "ehs_safety"
+    ],
+    "preferred_skills": [
+      "physics",
+      "materials_science"
+    ],
+    "beginner_friendly": true,
+    "beginner_reason": "no_required_skills",
+    "description": "This project focuses on developing novel optoelectronic materials for neuromorphic synapse devices that emulate the learning and memory functions of biological synapses. The research involves designing and integrating light-responsive semiconductor materials, including organic and perovskite-based materials, into two-terminal device architectures. The optical and electrical properties of the materials will be investigated to achieve wavelength-dependent synaptic responses, plasticity, potentiation/depression, and memory behavior. The developed devices will be further evaluated for their potential in neuromorphic computing and artificial neural network applications, with the goal of enabling low-power, multifunctional, and optically controlled artificial synaptic systems.",
+    "first_seen_at": "2026-10-17T22:19:03Z",
+    "last_checked_at": "2026-10-17T22:33:56Z",
+    "last_changed_at": "2026-10-17T22:19:03Z",
+    "status_changed_at": "2026-10-17T22:19:03Z",
+    "listed": true,
+    "removed_at": null
+  },
+  {
+    "id": "krsp-1082",
+    "source": "krsp",
+    "wp_post_id": 1082,
+    "title": "LVL CARL",
+    "url": "https://knight.research.ucf.edu/krsp-project/lvl-carl/",
+    "status": "open",
+    "semester": "Fall 2026",
+    "team_size": 3,
+    "open_spots": 3,
+    "affiliation": "College of Arts and Humanities",
+    "team_leader": {
+      "name": "David Perez",
+      "role": "Animation"
+    },
+    "co_leaders": [],
+    "faculty_mentor": "Jo Anne Adams, MFA",
+    "required_quals": [
+      "Knowledge of 3D modeling software",
+      "Blender, Maya, etc"
+    ],
+    "preferred_quals": [
+      "3D modeling",
+      "interest in animation",
+      "video games",
+      "knowledge of animation pipeline"
+    ],
+    "quals_raw": "Preferred: 3D modeling, interest in animation, video games, knowledge of animation pipeline\nRequired: Knowledge of 3D modeling software. Blender, Maya, etc.",
+    "quals_hash": "00960f5c83eef381",
+    "required_skills": [
+      "three_d_modeling",
+      "three_d_software"
+    ],
+    "preferred_skills": [
+      "animation"
+    ],
+    "beginner_friendly": false,
+    "beginner_reason": null,
+    "description": "Graduate thesis film. A 32 amateur video game streamer is trapped inside a game world by the game’s creator: an evil wizard who refuses to take criticism.",
+    "first_seen_at": "2026-10-17T22:19:03Z",
+    "last_checked_at": "2026-10-17T22:33:56Z",
+    "last_changed_at": "2026-10-17T22:19:03Z",
+    "status_changed_at": "2026-10-17T22:19:03Z",
+    "listed": true,
+    "removed_at": null
+  },
+  {
+    "id": "krsp-1088",
+    "source": "krsp",
+    "wp_post_id": 1088,
+    "title": "Engineering Next-Generation Materials to Solve Real-World Problems",
+    "url": "https://knight.research.ucf.edu/krsp-project/engineering-next-generation-materials-to-solve-real-world-problems/",
+    "status": "open",
+    "semester": "Fall 2026",
+    "team_size": 4,
+    "open_spots": 4,
+    "affiliation": "College of Sciences",
+    "team_leader": {
+      "name": "Giulio Diracca",
+      "role": "Chemistry, Microbiology, Biomedical Sciences, Robotics and Autonomous Systems"
+    },
+    "co_leaders": [],
+    "faculty_mentor": "Swadeshmukul Santra, PhD",
+    "required_quals": [
+      "Analytical Chemistry skills",
+      "data processing",
+      "CAD software"
+    ],
+    "preferred_quals": [],
+    "quals_raw": "Analytical Chemistry skills, data processing, CAD software.",
+    "quals_hash": "d120303d742a42cb",
+    "required_skills": [
+      "analytical_chemistry",
+      "data_analysis",
+      "cad"
+    ],
+    "preferred_skills": [],
+    "beginner_friendly": false,
+    "beginner_reason": null,
+    "description": "Our research team is looking for motivated undergraduate students interested in exploring how chemistry, nanotechnology, and materials science can be used to solve real-world challenges.\n\nStudents will work alongside graduate researchers on projects involving the design, synthesis, characterization, and application of advanced materials. Current research areas include developing novel drug-delivery systems, engineering antimicrobial nanomaterials, designing sustainable agricultural technologies, and investigating deep eutectic solvents as alternatives to conventional chemical formulations.\n\nDepending on their interests, students may gain experience with:\n\n- Nanomaterial Synthesis: Developing and optimizing nanoparticles and functional materials.\n- Analytical chemistry: Using techniques such as LC-MS, UV-Vis spectroscopy, fluorescence spectroscopy, XRD, and electron microscopy.\n- Biological applications: Investigating antimicrobial activity and the interactions between materials and biological systems.\n- Formulation science: Developing deep eutectic solvents and other functional chemical systems.\n- Data science: Applying computational tools, statistical analysis, and machine learning to experimental research.\n- Engineering: Creating novel machinery for aerosolization of agricultural and medicinal syntheses, as well as exploratory material creation, and autonomous robots for agriculture.\n\nStudents will have opportunities to take ownership of research questions, participate in experimental design, analyze data, and present their findings. Depending on their contributions, opportunities for conference presentations, research theses, and scientific publications may also be available.\n\nOur goal is to provide students with more than laboratory experience. We want to help them develop the scientific independence, technical skills, and critical thinking necessary to become the next generation of researchers and innovators.",
+    "first_seen_at": "2026-10-17T22:19:03Z",
+    "last_checked_at": "2026-10-17T22:33:56Z",
+    "last_changed_at": "2026-10-17T22:19:03Z",
+    "status_changed_at": "2026-10-17T22:19:03Z",
+    "listed": true,
+    "removed_at": null
+  },
+  {
+    "id": "krsp-1094",
+    "source": "krsp",
+    "wp_post_id": 1094,
+    "title": "Captin: Sustainable Biopolymer Encapsulation for Biomedical and Agricultural Applications",
+    "url": "https://knight.research.ucf.edu/krsp-project/captin-sustainable-biopolymer-encapsulation-for-biomedical-and-agricultural-applications/",
+    "status": "open",
+    "semester": "Fall 2026",
+    "team_size": 1,
+    "open_spots": 1,
+    "affiliation": "College of Sciences",
+    "team_leader": {
+      "name": "Melissa Deinys",
+      "role": "Chemistry"
+    },
+    "co_leaders": [],
+    "faculty_mentor": "Swadeshmukul Santra, PhD",
+    "required_quals": [
+      "Complete all university required EHS courses for laboratory safety",
+      "chemical safety",
+      "biohazard safety"
+    ],
+    "preferred_quals": [
+      "Chemistry and microbiology knowledge",
+      "an interest in chemical formulation or antimicrobial work",
+      "a passion to start research"
+    ],
+    "quals_raw": "Preferred: Chemistry and microbiology knowledge, an interest in chemical formulation or antimicrobial work, a passion to start research.\nRequired: Complete all university required EHS courses for laboratory safety, chemical safety, and biohazard safety.",
+    "quals_hash": "bd3a03dae325f739",
+    "required_skills": [
+      "ehs_safety"
+    ],
+    "preferred_skills": [
+      "chemistry",
+      "microbiology"
+    ],
+    "beginner_friendly": true,
+    "beginner_reason": "no_required_skills",
+    "description": "Many modern drug delivery and agricultural formulations rely on synthetic polymers such as polyvinyl alcohol (PVA) and polyvinylpyrrolidone (PVP) to stabilize and encapsulate active ingredients. While these materials are widely used, there is growing interest in exploring naturally derived alternatives that offer improved sustainability, biodegradability, and compatibility with biological systems. Captin will investigate the use of pectin, a naturally occurring polysaccharide found in plant cell walls, as an alternative encapsulation material. Our goal is to develop and optimize pectin-based formulations capable of protecting active ingredients and controlling their release for potential applications in biomedical technologies and sustainable agriculture.",
+    "first_seen_at": "2026-10-17T22:19:03Z",
+    "last_checked_at": "2026-10-17T22:33:56Z",
+    "last_changed_at": "2026-10-17T22:19:03Z",
+    "status_changed_at": "2026-10-17T22:19:03Z",
+    "listed": true,
+    "removed_at": null
+  },
+  {
+    "id": "krsp-1096",
+    "source": "krsp",
+    "wp_post_id": 1096,
+    "title": "Enhancing Fruit Tree Crops Health Using Probiotic Targeted Delivery System",
+    "url": "https://knight.research.ucf.edu/krsp-project/enhancing-fruit-tree-crops-health-using-probiotic-targeted-delivery-system/",
+    "status": "open",
+    "semester": "Spring 2027",
+    "team_size": 1,
+    "open_spots": 1,
+    "affiliation": "College of Sciences",
+    "team_leader": {
+      "name": "Melissa Deinys",
+      "role": "Chemistry"
+    },
+    "co_leaders": [],
+    "faculty_mentor": "Swadeshmukul Santra, PhD",
+    "required_quals": [],
+    "preferred_quals": [
+      "Preference will be given to students in the biology department, those who have studied Botany or related courses, or students who are excited about improving plant health"
+    ],
+    "quals_raw": "Preference will be given to students in the biology department, those who have studied Botany or related courses, or students who are excited about improving plant health.",
+    "quals_hash": "c2858773aa355f12",
+    "required_skills": [],
+    "preferred_skills": [
+      "botany"
+    ],
+    "beginner_friendly": true,
+    "beginner_reason": "no_required_skills",
+    "description": "Citrus canker is a destructive disease of citrus caused by Xanthomonas citri subsp. citri, which produces raised corky lesions on leaves, stems, and fruit that reduce yield and fruit quality. Current management relies largely on copper bactericides, but repeated use can lead to environmental accumulation and copper-tolerant strains. The yeast-like fungus Aureobasidium pullulans, which naturally colonizes plant surfaces, has been successfully used in apple orchards to control fire blight caused by Erwinia amylovora through competitive exclusion on blossoms. Applying A. pullulans to citrus foliage may similarly suppress X. citri colonization, offering a promising biological control strategy to complement existing citrus canker management practices.",
+    "first_seen_at": "2026-10-17T22:19:03Z",
+    "last_checked_at": "2026-10-17T22:33:56Z",
+    "last_changed_at": "2026-10-17T22:19:03Z",
+    "status_changed_at": "2026-10-17T22:19:03Z",
+    "listed": true,
+    "removed_at": null
+  },
+  {
+    "id": "krsp-1098",
+    "source": "krsp",
+    "wp_post_id": 1098,
+    "title": "PhyroProtect: Material Science Exploration to Combat Forest Fires",
+    "url": "https://knight.research.ucf.edu/krsp-project/enhancing-fruit-tree-crops-health-using-probiotic-targeted-delivery-system-2/",
+    "status": "open",
+    "semester": "Fall 2026",
+    "team_size": 1,
+    "open_spots": 1,
+    "affiliation": "College of Sciences",
+    "team_leader": {
+      "name": "Melissa Deinys",
+      "role": "Chemistry"
+    },
+    "co_leaders": [],
+    "faculty_mentor": "Swadeshmukul Santra, PhD",
+    "required_quals": [],
+    "preferred_quals": [
+      "Students with a background in materials science, chemistry, or engineering will be preferred"
+    ],
+    "quals_raw": "Students with a background in materials science, chemistry, or engineering will be preferred.",
+    "quals_hash": "01a438c2c0d95fe8",
+    "required_skills": [],
+    "preferred_skills": [
+      "materials_science",
+      "chemistry",
+      "engineering"
+    ],
+    "beginner_friendly": true,
+    "beginner_reason": "no_required_skills",
+    "description": "Wildfires pose an increasing threat to ecosystems, wildlife, and communities, creating a need for innovative materials that can reduce the flammability of vegetation and limit fire spread.\n\nPhyroProtect is a materials science research project focused on investigating a novel formulation designed to reduce the flammability of plant materials. Our team will evaluate the material's ability to delay ignition, reduce flame propagation, and improve the fire resistance of treated vegetation.\n\nStudents involved in this project will gain hands-on experience in materials science, experimental design, formulation development, and laboratory testing. Research will include evaluating material properties, studying interactions with plant surfaces, and comparing the flammability of treated and untreated plant samples under controlled conditions.",
+    "first_seen_at": "2026-10-17T22:19:03Z",
+    "last_checked_at": "2026-10-17T22:33:56Z",
+    "last_changed_at": "2026-10-17T22:19:03Z",
+    "status_changed_at": "2026-10-17T22:19:03Z",
+    "listed": true,
+    "removed_at": null
+  },
+  {
+    "id": "krsp-1100",
+    "source": "krsp",
+    "wp_post_id": 1100,
+    "title": "Individual Differences in High-Stakes Security Decision-Making",
+    "url": "https://knight.research.ucf.edu/krsp-project/individual-differences-in-high-stakes-security-decision-making/",
+    "status": "open",
+    "semester": "Fall 2027",
+    "team_size": 5,
+    "open_spots": 5,
+    "affiliation": "College of Sciences",
+    "team_leader": {
+      "name": "Swarna Hansi Munasinghe",
+      "role": "Security Studies"
+    },
+    "co_leaders": [],
+    "faculty_mentor": "Jacopo Baggio, PhD",
+    "required_quals": [
+      "Applicants should be reliable",
+      "willing to learn",
+      "able to follow research protocols",
+      "Team members involved in human-subjects research will be required to complete the appropriate CITI training before participating in recruitment or data collection"
+    ],
+    "preferred_quals": [
+      "Students with interests or experience in psychology, human factors, cybersecurity, intelligence, security studies, aviation, or related areas are preferred",
+      "Experience with participant recruitment, survey administration, interviews, literature reviews, or basic data analysis would be useful",
+      "Applicants who are involved with relevant student organizations, academic programs, laboratories, or professional networks and can assist with identifying potential participant pools are especially encouraged to apply"
+    ],
+    "quals_raw": "Students with interests or experience in psychology, human factors, cybersecurity, intelligence, security studies, aviation, or related areas are preferred. Experience with participant recruitment, survey administration, interviews, literature reviews, or basic data analysis would be useful. Applicants who are involved with relevant student organizations, academic programs, laboratories, or professional networks and can assist with identifying potential participant pools are especially encouraged to apply.\n\nRequired: No specialized professional experience is required. Applicants should be reliable, willing to learn, and able to follow research protocols. Team members involved in human-subjects research will be required to complete the appropriate CITI training before participating in recruitment or data collection.",
+    "quals_hash": "d4142139318bd152",
+    "required_skills": [
+      "reliability",
+      "citi_training"
+    ],
+    "preferred_skills": [
+      "psychology",
+      "human_factors",
+      "cybersecurity",
+      "security_studies",
+      "human_subjects",
+      "surveys",
+      "interviews",
+      "literature_review",
+      "data_analysis"
+    ],
+    "beginner_friendly": true,
+    "beginner_reason": "explicit",
+    "description": "This project examines why individuals with similar training, experience, procedures, and access to information can make different decisions in high-stakes security environments. Existing research has identified cognitive biases, stress, workload, expertise, and organizational factors as important influences on decision-making, but these factors do not fully explain variation between similarly situated individuals. The project will investigate the cognitive and human factors that may account for these differences, with particular attention to how individuals interpret information, verify automated or uncertain information, adapt under pressure, and recover from potential judgment errors. The research is expected to use a mixed-methods approach combining quantitative analysis with qualitative interviews or decision-based case analysis. The broader goal is to develop a clearer explanation of individual differences in security decision-making that can contribute to research on human factors, cognitive security, and organizational resilience.",
+    "first_seen_at": "2026-10-17T22:19:03Z",
+    "last_checked_at": "2026-10-17T22:33:56Z",
+    "last_changed_at": "2026-10-17T22:19:03Z",
+    "status_changed_at": "2026-10-17T22:19:03Z",
+    "listed": true,
+    "removed_at": null
+  },
+  {
+    "id": "krsp-1102",
+    "source": "krsp",
+    "wp_post_id": 1102,
+    "title": "The Impact of AI on College Students with Trauma History and Self-Disclosure",
+    "url": "https://knight.research.ucf.edu/krsp-project/the-impact-of-ai-on-college-students-with-trauma-history-and-self-disclosure/",
+    "status": "open",
+    "semester": "Fall 2026",
+    "team_size": 5,
+    "open_spots": 5,
+    "affiliation": "College of Community Innovation and Education",
+    "team_leader": {
+      "name": "Anastasija Popkova",
+      "role": "Counselor Education - Clinical Mental Health Counseling"
+    },
+    "co_leaders": [
+      {
+        "name": "Valerie Kulakouski",
+        "role": "Counselor Education - Clinical Mental Health Counseling"
+      }
+    ],
+    "faculty_mentor": "Gulnora Hundley, PhD, LMHC, LMFT, QCS(FL)",
+    "required_quals": [
+      "Familiar with UCF library database"
+    ],
+    "preferred_quals": [
+      "Interest in psychology",
+      "trauma or AI"
+    ],
+    "quals_raw": "Preferred: Interest in psychology, trauma or AI.\nRequired: Familiar with UCF library database.",
+    "quals_hash": "0aabdc834e655a13",
+    "required_skills": [
+      "literature_review"
+    ],
+    "preferred_skills": [],
+    "beginner_friendly": false,
+    "beginner_reason": null,
+    "description": "Individuals who experience adverse childhood experiences may develop characteristics such as fear of rejection, seeking acceptance, and prioritizing others’ emotions. As AI becomes increasingly accessible as a method of emotional support, some individuals may perceive interacting with AI as less judgmental than talking to another person. This study will explore whether college students with ACEs report feeling more emotionally safe and comfortable disclosing traumatic experiences to AI. Understanding this relationship may provide insight into how negative childhood experiences influence the ways college students use AI to cope.",
+    "first_seen_at": "2026-10-17T22:19:03Z",
+    "last_checked_at": "2026-10-17T22:33:56Z",
+    "last_changed_at": "2026-10-17T22:19:03Z",
+    "status_changed_at": "2026-10-17T22:19:03Z",
+    "listed": true,
+    "removed_at": null
+  },
+  {
+    "id": "krsp-534",
+    "source": "krsp",
+    "wp_post_id": 534,
+    "title": "Secure and Fault-Tolerant Large Language Models for Embedded Systems",
+    "url": "https://knight.research.ucf.edu/krsp-project/secure-and-fault-tolerant-large-language-models-for-embedded-systems/",
+    "status": "open",
+    "semester": "Fall 2026",
+    "team_size": 10,
+    "open_spots": 1,
+    "affiliation": "College of Engineering and Computer Science",
+    "team_leader": {
+      "name": "Chanhee Lee, PhD",
+      "role": "Postdoctoral Scholar"
+    },
+    "co_leaders": [],
+    "faculty_mentor": "Jongouk Choi, PhD",
+    "required_quals": [
+      "C/C++ and Python programming",
+      "basic knowledge and experience to run open source LLMs",
+      "basic knowledge of embedded systems"
+    ],
+    "preferred_quals": [
+      "LLM model training",
+      "knowledge of system security regarding volatile/non-volatile memory",
+      "knowledge of fault-tolerance",
+      "Java and Swift programming skills"
+    ],
+    "quals_raw": "Preferred: LLM model training, knowledge of system security regarding volatile/non-volatile memory, knowledge of fault-tolerance, Java and Swift programming skills\nRequired: C/C++ and Python programming, basic knowledge and experience to run open source LLMs, basic knowledge of embedded systems",
+    "quals_hash": "28f23223157f89c2",
+    "required_skills": [
+      "c_cpp",
+      "python",
+      "llms",
+      "embedded_systems"
+    ],
+    "preferred_skills": [
+      "cybersecurity",
+      "fault_tolerance",
+      "java",
+      "swift"
+    ],
+    "beginner_friendly": false,
+    "beginner_reason": null,
+    "description": "In this project, we analyze the effect of various security attacks and soft errors on large language models (LLMs) for embedded systems. Open-source LLMs will be run on real embedded system boards or a Gem5 simulator. We also consider commercial smartphones such as the Samsung Galaxy for Android and the iPhone for iOS. After that, novel solutions to ensure the security and fault-tolerance of LLMs for the target embedded systems will be drawn. We also search for new attack vectors to make large language models produce wrong results, considering the domain of embedded systems. Security attacks can include existing attacks, e.g., data corruption such as bit-flips on volatile/non-volatile memory, and new attack vectors. The project member will focus on either research paper contribution, C++-based LLM core engine development, or application development with Java, Swift, or Python.",
+    "first_seen_at": "2026-10-17T22:19:03Z",
+    "last_checked_at": "2026-10-17T22:33:56Z",
+    "last_changed_at": "2026-10-17T22:19:03Z",
+    "status_changed_at": "2026-10-17T22:19:03Z",
+    "listed": true,
+    "removed_at": null
+  },
+  {
+    "id": "krsp-660",
+    "source": "krsp",
+    "wp_post_id": 660,
+    "title": "NEON SOUL (3D Animated Short Film)",
+    "url": "https://knight.research.ucf.edu/krsp-project/3d-animated-short-film/",
+    "status": "open",
+    "semester": "Fall 2026",
+    "team_size": 20,
+    "open_spots": 8,
+    "affiliation": "College of Arts and Humanities",
+    "team_leader": {
+      "name": "Gino Romero",
+      "role": "MFA track in Animation and Visual Effects"
+    },
+    "co_leaders": [],
+    "faculty_mentor": "JoAnne Adams, MFA",
+    "required_quals": [
+      "Applicants must be familiar with the 3D animation pipeline and have a basic knowledge of 3D animation and software, such as Maya, Substance Painter, Z Brush, and Photoshop",
+      "Teamwork",
+      "communication",
+      "3D animation",
+      "3D environments",
+      "compositing",
+      "environment",
+      "3D character modeling",
+      "3D rigging",
+      "creative writing",
+      "research",
+      "development"
+    ],
+    "preferred_quals": [
+      "Positions open for 2026",
+      "Graphics Designer (Open)",
+      "2D digital Painter/ Artist (Open)",
+      "Background artist (open)",
+      "Writing assistance (open)",
+      "3D modeler (open)",
+      "Concept Artist (open)",
+      "Storyboard Artist (open)",
+      "Character Designer (Close)",
+      "3D Character Rigger (open)",
+      "Digital art over tradition to expedite workflow"
+    ],
+    "quals_raw": "Applicants must be familiar with the 3D animation pipeline and have a basic knowledge of 3D animation and software, such as Maya, Substance Painter, Z Brush, and Photoshop.\n\nPositions open for 2026\n\nGraphics Designer (Open)\n\n2D digital Painter/ Artist (Open)\n\nBackground artist (open)\nWriting assistance (open)\n3D modeler (open)\nConcept Artist (open)\nStoryboard Artist (open)\nCharacter Designer (Close)\n3D Character Rigger (open)\n\nSkills needed: Teamwork, communication, 3D animation, 3D environments, compositing, environment, 3D character modeling, 3D rigging, creative writing, research, and development.\n\nPreferred Digital art over tradition to expedite workflow.",
+    "quals_hash": "f7ba42e4dea0b416",
+    "required_skills": [
+      "animation",
+      "three_d_software",
+      "digital_art",
+      "teamwork",
+      "communication",
+      "three_d_modeling",
+      "compositing",
+      "rigging",
+      "creative_writing"
+    ],
+    "preferred_skills": [
+      "storyboarding"
+    ],
+    "beginner_friendly": false,
+    "beginner_reason": null,
+    "description": "Subject: Neon Soul is a 3D-animated cyberpunk short film that explores themes of grief, legacy, and fractured family relationships. In a world of neon cities, your only hope for survival comes at a cost.\nTheme: GRIEF & NEGLECT\nLogline: A former mercenary must confront his past when a lost relative returns, threatening the life he built with his daughter.\nGenre: Cyberpunk, Sci-Fi, Tech-Noir",
+    "first_seen_at": "2026-10-17T22:19:03Z",
+    "last_checked_at": "2026-10-17T22:33:56Z",
+    "last_changed_at": "2026-10-17T22:19:03Z",
+    "status_changed_at": "2026-10-17T22:19:03Z",
+    "listed": true,
+    "removed_at": null
+  },
+  {
+    "id": "krsp-713",
+    "source": "krsp",
+    "wp_post_id": 713,
+    "title": "Development of a Smart Low-Profile Variable-Stiffness Ankle-Foot Prosthesis",
+    "url": "https://knight.research.ucf.edu/krsp-project/development-of-a-smart-low-profile-variable-stiffness-ankle-foot-prosthesis/",
+    "status": "open",
+    "semester": "Fall 2026",
+    "team_size": 5,
+    "open_spots": 1,
+    "affiliation": "College of Engineering and Computer Science",
+    "team_leader": {
+      "name": "Siavash Gitifar",
+      "role": "Mechanical Engineering PhD"
+    },
+    "co_leaders": [],
+    "faculty_mentor": "Hwan Choi, PhD",
+    "required_quals": [],
+    "preferred_quals": [
+      "Junior and Senior Mechanical Engineering students",
+      "SOLIDWORKS 3D CAD designing",
+      "Coding",
+      "Finite Element Analysis"
+    ],
+    "quals_raw": "Preferred: Junior and Senior Mechanical Engineering students\nSOLIDWORKS 3D CAD designing, Coding, Finite Element Analysis",
+    "quals_hash": "f21e20561c853e3a",
+    "required_skills": [],
+    "preferred_skills": [
+      "mechanical_engineering",
+      "solidworks",
+      "programming_basics",
+      "fea"
+    ],
+    "beginner_friendly": true,
+    "beginner_reason": "no_required_skills",
+    "description": "More than 60 million people worldwide live with lower-limb amputations. The loss of a functional ankle joint often leads to complications such as impaired mobility, back pain, and postural changes. Robotic ankle-foot prostheses (AFPs) have been developed to replicate the biomechanical properties of the biological ankle and Achilles tendon, providing support for dynamic tasks such as stiffness adjustment and energy storage and return.\nHowever, most robotic AFPs require increased height to accommodate actuators and mechanical components. This added height affects the prosthesis’ overall size, weight, and appearance, which can disrupt the user’s natural gait and hinder the device’s integration with their body. One of the major challenges in AFP design is creating a low-profile mechanism that preserves the maximum residual limb length. Research studies have shown that individuals with longer residual limbs achieve more stable gait patterns, especially when navigating uneven terrain or performing dynamic activities. This improved stability enhances user confidence and promotes greater independence and mobility.\nThe goal of this project is to finalize the engineering of a low-profile, variable-stiffness AFP in the Rehabilitation Engineering and Assistive Device Lab (REAL) under the supervision of Dr. Choi. We aim to develop a compact and lightweight AFP using an adjustable cantilever beam design. The first phase of the project will focus on three primary aims:\n• Aim 1: Design and develop a compact, and lightweight AFP with adjustable stiffness.\n• Aim 2: Adapt the elastic cantilever beam design for scalable and feasible manufacturing, validated through finite element analysis (FEA).\n• Aim 3: Implement novel control mechanisms to create a smart, low-profile AFP.\nIn this phase, the team will also produce initial commercial-style prototypes for preliminary evaluation. Phase 2 will expand to developing an AFP care framework and testing smart techniques through human subject evaluations.",
+    "first_seen_at": "2026-10-17T22:19:03Z",
+    "last_checked_at": "2026-10-17T22:33:56Z",
+    "last_changed_at": "2026-10-17T22:19:03Z",
+    "status_changed_at": "2026-10-17T22:19:03Z",
+    "listed": true,
+    "removed_at": null
+  },
+  {
+    "id": "krsp-930",
+    "source": "krsp",
+    "wp_post_id": 930,
+    "title": "10,000 Boats (2D animated short film)",
+    "url": "https://knight.research.ucf.edu/krsp-project/10000-boats-2d-animated-short-film/",
+    "status": "open",
+    "semester": "Fall 2026",
+    "team_size": 6,
+    "open_spots": 1,
+    "affiliation": "College of Arts and Humanities",
+    "team_leader": {
+      "name": "Jonathan Annand",
+      "role": "Emerging Media"
+    },
+    "co_leaders": [],
+    "faculty_mentor": "Demetrius Dukes",
+    "required_quals": [
+      "Modeling and rigging"
+    ],
+    "preferred_quals": [],
+    "quals_raw": "Modeling and rigging",
+    "quals_hash": "c172cccb69d5c32b",
+    "required_skills": [
+      "three_d_modeling",
+      "rigging"
+    ],
+    "preferred_skills": [],
+    "beginner_friendly": false,
+    "beginner_reason": null,
+    "description": "MFA Thesis film about the effects of gun violence.",
+    "first_seen_at": "2026-10-17T22:19:03Z",
+    "last_checked_at": "2026-10-17T22:33:56Z",
+    "last_changed_at": "2026-10-17T22:19:03Z",
+    "status_changed_at": "2026-10-17T22:19:03Z",
+    "listed": true,
+    "removed_at": null
+  },
+  {
+    "id": "krsp-949",
+    "source": "krsp",
+    "wp_post_id": 949,
+    "title": "A Community-Informed Cyber-Physical Simulation Framework for Aging-Related Caregiving Interaction",
+    "url": "https://knight.research.ucf.edu/krsp-project/a-community-informed-cyber-physical-simulation-framework-for-aging-related-caregiving-interaction/",
+    "status": "open",
+    "semester": "Fall 2026",
+    "team_size": 4,
+    "open_spots": 1,
+    "affiliation": "College of Medicine",
+    "team_leader": {
+      "name": "Megha Parikh",
+      "role": "Nursing Postdoctoral Scholar"
+    },
+    "co_leaders": [],
+    "faculty_mentor": "Ladda Thiamwong, PhD",
+    "required_quals": [
+      "Team members applying for this project are expected to have experience or interest in research related to Virtual Reality (VR), healthcare technology, or aging"
+    ],
+    "preferred_quals": [
+      "Basic programming skills (e.g., Python, C#, or Unity-based development) are preferred but not required",
+      "An interest or background in computer science, engineering, kinesiology, health sciences, or related fields is preferred",
+      "A willingness to learn and apply VR and Unity tools to develop interactive healthcare simulations is essential"
+    ],
+    "quals_raw": "Team members applying for this project are expected to have experience or interest in research related to Virtual Reality (VR), healthcare technology, or aging. Basic programming skills (e.g., Python, C#, or Unity-based development) are preferred but not required. An interest or background in computer science, engineering, kinesiology, health sciences, or related fields is preferred. A willingness to learn and apply VR and Unity tools to develop interactive healthcare simulations is essential.",
+    "quals_hash": "569d9cc098529d12",
+    "required_skills": [],
+    "preferred_skills": [
+      "vr",
+      "programming_basics",
+      "unity",
+      "computer_science",
+      "engineering",
+      "kinesiology",
+      "health_sciences"
+    ],
+    "beginner_friendly": true,
+    "beginner_reason": "no_required_skills",
+    "description": "This project aims to develop an interactive, VR -based healthcare simulation platform to support training in aging care. The project focuses on designing lifelike scenarios that replicate real-world challenges faced by older adults, caregivers, and healthcare professionals. Using AI-driven technologies, simulation will enable users to interact with virtual patients in immersive, dynamic environments. These simulations will include realistic communication, decision-making tasks, and environmental interactions to enhance learning outcomes.\n\nUndergraduate team members will contribute to both the technical and research aspects of the project. This includes developing VR-based environments, implementing interactive features in Unity, assisting with data collection, and supporting user studies involving participants such as older adults and healthcare trainees. Students will also help analyze qualitative and quantitative data to improve the simulation design and functionality.",
+    "first_seen_at": "2026-10-17T22:19:03Z",
+    "last_checked_at": "2026-10-17T22:33:56Z",
+    "last_changed_at": "2026-10-17T22:19:03Z",
+    "status_changed_at": "2026-10-17T22:19:03Z",
+    "listed": true,
+    "removed_at": null
+  },
+  {
+    "id": "krsp-1010",
+    "source": "krsp",
+    "wp_post_id": 1010,
+    "title": "Enhanced Supervisory Control of Autonomous, AI-enabled Systems",
+    "url": "https://knight.research.ucf.edu/krsp-project/enhanced-supervisory-control-of-autonomous-ai-enabled-systems/",
+    "status": "full",
+    "semester": null,
+    "team_size": 5,
+    "open_spots": 0,
+    "affiliation": "Institute for Simulation and Training",
+    "team_leader": {
+      "name": "Rhyse Bendell, PhD",
+      "role": "Human-AI Team Cognition"
+    },
+    "co_leaders": [],
+    "faculty_mentor": "Stephen M. Fiore, PhD",
+    "required_quals": [],
+    "preferred_quals": [
+      "Experience with in-person human-subjects data collection, pilot testing, data entry and cleaning, statistical analysis, literature reviews, and research documentation",
+      "Familiarity with Excel, SPSS, R, Python, Qualtrics, or similar research tools is preferred but not required"
+    ],
+    "quals_raw": "Experience with in-person human-subjects data collection, pilot testing, data entry and cleaning, statistical analysis, literature reviews, and research documentation. Familiarity with Excel, SPSS, R, Python, Qualtrics, or similar research tools is preferred but not required.",
+    "quals_hash": "e9439884b3635648",
+    "required_skills": [],
+    "preferred_skills": [
+      "human_subjects",
+      "data_cleaning",
+      "statistics",
+      "literature_review",
+      "academic_writing",
+      "excel",
+      "spss",
+      "r_lang",
+      "python",
+      "qualtrics"
+    ],
+    "beginner_friendly": true,
+    "beginner_reason": "no_required_skills",
+    "description": "This project examines how people supervise multiple autonomous, AI-enabled systems under changing workload, uncertainty, and information demands. Undergraduate research assistants will primarily support pilot testing, human-subjects data collection, and statistical analysis, with training provided for all relevant methods and tools. Additional opportunities may include study preparation, simulator evaluation, data processing, and literature review. Students who make substantial intellectual or technical contributions may also be eligible for authorship on resulting presentations or publications in accordance with accepted authorship guidelines.",
+    "first_seen_at": "2026-10-17T22:19:03Z",
+    "last_checked_at": "2026-10-17T22:33:56Z",
+    "last_changed_at": "2026-10-17T22:19:03Z",
+    "status_changed_at": "2026-10-17T22:19:03Z",
+    "listed": true,
+    "removed_at": null
+  },
+  {
+    "id": "krsp-1014",
+    "source": "krsp",
+    "wp_post_id": 1014,
+    "title": "Insurgent Groups’ Innovation and Adaptation",
+    "url": "https://knight.research.ucf.edu/krsp-project/insurgent-groups-innovation-and-adaptation/",
+    "status": "full",
+    "semester": null,
+    "team_size": 2,
+    "open_spots": 0,
+    "affiliation": "College of Community Innovation and Education",
+    "team_leader": {
+      "name": "Toyosi Ajibade",
+      "role": "National Security"
+    },
+    "co_leaders": [
+      {
+        "name": "Fahad Mirza",
+        "role": "Security Studies"
+      }
+    ],
+    "faculty_mentor": "Mehmet Gurses, PhD",
+    "required_quals": [
+      "Research and Quantitative Skills"
+    ],
+    "preferred_quals": [],
+    "quals_raw": "Research and Quantitative Skills",
+    "quals_hash": "b14b747f2491df24",
+    "required_skills": [
+      "statistics"
+    ],
+    "preferred_skills": [],
+    "beginner_friendly": false,
+    "beginner_reason": null,
+    "description": "This project examines when and why armed groups adopt new technologies and strategies. Armed groups operate in changing political, social, and security environments that may create incentives to innovate or adapt their behavior. Yet, they vary considerably in whether, when, and how they respond to these changes. The project seeks to identify the conditions that shape the adoption of new technologies and strategic practices among armed groups and to understand why some groups adapt more readily than others. As part of the project, the research team will develop and analyze data on armed group characteristics, technological adoption, and strategic change.",
+    "first_seen_at": "2026-10-17T22:19:03Z",
+    "last_checked_at": "2026-10-17T22:33:56Z",
+    "last_changed_at": "2026-10-17T22:19:03Z",
+    "status_changed_at": "2026-10-17T22:19:03Z",
+    "listed": true,
+    "removed_at": null
+  },
+  {
+    "id": "krsp-1028",
+    "source": "krsp",
+    "wp_post_id": 1028,
+    "title": "The ACCESS Study",
+    "url": "https://knight.research.ucf.edu/krsp-project/the-access-study/",
+    "status": "full",
+    "semester": null,
+    "team_size": 8,
+    "open_spots": 0,
+    "affiliation": "College of Health Professions and Sciences",
+    "team_leader": {
+      "name": "Emily Carter",
+      "role": "Health Promotion and Behavioral Sciences"
+    },
+    "co_leaders": [],
+    "faculty_mentor": "Jacob Bleasdale, PhD",
+    "required_quals": [
+      "Once students are selected to join the team, they will be asked to complete 3 CITI Training Courses (Social & Behavioral Research Investigators, Responsible Conduct of Research, and Good Clinical Practice) and ensure they have completed the necessary UCF IRB training",
+      "Once students are selected to join the team, they will be required to complete 3 CITI Training Courses (Social & Behavioral Research Investigators, Responsible Conduct of Research, and Good Clinical Practice) and ensure they have completed the necessary UCF IRB training"
+    ],
+    "preferred_quals": [
+      "For students interested in this study, we are looking for those eager to learn about mixed methods and passionate about research",
+      "Helpful skills for joining this lab include clear communication, dedication, strong time management, organization, teamwork, and collaboration",
+      "We also prefer students with baseline knowledge of Zoom, Outlook, OneDrive, Excel, and Word, as we use these programs daily",
+      "Students will receive training in qualitative interviewing to conduct participant interviews effectively as part of the study process",
+      "Students will receive training in qualitative interviewing to conduct participant interviews effectively as part of the study process"
+    ],
+    "quals_raw": "For students interested in this study, we are looking for those eager to learn about mixed methods and passionate about research. Helpful skills for joining this lab include clear communication, dedication, strong time management, organization, teamwork, and collaboration. We also prefer students with baseline knowledge of Zoom, Outlook, OneDrive, Excel, and Word, as we use these programs daily.\n\nOnce students are selected to join the team, they will be asked to complete 3 CITI Training Courses (Social & Behavioral Research Investigators, Responsible Conduct of Research, and Good Clinical Practice) and ensure they have completed the necessary UCF IRB training. Students will receive training in qualitative interviewing to conduct participant interviews effectively as part of the study process.\n\nOnce students are selected to join the team, they will be required to complete 3 CITI Training Courses (Social & Behavioral Research Investigators, Responsible Conduct of Research, and Good Clinical Practice) and ensure they have completed the necessary UCF IRB training. Students will receive training in qualitative interviewing to conduct participant interviews effectively as part of the study process.",
+    "quals_hash": "46105837bcb1beff",
+    "required_skills": [
+      "citi_training",
+      "irb_training"
+    ],
+    "preferred_skills": [
+      "qualitative_methods",
+      "communication",
+      "time_management",
+      "teamwork",
+      "office_apps",
+      "excel",
+      "interviews",
+      "human_subjects"
+    ],
+    "beginner_friendly": true,
+    "beginner_reason": "no_required_skills",
+    "description": "We will complete a mixed-methods study to address 2 separate aims: 1. To explore provider perspectives on addressing Health-Related Social Needs (HRSN) for Older People Living with HIV (OPLH). 2. To contextualize OPLH’s experiences with HRSNs and their impact on mental health and HIV care engagement. This research aims to address the lack of studies on whether these approaches accurately reflect the lived experiences of individuals with OPLH and the real-world challenges healthcare providers and clinic staff face when addressing HRSNs.",
+    "first_seen_at": "2026-10-17T22:19:03Z",
+    "last_checked_at": "2026-10-17T22:33:56Z",
+    "last_changed_at": "2026-10-17T22:19:03Z",
+    "status_changed_at": "2026-10-17T22:19:03Z",
+    "listed": true,
+    "removed_at": null
+  },
+  {
+    "id": "krsp-1030",
+    "source": "krsp",
+    "wp_post_id": 1030,
+    "title": "Constructing Domestic Violence Through Arresting Officer Narratives",
+    "url": "https://knight.research.ucf.edu/krsp-project/constructing-domestic-violence-through-arresting-officer-narratives/",
+    "status": "full",
+    "semester": null,
+    "team_size": 9,
+    "open_spots": 0,
+    "affiliation": "College of Sciences",
+    "team_leader": {
+      "name": "Nathan LaMothe",
+      "role": "Sociology PhD"
+    },
+    "co_leaders": [],
+    "faculty_mentor": "Alison Cares, PhD",
+    "required_quals": [
+      "Applicants should have",
+      "access to Zoom, OneDrive, Microsoft Excel, and reliable internet",
+      "availability of at least two hours per week during the Fall 2026 semester",
+      "strong attention to detail and the ability to identify inconsistencies or errors in data",
+      "strong communication skills, particularly a willingness to ask questions when guidance or clarification is needed",
+      "an interest in quantitative research, law and society, domestic violence, or the criminal justice system",
+      "a strong work ethic and ability to complete assigned tasks independently",
+      "willingness to learn basic data cleaning and statistical analysis procedures"
+    ],
+    "preferred_quals": [],
+    "quals_raw": "Applicants should have: (1) access to Zoom, OneDrive, Microsoft Excel, and reliable internet; (2) availability of at least two hours per week during the Fall 2026 semester; (3) strong attention to detail and the ability to identify inconsistencies or errors in data; (4) strong communication skills, particularly a willingness to ask questions when guidance or clarification is needed; (5) an interest in quantitative research, law and society, domestic violence, or the criminal justice system; (6) a strong work ethic and ability to complete assigned tasks independently; and (7) willingness to learn basic data cleaning and statistical analysis procedures.",
+    "quals_hash": "77de4fb63c327a61",
+    "required_skills": [
+      "attention_to_detail",
+      "communication",
+      "reliability"
+    ],
+    "preferred_skills": [],
+    "beginner_friendly": true,
+    "beginner_reason": "no_required_skills",
+    "description": "This project examines decision-making in domestic violence cases at first appearance, with a particular focus on how information contained in arrest affidavits is associated with judicial decisions such as bond and conditions of release. The project uses a quantitative dataset constructed from court records, arrest affidavits, and first appearance documentation from misdemeanor domestic violence cases in Orange County, Florida.\n\nResearch assistants will primarily assist with preparing the dataset for analysis. Tasks may include reviewing and cleaning coded data, checking cases for accuracy and consistency, resolving discrepancies between source documents and the dataset, creating or recoding variables, conducting descriptive analyses, and assisting with statistical analysis and interpretation.\n\nThis project is best suited for students interested in sociology, criminology, law and society, domestic violence, quantitative research, or data analysis. Prior research or statistical experience is helpful but not required. All tasks can be completed remotely.",
+    "first_seen_at": "2026-10-17T22:19:03Z",
+    "last_checked_at": "2026-10-17T22:33:56Z",
+    "last_changed_at": "2026-10-17T22:19:03Z",
+    "status_changed_at": "2026-10-17T22:19:03Z",
+    "listed": true,
+    "removed_at": null
+  },
+  {
+    "id": "krsp-1038",
+    "source": "krsp",
+    "wp_post_id": 1038,
+    "title": "Development and Evaluation of a Wearable Smart Insole for At-Home Gait Monitoring",
+    "url": "https://knight.research.ucf.edu/krsp-project/development-and-evaluation-of-a-wearable-smart-insole-for-at-home-gait-monitoring/",
+    "status": "full",
+    "semester": null,
+    "team_size": 5,
+    "open_spots": 0,
+    "affiliation": "College of Nursing",
+    "team_leader": {
+      "name": "Jethro Raphael Suarez",
+      "role": "Biomedical Engineering Postdoctoral Scholar"
+    },
+    "co_leaders": [],
+    "faculty_mentor": "Ladda Thiamwong, PhD",
+    "required_quals": [
+      "Team members must consistently demonstrate timely and responsive communication"
+    ],
+    "preferred_quals": [
+      "Team members applying to this project are expected or preferred to have experience or interest in one or more of the following areas: Electrical Engineering, Mechanical Engineering, Biomedical Engineering, or a related field",
+      "Experience with embedded systems, circuit prototyping, microcontrollers, sensors, soldering, or data acquisition is preferred",
+      "Familiarity with Arduino/C++, IMUs, analog sensors, SPI/I2C communication, PCB or perfboard prototyping, and basic signal processing is beneficial",
+      "Mechanical Engineering students with strong electrical or embedded-systems experience are encouraged to apply",
+      "Experience with CAD, 3D printing, or wearable-device design is also useful"
+    ],
+    "quals_raw": "-Team members applying to this project are expected or preferred to have experience or interest in one or more of the following areas: Electrical Engineering, Mechanical Engineering, Biomedical Engineering, or a related field.\n\n-Experience with embedded systems, circuit prototyping, microcontrollers, sensors, soldering, or data acquisition is preferred. Familiarity with Arduino/C++, IMUs, analog sensors, SPI/I2C communication, PCB or perfboard prototyping, and basic signal processing is beneficial.\n\n-Mechanical Engineering students with strong electrical or embedded-systems experience are encouraged to apply. Experience with CAD, 3D printing, or wearable-device design is also useful.\n\nRequired: -Team members must consistently demonstrate timely and responsive communication.",
+    "quals_hash": "c8acb37a410bdb94",
+    "required_skills": [
+      "reliability",
+      "communication"
+    ],
+    "preferred_skills": [
+      "electrical_engineering",
+      "mechanical_engineering",
+      "biomedical_engineering",
+      "embedded_systems",
+      "circuits",
+      "sensors",
+      "c_cpp",
+      "signal_processing",
+      "cad",
+      "three_d_printing"
+    ],
+    "beginner_friendly": true,
+    "beginner_reason": "no_required_skills",
+    "description": "This project focuses on the development of a low-cost wearable smart insole intended for at-home gait monitoring. The system integrates plantar-pressure sensors with an inertial measurement unit (IMU) to collect synchronized foot-loading and motion data during walking. A preliminary breadboard prototype has been developed using an Adafruit nRF52840 Feather, six pressure-sensing channels, an LSM6DS3TR-C IMU, and onboard microSD data storage. The next phase of the project will focus on converting the existing breadboard prototype into a compact, battery-powered wearable system. Following integration, the device will undergo walking evaluations to assess data quality, repeatability, battery life, and user comfort.",
+    "first_seen_at": "2026-10-17T22:19:03Z",
+    "last_checked_at": "2026-10-17T22:33:56Z",
+    "last_changed_at": "2026-10-17T22:19:03Z",
+    "status_changed_at": "2026-10-17T22:19:03Z",
+    "listed": true,
+    "removed_at": null
+  },
+  {
+    "id": "krsp-1046",
+    "source": "krsp",
+    "wp_post_id": 1046,
+    "title": "Creating Web Apps That Limit Attention Harm Based on the A.S.M. Models",
+    "url": "https://knight.research.ucf.edu/krsp-project/creating-web-apps-that-limit-attention-harm-based-on-the-a-s-m-models/",
+    "status": "full",
+    "semester": null,
+    "team_size": 6,
+    "open_spots": 0,
+    "affiliation": "College of Community Innovation and Education",
+    "team_leader": {
+      "name": "Delante Clark",
+      "role": "Sociology"
+    },
+    "co_leaders": [],
+    "faculty_mentor": "Daniel Stephens, PhD",
+    "required_quals": [
+      "Applicants should have data analysis skills, writing abilities, and able to conduct research using google scholar and other mediums"
+    ],
+    "preferred_quals": [
+      "You should also be very good at time management"
+    ],
+    "quals_raw": "Applicants should have data analysis skills, writing abilities, and able to conduct research using google scholar and other mediums. You should also be very good at time management.",
+    "quals_hash": "30a664dbf9d55d0f",
+    "required_skills": [
+      "data_analysis",
+      "academic_writing",
+      "literature_review"
+    ],
+    "preferred_skills": [
+      "time_management"
+    ],
+    "beginner_friendly": false,
+    "beginner_reason": null,
+    "description": "Creating Web Apps That Limit Attention Harm Based on the A.S.M. Models is an applied research and development project in which students will design, build, and deploy a functional web application using Base44. Each project must address a clearly defined form of attention harm—such as compulsive use patterns, manipulative engagement design, excessive notifications, distraction, or other digital experiences that undermine users’ well-being, agency, or focus.\n\nStudents will use the A.S.M. models as the guiding framework for their application’s purpose, user experience, features, and safeguards. The final product must demonstrate how intentional web design can reduce harmful attention practices while promoting more responsible, transparent, and user-centered digital interaction.\n\nAfter deployment, each student’s application will be tested through C.A.S. to evaluate whether it meets the applicable A.S.M. standards. This assessment will examine whether the app’s design, functionality, and user-flow decisions align with the project’s stated attention-harm reduction goals. Students should be prepared to document their design rationale, identify the specific standards their app addresses, and respond to findings generated through the C.A.S. testing process.\n\nStudents are also required to present their completed project during Research Week in the Spring. Presentations should explain the attention-related issue the app addresses, the A.S.M. standards used to guide development, the Base44 deployment process, the C.A.S. testing results, and any changes made to strengthen compliance with the standards.\n\nRequired deliverables\nA deployed web application built in Base44\n\nA written explanation of the attention harm the app is designed to limit\n\nDocumentation showing how the app applies the A.S.M. models\n\nC.A.S. testing and a review of the app’s results against A.S.M. standards\n\nA Spring Research Week presentation demonstrating the app, findings, and design rationale\n\n*This is not for someone who lacks time management skills*",
+    "first_seen_at": "2026-10-17T22:19:03Z",
+    "last_checked_at": "2026-10-17T22:33:56Z",
+    "last_changed_at": "2026-10-17T22:19:03Z",
+    "status_changed_at": "2026-10-17T22:19:03Z",
+    "listed": true,
+    "removed_at": null
+  },
+  {
+    "id": "krsp-643",
+    "source": "krsp",
+    "wp_post_id": 643,
+    "title": "Exploration of Nozzle Design’s Influence on Plume Surface Interactions (PSI) Physics",
+    "url": "https://knight.research.ucf.edu/krsp-project/exploration-of-nozzle-designs-influence-on-plume-surface-interactions-psi-physics/",
+    "status": "full",
+    "semester": null,
+    "team_size": 12,
+    "open_spots": 0,
+    "affiliation": "College of Sciences",
+    "team_leader": {
+      "name": "Kayla Schang",
+      "role": "Physics - Planetary Science PhD"
+    },
+    "co_leaders": [],
+    "faculty_mentor": "Adrienne Dove, PhD",
+    "required_quals": [
+      "Students should have some familiarity with nozzle design basics (or be willing to self-study), CAD modeling of nozzles for 3D printing, and basic familiarity with computer-based analysis techniques",
+      "Lab safety training"
+    ],
+    "preferred_quals": [
+      "There is additional opportunity for exploring methods of data collection and analysis using computer science techniques for image analysis such as edge detection and particle tracking",
+      "students with existing experience in this area would also be good fits for this project",
+      "Background in plume physics",
+      "fluid mechanics",
+      "granular mechanics",
+      "PSI are encouraged but not required",
+      "Availability on Fridays is strongly preferred"
+    ],
+    "quals_raw": "REQUIRED SKILLS: Students should have some familiarity with nozzle design basics (or be willing to self-study), CAD modeling of nozzles for 3D printing, and basic familiarity with computer-based analysis techniques. There is additional opportunity for exploring methods of data collection and analysis using computer science techniques for image analysis such as edge detection and particle tracking; students with existing experience in this area would also be good fits for this project. Background in plume physics, fluid mechanics, granular mechanics, and PSI are encouraged but not required. Lab safety training.\n\nAvailability on Fridays is strongly preferred.",
+    "quals_hash": "326ef3b73ddda84e",
+    "required_skills": [
+      "cad",
+      "three_d_printing",
+      "ehs_safety"
+    ],
+    "preferred_skills": [
+      "computer_science",
+      "computer_vision",
+      "fluid_mechanics",
+      "physics"
+    ],
+    "beginner_friendly": false,
+    "beginner_reason": null,
+    "description": "BACKGROUND: When landing on a lunar surface, damage occurs due to the impact of the nozzle plume on the granular surface material. The reduced gravity (0.166 g or 1.625 m/s2) environment of the moon and the absence of significant atmospheric pressure (10-10 Torr or below) complicate these physics. Understanding the physics of the rarefied and transition flow, and the influence on the surface material, is vital for enabling technology which will allow for repeated co-located landings.\n\nRESEARCH PROBLEM: Landers can have under-, over-, or perfectly-expanded nozzle designs which correspond to over-, under-, or perfectly-expanded plumes, respectively. The shape of the plume is also influenced by the atmospheric pressure of the landing site – in higher ambient pressure regimes, plumes can become collimated, ‘concentrating’ down, for example, a plume that would have been over-expanded into a perfectly-expanded plume. We propose that the process of collimation likely changes the structure of the plume itself, and that we should work to isolate the plume shape and atmospheric pressure variables.\n\nAPPROACH: Our lab has an existing experimental setup – the Gas-Regolith Interaction Testbed (GRIT) – which is a drop-tower (microgravity) vacuum chamber experiment. GRIT has a solenoid-controlled opening which allows atmosphere to enter the chamber (creating our nozzle plume), and we place regolith simulants to replicate the granular lunar surface material. We will design* and install a set of nozzles so that we can study over-, perfectly-, and under-expanded plumes in a range of atmospheric conditions. Since our nozzle does not have to support a lander, we can purposely design inefficient nozzles that would not be used in real missions to experimentally explore the parameter space.\n\n* Please note that the design phase is complete, and we are now focused on data collection and analysis.\n\nSTUDENT BENEFIT: One of the best ways to explore what makes for an efficient nozzle design is to purposely design many inefficient nozzles. This project could be the basis for a great engineering senior design project and will give students experience with designing and constructing nozzles, then collecting and analyzing experimental data regarding the nozzle performance in different environments.",
+    "first_seen_at": "2026-10-17T22:19:03Z",
+    "last_checked_at": "2026-10-17T22:33:56Z",
+    "last_changed_at": "2026-10-17T22:19:03Z",
+    "status_changed_at": "2026-10-17T22:19:03Z",
+    "listed": true,
+    "removed_at": null
+  },
+  {
+    "id": "krsp-723",
+    "source": "krsp",
+    "wp_post_id": 723,
+    "title": "Transfer Matrix Solver for Plasmonic Systems",
+    "url": "https://knight.research.ucf.edu/krsp-project/transfer-matrix-solver-for-plasmonic-systems/",
+    "status": "full",
+    "semester": null,
+    "team_size": 12,
+    "open_spots": 0,
+    "affiliation": "College of Sciences",
+    "team_leader": {
+      "name": "Jayden D. Craft",
+      "role": "Physics PhD"
+    },
+    "co_leaders": [],
+    "faculty_mentor": "Michael Leuenberger, PhD",
+    "required_quals": [
+      "A lot of time will probably be spent trying to understand and formulate the problem, so at the bare minimum an interest to learn something new is required",
+      "Interest in physics/optics",
+      "Interest in numerical simulation and coding",
+      "Interest in learning new things"
+    ],
+    "preferred_quals": [
+      "Coding experience (python mainly)",
+      "Taken math courses up to ODEs and Linear Algebra",
+      "Experience using git or github"
+    ],
+    "quals_raw": "There are no real technical requirements. A lot of time will probably be spent trying to understand and formulate the problem, so at the bare minimum an interest to learn something new is required.\n\nMinimum:\nInterest in physics/optics\nInterest in numerical simulation and coding\nInterest in learning new things\n\nPreferred:\nCoding experience (python mainly)\nTaken math courses up to ODEs and Linear Algebra\nExperience using git or github",
+    "quals_hash": "be2e983e5d52d01a",
+    "required_skills": [],
+    "preferred_skills": [
+      "python",
+      "differential_equations",
+      "linear_algebra",
+      "git"
+    ],
+    "beginner_friendly": true,
+    "beginner_reason": "explicit",
+    "description": "This project will develop a computational tool to study how light interacts with layered optical materials, with a focus on plasmonic systems. The method builds on the well-established Transfer Matrix Method (TMM) but uses a more stable formulation based on scattering matrices, allowing faster and more reliable calculations than conventional simulation approaches such as FDTD. Undergraduate team members will gain experience in coding, numerical modeling, and scientific visualization while contributing directly to a research tool that can predict key optical properties such as reflection, transmission, and absorption.",
+    "first_seen_at": "2026-10-17T22:19:03Z",
+    "last_checked_at": "2026-10-17T22:33:56Z",
+    "last_changed_at": "2026-10-17T22:19:03Z",
+    "status_changed_at": "2026-10-17T22:19:03Z",
+    "listed": true,
+    "removed_at": null
+  },
+  {
+    "id": "krsp-787",
+    "source": "krsp",
+    "wp_post_id": 787,
+    "title": "Assessing Bioimpedance and Body Composition in Humans",
+    "url": "https://knight.research.ucf.edu/krsp-project/assessing-bioimpedance-and-body-composition-in-humans/",
+    "status": "full",
+    "semester": null,
+    "team_size": 5,
+    "open_spots": 0,
+    "affiliation": "College of Health Professions and Sciences",
+    "team_leader": {
+      "name": "Kworweinski Lafontant",
+      "role": "Kinesiology (Exercise Physiology)"
+    },
+    "co_leaders": [],
+    "faculty_mentor": "David Fukuda, PhD",
+    "required_quals": [
+      "CITI Training (Human Research - Human Subjects Research- Group 1",
+      "Biomedical Research Investigators and Key Personnel",
+      "Biomedical Responsible Conduct of Research)",
+      "EHS102",
+      "EHS103"
+    ],
+    "preferred_quals": [
+      "quick and open communication",
+      "attention to detail",
+      "availability"
+    ],
+    "quals_raw": "Preferred qualifications are quick and open communication, attention to detail, availability. Required qualification are CITI Training (Human Research - Human Subjects Research- Group 1. Biomedical Research Investigators and Key Personnel; AND Biomedical Responsible Conduct of Research). EHS102, EHS103.",
+    "quals_hash": "f2d2034276d66b29",
+    "required_skills": [
+      "citi_training",
+      "ehs_safety"
+    ],
+    "preferred_skills": [
+      "communication",
+      "attention_to_detail"
+    ],
+    "beginner_friendly": true,
+    "beginner_reason": "no_required_skills",
+    "description": "The Physiology of Work & Exercise Response (POWER) Lab is seeking volunteer (unpaid) undergraduate research assistants to help with two new research studies. Both studies involve assessing body composition in adult humans (18+ years old) using bioelectrical impedance techniques, air displacement plethysmography, ultrasound, etc. Both studies begin data collection in January 2026, so assistance is needed with both simultaneously. One study is a cross-sectional, single-visit design aiming for 80 total participants. The other study is a dietary protein supplementation study utilizing two groups of ~26 participants each and lasting 5 weeks per participant. Research assistants must be available primarily in the mornings, (7:30-11:59am), Monday-Friday, but Saturday and afternoon availability is also desirable. Research assistants will learn and gain experience in data collection, data entry, scientific abstract writing, research conference presentations, body composition assessment techniques, basic urinalysis, nutrient analysis, and more. Research assistants must complete CITI research ethics training and EHS lab safety training upon hire (again, unpaid). CPR certification is also desired but not required.",
+    "first_seen_at": "2026-10-17T22:19:03Z",
+    "last_checked_at": "2026-10-17T22:33:56Z",
+    "last_changed_at": "2026-10-17T22:19:03Z",
+    "status_changed_at": "2026-10-17T22:19:03Z",
+    "listed": true,
+    "removed_at": null
+  },
+  {
+    "id": "krsp-821",
+    "source": "krsp",
+    "wp_post_id": 821,
+    "title": "Lived Experiences of Students with Disabilities",
+    "url": "https://knight.research.ucf.edu/krsp-project/lived-experiences-of-students-with-disabilities/",
+    "status": "full",
+    "semester": null,
+    "team_size": 14,
+    "open_spots": 0,
+    "affiliation": "College of Community Innovation and Education",
+    "team_leader": {
+      "name": "Juliana Hirn",
+      "role": "Exceptional Education PhD"
+    },
+    "co_leaders": [],
+    "faculty_mentor": "Michelle Taub, PhD",
+    "required_quals": [
+      "You must be able to use APA 7th edition, and are responsive to emails (within 72 hours)",
+      "Basic research experience is required",
+      "Please be aware as previously mentioned repeated absences without notification may result in a warning/strike, and continued instances could lead to removal from the group due to the type of work we are doing that requires full timely commitment"
+    ],
+    "preferred_quals": [
+      "At the start of each semester, we will establish a meeting time",
+      "Meetings are typically recorded",
+      "Some of the data involves statistical analysis, transcription (listening back to the data and correcting), and collection",
+      "I am looking for timely, reliable, determined and detailed oriented students",
+      "CITI training completed for human subjects, unofficial transcripts, resume, and reports the standard hours of availability per week to dedicate to the research team when sending the initial email",
+      "Please note, I have 2 projects on KRSP, it is important you are specific in which one you want to assist with",
+      "APA 7th edition, detailed oriented, responsive to emails (within 72 hours)",
+      "FAILURE TO RESPOND TO EMAILS WITHIN 72 HOURS WILL RESULT IN REMOVAL FROM THE TEAM",
+      "FAILURE TO FINISH TASKS BY THE ASSIGNED DATES WITHOUT COMMUNICATING A MINIMUM OF 2 DAYS PRIOR TO THE DEADLINE (if it will not be done) WILL RESULT IN REMOVAL FROM TEAM"
+    ],
+    "quals_raw": "At the start of each semester, we will establish a meeting time. Meetings are typically recorded.\n\nSome of the data involves statistical analysis, transcription (listening back to the data and correcting), and collection. I am looking for timely, reliable, determined and detailed oriented students. You must be able to use APA 7th edition, and are responsive to emails (within 72 hours). Basic research experience is required.\n\nCITI training completed for human subjects, unofficial transcripts, resume, and reports the standard hours of availability per week to dedicate to the research team when sending the initial email. Please note, I have 2 projects on KRSP, it is important you are specific in which one you want to assist with. APA 7th edition, detailed oriented, responsive to emails (within 72 hours). Please be aware as previously mentioned repeated absences without notification may result in a warning/strike, and continued instances could lead to removal from the group due to the type of work we are doing that requires full timely commitment. FAILURE TO RESPOND TO EMAILS WITHIN 72 HOURS WILL RESULT IN REMOVAL FROM THE TEAM. FAILURE TO FINISH TASKS BY THE ASSIGNED DATES WITHOUT COMMUNICATING A MINIMUM OF 2 DAYS PRIOR TO THE DEADLINE (if it will not be done) WILL RESULT IN REMOVAL FROM TEAM.",
+    "quals_hash": "63869b4a69a1227a",
+    "required_skills": [
+      "apa_style",
+      "communication",
+      "research_methods",
+      "reliability"
+    ],
+    "preferred_skills": [
+      "statistics",
+      "qualitative_methods",
+      "attention_to_detail",
+      "citi_training"
+    ],
+    "beginner_friendly": false,
+    "beginner_reason": null,
+    "description": "The purpose of this narrative qualitative study is to investigate the lived experiences of Students with Disabilities (SWD) who receive accommodations according to federal laws that support SWD attending post-secondary institutions. This study aims to understand the perspectives utilizing accommodations and experiences of being a SWD in college. Thus, the following research question will guide my investigation: What are the lived experiences of students with disabilities regarding the accommodations they receive from the university?",
+    "first_seen_at": "2026-10-17T22:19:03Z",
+    "last_checked_at": "2026-10-17T22:33:56Z",
+    "last_changed_at": "2026-10-17T22:19:03Z",
+    "status_changed_at": "2026-10-17T22:19:03Z",
+    "listed": true,
+    "removed_at": null
+  },
+  {
+    "id": "krsp-830",
+    "source": "krsp",
+    "wp_post_id": 830,
+    "title": "How Should AI Explain?",
+    "url": "https://knight.research.ucf.edu/krsp-project/how-should-ai-explain/",
+    "status": "full",
+    "semester": null,
+    "team_size": 7,
+    "open_spots": 0,
+    "affiliation": "College of Sciences",
+    "team_leader": {
+      "name": "Julie Rader",
+      "role": "Applied/Experimental & Human Factors Psychology"
+    },
+    "co_leaders": [],
+    "faculty_mentor": "Mustapha Mouloua, PhD, Ancuta Margondai, PhD",
+    "required_quals": [
+      "Team members must be able to follow standardized protocols precisely, communicate professionally with participants, maintain confidentiality, troubleshoot basic technical issues, and support accurate data collection",
+      "You need to complete the Human Research (Curriculum Group) Human Subjects Research- Group 2.Social / Behavioral Research Investigators and Key Personnel (Course Learner Group) 1 - Basic Course (Stage, as well as Human Research (Curriculum Group) Research and HIPAA Privacy Protections (Course Learner Group) 1 - Basic Course (Stage)"
+    ],
+    "preferred_quals": [
+      "We seek research assistants who demonstrate professionalism, attention to detail, and strong interest in human subjects research, human–AI interaction, and cognitive or simulation-based research",
+      "Preferred applicants will have experience or coursework in psychology, cognitive science, human factors, modeling and simulation, computer science, or related STEM fields",
+      "Familiarity with IRB protocols, experimental software (e.g., E-Prime, Qualtrics), and basic research methods and data handling is beneficial",
+      "We value reliability, strong organizational skills, and interest in contributing to future research involving AI systems, cognitive performance, and advanced simulation technologies"
+    ],
+    "quals_raw": "We seek research assistants who demonstrate professionalism, attention to detail, and strong interest in human subjects research, human–AI interaction, and cognitive or simulation-based research. Preferred applicants will have experience or coursework in psychology, cognitive science, human factors, modeling and simulation, computer science, or related STEM fields. Familiarity with IRB protocols, experimental software (e.g., E-Prime, Qualtrics), and basic research methods and data handling is beneficial. Team members must be able to follow standardized protocols precisely, communicate professionally with participants, maintain confidentiality, troubleshoot basic technical issues, and support accurate data collection. We value reliability, strong organizational skills, and interest in contributing to future research involving AI systems, cognitive performance, and advanced simulation technologies.\n\nRequired Qualifications:\nYou need to complete the Human Research (Curriculum Group) Human Subjects Research- Group 2.Social / Behavioral Research Investigators and Key Personnel (Course Learner Group) 1 - Basic Course (Stage, as well as Human Research (Curriculum Group) Research and HIPAA Privacy Protections (Course Learner Group) 1 - Basic Course (Stage)",
+    "quals_hash": "d29fadc0a5a4382e",
+    "required_skills": [
+      "communication",
+      "citi_training"
+    ],
+    "preferred_skills": [
+      "reliability",
+      "attention_to_detail",
+      "human_factors",
+      "simulation",
+      "psychology",
+      "cognitive_science",
+      "computer_science",
+      "irb_training",
+      "e_prime",
+      "qualtrics",
+      "research_methods",
+      "data_analysis",
+      "time_management"
+    ],
+    "beginner_friendly": true,
+    "beginner_reason": "no_required_skills",
+    "description": "This study investigates how different levels and styles of artificial intelligence (AI) explanations affect human cognitive workload, perceived autonomy, and decision-making performance. Participants complete a working memory task followed by a computer-based medical triage decision task in which an AI system provides recommendations with varying explanation transparency levels (low, optimal, high, or adaptive transparency).\n\nThe study measures working memory capacity, decision accuracy, reaction time, perceived autonomy, cognitive workload, and user engagement with AI systems. The goal is to understand how AI explanation design influences human performance and experience, and to support the development of AI systems that provide useful information without overwhelming users.",
+    "first_seen_at": "2026-10-17T22:19:03Z",
+    "last_checked_at": "2026-10-17T22:33:56Z",
+    "last_changed_at": "2026-10-17T22:19:03Z",
+    "status_changed_at": "2026-10-17T22:19:03Z",
+    "listed": true,
+    "removed_at": null
+  },
+  {
+    "id": "krsp-832",
+    "source": "krsp",
+    "wp_post_id": 832,
+    "title": "Neural and Autonomic Re-sponses to Linguistic Mirroring in Conversational AI",
+    "url": "https://knight.research.ucf.edu/krsp-project/neural-and-autonomic-re-sponses-to-linguistic-mirroring-in-conversational-ai/",
+    "status": "full",
+    "semester": null,
+    "team_size": 2,
+    "open_spots": 0,
+    "affiliation": "College of Sciences",
+    "team_leader": {
+      "name": "Anamaria Acevedo Diaz",
+      "role": "Applied/Experimental & Human Factors Psychology"
+    },
+    "co_leaders": [],
+    "faculty_mentor": "Mustapha Mouloua, PhD",
+    "required_quals": [
+      "CITI Training Human Subjects Research – Group 2: Social/Behavioral Research Investigators and Key Personnel Research and HIPAA Privacy Protections University Research Authorization Completion and approval of the URA (Undergraduate Research Authorization) form prior to participation",
+      "Time Commitment Ability to commit to in-person lab hours as required by the project",
+      "Reliable availability throughout the agreed-upon research period",
+      "Task Completion & Communication Commitment to completing assigned tasks by set deadlines",
+      "Openness to consistent communication with lab leadership and team members (email, shared platforms, meetings)",
+      "Professional & Ethical Conduct Adherence to ethical standards for human subjects research",
+      "Respect for participant confidentiality and data security protocols",
+      "Organizational & Collaborative Skills Ability to follow protocols accurately and maintain organized records",
+      "Willingness to work collaboratively within a research team and accept feedback"
+    ],
+    "preferred_quals": [
+      "Technical & Research Readiness",
+      "Basic familiarity with research methods in social/behavioral science",
+      "Comfort using common research tools (e.g., surveys, data entry platforms, scheduling tools)"
+    ],
+    "quals_raw": "Technical & Research Readiness\nBasic familiarity with research methods in social/behavioral science.\nComfort using common research tools (e.g., surveys, data entry platforms, scheduling tools).\n\nRequired Qualifications:\nCITI Training Human Subjects Research – Group 2: Social/Behavioral Research Investigators and Key Personnel Research and HIPAA Privacy Protections University Research Authorization Completion and approval of the URA (Undergraduate Research Authorization) form prior to participation. Time Commitment Ability to commit to in-person lab hours as required by the project. Reliable availability throughout the agreed-upon research period. Task Completion & Communication Commitment to completing assigned tasks by set deadlines. Openness to consistent communication with lab leadership and team members (email, shared platforms, meetings). Professional & Ethical Conduct Adherence to ethical standards for human subjects research. Respect for participant confidentiality and data security protocols. Organizational & Collaborative Skills Ability to follow protocols accurately and maintain organized records. Willingness to work collaboratively within a research team and accept feedback.",
+    "quals_hash": "7441ef2d2f2a0a05",
+    "required_skills": [
+      "citi_training",
+      "irb_training",
+      "reliability",
+      "communication",
+      "time_management",
+      "teamwork"
+    ],
+    "preferred_skills": [
+      "research_methods",
+      "surveys",
+      "data_cleaning"
+    ],
+    "beginner_friendly": true,
+    "beginner_reason": "no_required_skills",
+    "description": "Conversational artificial intelligence systems are increasingly used in contexts that rely on emotional and social engagement, including education, mental health support, and companionship. Users frequently describe these systems as empathetic or understanding, suggesting that language-based interaction alone can elicit social responses typically reserved for human partners. However, the mechanisms underlying this perceived emotional connection remain poorly understood. Current approaches of-ten attribute these effects to anthropomorphic interpretations or emergent “AI empathy” without isolating the specific features that drive such perceptions. This gap limits our ability to evaluate how humans cognitively interpret artificial agents and obscures the boundary between perceived understanding and genuine social cognition. Building on this link, this study examines how language-driven mirroring engages neural and autonomic systems typically involved in social cognition and affective processing, and how individual differences modulate susceptibility to HIAG-related dynamics. Specifically, this project asks whether syntactic linguistic mirroring in conversational AI is sufficient to elicit measurable neural and autonomic responses associated with social engage-ment, and whether individual differences shape susceptibility to this effect. By isolating linguistic structure from semantic content and linking it to neurophysiological responses, this work aims to clarify how social cognition can be evoked by artificial systems, with implications for neuroscience, human–AI interaction, and ethical AI design.",
+    "first_seen_at": "2026-10-17T22:19:03Z",
+    "last_checked_at": "2026-10-17T22:33:56Z",
+    "last_changed_at": "2026-10-17T22:19:03Z",
+    "status_changed_at": "2026-10-17T22:19:03Z",
+    "listed": true,
+    "removed_at": null
+  },
+  {
+    "id": "krsp-836",
+    "source": "krsp",
+    "wp_post_id": 836,
+    "title": "Accent Processing as Parallel Phonological Systems and Cognitive Dissonance",
+    "url": "https://knight.research.ucf.edu/krsp-project/physiologically-responsive-ai-for-detecting-driver-impairment-in-semi-autonomous-vehicles/",
+    "status": "full",
+    "semester": null,
+    "team_size": 13,
+    "open_spots": 0,
+    "affiliation": "College of Sciences",
+    "team_leader": {
+      "name": "Patanjali Baran",
+      "role": "Biomedical Sciences"
+    },
+    "co_leaders": [
+      {
+        "name": "Pierina Giovanna Parejo Carrizales",
+        "role": "Biomedical Sciences"
+      }
+    ],
+    "faculty_mentor": "Mustapha Mouloua, PhD, Ancuta Margondai, PhD",
+    "required_quals": [
+      "CITI Training Certification (or willingness to complete it immediately upon acceptance) Human Subjects Research training must be completed before beginning work with participants"
+    ],
+    "preferred_quals": [
+      "Must be available for regular",
+      "scheduled in-person data collection sessions",
+      "Reliable attendance is critical as sessions involve human participants and specialized equipment",
+      "Respectful and culturally sensitive when working with diverse participants",
+      "Ability to maintain confidentiality and follow ethical research protocols",
+      "Open to training in EEG/neurophysiological data collection",
+      "Eager to learn statistical analysis techniques and research software",
+      "Receptive to feedback and continuous improvement",
+      "This research project welcomes students from any major or field of study",
+      "We will provide comprehensive training in all technical skills needed including equipment setup and operation"
+    ],
+    "quals_raw": "Preferred Qualifications:\nMust be available for regular, scheduled in-person data collection sessions. Reliable attendance is critical as sessions involve human participants and specialized equipment. Respectful and culturally sensitive when working with diverse participants. Ability to maintain confidentiality and follow ethical research protocols. Open to training in EEG/neurophysiological data collection. Eager to learn statistical analysis techniques and research software. Receptive to feedback and continuous improvement. This research project welcomes students from any major or field of study. We will provide comprehensive training in all technical skills needed including equipment setup and operation.\n\nRequired Qualifications:\nCITI Training Certification (or willingness to complete it immediately upon acceptance) Human Subjects Research training must be completed before beginning work with participants.",
+    "quals_hash": "2b9692bf0f78bc5f",
+    "required_skills": [
+      "citi_training"
+    ],
+    "preferred_skills": [
+      "reliability"
+    ],
+    "beginner_friendly": true,
+    "beginner_reason": "no_required_skills",
+    "description": "This study evaluates the cognitive and emotional mechanisms involved in processing accented English speech and whether accent comprehension engages processes similar to bilingual language switching. Specifically, the study compares two listener groups:\n\nEnglish Monolinguals: Individuals with minimal foreign language exposure.\n\nBilinguals: Individuals proficient in English and at least one additional language.\n\nThe study also evaluates responses across four accent conditions presented within subjects:\n\nAmerican Accent: Baseline / highly familiar condition.\nBritish Accent: Moderately familiar accent condition.\nIndian Accent: Less familiar accent condition.\nRussian Accent: Least familiar accent condition.\n\nStimuli being evaluated:\nAI-generated English sentences presented in four accent blocks (American, British, Indian, Russian) during a laboratory listening task. Accent blocks are counterbalanced across participants. Sentences include both simple and complex grammatical structures. Accent switch and repetition trials are embedded to assess processing dynamics.\n\nInstruments being administered (not evaluated for psychometric properties):\n• Language Experience and Proficiency Questionnaire (LEAP-Q)\n• Big Five Personality Inventory\n• Need for Cognitive Closure – Short Form\n• Tolerance of Ambiguity – Short Form\n• Subjective Listening Rating Scales (difficulty, effort, comfort, conflict, expectation match, accent familiarity)\n• Speaker Evaluation Ratings (intelligence, competence, friendliness, clarity, trustworthiness, likeability, confidence)\n\nNeurophysiological measures:\n• EEG (event-related potentials associated with phonological processing and expectation violations)\n• ECG-derived heart rate variability (autonomic regulation and cognitive load)\n• Galvanic Skin Response (sympathetic arousal)\n\nPhysiological signals are used to assess cognitive load and emotional arousal during accent processing. The study evaluates listener responses to accent type and language background, not the diagnostic validity of the physiological recording systems",
+    "first_seen_at": "2026-10-17T22:19:03Z",
+    "last_checked_at": "2026-10-17T22:33:56Z",
+    "last_changed_at": "2026-10-17T22:19:03Z",
+    "status_changed_at": "2026-10-17T22:19:03Z",
+    "listed": true,
+    "removed_at": null
+  },
+  {
+    "id": "krsp-838",
+    "source": "krsp",
+    "wp_post_id": 838,
+    "title": "Hemispheric Lateralization: A Comparative Analysis of Left and Right Brain Activation Patterns",
+    "url": "https://knight.research.ucf.edu/krsp-project/hemispheric-lateralization-a-comparative-analysis-of-left-and-right-brain-activation-patterns/",
+    "status": "full",
+    "semester": null,
+    "team_size": 6,
+    "open_spots": 0,
+    "affiliation": "College of Sciences",
+    "team_leader": {
+      "name": "Gianna Southwick",
+      "role": "Applied/Experimental & Human Factors Psychology"
+    },
+    "co_leaders": [],
+    "faculty_mentor": "Mustapha Mouloua, PhD, Ancuta Margondai, PhD",
+    "required_quals": [
+      "CITI Training Human Subjects Research – Group 2: Social/Behavioral Research Investigators and Key Personnel Research and HIPAA Privacy Protections University Research Authorization Completion and approval of the URA (Undergraduate Research Authorization) form prior to participation",
+      "Time Commitment Ability to commit to in-person lab hours as required by the project",
+      "Reliable availability throughout the agreed-upon research period",
+      "Task Completion & Communication Commitment to completing assigned tasks by set deadlines",
+      "Openness to consistent communication with lab leadership and team members (email, shared platforms, meetings)",
+      "Professional & Ethical Conduct Adherence to ethical standards for human subjects research",
+      "Respect for participant confidentiality and data security protocols",
+      "Organizational & Collaborative Skills Ability to follow protocols accurately and maintain organized records",
+      "Willingness to work collaboratively within a research team and accept feedback"
+    ],
+    "preferred_quals": [
+      "The willingness to work with an EEG headset (no previous knowledge of how to set one up is required, just openness to the process of setting it up, helping participant put it on, cleaning it, etc.), basic familiarity with research methods in social/behavioral science, willingness to use common research tools (e.g., surveys, data entry platforms, scheduling tools), able to work with others in a group setting, willingness to work with a driving simulator (knowledge of how to work with one is not required), willingness to learn about study and help with tasks regarding EEG, driving simulation, collecting of data, clean data, etc., able to work in-person for when we do have participants sign up to do study and be able to show up at requested time to do study"
+    ],
+    "quals_raw": "The willingness to work with an EEG headset (no previous knowledge of how to set one up is required, just openness to the process of setting it up, helping participant put it on, cleaning it, etc.), basic familiarity with research methods in social/behavioral science, willingness to use common research tools (e.g., surveys, data entry platforms, scheduling tools), able to work with others in a group setting, willingness to work with a driving simulator (knowledge of how to work with one is not required), willingness to learn about study and help with tasks regarding EEG, driving simulation, collecting of data, clean data, etc., able to work in-person for when we do have participants sign up to do study and be able to show up at requested time to do study.\n\nRequired Qualifications:\nCITI Training Human Subjects Research – Group 2: Social/Behavioral Research Investigators and Key Personnel Research and HIPAA Privacy Protections University Research Authorization Completion and approval of the URA (Undergraduate Research Authorization) form prior to participation. Time Commitment Ability to commit to in-person lab hours as required by the project. Reliable availability throughout the agreed-upon research period. Task Completion & Communication Commitment to completing assigned tasks by set deadlines. Openness to consistent communication with lab leadership and team members (email, shared platforms, meetings). Professional & Ethical Conduct Adherence to ethical standards for human subjects research. Respect for participant confidentiality and data security protocols. Organizational & Collaborative Skills Ability to follow protocols accurately and maintain organized records. Willingness to work collaboratively within a research team and accept feedback.",
+    "quals_hash": "7986d5f2e81a8a46",
+    "required_skills": [
+      "citi_training",
+      "irb_training",
+      "reliability",
+      "communication",
+      "time_management",
+      "teamwork"
+    ],
+    "preferred_skills": [
+      "eeg",
+      "research_methods",
+      "surveys",
+      "data_cleaning"
+    ],
+    "beginner_friendly": true,
+    "beginner_reason": "no_required_skills",
+    "description": "Stress responses vary considerably across individuals, yet the neurological mechanisms underlying these differences remain incompletely understood. Research suggests that hemispheric lateralization, the differential activation of left versus right brain hemispheres, plays a critical role in stress processing. Studies have linked left-hemispheric activation to positive affective states and right-hemispheric activation to negative emotions and withdrawal behaviors (Davidson et al., 1990; Hamid et al., 2015). However, conflicting findings indicate the right hemisphere may also process certain positive emotions related to arousal (Cao et al., 2020), highlighting the need for research examining hemispheric activity under ecologically valid stressful conditions.\n\nThis study investigates hemispheric lateralization patterns during acute stress induced by high cognitive load using a driving simulation. Participants will complete a challenging driving simulation while wearing a wireless EEG to monitor hemispheric activity across frontal, temporal, and parietal regions. Baseline recordings and subjective stress ratings will be collected for comparison.\n\nThis research addresses a significant gap by examining hemispheric activity during naturalistic cognitive stress rather than passive viewing of emotional stimuli, potentially informing targeted stress-reduction interventions.",
+    "first_seen_at": "2026-10-17T22:19:03Z",
+    "last_checked_at": "2026-10-17T22:33:56Z",
+    "last_changed_at": "2026-10-17T22:19:03Z",
+    "status_changed_at": "2026-10-17T22:19:03Z",
+    "listed": true,
+    "removed_at": null
+  },
+  {
+    "id": "krsp-850",
+    "source": "krsp",
+    "wp_post_id": 850,
+    "title": "Children’s Activity and Movement Prescription (CAMP) Study",
+    "url": "https://knight.research.ucf.edu/krsp-project/childhood-activity-and-movement-prescription-camp-study/",
+    "status": "full",
+    "semester": null,
+    "team_size": 4,
+    "open_spots": 0,
+    "affiliation": "College of Health Professions and Sciences",
+    "team_leader": {
+      "name": "Ashley Malvita",
+      "role": "Health Promotion and Behavioral Science MS"
+    },
+    "co_leaders": [
+      {
+        "name": "Kamalie Thomas",
+        "role": "Health Promotion and Behavioral Science MS"
+      }
+    ],
+    "faculty_mentor": "Keith Brazendale, PhD, MSc",
+    "required_quals": [
+      "CITI: Conflict of interest course, CITI: Human Subjects Research course, and CITI: Social and Behavioral Responsible Conduct of Research course"
+    ],
+    "preferred_quals": [
+      "prior research experience as an RA",
+      "a passion for children's health and summer outcomes",
+      "willingness to travel (transportation required)"
+    ],
+    "quals_raw": "Preferred qualifications are prior research experience as an RA, a passion for children's health and summer outcomes, and willingness to travel (transportation required). Required qualifications are CITI: Conflict of interest course, CITI: Human Subjects Research course, and CITI: Social and Behavioral Responsible Conduct of Research course.",
+    "quals_hash": "e714ef4216edb0be",
+    "required_skills": [
+      "citi_training"
+    ],
+    "preferred_skills": [
+      "research_methods"
+    ],
+    "beginner_friendly": true,
+    "beginner_reason": "no_required_skills",
+    "description": "Children from low-income households have higher rates of obesity compared to their high-income peers. Summer has been identified as a critical window for weight-gain in children. Summer day camps can provide a structured and consistent environment for children during summer months when schools close and access to resources for many families diminish. This funded study is a pilot randomized clinical trial where children who are overweight or have obesity and are from low-income households will receive a pediatrician referral to attend an 8-week summer camp for free. The study will examine feasibility, acceptability, and preliminary effectiveness of a potential real-world solution that improves health and has great potential for scalability given the widespread presence of summer camps and pediatric health clinics in communities across the U.S.",
+    "first_seen_at": "2026-10-17T22:19:03Z",
+    "last_checked_at": "2026-10-17T22:33:56Z",
+    "last_changed_at": "2026-10-17T22:19:03Z",
+    "status_changed_at": "2026-10-17T22:19:03Z",
+    "listed": true,
+    "removed_at": null
+  },
+  {
+    "id": "krsp-878",
+    "source": "krsp",
+    "wp_post_id": 878,
+    "title": "Development of SafeFall Coach Mobile Application for AI-Based Fall Prevention and Safe Movement Training in Older Adults",
+    "url": "https://knight.research.ucf.edu/krsp-project/development-of-safefall-coach-mobile-application-for-ai-based-fall-prevention-and-safe-movement-training-in-older-adults/",
+    "status": "full",
+    "semester": null,
+    "team_size": 3,
+    "open_spots": 0,
+    "affiliation": "College of Nursing",
+    "team_leader": {
+      "name": "Megha Parikh",
+      "role": "College of Nursing Postdoctoral Scholar"
+    },
+    "co_leaders": [],
+    "faculty_mentor": "Ladda Thiamwong, PhD, MSN, RN",
+    "required_quals": [],
+    "preferred_quals": [
+      "Team members applying to this project are expected to have experience or interest in research related to AI, healthcare technology, aging, or computer vision",
+      "Familiarity with machine learning",
+      "computer vision",
+      "app development is a plus",
+      "An interest or background in computer science",
+      "engineering",
+      "kinesiology",
+      "health sciences",
+      "related fields is preferred",
+      "Basic programming knowledge (Python preferred, but not mandatory) is required"
+    ],
+    "quals_raw": "Preferred: Team members applying to this project are expected to have experience or interest in research related to AI, healthcare technology, aging, or computer vision. Familiarity with machine learning, computer vision, or app development is a plus. An interest or background in computer science, engineering, kinesiology, health sciences, or related fields is preferred.\n\nBasic programming knowledge (Python preferred, but not mandatory) is required.",
+    "quals_hash": "f3485f6fda99a264",
+    "required_skills": [],
+    "preferred_skills": [
+      "computer_vision",
+      "machine_learning",
+      "app_dev",
+      "computer_science",
+      "engineering",
+      "kinesiology",
+      "health_sciences",
+      "python"
+    ],
+    "beginner_friendly": true,
+    "beginner_reason": "no_required_skills",
+    "description": "This project focuses on the development and evaluation of the SafeFall Coach application. It is a mobile application that combines interactive video-based learning with AI-driven feedback, enabling older adults (OAs) to practice safer movement tailored to their individual mobility levels. The objective is to enhance personalized learning, support independence, and promote aging in place, bridging the gap between detection and prevention in fall-related care.\nThis research integrates artificial intelligence, computer vision, and user-centered design to provide real-time, personalized feedback on user movement and fall recovery techniques. The system analyzes movements through video-based pose estimation and translates them into simple, actionable guidance using AI models. The project involves both technology development and human-centered research, including usability testing, participant engagement, and evaluation of the app’s effectiveness in real-world settings. Team members will focus on research activities, including data collection, application testing, evaluation, and preparation of research manuscripts. They will gain hands-on experience in healthcare technology research.",
+    "first_seen_at": "2026-10-17T22:19:03Z",
+    "last_checked_at": "2026-10-17T22:33:56Z",
+    "last_changed_at": "2026-10-17T22:19:03Z",
+    "status_changed_at": "2026-10-17T22:19:03Z",
+    "listed": true,
+    "removed_at": null
+  },
+  {
+    "id": "krsp-885",
+    "source": "krsp",
+    "wp_post_id": 885,
+    "title": "Understanding Digital File Organization Among Neurodivergent Users",
+    "url": "https://knight.research.ucf.edu/krsp-project/understanding-digital-file-organization-among-neurodivergent-users/",
+    "status": "full",
+    "semester": null,
+    "team_size": 8,
+    "open_spots": 0,
+    "affiliation": "College of Sciences",
+    "team_leader": {
+      "name": "Ariah Qazi",
+      "role": "Psychology"
+    },
+    "co_leaders": [],
+    "faculty_mentor": "Mustapha Mouloua, PhD, Ancuta Margondai, PhD",
+    "required_quals": [
+      "Human Subjects Research- Group 2",
+      "Social/ Behavioral Research Investigators and Key Personnel",
+      "Research and HIPPAA Privacy Protections"
+    ],
+    "preferred_quals": [
+      "Ability to work online with structure",
+      "CITI training done or willingness to complete it upon acceptance"
+    ],
+    "quals_raw": "Perferred: Ability to work online with structure.\n\nCITI training done or willingness to complete it upon acceptance.\nRequired: Human Subjects Research- Group 2. Social/ Behavioral Research Investigators and Key Personnel. Research and HIPPAA Privacy Protections.",
+    "quals_hash": "1528d5d21b3881ca",
+    "required_skills": [
+      "citi_training"
+    ],
+    "preferred_skills": [],
+    "beginner_friendly": true,
+    "beginner_reason": "no_required_skills",
+    "description": "This is a well-designed study proposal examining how neurodivergent individuals (those with ADHD, dyslexia, or strong visual-spatial abilities) organize digital files compared to neurotypical users. The research investigates whether different cognitive profiles align with different organizational paradigms, spatial/piling, hierarchical/filing, flat/search-based, or hybrid approaches.\nThe study hypothesizes that individuals with ADHD may prefer spatial organization due to working memory considerations, while those with dyslexia or visual-spatial strengths may favor visual approaches over text-heavy hierarchical systems. A key question is whether current file management systems systematically disadvantage neurodivergent users by forcing paradigms misaligned with their cognitive strengths.\nUsing 240 participants across four groups, the methodology employs visual stimuli of organizational paradigms, NASA-TLX cognitive load ratings, and preference assessments. The theoretical contribution extends cognitive fit theory to file management, reframing the question from \"how can neurodivergent users adapt\" to \"how might systems accommodate cognitive diversity.",
+    "first_seen_at": "2026-10-17T22:19:03Z",
+    "last_checked_at": "2026-10-17T22:33:56Z",
+    "last_changed_at": "2026-10-17T22:19:03Z",
+    "status_changed_at": "2026-10-17T22:19:03Z",
+    "listed": true,
+    "removed_at": null
+  },
+  {
+    "id": "krsp-906",
+    "source": "krsp",
+    "wp_post_id": 906,
+    "title": "From Faculty Intentions to Student Impact: Understanding Writing Feedback, Self-Efficacy, and Learned Helplessness",
+    "url": "https://knight.research.ucf.edu/krsp-project/from-faculty-intentions-to-student-impact-understanding-writing-feedback-self-efficacy-and-learned-helplessness/",
+    "status": "full",
+    "semester": null,
+    "team_size": 2,
+    "open_spots": 0,
+    "affiliation": "College of Community Innovation and Education",
+    "team_leader": {
+      "name": "Amanda Evans",
+      "role": "PhD, Education (Learning Sciences)"
+    },
+    "co_leaders": [],
+    "faculty_mentor": "Michelle Taub, PhD",
+    "required_quals": [
+      "Understanding of learned helplessness (or willingness to learn)"
+    ],
+    "preferred_quals": [],
+    "quals_raw": "Understanding of learned helplessness (or willingness to learn)",
+    "quals_hash": "8645842f87f75333",
+    "required_skills": [],
+    "preferred_skills": [],
+    "beginner_friendly": true,
+    "beginner_reason": "no_required_skills",
+    "description": "This explanatory sequential mixed methods study will examine how specific feedback moments in college writing courses contribute to students experiences with learned helplessness and writing disengagement. The study will look at students’ experiences with instructor provided feedback on writing assignments as a critical incident to better understand how students interpret the feedback and how those interpretations shape motivation, engagement, and beliefs about their own writing capability.\nThe research questions guiding the study are:\nRQ1: How are college students’ perceptions of instructor feedback characteristics associated with learned helplessness and writing disengagement following feedback on a writing assignment?\nRQ2: How do college students describe and make meaning of feedback they receive on their writing?\nThe study will be conducted within four undergraduate courses at Valencia College that include writing assignments with instructor-provided feedback. Participants will be students enrolled in these courses who are 18 years of age or older. Participation will involve completing an 8 to 10 minute online survey administered during class following the release of assignment feedback. A subset of participants who volunteer will be invited to participate in a one time semi-structured interview lasting approximately 45 to 60 minutes.",
+    "first_seen_at": "2026-10-17T22:19:03Z",
+    "last_checked_at": "2026-10-17T22:33:56Z",
+    "last_changed_at": "2026-10-17T22:19:03Z",
+    "status_changed_at": "2026-10-17T22:19:03Z",
+    "listed": true,
+    "removed_at": null
+  },
+  {
+    "id": "krsp-919",
+    "source": "krsp",
+    "wp_post_id": 919,
+    "title": "Hope Card Laws and Regulations Across the United States",
+    "url": "https://knight.research.ucf.edu/krsp-project/hope-card-laws-and-regulations-across-the-united-states-2/",
+    "status": "full",
+    "semester": null,
+    "team_size": 6,
+    "open_spots": 0,
+    "affiliation": "College of Sciences",
+    "team_leader": {
+      "name": "Nathan LaMothe",
+      "role": "Sociology PhD"
+    },
+    "co_leaders": [],
+    "faculty_mentor": "Amy Donley, PhD",
+    "required_quals": [
+      "Applicants should have",
+      "access to Zoom, Google Docs, Google Sheets, and internet",
+      "availability of at least two hours per week for the Fall 2025 semester",
+      "Strong communication skills, particularly the openness to asking questions when guidance is needed",
+      "Interest in learning about law and society",
+      "Strong work ethic",
+      "Ability to properly read, summarize, and paraphrase articles in peer-reviewed journals",
+      "Complete CITI Training"
+    ],
+    "preferred_quals": [
+      "Team members are expected to respond to the team leader’s emails within 72 hours, unless there is an emergency or otherwise noted by the team leader"
+    ],
+    "quals_raw": "Applicants should have: (1) access to Zoom, Google Docs, Google Sheets, and internet; (2) availability of at least two hours per week for the Fall 2025 semester; (3) Strong communication skills, particularly the openness to asking questions when guidance is needed; (4) Interest in learning about law and society; (5) Strong work ethic; and (6) Ability to properly read, summarize, and paraphrase articles in peer-reviewed journals. Team members are expected to respond to the team leader’s emails within 72 hours, unless there is an emergency or otherwise noted by the team leader.\n\nRequired: Complete CITI Training",
+    "quals_hash": "efe802e249ad56cd",
+    "required_skills": [
+      "communication",
+      "reliability",
+      "academic_writing",
+      "literature_review",
+      "citi_training"
+    ],
+    "preferred_skills": [],
+    "beginner_friendly": false,
+    "beginner_reason": null,
+    "description": "This project focuses on identifying, recording, and analyzing hope card legislation and regulations cross each of the 50 United States. In addition to finding peerreviewed literature, team members will be primarily tasked with searching state legislative and administrative websites to identify laws and regulations related to hope cards. They will also assist with identifying legal characteristics of such laws and regulations, as well as assist with drafting a manuscript for publication. Hope cards are electronic or pocket cards that allow domestic violence victims to have formal documentation of legal protections without having to carry around a substantial amount of paperwork.\n\nSteps in the project include:\n(1) Searching for peer-reviewed literature.\n(2) Searching for laws and regulations.\n(3) Identifying cross-state characteristics of law and regulations.\n(4) Drafting a manuscript for publication.\n\nCommensurate with effort, team members with sustained and sufficient engagement will be invited as co-authors on the final manuscript (alongside the team leader and the team leader’s faculty mentor) for the purposes of publication in a peer-reviewed publication outlet. All tasks will be carried out remotely.",
+    "first_seen_at": "2026-10-17T22:19:03Z",
+    "last_checked_at": "2026-10-17T22:33:56Z",
+    "last_changed_at": "2026-10-17T22:19:03Z",
+    "status_changed_at": "2026-10-17T22:19:03Z",
+    "listed": true,
+    "removed_at": null
+  },
+  {
+    "id": "krsp-928",
+    "source": "krsp",
+    "wp_post_id": 928,
+    "title": "Deep Multimodal Terrain Recognition for Safe Robotic and Wearable Mobility",
+    "url": "https://knight.research.ucf.edu/krsp-project/deep-multimodal-terrain-recognition-for-safe-robotic-and-wearable-mobility/",
+    "status": "full",
+    "semester": null,
+    "team_size": 3,
+    "open_spots": 0,
+    "affiliation": "College of Engineering and Computer Science",
+    "team_leader": {
+      "name": "Sy Nguyen",
+      "role": "Mechanical Engineering Postdoctoral Scholar"
+    },
+    "co_leaders": [],
+    "faculty_mentor": "Hwan Choi, PhD",
+    "required_quals": [
+      "PyTorch",
+      "CNN",
+      "Deep learning",
+      "Computer vision"
+    ],
+    "preferred_quals": [],
+    "quals_raw": "PyTorch.\nCNN.\nDeep learning.\nComputer vision",
+    "quals_hash": "c77334cb3d5e881d",
+    "required_skills": [
+      "pytorch",
+      "deep_learning",
+      "computer_vision"
+    ],
+    "preferred_skills": [],
+    "beginner_friendly": false,
+    "beginner_reason": null,
+    "description": "Deep Multimodal Terrain Recognition for Safe Robotic and Wearable Mobility refers to a perception framework that integrates multiple complementary sensors—such as cameras, IMUs, LiDAR, and proprioceptive signals—to accurately classify and predict terrain conditions during locomotion. By leveraging deep learning–based multimodal fusion, the system captures both visual appearance and motion/force cues, enabling robust recognition of stairs, slopes, uneven ground, grass, gravel, and other challenging environments.\n\nThis multimodal approach improves reliability compared to single‑sensor systems, especially in real‑world conditions where lighting, occlusion, or sensor noise can degrade performance. Research in multimodal fusion for robot navigation shows that combining RGB images with LiDAR or IMU data significantly enhances perception robustness and navigation accuracy in complex environments .\n\nFor robotic platforms, the system supports safer autonomous navigation by providing terrain‑aware decision‑making and traversability estimation. For wearable mobility devices—such as powered prosthetic legs, exoskeletons, and orthoses—it enables predictive control strategies that adjust joint impedance, torque, or gait mode before the user encounters a new terrain, reducing fall risk and improving mobility confidence.",
+    "first_seen_at": "2026-10-17T22:19:03Z",
+    "last_checked_at": "2026-10-17T22:33:56Z",
+    "last_changed_at": "2026-10-17T22:19:03Z",
+    "status_changed_at": "2026-10-17T22:19:03Z",
+    "listed": true,
+    "removed_at": null
+  },
+  {
+    "id": "krsp-947",
+    "source": "krsp",
+    "wp_post_id": 947,
+    "title": "Evaluating the Protective Role of Lactobacillus Postbiotic Metabolites Against Bile Acid-Induced Genotoxic Stress in Esophageal Disease Progression",
+    "url": "https://knight.research.ucf.edu/krsp-project/evaluating-the-protective-role-of-lactobacillus-postbiotic-metabolites-against-bile-acid-induced-genotoxic-stress-in-esophageal-disease-progression/",
+    "status": "full",
+    "semester": null,
+    "team_size": 2,
+    "open_spots": 0,
+    "affiliation": "College of Medicine",
+    "team_leader": {
+      "name": "Kevin Pokhoy",
+      "role": "Biotechnology (MS)"
+    },
+    "co_leaders": [
+      {
+        "name": "Lily Giardino",
+        "role": "PhD Biomedical Sciences, Cancer Division"
+      }
+    ],
+    "faculty_mentor": "Claudia Andl, PhD",
+    "required_quals": [
+      "A commitment of at least 15 hours per week is required"
+    ],
+    "preferred_quals": [
+      "Wet Lab Techniques: Familiarity with basic molecular biology and histology workflows, such as mammalian cell culture, RNA extraction, qPCR, or tissue processing/sectioning",
+      "Microbiology: Basic experience handling or culturing bacterial strains (Lactobacillus species)",
+      "Data Analysis & Imaging: Exposure to or interest in computational tools for data analysis (such as R programming) or digital image analysis/quantification software (such as Fiji/ImageJ)",
+      "Academic Background: Coursework in immunology, molecular biology, microbiology, or cancer biology",
+      "CITI Training Requirements: Successful completion of the CITI \"Responsible Conduct of Research (RCR) - Biomedical\" course, EHS course \"Bloodborne Pathogens,\" and the relevant Laboratory Animal Research/IACUC modules for mouse handling (only if interested in mice work)",
+      "Core Competencies: Basic laboratory safety awareness, proper personal protective equipment (PPE) compliance, and strong organizational skills for documenting experimental data"
+    ],
+    "quals_raw": "Preferred skills and experience include:\n\nWet Lab Techniques: Familiarity with basic molecular biology and histology workflows, such as mammalian cell culture, RNA extraction, qPCR, or tissue processing/sectioning.\n\nMicrobiology: Basic experience handling or culturing bacterial strains (Lactobacillus species).\n\nData Analysis & Imaging: Exposure to or interest in computational tools for data analysis (such as R programming) or digital image analysis/quantification software (such as Fiji/ImageJ).\n\nAcademic Background: Coursework in immunology, molecular biology, microbiology, or cancer biology.\n\nCITI Training Requirements: Successful completion of the CITI \"Responsible Conduct of Research (RCR) - Biomedical\" course, EHS course \"Bloodborne Pathogens,\" and the relevant Laboratory Animal Research/IACUC modules for mouse handling (only if interested in mice work). Core Competencies: Basic laboratory safety awareness, proper personal protective equipment (PPE) compliance, and strong organizational skills for documenting experimental data. A commitment of at least 15 hours per week is required.",
+    "quals_hash": "f0a503c4e43e821b",
+    "required_skills": [],
+    "preferred_skills": [
+      "molecular_biology",
+      "histology",
+      "microbiology",
+      "data_analysis",
+      "programming_basics",
+      "computer_vision",
+      "immunology",
+      "citi_training",
+      "ehs_safety",
+      "animal_handling",
+      "wet_lab",
+      "time_management"
+    ],
+    "beginner_friendly": true,
+    "beginner_reason": "no_required_skills",
+    "description": "This project investigates how Lactobacillus species and short-chain fatty acids (SCFAs) mitigate DNA damage and chronic inflammation associated with Gastroesophageal Reflux Disease (GERD) and Barrett’s esophagus. Using in vitro esophageal cell lines and an IL-1β transgenic mouse model, we are characterizing the capacity of specific postbiotic metabolites—including mesaconic acid—to suppress genotoxic stress and alter the DNA damage response. The goal of this research is to identify novel, microbiome-derived therapeutic interventions capable of mitigating the progression from chronic inflammation to metaplasia and esophageal adenocarcinoma.",
+    "first_seen_at": "2026-10-17T22:19:03Z",
+    "last_checked_at": "2026-10-17T22:33:56Z",
+    "last_changed_at": "2026-10-17T22:19:03Z",
+    "status_changed_at": "2026-10-17T22:19:03Z",
+    "listed": true,
+    "removed_at": null
+  },
+  {
+    "id": "krsp-957",
+    "source": "krsp",
+    "wp_post_id": 957,
+    "title": "From Wildfires to Clouds: Understanding How Smoke Particles Influence Climate and Air Quality",
+    "url": "https://knight.research.ucf.edu/krsp-project/from-wildfires-to-clouds-understanding-how-smoke-particles-influence-climate-and-air-quality/",
+    "status": "full",
+    "semester": null,
+    "team_size": 4,
+    "open_spots": 0,
+    "affiliation": "College of Sciences",
+    "team_leader": {
+      "name": "Minh Tran",
+      "role": "Chemistry"
+    },
+    "co_leaders": [],
+    "faculty_mentor": "Denisia Popolan-Vaida, PhD",
+    "required_quals": [
+      "GPA of 3.0 or higher",
+      "Sophomore standing or above"
+    ],
+    "preferred_quals": [
+      "Who Should Apply?",
+      "We are seeking motivated and curious undergraduate students who are excited about scientific discovery and interested in tackling real-world environmental challenges",
+      "Completion of Organic Chemistry",
+      "Interest in chemistry",
+      "atmospheric science",
+      "environmental science",
+      "climate science",
+      "related STEM disciplines",
+      "We welcome students who are eager to learn, dependable, and enthusiastic about hands-on laboratory work and data analysis",
+      "Comprehensive training in research methods and instrumentation will be provided"
+    ],
+    "quals_raw": "Who Should Apply?\nWe are seeking motivated and curious undergraduate students who are excited about scientific discovery and interested in tackling real-world environmental challenges.\n\nMinimum Requirements\nGPA of 3.0 or higher\nSophomore standing or above\n\nPreferred Background\nCompletion of Organic Chemistry\nInterest in chemistry, atmospheric science, environmental science, climate science, or related STEM disciplines\n\nNo previous research experience is required. We welcome students who are eager to learn, dependable, and enthusiastic about hands-on laboratory work and data analysis. Comprehensive training in research methods and instrumentation will be provided.",
+    "quals_hash": "6be0420391ebc5be",
+    "required_skills": [],
+    "preferred_skills": [
+      "organic_chemistry",
+      "environmental_science",
+      "reliability",
+      "wet_lab",
+      "data_analysis",
+      "research_methods"
+    ],
+    "beginner_friendly": true,
+    "beginner_reason": "explicit",
+    "description": "Wildfires are becoming more frequent and severe across the globe, producing vast amounts of smoke that can travel thousands of miles and impact both local and global air quality. Smoke particles, known as aerosols, play a critical role in Earth's atmosphere. They can scatter and absorb sunlight, influencing climate and visibility, and they can also act as cloud condensation nuclei (CCN), tiny particles that help water vapor condense into cloud droplets. Because clouds strongly affect weather patterns, precipitation, and climate, understanding how wildfire smoke behaves in the atmosphere is an important scientific challenge.\nThis research project focuses on a group of organic compounds known as phenolic acids (including vanillic acid, syringic acid, and ferulic acid), which are commonly produced during biomass burning and are frequently used as tracers of wildfire emissions. While these compounds are widely detected in wildfire smoke, scientists still know surprisingly little about how they change after being released into the atmosphere and how those changes affect their ability to seed clouds.\nIn this project, we recreate key atmospheric processes in the laboratory and investigate how wildfire-derived particles evolve over time. Aerosol particles are generated from phenolic acid solutions, size-selected using advanced instrumentation, and exposed to oxidizing conditions that mimic atmospheric aging. We then measure how efficiently these particles form cloud droplets before and after aging using state-of-the-art aerosol and cloud condensation nuclei instrumentation. Changes in chemical composition are characterized using Direct Analysis in Real Time Mass Spectrometry (DART-MS).\nOur preliminary findings reveal a fascinating phenomenon: freshly generated particles have a very low ability to attract water and form cloud droplets, but atmospheric oxidation significantly enhances their cloud-forming potential. These results suggest that chemical processing in the atmosphere can dramatically alter the environmental and climate impacts of wildfire smoke.\nThis project offers students the opportunity to contribute to research at the intersection of atmospheric chemistry, environmental science, climate science, and analytical chemistry, while helping answer important questions about the effects of wildfires on our changing planet.\n\nFuture Research Opportunities\n\nStudents participating in this project may help explore several exciting research directions, including:\nInvestigating the effects of hydroxyl (OH) radical oxidation, one of the most important chemical aging processes in the atmosphere.\nStudying how particle mixtures and surface coatings influence cloud formation.\nExpanding the research to additional organic compounds commonly found in wildfire smoke.\nExploring the connections between aerosol chemistry, air quality, and climate impacts.\n\nWhat Students Involved in this Research Project Will Learn\n\nThis project provides extensive hands-on research experience and training in modern atmospheric chemistry techniques. Students will have opportunities to:\nGenerate and characterize aerosol particles.\nOperate advanced scientific instrumentation used in environmental and atmospheric research.\nMeasure cloud condensation nuclei activity and particle hygroscopicity.\nAnalyze experimental data and interpret scientific results.\nLearn principles of atmospheric chemistry, aerosol science, and climate-related research.\nDevelop skills in scientific communication, problem-solving, and laboratory safety.\nWork closely with graduate students and faculty mentors in a collaborative research environment.\nStudents who demonstrate strong interest and commitment may have opportunities to present their work at undergraduate research conferences and contribute to publications.",
+    "first_seen_at": "2026-10-17T22:19:03Z",
+    "last_checked_at": "2026-10-17T22:33:56Z",
+    "last_changed_at": "2026-10-17T22:19:03Z",
+    "status_changed_at": "2026-10-17T22:19:03Z",
+    "listed": true,
+    "removed_at": null
+  },
+  {
+    "id": "krsp-968",
+    "source": "krsp",
+    "wp_post_id": 968,
+    "title": "Preventing Falls Using a Person Centered Approach",
+    "url": "https://knight.research.ucf.edu/krsp-project/preventing-falls-using-a-person-centered-approach/",
+    "status": "full",
+    "semester": null,
+    "team_size": 10,
+    "open_spots": 0,
+    "affiliation": "College of Nursing",
+    "team_leader": {
+      "name": "Ania Lipat",
+      "role": "Nursing Postdoctoral"
+    },
+    "co_leaders": [],
+    "faculty_mentor": "Ladda Thiamwong PhD, MSN, RN",
+    "required_quals": [
+      "3-hour windows of availability during the week",
+      "CITI Human Subjects Research Group 2 Social/Behavioral Research, CITI Good Clinical Practice (GCP) – Social and Behavioral Research Best Practices for Clinical Research, CITI Social and Behavioral Responsible Conduct of Research"
+    ],
+    "preferred_quals": [
+      "Our research is a community-based program that delivers fall risk screening to senior centers within a 30-minute driving radius from UCF",
+      "We are looking for students willing to travel to these community centers to work directly with participants by assisting with data collections, as well as students to help with remote data entry",
+      "Data collection will involve administering questionnaires and physical function and cognitive assessments"
+    ],
+    "quals_raw": "Preferred: Our research is a community-based program that delivers fall risk screening to senior centers within a 30-minute driving radius from UCF. We are looking for students willing to travel to these community centers to work directly with participants by assisting with data collections, as well as students to help with remote data entry. Data collection will involve administering questionnaires and physical function and cognitive assessments. Required: 3-hour windows of availability during the week.\n\nRequired: CITI Human Subjects Research Group 2 Social/Behavioral Research, CITI Good Clinical Practice (GCP) – Social and Behavioral Research Best Practices for Clinical Research, CITI Social and Behavioral Responsible Conduct of Research",
+    "quals_hash": "30b6ca10bb88f8ac",
+    "required_skills": [
+      "citi_training"
+    ],
+    "preferred_skills": [
+      "human_subjects",
+      "data_cleaning",
+      "surveys"
+    ],
+    "beginner_friendly": true,
+    "beginner_reason": "no_required_skills",
+    "description": "This project aims to determine which component(s) of the 8-week Physiofeedback Exercise Program (PEER) is most effective in improving physical activity levels in community-dwelling older adults. The PEER is comprised of three components: physiofeedback, cognitive reframing, and group exercise, and each group will receive a random combination of these three components. This longitudinal study will involve multiple visits (baseline, post-intervention, 6-month follow-up, 12-month follow-up) over a 15-month time period.",
+    "first_seen_at": "2026-10-17T22:19:03Z",
+    "last_checked_at": "2026-10-17T22:33:56Z",
+    "last_changed_at": "2026-10-17T22:19:03Z",
+    "status_changed_at": "2026-10-17T22:19:03Z",
+    "listed": true,
+    "removed_at": null
+  },
+  {
+    "id": "krsp-970",
+    "source": "krsp",
+    "wp_post_id": 970,
+    "title": "Exploring AI-Supported Accessibility for Students with Chronic Physical Disabilities in Higher Education",
+    "url": "https://knight.research.ucf.edu/krsp-project/exploring-ai-supported-accessibility-for-students-with-chronic-physical-disabilities-in-higher-education/",
+    "status": "full",
+    "semester": null,
+    "team_size": 1,
+    "open_spots": 0,
+    "affiliation": "College of Community Innovation and Education",
+    "team_leader": {
+      "name": "Amanda Evans",
+      "role": "PhD, Education (Learning Sciences track)"
+    },
+    "co_leaders": [],
+    "faculty_mentor": "Steve Haberlin, PhD",
+    "required_quals": [],
+    "preferred_quals": [],
+    "quals_raw": "",
+    "quals_hash": "e3b0c44298fc1c14",
+    "required_skills": [],
+    "preferred_skills": [],
+    "beginner_friendly": true,
+    "beginner_reason": "no_required_skills",
+    "description": "The purpose of this study is to examine how students with chronic physical disabilities experience the tension between fluctuating access needs and the predictable structures of higher education. Chronic disabilities are often episodic and unpredictable, with symptoms and access needs that may vary daily, weekly, or across academic contexts. However, higher education systems are frequently organized around predictability, including fixed attendance policies, standardized deadlines, scheduled participation expectations, timed assessments, and accommodation processes that often require advance documentation and planning. This study will investigate how students with chronic disabilities navigate these structures and how AI-supported tools may support, complicate, or reshape accessibility practices.\n\nThis study will use a qualitative-dominant mixed methods design with participatory design elements. The study will begin with an online questionnaire to gather descriptive information about participants’ chronic physical disability experiences, academic access needs, experiences with higher education accessibility structures, and familiarity with AI-supported tools. Participants will then be invited to complete a semi-structured interview focused on their experiences with fluctuating access needs, barriers to flexibility, accommodation processes, disclosure concerns, and perceptions of AI-supported accessibility. During the interview, participants will also be given brief scenarios or design prompts related to possible AI-supported accessibility tools, such as flexible planning tools, low-burden communication supports, workload management tools, or systems for navigating course expectations.\n\nThe research questions guiding this study are:\n\n1. How do students with chronic physical disabilities describe the relationship between fluctuating access needs and predictable structures within higher education?\n2. What barriers and supports do students with chronic physical disabilities identify in relation to flexibility, accommodation processes, participation expectations, and academic workload?\n3. How do students with chronic physical disabilities perceive the potential benefits, limitations, and risks of AI-supported accessibility tools in higher education?",
+    "first_seen_at": "2026-10-17T22:19:03Z",
+    "last_checked_at": "2026-10-17T22:33:56Z",
+    "last_changed_at": "2026-10-17T22:19:03Z",
+    "status_changed_at": "2026-10-17T22:19:03Z",
+    "listed": true,
+    "removed_at": null
+  },
+  {
+    "id": "krsp-972",
+    "source": "krsp",
+    "wp_post_id": 972,
+    "title": "Developing Expert Consensus for Sensory-Supportive Campus Spaces for College Students with Autism: A Modified Delphi Study",
+    "url": "https://knight.research.ucf.edu/krsp-project/developing-expert-consensus-for-sensory-supportive-campus-spaces-for-college-students-with-autism-a-modified-delphi-study/",
+    "status": "full",
+    "semester": null,
+    "team_size": 2,
+    "open_spots": 0,
+    "affiliation": "College of Community Innovation and Education",
+    "team_leader": {
+      "name": "Amanda Evans",
+      "role": "Education, PhD"
+    },
+    "co_leaders": [],
+    "faculty_mentor": "Michelle Taub, PhD",
+    "required_quals": [],
+    "preferred_quals": [],
+    "quals_raw": "",
+    "quals_hash": "e3b0c44298fc1c14",
+    "required_skills": [],
+    "preferred_skills": [],
+    "beginner_friendly": true,
+    "beginner_reason": "no_required_skills",
+    "description": "The purpose of this modified Delphi study is to develop expert consensus regarding the design characteristics of sensory-supportive campus spaces for college students with autism spectrum disorder.",
+    "first_seen_at": "2026-10-17T22:19:03Z",
+    "last_checked_at": "2026-10-17T22:33:56Z",
+    "last_changed_at": "2026-10-17T22:19:03Z",
+    "status_changed_at": "2026-10-17T22:19:03Z",
+    "listed": true,
+    "removed_at": null
+  },
+  {
+    "id": "krsp-974",
+    "source": "krsp",
+    "wp_post_id": 974,
+    "title": "Exploring Campus Sensory Experiences of College Students with Autism Spectrum Disorder Through Participant-Driven Photo-Elicitation",
+    "url": "https://knight.research.ucf.edu/krsp-project/developing-expert-consensus-for-sensory-supportive-campus-spaces-for-college-students-with-autism-a-modified-delphi-study-2/",
+    "status": "full",
+    "semester": null,
+    "team_size": 2,
+    "open_spots": 0,
+    "affiliation": "College of Community Innovation and Education",
+    "team_leader": {
+      "name": "Amanda Evans",
+      "role": "Education, PhD"
+    },
+    "co_leaders": [],
+    "faculty_mentor": "Michelle Taub, PhD",
+    "required_quals": [],
+    "preferred_quals": [],
+    "quals_raw": "",
+    "quals_hash": "e3b0c44298fc1c14",
+    "required_skills": [],
+    "preferred_skills": [],
+    "beginner_friendly": true,
+    "beginner_reason": "no_required_skills",
+    "description": "The purpose of this interpretivist qualitative study is to explore how college students with autism spectrum disorder (ASD) describe sensory-supportive and sensory-challenging experiences within higher education campus environments through participant-driven photo-elicitation interviews and to identify implications for the design of sensory-supportive campus spaces.",
+    "first_seen_at": "2026-10-17T22:19:03Z",
+    "last_checked_at": "2026-10-17T22:33:56Z",
+    "last_changed_at": "2026-10-17T22:19:03Z",
+    "status_changed_at": "2026-10-17T22:19:03Z",
+    "listed": true,
+    "removed_at": null
+  },
+  {
+    "id": "krsp-976",
+    "source": "krsp",
+    "wp_post_id": 976,
+    "title": "Physical Activity and Health Behaviors Across the Menstrual Cycle",
+    "url": "https://knight.research.ucf.edu/krsp-project/exploring-campus-sensory-experiences-of-college-students-with-autism-spectrum-disorder-through-participant-driven-photo-elicitation/",
+    "status": "full",
+    "semester": null,
+    "team_size": 4,
+    "open_spots": 0,
+    "affiliation": "College of Health Professions and Sciences",
+    "team_leader": {
+      "name": "Jenniffer Lopez Gonzalez",
+      "role": "Kinesiology, Sports and Exercise Physiology"
+    },
+    "co_leaders": [],
+    "faculty_mentor": "A’Naja Newsome, PhD",
+    "required_quals": [
+      "CITI Human Subjects Research Group 2 Social/Behavioral Research"
+    ],
+    "preferred_quals": [
+      "Availability for at least 4 hours per week across a minimum of 2 days",
+      "Completed (or currently taking) research methods",
+      "Ability and willingness to travel off campus (for things like recruiting and/or programs at the department of health)",
+      "Background in strength training",
+      "Passion for women's health and/or physical activity/exercise"
+    ],
+    "quals_raw": "- Availability for at least 4 hours per week across a minimum of 2 days\n- Completed (or currently taking) research methods\n- Ability and willingness to travel off campus (for things like recruiting and/or programs at the department of health)\n- Background in strength training\n- Passion for women's health and/or physical activity/exercise\n\nRequired: CITI Human Subjects Research Group 2 Social/Behavioral Research",
+    "quals_hash": "4b7039d85c3b8d61",
+    "required_skills": [
+      "citi_training"
+    ],
+    "preferred_skills": [
+      "research_methods",
+      "kinesiology"
+    ],
+    "beginner_friendly": true,
+    "beginner_reason": "no_required_skills",
+    "description": "The purpose of this study is to characterize within-person variations in physical activity and exercise behaviors across the menstrual cycle phases. This project aims to examine whether muscular strength performance differs across the early follicular, ovulatory, and mid-luteal phases of the menstrual cycle, and to determine the extent to which physiological factors (heart rate variability and sleep quality) versus psychological factors (mood, self-efficacy, and perceived exertion) explain variation in strength performance and exercise outcomes across the menstrual cycle phases.\nThe study requires participation over one full menstrual cycle (approximately 30–35 days), including wearing a Garmin watch, completing surveys twice a day, and coming in for two in-person visits. An optional strength training sub-study requires three additional in-person visits to complete a 5-repetition maximum (5RM) of the following lifts: Barbell Back Squat, Barbell Bench Press, and Barbell Deadlift.",
+    "first_seen_at": "2026-10-17T22:19:03Z",
+    "last_checked_at": "2026-10-17T22:33:56Z",
+    "last_changed_at": "2026-10-17T22:19:03Z",
+    "status_changed_at": "2026-10-17T22:19:03Z",
+    "listed": true,
+    "removed_at": null
+  },
+  {
+    "id": "krsp-978",
+    "source": "krsp",
+    "wp_post_id": 978,
+    "title": "Intention-Behavior Gap in Postpartum Women",
+    "url": "https://knight.research.ucf.edu/krsp-project/intention-behavior-gap-in-postpartum-women/",
+    "status": "full",
+    "semester": null,
+    "team_size": 3,
+    "open_spots": 0,
+    "affiliation": "College of Health Professions and Sciences",
+    "team_leader": {
+      "name": "Camila Perez-Aponte",
+      "role": "Health Sciences Pre-Clinical"
+    },
+    "co_leaders": [],
+    "faculty_mentor": "A'Naja Newsome, PhD",
+    "required_quals": [
+      "CITI Human Subjects Research Group 2 Social/Behavioral Research"
+    ],
+    "preferred_quals": [
+      "Consistent availability — at least two days per week with a minimum of three hours each day to support recruitment activities, interviews, and participant coordination",
+      "Research methods background — completion of (or current enrollment in) a research methods course to ensure familiarity with study design, data collection, and ethical considerations",
+      "Ability to travel off campus — willingness to visit local sites such as community centers or the Department of Health for recruitment or program support",
+      "Interest in women’s health — passion for maternal health, postpartum wellness, physical activity, or exercise‑related research"
+    ],
+    "quals_raw": "Consistent availability — at least two days per week with a minimum of three hours each day to support recruitment activities, interviews, and participant coordination.\n\nResearch methods background — completion of (or current enrollment in) a research methods course to ensure familiarity with study design, data collection, and ethical considerations.\n\nAbility to travel off campus — willingness to visit local sites such as community centers or the Department of Health for recruitment or program support.\n\nInterest in women’s health — passion for maternal health, postpartum wellness, physical activity, or exercise‑related research.\n\nRequired: CITI Human Subjects Research Group 2 Social/Behavioral Research",
+    "quals_hash": "68991e1c13d618f6",
+    "required_skills": [
+      "citi_training"
+    ],
+    "preferred_skills": [
+      "interviews",
+      "human_subjects",
+      "research_methods"
+    ],
+    "beginner_friendly": true,
+    "beginner_reason": "no_required_skills",
+    "description": "This study investigates the intention-behavior gap in postpartum women's physical activity, utilizing the Theory of Planned Behavior as a framework. Our goal is to understand how postpartum women think about returning to exercising, what motivates them, and what obstacles prevent them from doing so.\n\nThe study uses semi-structured interviews and a 14-day activity monitoring phase to capture attitudes and real-world behaviors. Participants will do a Zoom interview followed by two weeks of activity tracking with an Apple Watch and the Pathverse app. The study will begin with recruiting postpartum mothers in Orlando, with the possibility to increase participation throughout the United States. This study's findings will contribute to maternal health research and inform future programs aimed at increasing postpartum physical activity in postpartum women.",
+    "first_seen_at": "2026-10-17T22:19:03Z",
+    "last_checked_at": "2026-10-17T22:33:56Z",
+    "last_changed_at": "2026-10-17T22:19:03Z",
+    "status_changed_at": "2026-10-17T22:19:03Z",
+    "listed": true,
+    "removed_at": null
+  }
+]

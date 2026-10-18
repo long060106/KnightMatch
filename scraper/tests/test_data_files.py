@@ -1,0 +1,43 @@
+"""Consistency checks for the hand-written dictionaries in data/."""
+
+import re
+
+from knightmatch_scraper import store
+from knightmatch_scraper.skills import SkillDictionary
+
+COURSE_CODE_RE = re.compile(r"^[A-Z]{3}\d{4}[CLH]?$")
+
+
+def test_course_skills_reference_real_skills():
+    dictionary = SkillDictionary.load(store.data_path(store.SKILLS_FILE))
+    courses = store.read_json(store.data_path("course_skills.json"), None)["courses"]
+    codes = [c["code"] for c in courses]
+    assert len(codes) == len(set(codes)), "duplicate course code"
+    for course in courses:
+        assert COURSE_CODE_RE.match(course["code"]), course["code"]
+        assert course["title"]
+        assert course["skills"], course["code"]
+        for skill_id in course["skills"]:
+            assert skill_id in dictionary.skills, f"{course['code']} -> unknown skill {skill_id}"
+
+
+def test_other_places_links_are_clean():
+    from knightmatch_scraper.check_links import OTHER_PLACES_FILE, all_links
+    from knightmatch_scraper.privacy import assert_no_emails
+
+    data = store.read_json(store.data_path(OTHER_PLACES_FILE), None)
+    links = all_links(data)
+    assert links
+    for link in links:
+        assert link["url"].startswith("https://"), link["url"]
+        assert link["title"].strip()
+    assert_no_emails(data)
+    # The OUR database access code must only come from OUR (workshop / peer mentor), never from us.
+    assert "password" not in str(data).lower()
+
+
+def test_projects_only_use_known_skills():
+    dictionary = SkillDictionary.load(store.data_path(store.SKILLS_FILE))
+    for project in store.read_json(store.data_path(store.PROJECTS_FILE), []):
+        for skill_id in project["required_skills"] + project["preferred_skills"]:
+            assert skill_id in dictionary.skills, f"{project['id']} uses unknown skill {skill_id}"
