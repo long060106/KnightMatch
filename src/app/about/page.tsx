@@ -113,16 +113,6 @@ export default function AboutPage() {
                 <Button asChild className="h-12 px-6 text-base font-semibold active:scale-[0.97]">
                   <Link href="/match">Add my skills and courses</Link>
                 </Button>
-                <a
-                  href={REPO}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="km-link inline-flex min-h-11 items-center gap-0.5 text-sm font-medium"
-                >
-                  Source code on GitHub
-                  <ArrowUpRight className="size-4" aria-hidden="true" />
-                  <span className="sr-only">(opens in a new tab)</span>
-                </a>
               </div>
             </div>
 
