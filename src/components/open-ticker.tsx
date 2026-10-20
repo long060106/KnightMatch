@@ -5,44 +5,41 @@ import Link from "next/link";
 import { useState, type CSSProperties } from "react";
 import { useOnScreen } from "@/lib/use-in-view";
 import { DrawRule } from "./draw-rule";
+import { SpotsFraction } from "./project-bits";
 
 export interface TickerItem {
   id: string;
   title: string;
   college: string | null;
   openSpots: number | null;
-}
-
-function spotsLabel(n: number | null): string | null {
-  if (n === null) return null;
-  return n === 1 ? "1 spot left" : `${n} spots open`;
+  teamSize: number | null;
 }
 
 function TickerRow({ items, copy }: { items: TickerItem[]; copy: boolean }) {
   return (
     <ul className={copy ? "km-ticker-copy flex shrink-0" : "flex shrink-0"} aria-hidden={copy || undefined}>
-      {items.map((p) => {
-        const meta = [p.college, spotsLabel(p.openSpots)].filter(Boolean).join(" · ");
-        return (
-          <li key={p.id} className="flex items-center">
-            <Link
-              href={`/projects/${p.id}`}
-              tabIndex={copy ? -1 : undefined}
-              className="group flex items-baseline gap-3 px-5 py-4 whitespace-nowrap md:px-7 md:py-5"
-            >
-              <span className="font-serif text-lg underline decoration-border-strong decoration-1 underline-offset-4 transition-[text-decoration-color] duration-[var(--dur-fast)] group-hover:decoration-foreground md:text-2xl">
-                {p.title}
-              </span>
-              <ArrowRight
-                aria-hidden="true"
-                className="size-4 shrink-0 self-center text-muted-foreground transition-[translate,color] duration-[var(--dur-base)] group-hover:translate-x-0.5 group-hover:text-foreground"
-              />
-              {meta && <span className="km-label text-muted-foreground">{meta}</span>}
-            </Link>
-            <span aria-hidden="true" className="size-1 rounded-full bg-border-strong" />
-          </li>
-        );
-      })}
+      {items.map((p) => (
+        <li key={p.id} className="flex items-center">
+          <Link
+            href={`/projects/${p.id}`}
+            tabIndex={copy ? -1 : undefined}
+            className="group flex items-baseline gap-3 px-5 py-4 whitespace-nowrap md:px-7 md:py-5"
+          >
+            <span className="font-serif text-lg underline decoration-border-strong decoration-1 underline-offset-4 transition-[text-decoration-color] duration-[var(--dur-fast)] group-hover:decoration-foreground md:text-2xl">
+              {p.title}
+            </span>
+            <ArrowRight
+              aria-hidden="true"
+              className="size-4 shrink-0 self-center text-muted-foreground transition-[translate,color] duration-[var(--dur-base)] group-hover:translate-x-0.5 group-hover:text-foreground"
+            />
+            {p.college && <span className="km-label text-muted-foreground">{p.college}</span>}
+            {p.openSpots !== null && (
+              <SpotsFraction openSpots={p.openSpots} teamSize={p.teamSize} suffix="open" bar={false} className="km-label" />
+            )}
+          </Link>
+          <span aria-hidden="true" className="size-1 rounded-full bg-border-strong" />
+        </li>
+      ))}
     </ul>
   );
 }

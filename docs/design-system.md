@@ -29,7 +29,14 @@ Source of truth for the UI. Tokens live in `src/app/globals.css`; this file expl
 | `--honey-ink` | `#8A6100` | `#F2C14E` | honey-colored text (≥5:1) |
 | `--honey-wash` | `#FDF3D7` | `#352C1A` | matched skill tags, New pill |
 | `--meter-on` | `#B8860B` | `#F2C14E` | filled match segment (≥3:1) |
-| `--urgent-ink` / `--urgent-wash` | `#9A3412` / `#FFEDD5` | `#FDBA74` / `#3B2412` | "1 spot left" |
+| `--spots-high` | `#15803D` | `#4ADE80` | open spots ≥ 70% of the team |
+| `--spots-mid` | `#A16207` | `#FACC15` | open spots 30–70% of the team |
+| `--spots-low` | `#B91C1C` | `#F87171` | open spots < 30% of the team |
+
+**Open spots** are always shown as open over team size ("8 / 20"), because KRSP's open count is team
+size minus the members already on it. The number takes one of the three spots colors
+(`src/lib/spots.ts`), and a short bar beside it fills to the open share, so the band reads without
+color. Full teams stay neutral ("Full team"). These three colors are only for spots.
 
 No UCF logos, mascots or official brand styling. Footer always says "Not affiliated with UCF."
 
@@ -124,7 +131,7 @@ No shadows, no pills. The only round things are status dots (the nav dot, the da
 - **Project list**: each project is a ruled row (hairline above, one below the list). Left: running
   number and topic as a mono label ("01 — Biology & life sciences"), the title in the display serif
   (32px phones, 40px from 768px), skills below. Right (15rem from 768px, stacked on phones): facts as
-  label/value pairs (College, Semester, Spots, Experience), then "Checked …" and the KRSP link.
+  label/value pairs (College, Semester, Open spots "8 / 20", Experience), then "Checked …" and the KRSP link.
   Full teams are one short row with the title at 20px, dimmed.
 - **Filters**: ruled lists, not chips. Each option is a row: square marker (honey fill + check when
   on), label, count as two mono digits. The sidebar sits behind a vertical hairline.

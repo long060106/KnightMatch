@@ -1,9 +1,10 @@
 "use client";
 
-import { CalendarDays, Check, ChevronDown, Mail, Timer, Users } from "lucide-react";
+import { CalendarDays, Check, ChevronDown, Mail, Users } from "lucide-react";
 import { useEffect, useRef, useState, useSyncExternalStore, type CSSProperties, type ReactNode, type RefObject } from "react";
 import { useInView } from "@/lib/use-in-view";
 import { cn } from "@/lib/utils";
+import { SpotsFraction } from "./project-bits";
 import { Scramble } from "./scramble";
 
 const STEPS = [
@@ -190,15 +191,17 @@ function StoryDemo() {
           </span>
           <span className="relative inline-grid">
             <Scrub a={0.88} b={0.94} mode="out" className="col-start-1 row-start-1 inline-flex items-center gap-1.5">
-              <Users className="size-4 text-muted-foreground" />2 spots open
+              <Users className="size-4 text-muted-foreground" />
+              <SpotsFraction openSpots={2} teamSize={4} suffix="spots open" />
             </Scrub>
             <Scrub
               a={0.88}
               b={0.94}
               mode="fade"
-              className="col-start-1 row-start-1 inline-flex items-center gap-1.5 rounded-sm bg-urgent-wash px-2 py-0.5 font-medium text-urgent-ink"
+              className="col-start-1 row-start-1 inline-flex items-center gap-1.5"
             >
-              <Timer className="size-4" />1 spot left
+              <Users className="size-4 text-muted-foreground" />
+              <SpotsFraction openSpots={1} teamSize={4} suffix="spot open" />
             </Scrub>
           </span>
         </span>

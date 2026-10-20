@@ -75,6 +75,7 @@ export function toListing(p: Project): ListingProject {
     status: p.status,
     semester: p.semester,
     openSpots: p.open_spots,
+    teamSize: p.team_size,
     colleges,
     topics: p.topics.filter((id) => id in topics),
     topicLabel: topics[p.topics.find((id) => id in topics) ?? ""] ?? null,

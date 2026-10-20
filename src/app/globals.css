@@ -38,8 +38,10 @@
   --honey-wash: #fdf3d7;
   --meter-on: #b8860b; /* 3.3:1 against white */
   --meter-off: #e7e5e4;
-  --urgent-ink: #9a3412;
-  --urgent-wash: #ffedd5;
+  /* Open spots as a share of the team (src/lib/spots.ts): text colors, all ≥4.5:1 on the page. */
+  --spots-high: #15803d;
+  --spots-mid: #a16207;
+  --spots-low: #b91c1c;
 
   --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
   --ease-in: cubic-bezier(0.4, 0, 1, 1);
@@ -73,8 +75,9 @@
   --honey-wash: #352c1a;
   --meter-on: #f2c14e;
   --meter-off: #3b3632;
-  --urgent-ink: #fdba74;
-  --urgent-wash: #3b2412;
+  --spots-high: #4ade80;
+  --spots-mid: #facc15;
+  --spots-low: #f87171;
 }
 
 @theme inline {
@@ -102,8 +105,9 @@
   --color-honey-wash: var(--honey-wash);
   --color-meter-on: var(--meter-on);
   --color-meter-off: var(--meter-off);
-  --color-urgent-ink: var(--urgent-ink);
-  --color-urgent-wash: var(--urgent-wash);
+  --color-spots-high: var(--spots-high);
+  --color-spots-mid: var(--spots-mid);
+  --color-spots-low: var(--spots-low);
 
   --font-sans: var(--font-public-sans), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-newsreader), ui-serif, Georgia, serif;

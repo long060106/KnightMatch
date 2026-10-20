@@ -76,6 +76,7 @@ export interface ListingProject {
   status: ProjectStatus;
   semester: string | null;
   openSpots: number | null;
+  teamSize: number | null;
   colleges: string[];
   /** Topic ids, most central first (tagged by the AI step in the daily update). */
   topics: string[];

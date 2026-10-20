@@ -21,6 +21,7 @@ function project(overrides: Partial<ListingProject>): ListingProject {
     status: "open",
     semester: "Fall 2026",
     openSpots: 2,
+    teamSize: 4,
     colleges: ["College of Sciences"],
     topics: [],
     topicLabel: null,

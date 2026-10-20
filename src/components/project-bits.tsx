@@ -1,6 +1,7 @@
 /** Small presentational pieces shared by project cards and the detail page. */
 
-import { Check, Sprout, Timer, Users } from "lucide-react";
+import { Check, Sprout, Users } from "lucide-react";
+import { SPOTS_LEVEL_LABEL, spotsFraction, spotsLevel, type SpotsLevel } from "@/lib/spots";
 import type { BeginnerReason, ProjectStatus } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
@@ -16,27 +17,74 @@ export function NewBadge() {
   );
 }
 
-export function SpotsBadge({ status, openSpots }: { status: ProjectStatus; openSpots: number | null }) {
+const SPOTS_TEXT: Record<SpotsLevel, string> = {
+  high: "text-spots-high",
+  mid: "text-spots-mid",
+  low: "text-spots-low",
+};
+
+/**
+ * "8 / 20" in the band's color (green ≥70% open, yellow 30–70%, red <30%) with a short bar whose
+ * length is the open share, so the band reads without color too. Screen readers hear
+ * "8 of 20 spots open, filling up".
+ */
+export function SpotsFraction({
+  openSpots,
+  teamSize,
+  suffix,
+  bar = true,
+  className,
+}: {
+  openSpots: number;
+  teamSize: number | null;
+  /** Visible words after the number, e.g. "spots open". */
+  suffix?: string;
+  bar?: boolean;
+  className?: string;
+}) {
+  const level = teamSize ? spotsLevel(openSpots, teamSize) : null;
+  const share = teamSize ? Math.min(openSpots / teamSize, 1) : 0;
+  return (
+    <span className={cn("inline-flex items-center gap-2 tabular-nums", level && SPOTS_TEXT[level], className)}>
+      <span aria-hidden="true">
+        {spotsFraction(openSpots, teamSize)}
+        {suffix && ` ${suffix}`}
+      </span>
+      <span className="sr-only">
+        {teamSize ? `${openSpots} of ${teamSize}` : openSpots} {openSpots === 1 ? "spot" : "spots"} open
+        {level && `, ${SPOTS_LEVEL_LABEL[level]}`}
+      </span>
+      {bar && level && (
+        <span aria-hidden="true" className="relative h-1 w-8 shrink-0 bg-meter-off">
+          <span className="absolute inset-0 origin-left bg-current" style={{ transform: `scaleX(${share})` }} />
+        </span>
+      )}
+    </span>
+  );
+}
+
+export function SpotsBadge({
+  status,
+  openSpots,
+  teamSize,
+}: {
+  status: ProjectStatus;
+  openSpots: number | null;
+  teamSize: number | null;
+}) {
   if (status === "full") {
     return (
       <span className="inline-flex items-center gap-1.5 text-muted-foreground">
         <Users className="size-4" aria-hidden="true" />
-        Full team
+        {teamSize ? `Full team of ${teamSize}` : "Full team"}
       </span>
     );
   }
   if (openSpots === null) return null;
-  if (openSpots === 1) {
-    return (
-      <span className="inline-flex items-center gap-1.5 rounded-sm bg-urgent-wash px-2 py-0.5 font-medium text-urgent-ink">
-        <Timer className="size-4" aria-hidden="true" />1 spot left
-      </span>
-    );
-  }
   return (
     <span className="inline-flex items-center gap-1.5">
       <Users className="size-4 text-muted-foreground" aria-hidden="true" />
-      {openSpots} spots open
+      <SpotsFraction openSpots={openSpots} teamSize={teamSize} suffix="spots open" />
     </span>
   );
 }

@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowRight, CalendarDays, Users } from "lucide-react";
+import { ArrowLeft, ArrowRight, CalendarDays } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -149,13 +149,7 @@ export default async function ProjectPage({ params }: Params) {
               {project.semester}
             </span>
           )}
-          <SpotsBadge status={project.status} openSpots={project.open_spots} />
-          {project.team_size !== null && (
-            <span className="inline-flex items-center gap-1.5 text-muted-foreground">
-              <Users className="size-4" aria-hidden="true" />
-              Team of {project.team_size}
-            </span>
-          )}
+          <SpotsBadge status={project.status} openSpots={project.open_spots} teamSize={project.team_size} />
           <BeginnerNote reason={project.beginner_reason} />
         </div>
       </header>

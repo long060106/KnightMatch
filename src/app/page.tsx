@@ -36,6 +36,7 @@ export default function HomePage() {
           title: p.title,
           college: p.colleges[0] ? shortCollege(p.colleges[0]) : null,
           openSpots: p.openSpots,
+          teamSize: p.teamSize,
         }))}
       />
       <HowItWorks />

@@ -1,11 +1,11 @@
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-import { ViewTransition } from "react";
+import { ViewTransition, type ReactNode } from "react";
 import { shortCollege } from "@/lib/filters";
 import type { MatchResult } from "@/lib/match";
 import type { ListingProject, SkillMap } from "@/lib/types";
 import { cn } from "@/lib/utils";
-import { MatchMeter, NewBadge, SkillTag, type TagState } from "./project-bits";
+import { MatchMeter, NewBadge, SkillTag, SpotsFraction, type TagState } from "./project-bits";
 import { RelativeTime } from "./relative-time";
 
 const MAX_TAGS = 4;
@@ -70,12 +70,6 @@ function indexLabel(index: number | undefined): string | null {
   return index === undefined ? null : String(index + 1).padStart(2, "0");
 }
 
-function spotsText(project: ListingProject): { text: string; urgent: boolean } | null {
-  if (project.status === "full") return { text: "Full team", urgent: false };
-  if (project.openSpots === null) return null;
-  return project.openSpots === 1 ? { text: "1 left", urgent: true } : { text: `${project.openSpots} open`, urgent: false };
-}
-
 /**
  * Option A of the clickability rules: anything that opens another page has a hairline underline
  * and an arrow; things you can't click never do. The row also lightens a touch on hover.
@@ -115,11 +109,19 @@ export function ProjectCard({
   // Known at build time, so only cards that will show a meter reserve space for it.
   const hasScoredRequirements = project.requiredSkills.some((id) => skills[id]?.counts);
   const number = indexLabel(index);
-  const spots = spotsText(project);
-  const facts: { label: string; value: string; urgent?: boolean }[] = [
+  const facts: { label: string; value: ReactNode }[] = [
     { label: "College", value: project.colleges.map(shortCollege).join(", ") },
     ...(project.semester ? [{ label: "Semester", value: project.semester }] : []),
-    ...(spots ? [{ label: "Spots", value: spots.text, urgent: spots.urgent }] : []),
+    ...(project.status === "full"
+      ? [{ label: "Spots", value: "Full team" }]
+      : project.openSpots !== null
+        ? [
+            {
+              label: "Open spots",
+              value: <SpotsFraction openSpots={project.openSpots} teamSize={project.teamSize} className="flex-row-reverse" />,
+            },
+          ]
+        : []),
     ...(project.beginnerReason ? [{ label: "Experience", value: "None needed" }] : []),
   ];
   return (
@@ -176,7 +178,7 @@ export function ProjectCard({
           {facts.map((fact) => (
             <div key={fact.label} className="contents">
               <dt>{fact.label}</dt>
-              <dd className={cn("text-right", fact.urgent ? "text-urgent-ink" : "text-foreground")}>{fact.value}</dd>
+              <dd className="text-right text-foreground">{fact.value}</dd>
             </div>
           ))}
         </dl>
