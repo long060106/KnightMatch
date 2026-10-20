@@ -1,13 +1,14 @@
 """Measure how often the KRSP list page changes, without touching data/ (see .github/workflows/probe.yml).
 
     python -m knightmatch_scraper.probe check --log probe.jsonl [--conditional]
-    python -m knightmatch_scraper.probe report probe.jsonl [more files or folders] [--daily-utc 11:17]
+    python -m knightmatch_scraper.probe report probe.jsonl [more files or folders] [--since 2026-11-01] [--daily-utc 11:17]
 
 `check` reads only the list page (robots.txt + 1 request) and appends one line to the log: when, the
 HTTP status, a hash of the raw HTML, a hash of what the list actually says (title, semester, open/full,
 spots for every project), and the ETag / Last-Modified headers if UCF sends them. No HTML is kept.
 Two hashes because a page can change for reasons that mean nothing (a new script tag, a nonce); only
-`list_hash` moving is a real change.
+`list_hash` moving is a real change. The project list itself is only written when `list_hash` differs
+from the last line of the log, so a log that runs for months stays small.
 
 `report` reads the log and says how many real changes there were, what changed, and how many hours
 later the daily scrape would have picked each one up.
@@ -53,7 +54,7 @@ def list_hash(items: list[dict]) -> str:
     return _hash(json.dumps(ordered, sort_keys=True, separators=(",", ":"), ensure_ascii=False))
 
 
-def check(client: PoliteClient, at: str, conditional: bool = False) -> dict:
+def check(client: PoliteClient, at: str, conditional: bool = False, previous_hash: str | None = None) -> dict:
     record: dict = {"at": at}
     try:
         response = client.fetch(config.LIST_URL)
@@ -77,9 +78,22 @@ def check(client: PoliteClient, at: str, conditional: bool = False) -> dict:
         headers = {k: v for k, v in (("If-None-Match", etag), ("If-Modified-Since", modified)) if v}
         record["conditional_status"] = client.fetch(config.LIST_URL, headers).status_code
     record["requests"] = client.request_count
-    record["items"] = items
+    if record["list_hash"] != previous_hash:
+        record["items"] = items
     assert_no_emails(record)
     return record
+
+
+def last_list_hash(log: Path) -> str | None:
+    """The list hash of the newest successful check in the log, or None for a new (or lost) log."""
+    if not log.exists():
+        return None
+    for line in reversed(log.read_text(encoding="utf-8").splitlines()):
+        if line.strip():
+            record = json.loads(line)
+            if "list_hash" in record:
+                return record["list_hash"]
+    return None
 
 
 def read_records(paths: list[Path]) -> list[dict]:
@@ -118,36 +132,43 @@ def describe(before: list[dict], after: list[dict]) -> list[str]:
     return lines
 
 
-def summarize(records: list[dict], daily_utc: str = "11:17") -> dict:
+def summarize(records: list[dict], daily_utc: str = "11:17", since: str | None = None) -> dict:
+    """Numbers for the checks from `since` (a UTC date) on, or for all of them. Earlier checks are still
+    walked, because the project list is only logged when it changes and the window needs a starting list."""
+    window = [r for r in records if not since or r["at"] >= since]
     ok = [r for r in records if "error" not in r]
-    gaps = [(_time(b["at"]) - _time(a["at"])).total_seconds() / 60 for a, b in zip(records, records[1:])]
+    ok_window = [r for r in window if "error" not in r]
+    gaps = [(_time(b["at"]) - _time(a["at"])).total_seconds() / 60 for a, b in zip(window, window[1:])]
     changes, noise = [], 0
+    known = ok[0].get("items", []) if ok else []
     for prev, cur in zip(ok, ok[1:]):
+        inside = not since or cur["at"] >= since
         if prev["list_hash"] == cur["list_hash"]:
-            noise += prev["raw_hash"] != cur["raw_hash"]
+            noise += inside and prev["raw_hash"] != cur["raw_hash"]
             continue
-        # The change happened somewhere between the two checks. The daily scrape sees it at its first run after
-        # `prev`; if that run fell inside the gap, it may already have it, so count that as no delay.
-        delay = next_daily(_time(prev["at"]), daily_utc) - _time(cur["at"])
-        changes.append({
-            "between": [prev["at"], cur["at"]],
-            "daily_delay_hours": round(max(delay.total_seconds(), 0) / 3600, 1),
-            "what": describe(prev.get("items", []), cur.get("items", [])),
-        })
-    conditional = [r["conditional_status"] for r in ok if "conditional_status" in r]
+        if inside:
+            # The change happened somewhere between the two checks. The daily scrape sees it at its first run
+            # after `prev`; if that run fell inside the gap, it may already have it, so count that as no delay.
+            delay = next_daily(_time(prev["at"]), daily_utc) - _time(cur["at"])
+            changes.append({
+                "between": [prev["at"], cur["at"]],
+                "daily_delay_hours": round(max(delay.total_seconds(), 0) / 3600, 1),
+                "what": describe(known, cur.get("items", [])),
+            })
+        known = cur.get("items", known)
     return {
-        "checks": len(records),
-        "failed": len(records) - len(ok),
-        "first": records[0]["at"] if records else None,
-        "last": records[-1]["at"] if records else None,
+        "checks": len(window),
+        "failed": len(window) - len(ok_window),
+        "first": window[0]["at"] if window else None,
+        "last": window[-1]["at"] if window else None,
         "longest_gap_minutes": round(max(gaps), 1) if gaps else None,
-        "requests": sum(r.get("requests", 0) for r in records),
+        "requests": sum(r.get("requests", 0) for r in window),
         "changes": changes,
         "raw_only_changes": noise,
-        "etag": sum(1 for r in ok if r.get("etag")),
-        "last_modified": sum(1 for r in ok if r.get("last_modified")),
-        "conditional_statuses": conditional,
-        "ok": len(ok),
+        "etag": sum(1 for r in ok_window if r.get("etag")),
+        "last_modified": sum(1 for r in ok_window if r.get("last_modified")),
+        "conditional_statuses": [r["conditional_status"] for r in ok_window if "conditional_status" in r],
+        "ok": len(ok_window),
     }
 
 
@@ -174,14 +195,15 @@ def main(argv: list[str] | None = None) -> int:
     check_cmd.add_argument("--conditional", action="store_true", help="also test a 304 re-check (1 more request)")
     report_cmd = sub.add_parser("report", help="summarize one or more logs")
     report_cmd.add_argument("paths", type=Path, nargs="+")
+    report_cmd.add_argument("--since", help="only checks from this UTC date on, e.g. 2026-11-01")
     report_cmd.add_argument("--daily-utc", default="11:17")
     args = parser.parse_args(argv)
 
     if args.command == "report":
-        print(format_report(summarize(read_records(args.paths), args.daily_utc)))
+        print(format_report(summarize(read_records(args.paths), args.daily_utc, args.since)))
         return 0
 
-    record = check(PoliteClient(), utc_now(), args.conditional)
+    record = check(PoliteClient(), utc_now(), args.conditional, last_list_hash(args.log))
     args.log.parent.mkdir(parents=True, exist_ok=True)
     with args.log.open("a", encoding="utf-8", newline="\n") as log:
         log.write(json.dumps(record, ensure_ascii=False, separators=(",", ":")) + "\n")

@@ -119,3 +119,43 @@ def test_check_command_appends_to_the_log(tmp_path, monkeypatch):
     assert probe.main(["check", "--log", str(log)]) == 0
     lines = log.read_text(encoding="utf-8").splitlines()
     assert len(lines) == 2 and json.loads(lines[0])["count"] == 42
+
+
+def test_project_list_is_only_logged_when_it_changes(tmp_path, monkeypatch):
+    pages = [read_fixture("list.html")] * 2 + [read_fixture("list.html").replace("5 Spots Open", "4 Spots Open", 1)]
+    times = [f"2026-10-20T{h}:41:00Z" for h in (12, 13, 14)]
+    monkeypatch.setattr(probe, "PoliteClient", lambda: client_for(FakeSession(pages.pop(0))))
+    monkeypatch.setattr(probe, "utc_now", lambda: times.pop(0))
+    monkeypatch.delenv("GITHUB_STEP_SUMMARY", raising=False)
+    log = tmp_path / "probe.jsonl"
+    for _ in range(3):
+        probe.main(["check", "--log", str(log)])
+    lines = [json.loads(line) for line in log.read_text(encoding="utf-8").splitlines()]
+    assert ["items" in line for line in lines] == [True, False, True]
+    summary = probe.summarize(probe.read_records([log]))
+    assert [len(c["what"]) for c in summary["changes"]] == [1]
+    assert "'5 Spots Open' -> '4 Spots Open'" in summary["changes"][0]["what"][0]
+
+
+def hash_only(at, items, raw="r"):
+    line = record(at, items, raw)
+    del line["items"]
+    return line
+
+
+def test_since_counts_only_the_window_but_knows_the_list_from_before():
+    b = dict(ITEM, spots="2 Spots Open", status="open")
+    c = dict(b, spots="1 Spots Open")
+    records = [
+        record("2026-10-20T10:41:00Z", [ITEM]),
+        hash_only("2026-10-20T11:41:00Z", [ITEM]),
+        record("2026-10-20T12:41:00Z", [b]),  # before the window
+        hash_only("2026-10-31T23:41:00Z", [b]),
+        record("2026-11-01T00:41:00Z", [c]),  # inside the window
+        hash_only("2026-11-01T01:41:00Z", [c], raw="x"),
+    ]
+    summary = probe.summarize(records, since="2026-11-01")
+    assert summary["checks"] == 2 and summary["first"] == "2026-11-01T00:41:00Z"
+    assert [ch["what"] for ch in summary["changes"]] == [["A: spots '2 Spots Open' -> '1 Spots Open'"]]
+    assert summary["raw_only_changes"] == 1
+    assert len(probe.summarize(records)["changes"]) == 2

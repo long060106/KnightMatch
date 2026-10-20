@@ -1,11 +1,12 @@
-name: KRSP list probe (measurement, 2 weeks)
+name: KRSP list probe (hourly)
 
-# Checks only the KRSP list page once an hour and keeps a log, to learn how often the list really
-# changes before deciding whether the daily scrape should run more often. It never commits and never
+# Checks only the KRSP list page once an hour and keeps a log of how often the list really changes
+# (new projects, open/full, spots). Runs for as long as this file exists. It never commits and never
 # deploys: the job can only read the repo. The log rides along in the Actions cache from one run to the
-# next and is uploaded as an artifact; `python -m knightmatch_scraper.probe report <log>` summarizes it.
+# next and is uploaded as an artifact; `python -m knightmatch_scraper.probe report <log> [--since DATE]`
+# summarizes it. The project list is only stored when it changes, so the log stays small.
 # UCF sends no ETag or Last-Modified (checked 2026-10-20), so a cheap 304 re-check is not possible
-# and the probe compares hashes instead. Stops by itself after END_DATE. Delete this file once the report is read.
+# and the probe compares hashes instead.
 
 on:
   schedule:
@@ -21,39 +22,22 @@ concurrency:
   group: krsp-probe
   cancel-in-progress: false
 
-env:
-  END_DATE: "2026-11-03"
-
 jobs:
   probe:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Still inside the measurement window?
-        id: window
-        run: |
-          if [[ "$(date -u +%F)" > "$END_DATE" ]]; then
-            echo "Probe ended on $END_DATE. Read the report, then delete .github/workflows/probe.yml." | tee -a "$GITHUB_STEP_SUMMARY"
-            echo "active=false" >> "$GITHUB_OUTPUT"
-          else
-            echo "active=true" >> "$GITHUB_OUTPUT"
-          fi
+      - uses: actions/checkout@v7
 
-      - if: steps.window.outputs.active == 'true'
-        uses: actions/checkout@v7
-
-      - if: steps.window.outputs.active == 'true'
-        uses: actions/setup-python@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
           cache: pip
           cache-dependency-path: scraper/requirements.txt
 
-      - if: steps.window.outputs.active == 'true'
-        run: pip install -r scraper/requirements.txt
+      - run: pip install -r scraper/requirements.txt
 
       - name: Bring back the log from the last run
-        if: steps.window.outputs.active == 'true'
         uses: actions/cache/restore@v6
         with:
           path: probe-log
@@ -61,7 +45,6 @@ jobs:
           restore-keys: krsp-probe-
 
       - name: Read the list page once (robots.txt checked) and add a line to the log
-        if: steps.window.outputs.active == 'true'
         working-directory: scraper
         env:
           SCRAPER_CONTACT_EMAIL: ${{ secrets.SCRAPER_CONTACT_EMAIL }}
@@ -69,14 +52,12 @@ jobs:
         run: python -m knightmatch_scraper.probe check --log ../probe-log/probe.jsonl
 
       - name: Save the log for the next run
-        if: steps.window.outputs.active == 'true'
         uses: actions/cache/save@v6
         with:
           path: probe-log
           key: krsp-probe-${{ github.run_id }}
 
       - name: Upload the log so far
-        if: steps.window.outputs.active == 'true'
         uses: actions/upload-artifact@v7
         with:
           name: krsp-probe-log
