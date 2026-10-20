@@ -18,6 +18,12 @@ const REPO = "https://github.com/long060106/KnightMatch";
 
 const HEADLINE: string[][] = [["Developed", "by"], ["Long", "Nguyen"]];
 
+const CONTACT = [
+  { label: "Email", value: "longnguyen060106@gmail.com", href: "mailto:longnguyen060106@gmail.com", external: false },
+  { label: "Instagram", value: "@lo.ng_0601", href: "https://www.instagram.com/lo.ng_0601/", external: true },
+  { label: "GitHub", value: "long060106", href: "https://github.com/long060106", external: true },
+];
+
 const PROMISES = [
   {
     title: "Public pages only",
@@ -153,6 +159,33 @@ export default function AboutPage() {
         </div>
 
         <DrawRule className="mt-4" />
+        <section aria-labelledby="contact-title" className="grid gap-6 py-10 lg:grid-cols-12 lg:gap-0 lg:py-14">
+          <h2 id="contact-title" className="km-label text-muted-foreground lg:col-span-4 lg:pt-1">
+            Contact
+          </h2>
+          <ul className="grid gap-6 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)_minmax(0,1fr)] lg:col-span-8">
+            {CONTACT.map((item) => (
+              <li key={item.label}>
+                <p className="km-label text-muted-foreground">{item.label}</p>
+                <a
+                  href={item.href}
+                  {...(item.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                  className="km-link mt-1 inline-flex min-h-11 items-center gap-0.5 font-medium [overflow-wrap:anywhere]"
+                >
+                  {item.value}
+                  {item.external && (
+                    <>
+                      <ArrowUpRight className="size-4 shrink-0" aria-hidden="true" />
+                      <span className="sr-only">(opens in a new tab)</span>
+                    </>
+                  )}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <DrawRule />
         <p className="mt-8 max-w-[62ch] text-sm text-muted-foreground">
           Found a wrong listing or have an idea?{" "}
           <a href={`${REPO}/issues`} target="_blank" rel="noopener noreferrer" className="km-link font-medium text-foreground">

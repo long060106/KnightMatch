@@ -28,5 +28,5 @@ scraper/.cache/
 npm-debug.log*
 .vercel
 
-# personal Claude Code settings (launch.json is shared on purpose)
-.claude/settings.local.json
+# local editor and agent settings
+.claude/

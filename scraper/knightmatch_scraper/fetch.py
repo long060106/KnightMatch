@@ -48,13 +48,14 @@ class PoliteClient:
                 self._sleep(self.delay_seconds - elapsed)
         self._last_request_at = self._clock()
 
-    def _raw_get(self, url: str) -> requests.Response:
+    def _raw_get(self, url: str, headers: dict[str, str] | None = None) -> requests.Response:
         last_error: Exception | None = None
+        extra = {"headers": headers} if headers else {}
         for attempt in range(config.MAX_RETRIES):
             self._wait_turn()
             self.request_count += 1
             try:
-                response = self.session.get(url, timeout=config.TIMEOUT_SECONDS)
+                response = self.session.get(url, timeout=config.TIMEOUT_SECONDS, **extra)
             except requests.RequestException as error:
                 last_error = error
             else:
@@ -80,10 +81,15 @@ class PoliteClient:
             self._robots[origin] = parser
         return self._robots[origin]
 
-    def get(self, url: str) -> str:
+    def fetch(self, url: str, headers: dict[str, str] | None = None) -> requests.Response:
+        """Like get(), but returns the whole response (status and headers too). 304 is not an error."""
         if not self._robots_for(url).can_fetch(self.user_agent, url):
             raise RobotsDisallowed(f"robots.txt disallows {url}")
-        response = self._raw_get(url)
-        response.raise_for_status()
+        response = self._raw_get(url, headers)
+        if response.status_code != 304:
+            response.raise_for_status()
         response.encoding = response.encoding or "utf-8"
-        return response.text
+        return response
+
+    def get(self, url: str) -> str:
+        return self.fetch(url).text
