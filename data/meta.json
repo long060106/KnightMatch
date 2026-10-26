@@ -1,7 +1,8 @@
 {
   "scraper_version": "0.2.0",
   "source_url": "https://knight.research.ucf.edu/project-list/",
-  "last_run_at": "2026-10-25T14:58:01Z",
+  "last_run_at": "2026-10-26T14:16:58Z",
+  "list_fingerprint": "d4957276298c9d82",
   "baseline_at": "2026-10-17T22:19:03Z",
   "counts": {
     "listed": 42,
