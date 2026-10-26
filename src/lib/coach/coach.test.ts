@@ -66,6 +66,14 @@ describe("reading the model's answer", () => {
     expect(readDraft({ subject: "KRSP", body: "" })).toBeNull();
   });
 
+  it("puts paragraphs back when the model separated them with spaces", () => {
+    const body = "Hi Dr. Lee,  I am Avery.  I built a driver.  Thank you for your time,  Avery Quinlan";
+    expect(readDraft({ subject: "KRSP: x", body })?.body).toBe(
+      "Hi Dr. Lee,\n\nI am Avery.\n\nI built a driver.\n\nThank you for your time,\nAvery Quinlan",
+    );
+    expect(readDraft({ subject: "KRSP: x", body: "Hi,\n\nKeep  this." })?.body).toBe("Hi,\n\nKeep  this.");
+  });
+
   it("never lets gatekeeping words through", () => {
     expect(soften("You are not qualified yet")).not.toMatch(/not qualified/i);
     expect(soften("This is not a good fit")).not.toMatch(/not a (good )?fit/i);

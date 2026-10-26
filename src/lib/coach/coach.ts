@@ -139,7 +139,8 @@ The email:
 - Paragraph 2: the plan's angle and its strongest 2 strengths, each with the concrete evidence. Connect each to what the team needs.
 - Paragraph 3: availability as "[number] hours per week", that the resume is attached, and an offer to meet.
 - Sign-off: "Thank you for your time," then the student's name (or [Your name]) on the next line.
-- 120 to 170 words in the body. Plain text, blank lines between paragraphs.
+- 120 to 170 words in the body. Plain text with real line breaks: "\\n\\n" between paragraphs, "\\n" between the sign-off and the name.
+- Show, don't tell: describe the work and what it involved. Never write "this meets your requirement", "as required" or similar checklist language.
 - Do not mention the "before you send" steps: the student adds those lines themselves once they have started them.
 
 ${RULES}
@@ -223,9 +224,20 @@ export function readPlan(raw: unknown): CoachPlan | null {
   return plan.strengths.length || plan.nextSteps.length ? plan : null;
 }
 
+/**
+ * Smaller models sometimes put paragraphs on one line, separated only by runs of spaces.
+ * Turn those back into blank lines so the email reads (and toggleStepLine finds paragraphs).
+ */
+export function paragraphs(body: string): string {
+  if (body.includes("\n")) return body;
+  return body
+    .replace(/ {2,}/g, "\n\n")
+    .replace(/\n\n(Thank you[^\n]*,)\n\n/i, "\n\n$1\n");
+}
+
 export function readDraft(raw: unknown): CoachDraft | null {
   const r = record(raw);
-  const draft = { subject: str(r.subject, 200), body: str(r.body, 3_000) };
+  const draft = { subject: str(r.subject, 200), body: paragraphs(str(r.body, 3_000)) };
   return draft.subject && draft.body ? draft : null;
 }
 
