@@ -1,9 +1,8 @@
 import { meta } from "@/lib/data";
+import { REPO } from "@/lib/server/refresh";
 
 // Rebuilt at most every 5 minutes, so GitHub sees ~12 requests an hour however many people visit.
 export const revalidate = 300;
-
-const REPO = `${process.env.VERCEL_GIT_REPO_OWNER || "long060106"}/${process.env.VERCEL_GIT_REPO_SLUG || "KnightMatch"}`;
 
 /**
  * GET /api/status → { lastCheckAt }

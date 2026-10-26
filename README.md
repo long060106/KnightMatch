@@ -85,6 +85,14 @@ Only add a course to `data/course_skills.json` after checking its code on a UCF 
 5. **If Vercel says a deployment was blocked** ("commit author did not have contributing access"):
    in Vercel, Settings → Git → Deploy Hooks → create a hook for `main`, then save its URL as the
    secret `VERCEL_DEPLOY_HOOK_URL`. The workflow calls it after each data commit.
+6. **A check every hour, for real**: GitHub runs scheduled workflows late or skips them (on this
+   repo, 3 to 7 hours apart), and Vercel's Hobby cron only runs daily. So:
+   - On GitHub, Settings → Developer settings → Fine-grained tokens → Generate: only this
+     repository, permission **Actions: Read and write**, nothing else. In Vercel add it as
+     `GITHUB_TOKEN` and redeploy. `/api/refresh` can now start the scrape workflow, at most
+     once every 50 minutes, and "Last check" asks for it whenever the time it shows is over an hour old.
+   - At cron-job.org (free) create a job: URL `https://<your site>/api/refresh`, every hour.
+     The URL needs no secret: calling it more often changes nothing.
 
 Data commits are authored with the repo owner's GitHub noreply address, because Vercel's Hobby
 plan only deploys commits by the account owner and no personal email gets published.
@@ -93,7 +101,7 @@ plan only deploys commits by the account owner and no personal email gets publis
 
 | Workflow | When | What |
 |---|---|---|
-| `scrape.yml` | hourly at :17, or by hand | tests, list check; on a change (or daily) full scrape, privacy check, commit `data/`, optional deploy hook |
+| `scrape.yml` | hourly at :17 (best-effort), from `/api/refresh`, or by hand | tests, list check; on a change (or daily) full scrape, privacy check, commit `data/`, optional deploy hook |
 | `probe.yml` | hourly at :41 | logs how often the list changes; never commits |
 | `ci.yml` | every push / PR | scraper tests, lint, unit tests, build |
 | `links.yml` | Mondays, or by hand | checks every Other places link |

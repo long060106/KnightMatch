@@ -5,11 +5,18 @@ import { RelativeTime } from "./relative-time";
 
 let live: Promise<string | null> | null = null;
 
+/** A check over an hour old means GitHub skipped its schedule; the site asks for one (see /api/refresh). */
+const STALE_MS = 70 * 60_000;
+
 /** One request per page load, shared by every "Last check" on the page. */
 function fetchLastCheck(): Promise<string | null> {
   live ??= fetch("/api/status")
     .then((r) => (r.ok ? r.json() : null))
-    .then((body) => (typeof body?.lastCheckAt === "string" ? body.lastCheckAt : null))
+    .then((body) => {
+      const checked = typeof body?.lastCheckAt === "string" ? body.lastCheckAt : null;
+      if (checked && Date.now() - Date.parse(checked) > STALE_MS) void fetch("/api/refresh", { method: "POST" }).catch(() => {});
+      return checked;
+    })
     .catch(() => null);
   return live;
 }
