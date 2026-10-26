@@ -12,7 +12,7 @@ import { useInView } from "@/lib/use-in-view";
 import { cn } from "@/lib/utils";
 import { DrawRule } from "./draw-rule";
 import { HoverScramble } from "./hover-scramble";
-import { RelativeTime } from "./relative-time";
+import { LastCheck } from "./last-check";
 import { Scramble } from "./scramble";
 import { WireSphere } from "./wire-sphere";
 
@@ -107,7 +107,7 @@ export function Hero({ totalCount, lastRunAt }: HeroProps) {
           </span>
         </p>
         <p>
-          Re-checked daily · Last check <RelativeTime iso={lastRunAt} className="text-foreground" />
+          Re-checked hourly · Last check <LastCheck iso={lastRunAt} className="text-foreground" />
         </p>
       </div>
       <DrawRule />

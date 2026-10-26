@@ -72,11 +72,12 @@ export function buildEmailDraft(input: EmailDraftInput): EmailDraft {
   return { subject, body };
 }
 
-/** mailto: link with no recipient: the student pastes the team leader's address from KRSP. */
-export function mailtoHref(draft: EmailDraft): string {
-  return `mailto:?subject=${encodeURIComponent(draft.subject)}&body=${encodeURIComponent(draft.body)}`;
+/** mailto: link, addressed to the team leader when we have their email from KRSP. */
+export function mailtoHref(draft: EmailDraft, to: string | null = null): string {
+  const recipient = to ? encodeURIComponent(to).replace(/%40/g, "@") : "";
+  return `mailto:${recipient}?subject=${encodeURIComponent(draft.subject)}&body=${encodeURIComponent(draft.body)}`;
 }
 
-export function draftAsText(draft: EmailDraft): string {
-  return `Subject: ${draft.subject}\n\n${draft.body}`;
+export function draftAsText(draft: EmailDraft, to: string | null = null): string {
+  return `${to ? `To: ${to}\n` : ""}Subject: ${draft.subject}\n\n${draft.body}`;
 }

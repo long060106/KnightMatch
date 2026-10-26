@@ -13,9 +13,10 @@ import { useNow } from "@/lib/time";
 import type { SkillMap } from "@/lib/types";
 import { EmailDraftDialog } from "./email-draft-dialog";
 import { MatchMeter, NewBadge, SkillTag } from "./project-bits";
-import { RelativeTime } from "./relative-time";
+import { LastCheck } from "./last-check";
 
 interface DetailData {
+  id: string;
   title: string;
   url: string;
   status: "open" | "full";
@@ -138,6 +139,12 @@ export function ProjectSidebar({ data }: { data: DetailData }) {
     };
   }, [match, data]);
 
+  // Everything in the profile, for the AI coach: it may see a link the fixed rules can't.
+  const profileLabels = useMemo(
+    () => (match ? [...match.profile.skills.map((id) => data.skills[id]?.label ?? id), ...match.profile.courses] : []),
+    [match, data.skills],
+  );
+
   return (
     <div className="grid gap-4">
       <section aria-labelledby="your-match" className="rounded-lg border bg-card p-5">
@@ -173,8 +180,8 @@ export function ProjectSidebar({ data }: { data: DetailData }) {
               <span className="font-serif text-lg leading-5 text-muted-foreground">1</span>
               <div className="grid gap-2">
                 <p>
-                  Open the listing on KRSP and find {leader}&apos;s email. KRSP teams recruit directly, so you contact
-                  them yourself.
+                  KRSP teams recruit directly, so you contact {leader} yourself. We fill in their email from the KRSP
+                  listing, which is always the source.
                 </p>
                 <Button asChild variant="outline" className="h-11 justify-between active:scale-[0.97]">
                   <a href={data.url} target="_blank" rel="noopener noreferrer">
@@ -188,8 +195,14 @@ export function ProjectSidebar({ data }: { data: DetailData }) {
             <li className="grid grid-cols-[1.75rem_1fr] gap-x-2">
               <span className="font-serif text-lg leading-5 text-muted-foreground">2</span>
               <div className="grid gap-2">
-                <p>Send a short first email. We&apos;ll draft one from your profile; you edit it and send it.</p>
-                <EmailDraftDialog input={emailInput} leaderName={data.leaderName} krspUrl={data.url} />
+                <p>Send a short first email. We&apos;ll draft one from your profile, or with AI from your resume; you edit it and send it.</p>
+                <EmailDraftDialog
+                  projectId={data.id}
+                  input={emailInput}
+                  profile={profileLabels}
+                  leaderName={data.leaderName}
+                  krspUrl={data.url}
+                />
               </div>
             </li>
             <li className="grid grid-cols-[1.75rem_1fr] gap-x-2">
@@ -200,7 +213,7 @@ export function ProjectSidebar({ data }: { data: DetailData }) {
         ) : (
           <div className="mt-3 grid gap-3 text-sm">
             <p className="text-muted-foreground">
-              KRSP moves a team back to open when spots free up, and we re-check the list every day. You can still
+              KRSP moves a team back to open when spots free up, and we re-check the list every hour. You can still
               read about the project and keep it in mind.
             </p>
             <Button asChild variant="outline" className="h-11 justify-between active:scale-[0.97]">
@@ -213,7 +226,7 @@ export function ProjectSidebar({ data }: { data: DetailData }) {
           </div>
         )}
         <p className="mt-5 border-t pt-3 text-xs text-muted-foreground">
-          Checked <RelativeTime iso={data.lastCheckedAt} />. The KRSP listing is always the source of truth.
+          Checked <LastCheck iso={data.lastCheckedAt} />. The KRSP listing is always the source of truth.
         </p>
       </section>
     </div>

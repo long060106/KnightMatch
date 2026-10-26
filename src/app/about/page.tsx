@@ -27,19 +27,19 @@ const CONTACT = [
 const PROMISES = [
   {
     title: "Public pages only",
-    body: "KnightMatch reads the public Knight Research Scholars list once a day, slowly, and says who is asking. It never copies the OUR database. It only points you to it and tells you how to get access.",
+    body: "KnightMatch checks the public Knight Research Scholars list once an hour, reads project pages only when something changed (and once a day anyway), slowly, and says who is asking. It never copies the OUR database. It only points you to it and tells you how to get access.",
   },
   {
     title: "Fixed rules, not guesses",
-    body: "Your match is simple counting: the skills you have against the skills a project lists. Nothing decides it while you click. An AI model only helps sort project wording during the daily update, and the original text on KRSP is what counts.",
+    body: "Your match is simple counting: the skills you have against the skills a project lists. Nothing decides it while you click. An AI model helps sort project wording during the updates and can help word your email, but it never decides your match, and the original text on KRSP is what counts.",
   },
   {
     title: "Your data stays with you",
-    body: "Your skills, courses and resume are read inside your browser and saved only on your device. There is no account, and no server that receives them.",
+    body: "Your skills and courses are saved only on your device, and your resume is read inside your browser. There is no account. Only if you ask the AI to write your email is your resume text sent to write it, with your email, phone and address taken out first, and it is not kept.",
   },
   {
     title: "You write the email",
-    body: "KnightMatch drafts a first message for you to edit and send yourself. It never contacts a team leader or a professor for you, and every project links back to its KRSP listing with the date we last checked.",
+    body: "KnightMatch drafts a first message, from a template or with AI help, for you to edit and send yourself. It never contacts a team leader or a professor for you, and every project links back to its KRSP listing with the date we last checked.",
   },
 ];
 
@@ -98,7 +98,7 @@ export default function AboutPage() {
                 style={{ "--d": "600ms" } as CSSProperties}
               >
                 <p>
-                  KnightMatch reads the public Knight Research Scholars list every day. You add the skills and courses
+                  KnightMatch checks the public Knight Research Scholars list every hour. You add the skills and courses
                   you already have, and it shows how each team lines up, so your time goes to the teams that fit.
                 </p>
                 <p className="text-muted-foreground">

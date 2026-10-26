@@ -1,10 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Static export: `next build` writes plain HTML/CSS/JS to out/, so no server is needed.
-  // (cacheComponents / partialPrefetching are off because they require a server:
-  // "PPR cannot be enabled in export mode".)
-  output: "export",
+  // Every page is still prerendered at build time. The server only runs three small routes in
+  // src/app/api: the AI email coach, the team leader's email from KRSP, and the last-check time.
   turbopack: {
     rules: {
       "*.css": {

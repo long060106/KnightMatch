@@ -67,7 +67,12 @@ describe("sharing the draft", () => {
     expect(mailtoHref(draft)).toBe("mailto:?subject=Hi%20%26%20welcome&body=Line%201%0ALine%202");
   });
 
-  it("copy text puts the subject first", () => {
+  it("mailto is addressed to the team leader when we have their email", () => {
+    expect(mailtoHref(draft, "a.lee@ucf.edu")).toBe("mailto:a.lee@ucf.edu?subject=Hi%20%26%20welcome&body=Line%201%0ALine%202");
+  });
+
+  it("copy text puts the subject first, after the recipient when known", () => {
     expect(draftAsText(draft)).toBe("Subject: Hi & welcome\n\nLine 1\nLine 2");
+    expect(draftAsText(draft, "a.lee@ucf.edu")).toBe("To: a.lee@ucf.edu\nSubject: Hi & welcome\n\nLine 1\nLine 2");
   });
 });

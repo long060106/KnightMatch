@@ -6,7 +6,7 @@ import type { MatchResult } from "@/lib/match";
 import type { ListingProject, SkillMap } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { MatchMeter, NewBadge, SkillTag, SpotsFraction, type TagState } from "./project-bits";
-import { RelativeTime } from "./relative-time";
+import { LastCheck } from "./last-check";
 
 const MAX_TAGS = 4;
 
@@ -184,7 +184,7 @@ export function ProjectCard({
         </dl>
         <div className="relative z-10 flex flex-wrap items-center justify-between gap-x-4 gap-y-1 md:mt-auto">
           <span>
-            Checked <RelativeTime iso={project.lastCheckedAt} />
+            Checked <LastCheck iso={project.lastCheckedAt} />
           </span>
           <a
             href={project.url}

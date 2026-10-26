@@ -1,6 +1,6 @@
 /**
- * Build-time data access. These imports are read during `next build` (static export),
- * so the site never calls a server: the daily scrape commits new JSON and triggers a rebuild.
+ * Build-time data access. These imports are read during `next build` (pages are prerendered):
+ * the hourly scrape commits new JSON when the list changes, and that triggers a rebuild.
  */
 
 import coursesJson from "../../data/course_skills.json";

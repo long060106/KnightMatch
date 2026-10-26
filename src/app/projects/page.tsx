@@ -3,7 +3,7 @@ import type { CSSProperties } from "react";
 import { DrawRule } from "@/components/draw-rule";
 import { FloatingShapes } from "@/components/floating-shapes";
 import { ProjectExplorer } from "@/components/project-explorer";
-import { RelativeTime } from "@/components/relative-time";
+import { LastCheck } from "@/components/last-check";
 import { RisingWords } from "@/components/rising-words";
 import { courseSkills, meta, projects, skillsUsedBy, toListing, topics } from "@/lib/data";
 
@@ -32,7 +32,7 @@ export default function ProjectsPage() {
           <FloatingShapes set="projects" />
         </div>
         <p className="km-page-in km-label text-muted-foreground">
-          Knight Research Scholars · Last check <RelativeTime iso={meta.last_run_at} className="text-foreground" />
+          Knight Research Scholars · Last check <LastCheck iso={meta.last_run_at} className="text-foreground" />
         </p>
         <h1
           id="projects-heading"

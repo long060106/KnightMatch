@@ -1,9 +1,14 @@
-name: Daily KRSP scrape
+name: Hourly KRSP scrape
+
+# Every hour the list page is read (1 request). Project pages are only read, and data/ committed
+# (which redeploys the site), when the list changed or the last full run is 23 hours old, so UCF
+# still sees about one full pass a day. The site shows this workflow's last successful run as
+# "Last check" (src/app/api/status/route.ts), so a quiet hour needs no commit.
 
 on:
   schedule:
-    # 11:17 UTC = 7:17 am in Orlando (EDT). Off the top of the hour, when GitHub's scheduler is busiest.
-    - cron: "17 11 * * *"
+    # Minute 17: off the top of the hour, when GitHub's scheduler is busiest (and away from the probe's 41).
+    - cron: "17 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -37,7 +42,7 @@ jobs:
         working-directory: scraper
         run: python -m pytest
 
-      - name: Scrape KRSP (robots.txt checked, 2.5s between requests), then tag with AI
+      - name: Check the KRSP list, scrape project pages if it changed (robots.txt checked, 2.5s between requests)
         working-directory: scraper
         env:
           SCRAPER_CONTACT_EMAIL: ${{ secrets.SCRAPER_CONTACT_EMAIL }}
@@ -46,7 +51,7 @@ jobs:
           AI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           # Optional repo variable to switch models without a code change.
           AI_MODEL: ${{ vars.AI_MODEL }}
-        run: python -m knightmatch_scraper
+        run: python -m knightmatch_scraper --if-changed
 
       - name: Make sure the new data has no emails and is consistent
         working-directory: scraper

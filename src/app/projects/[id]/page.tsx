@@ -17,7 +17,7 @@ import { courseSkills, getProject, meta, projects, skills, topics } from "@/lib/
 import { shortCollege } from "@/lib/filters";
 import type { Project, SkillMap } from "@/lib/types";
 
-// Static export: one HTML page per project on the KRSP list, nothing generated on demand.
+// One prerendered page per project on the KRSP list, nothing generated on demand.
 export const dynamicParams = false;
 
 export function generateStaticParams() {
@@ -83,6 +83,7 @@ export default async function ProjectPage({ params }: Params) {
 
   const colleges = (project.affiliation ?? "").split("; ").filter(Boolean).map(shortCollege);
   const data = {
+    id: project.id,
     title: project.title,
     url: project.url,
     status: project.status,

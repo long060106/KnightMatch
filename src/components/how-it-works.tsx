@@ -22,7 +22,7 @@ const STEPS = [
   },
   {
     title: "Check back often",
-    body: "Teams open whenever they need people and close once they're full. We re-check the official list every day and mark what's new.",
+    body: "Teams open whenever they need people and close once they're full. We re-check the official list every hour and mark what's new.",
   },
 ];
 

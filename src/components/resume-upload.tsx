@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import type { ReadProblem } from "@/lib/resume/extract-text";
 import type { ScanResult } from "@/lib/resume/scan";
+import { rememberResume } from "@/lib/resume/session";
 import type { Course, Profile, SkillMap } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import type { ResumePicks } from "./resume-review";
@@ -96,6 +97,7 @@ export function ResumeUpload({ profile, skills, courses, onAdd, undo }: ResumeUp
   }, [pasting]);
 
   function show(text: string, source: "file" | "text", { scanResume }: ScanModule) {
+    rememberResume(text);
     const found = scanResume(text, profile);
     if (found.courses.length + found.skills.length > 0) {
       setReview({ found, key: Date.now(), source });

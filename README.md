@@ -4,22 +4,25 @@ Find UCF undergraduate research projects you can actually join, and see how your
 courses line up with what each team asks for.
 
 KnightMatch reads the public [Knight Research Scholars Program (KRSP) project list](https://knight.research.ucf.edu/project-list/)
-every day and turns it into a searchable, filterable site with skill matching.
+every hour and turns it into a searchable, filterable site with skill matching.
 **Not affiliated with UCF.** The original KRSP listing is always the source of truth.
 
 ## How it works
 
 ```
-KRSP public pages ──(daily GitHub Action, Python)──> data/*.json ──(Next.js static export)──> Vercel
+KRSP public pages ──(hourly GitHub Action, Python)──> data/*.json ──(Next.js, prerendered)──> Vercel
 ```
 
-- **`scraper/`**: Python. Reads the list page and every project page, splits the free-form
+- **`scraper/`**: Python. Every hour it reads the list page; when the list changed (or once a day
+  anyway) it reads every project page, splits the free-form
   qualifications into required / nice-to-have items, maps them to a fixed skill dictionary,
-  and diffs against yesterday (new, became full, spots changed, removed).
+  and diffs against the last run (new, became full, spots changed, removed).
 - **`data/`**: the committed output (`projects.json`, `events.json`, `meta.json`) plus the
   hand-written dictionaries (`skills.json`, `course_skills.json`, `other-places.json`).
-- **`src/`**: Next.js 16 + Tailwind + shadcn/ui, exported as plain static files. Your skills and
-  courses are stored only in your browser (localStorage). No accounts, no server, no database.
+- **`src/`**: Next.js 16 + Tailwind + shadcn/ui. Every page is prerendered; three small routes in
+  `src/app/api` run on Vercel: the AI email coach, the team leader's email read live from KRSP, and
+  the last-check time. Your skills and courses are stored only in your browser (localStorage).
+  No accounts, no database.
 
 ## Rules we follow
 
@@ -31,10 +34,15 @@ KRSP public pages ──(daily GitHub Action, Python)──> data/*.json ──(
 3. **Source and freshness on everything.** Every listing links to its KRSP page and shows when it
    was last checked.
 4. **We never email anyone.** The email helper only drafts text that students edit and send
-   themselves. Team leader emails are not stored in this repo (a test fails if one ever appears);
-   students get them from the KRSP page.
-5. **Matching is fixed rules, never an LLM at request time.** "You meet 2 of 4 listed
-   requirements" is plain set arithmetic over `data/skills.json`. We never say "not qualified".
+   themselves. Team leader emails are not stored in this repo (a test fails if one ever appears):
+   `/api/contact` reads the address from the live KRSP page when a student opens the draft, so it
+   can go in the To: line, and keeps it only in an hour-long fetch cache.
+5. **The resume leaves the device only when the student asks.** Filling the profile from a resume
+   happens in the browser. The AI email coach asks first, removes email, phone and street address
+   in the browser, and the route keeps nothing.
+6. **Matching is fixed rules, never an LLM.** "You meet 2 of 4 listed
+   requirements" is plain set arithmetic over `data/skills.json`. The AI coach only writes advice
+   and a draft; it never scores anyone. We never say "not qualified".
 
 ## Run it locally
 
@@ -44,7 +52,7 @@ Needs Node 22+ and Python 3.12+.
 npm install
 npm run dev          # http://localhost:3000
 npm test             # matching, filters, email draft
-npm run build        # static site in out/
+npm run build        # prerendered site in .next/
 ```
 
 ```bash
@@ -65,12 +73,16 @@ Only add a course to `data/course_skills.json` after checking its code on a UCF 
 ## Deploy (one-time setup)
 
 1. **GitHub secret**: Settings → Secrets and variables → Actions → New repository secret
-   `SCRAPER_CONTACT_EMAIL` = an address KRSP admins can reach you at. The daily scrape refuses
+   `SCRAPER_CONTACT_EMAIL` = an address KRSP admins can reach you at. The scrape refuses
    to run without it.
 2. **Vercel**: Add New Project → import this repo → keep the detected Next.js settings → Deploy.
-   Every push to `main` redeploys, including the daily data commit.
-3. **First run**: Actions → "Daily KRSP scrape" → Run workflow.
-4. **If Vercel says a deployment was blocked** ("commit author did not have contributing access"):
+   Every push to `main` redeploys, including each data commit.
+3. **First run**: Actions → "Hourly KRSP scrape" → Run workflow.
+4. **AI email coach (optional, free)**: create a key at Google AI Studio, then in Vercel →
+   Settings → Environment Variables add `GEMINI_API_KEY` and redeploy. Without it the dialog keeps
+   the template and the AI button says it isn't set up. `COACH_AI_MODEL` switches the model
+   (default `gemini-3.5-flash`, the strongest on Gemini's free tier when this was written).
+5. **If Vercel says a deployment was blocked** ("commit author did not have contributing access"):
    in Vercel, Settings → Git → Deploy Hooks → create a hook for `main`, then save its URL as the
    secret `VERCEL_DEPLOY_HOOK_URL`. The workflow calls it after each data commit.
 
@@ -81,8 +93,9 @@ plan only deploys commits by the account owner and no personal email gets publis
 
 | Workflow | When | What |
 |---|---|---|
-| `scrape.yml` | daily 11:17 UTC, or by hand | tests, scrape, privacy check, commit `data/`, optional deploy hook |
-| `ci.yml` | every push / PR | scraper tests, lint, unit tests, static build |
+| `scrape.yml` | hourly at :17, or by hand | tests, list check; on a change (or daily) full scrape, privacy check, commit `data/`, optional deploy hook |
+| `probe.yml` | hourly at :41 | logs how often the list changes; never commits |
+| `ci.yml` | every push / PR | scraper tests, lint, unit tests, build |
 | `links.yml` | Mondays, or by hand | checks every Other places link |
 
 ## Known quirk: building on Windows

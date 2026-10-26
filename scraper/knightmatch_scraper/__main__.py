@@ -1,26 +1,54 @@
-"""Run the scraper:  python -m knightmatch_scraper [--dry-run] [--limit N] [--no-ai]"""
+"""Run the scraper:  python -m knightmatch_scraper [--dry-run] [--limit N] [--no-ai] [--if-changed]
+
+With --if-changed (the hourly workflow), only the list page is read. Project pages are read, and
+data/ rewritten, only when the list says something new or the last full run is a day old."""
 
 from __future__ import annotations
 
 import argparse
 import os
 import sys
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 from . import ai, config, store
 from .diff import merge_snapshot
 from .fetch import PoliteClient
-from .parse_list import parse_list
+from .parse_list import ListEntry, parse_list
 from .parse_project import parse_project
 from .privacy import assert_no_emails, public_record
+from .probe import list_hash
 from .quals import split_quals
 from .record import beginner_info, build_record, ordered
 from .skills import SkillDictionary, extract_project_skills
 from .text import text_to_html
 
 
+# A full run at least this often, even when the list looks the same: project pages can change
+# (description, team leader) without the list noticing. 23h so the daily run doesn't drift later.
+FULL_RUN_MAX_AGE = timedelta(hours=23)
+
+
 def utc_now() -> str:
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+
+
+def list_fingerprint(entries: list[ListEntry]) -> str:
+    """Hash of what the list says (same as the probe's list_hash), so page order and markup don't count."""
+    return list_hash([
+        {"url": e.url, "status": e.status, "title": e.list_title, "semester": e.list_semester, "spots": e.spots_text}
+        for e in entries
+    ])
+
+
+def list_unchanged(fingerprint: str, old_meta: dict, now: str) -> bool:
+    """True when the list matches the last full run and that run is less than FULL_RUN_MAX_AGE old."""
+    if not fingerprint or old_meta.get("list_fingerprint") != fingerprint:
+        return False
+    try:
+        last = datetime.fromisoformat(old_meta["last_run_at"].replace("Z", "+00:00"))
+    except (KeyError, TypeError, ValueError):
+        return False
+    return datetime.fromisoformat(now.replace("Z", "+00:00")) - last < FULL_RUN_MAX_AGE
 
 
 def by_project(review: list[dict]) -> list[dict]:
@@ -56,7 +84,7 @@ def print_ai_report(annotator: ai.Annotator) -> ai.AiReport:
     return report
 
 
-def run(dry_run: bool = False, limit: int | None = None, use_ai: bool = True) -> int:
+def run(dry_run: bool = False, limit: int | None = None, use_ai: bool = True, if_changed: bool = False) -> int:
     if not os.environ.get("SCRAPER_CONTACT_EMAIL", "").strip():
         if os.environ.get("GITHUB_ACTIONS") == "true":
             print("ERROR: set the SCRAPER_CONTACT_EMAIL secret so KRSP admins can reach us.", file=sys.stderr)
@@ -74,6 +102,10 @@ def run(dry_run: bool = False, limit: int | None = None, use_ai: bool = True) ->
         print(f"ABORT: list shows {len(entries)} projects, last run had {previously_listed}. "
               "The page layout may have changed; nothing was written.", file=sys.stderr)
         return 1
+    fingerprint = list_fingerprint(entries)
+    if if_changed and list_unchanged(fingerprint, old_meta, now):
+        print(f"List unchanged since {old_meta['last_run_at']} ({len(entries)} projects); nothing written.")
+        return 0
     if limit:
         entries = entries[:limit]
 
@@ -126,6 +158,7 @@ def run(dry_run: bool = False, limit: int | None = None, use_ai: bool = True) ->
         "scraper_version": config.SCRAPER_VERSION,
         "source_url": config.LIST_URL,
         "last_run_at": now,
+        "list_fingerprint": fingerprint,
         "baseline_at": old_meta.get("baseline_at") or now,
         "counts": {
             "listed": len(listed),
@@ -206,13 +239,15 @@ def main() -> None:
     parser.add_argument("--limit", type=int, help="only fetch the first N project pages (for testing)")
     parser.add_argument("--reextract", action="store_true", help="recompute skills from stored text, no KRSP requests")
     parser.add_argument("--no-ai", action="store_true", help="never call the AI endpoint (cached answers still apply)")
+    parser.add_argument("--if-changed", action="store_true",
+                        help="read only the list page; do a full run only if it changed or the last one is a day old")
     args = parser.parse_args()
     if args.limit and not args.dry_run:
         # A partial scrape would mark every project beyond the limit as removed.
         parser.error("--limit only works together with --dry-run")
     if args.reextract:
         sys.exit(reextract(use_ai=not args.no_ai))
-    sys.exit(run(dry_run=args.dry_run, limit=args.limit, use_ai=not args.no_ai))
+    sys.exit(run(dry_run=args.dry_run, limit=args.limit, use_ai=not args.no_ai, if_changed=args.if_changed))
 
 
 if __name__ == "__main__":

@@ -17,7 +17,7 @@ export function SiteFooter() {
             Knight Research Scholars Program list
             <ArrowUpRight className="size-3.5" aria-hidden="true" />
           </a>{" "}
-          and are re-checked every day. The original listing is always the source of truth.
+          and are re-checked every hour. The original listing is always the source of truth.
         </p>
         <p>
           <Link href="/about" className="km-link font-medium text-foreground">
