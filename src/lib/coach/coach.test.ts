@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { withinLimit } from "../server/guard";
-import { draftMessages, keepHoursPlaceholder, planMessages, readDraft, readPlan, soften, toggleStepLine, type CoachProject } from "./coach";
+import { draftMessages, findAiTells, keepHoursPlaceholder, planMessages, readDraft, readPlan, soften, toggleStepLine, type CoachProject } from "./coach";
 import { leaderEmailFrom } from "./krsp-contact";
 import { redactContact } from "./redact";
 
@@ -81,6 +81,36 @@ describe("reading the model's answer", () => {
     );
     expect(keepHoursPlaceholder(body, "Available 10 hours per week")).toBe(body);
     expect(keepHoursPlaceholder("Trained on 10,000 images over 3 weeks.", "x")).toBe("Trained on 10,000 images over 3 weeks.");
+  });
+
+  it("keeps the plan's questions", () => {
+    const plan = readPlan({
+      angle: "a",
+      strengths: [{ point: "C++", evidence: "e", why: "w" }],
+      questions: ["Do you inject faults in DRAM or in the model file?", "", "Third"],
+      not_yet_shown: [],
+      next_steps: [],
+    });
+    expect(plan?.questions).toEqual(["Do you inject faults in DRAM or in the model file?", "Third"]);
+  });
+
+  it("finds AI-sounding phrases in order, once each", () => {
+    expect(findAiTells("I am drawn to this work, which aligns with my passion for it — truly. I am drawn to it.")).toEqual([
+      "drawn to",
+      "aligns with",
+      "passion",
+      "— (em dash)",
+    ]);
+    expect(findAiTells("I built a C++ driver. Do you test on real boards?")).toEqual([]);
+  });
+
+  it("asks the draft for a direct ask, a question, who else to contact, and a human voice", () => {
+    const plan = readPlan({ angle: "a", strengths: [{ point: "C++", evidence: "e", why: "w" }], questions: ["Q?"], not_yet_shown: [], next_steps: [] })!;
+    const [system] = draftMessages(PROJECT, REQUEST, plan, "Dr. Lee");
+    expect(system.content).toContain("Do you have room");
+    expect(system.content).toContain("someone else you'd suggest I reach out to");
+    expect(system.content).toContain("must not read as AI-written");
+    expect(system.content).toContain('"aligns with"');
   });
 
   it("never lets gatekeeping words through", () => {

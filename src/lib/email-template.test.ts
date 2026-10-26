@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { findAiTells } from "./coach/coach";
 import { buildEmailDraft, draftAsText, greetingName, listToText, mailtoHref } from "./email-template";
 
 describe("greetingName", () => {
@@ -42,15 +43,24 @@ describe("buildEmailDraft", () => {
     const draft = buildEmailDraft(base);
     expect(draft.subject).toContain(base.projectTitle);
     expect(draft.body.startsWith("Hi Dr. Lee,")).toBe(true);
-    expect(draft.body).toContain("join the team for Fall 2026");
+    expect(draft.body).toContain(`Embedded Systems” for Fall 2026. Do you have room for someone like me?`);
     expect(draft.body).toContain("I have experience with C/C++ and Python, and I've completed COP3502C.");
     expect(draft.body).toContain("[your name]");
+  });
+
+  it("follows what professors say works: a direct ask, a specific question, who else to contact", () => {
+    const { body } = buildEmailDraft(base);
+    expect(body).toContain("Do you have room for someone like me?");
+    expect(body).toContain("[one specific question about a part of the project]");
+    expect(body).toContain("[One sentence on how you got into this field.]");
+    expect(body).toContain("is there someone else you'd suggest I reach out to?");
+    expect(findAiTells(body)).toEqual([]);
   });
 
   it("stays encouraging with no matched skills and no semester", () => {
     const draft = buildEmailDraft({ ...base, semester: null, matchedSkills: [], relevantCourses: [] });
     expect(draft.body).toContain("ready to put in the time to learn");
-    expect(draft.body).toContain("would love to join the team.");
+    expect(draft.body).toContain(`Embedded Systems”. Do you have room`);
     expect(draft.body).not.toMatch(/not qualified|not a fit/i);
   });
 

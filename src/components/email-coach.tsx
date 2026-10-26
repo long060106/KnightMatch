@@ -118,11 +118,11 @@ export function EmailCoach({ coach, chosen, onToggleLine }: EmailCoachProps) {
         <Sparkles className="mt-0.5 size-5 shrink-0 text-muted-foreground" aria-hidden="true" />
         <div className="grid gap-0.5">
           <h3 id="coach-heading" className="text-sm font-semibold">
-            Write it with AI, from your resume
+            Plan it with AI, from your resume
           </h3>
           <p className="text-sm text-muted-foreground">
-            It reads your resume next to this listing, works out what to highlight and what to do before you send, and
-            says why. Then it drafts the email.
+            It reads your resume next to this listing, works out what to highlight, what to ask and what to do before
+            you send, and says why. Then it writes a rough draft for you to put in your own words.
           </p>
         </div>
       </div>
@@ -338,6 +338,21 @@ function Plan({ plan, chosen, onToggleLine }: { plan: CoachPlan; chosen: Set<str
                   </p>
                 </div>
               </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {plan.questions.length > 0 && (
+        <div className="grid gap-1.5">
+          <h4 className="km-label text-muted-foreground">A question to ask</h4>
+          <p className="text-sm text-muted-foreground">
+            One specific question shows you read the project better than any compliment. Pick the one you actually want
+            answered.
+          </p>
+          <ul className="grid list-disc gap-1 pl-5 text-sm">
+            {plan.questions.map((q) => (
+              <li key={q}>{q}</li>
             ))}
           </ul>
         </div>

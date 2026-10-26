@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowUpRight, Check, Copy, Mail, RotateCcw } from "lucide-react";
-import { useCallback, useEffect, useId, useState } from "react";
+import { useCallback, useEffect, useId, useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -13,16 +13,17 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { toggleStepLine, type CoachDraft } from "@/lib/coach/coach";
+import { findAiTells, toggleStepLine, type CoachDraft } from "@/lib/coach/coach";
 import { buildEmailDraft, draftAsText, mailtoHref, type EmailDraft, type EmailDraftInput } from "@/lib/email-template";
 import { EmailCoach, useEmailCoach } from "./email-coach";
 
+// From what professors say about cold emails.
 const TIPS = [
-  "Put the project name in the subject line.",
-  "Say who you are: your year, your major, and why this project.",
-  "Point to skills or courses that match what they listed. We filled in yours.",
-  "Say how many hours a week you can give and when you can start.",
-  "Attach your resume, keep it under 150 words, and follow up once if a week goes by.",
+  "Write it yourself. An email that sounds like AI is the fastest way to get ignored.",
+  "Get to the point: ask in the first lines if they have room on the team.",
+  "Talk about you: how you got into this field and what you've done. We filled in your skills.",
+  "Ask one specific question about a part of the project instead of praising it.",
+  "End by asking who else they'd suggest if the team is full. Keep it under 150 words, attach your resume, and follow up once after a week.",
 ];
 
 interface EmailDraftDialogProps {
@@ -57,12 +58,14 @@ function useLeaderEmail(projectId: string, wanted: boolean) {
 export function EmailDraftDialog({ projectId, input, profile, leaderName, krspUrl }: EmailDraftDialogProps) {
   const subjectId = useId();
   const bodyId = useId();
+  const voiceId = useId();
   const [open, setOpen] = useState(false);
   const [draft, setDraft] = useState<EmailDraft>(() => buildEmailDraft(input));
   const [fromAi, setFromAi] = useState(false);
   const [chosen, setChosen] = useState<Set<string>>(() => new Set());
   const [copied, setCopied] = useState(false);
   const to = useLeaderEmail(projectId, open);
+  const tells = useMemo(() => findAiTells(`${draft.subject}\n${draft.body}`), [draft]);
 
   const onDraft = useCallback((next: CoachDraft) => {
     setDraft(next);
@@ -181,7 +184,7 @@ export function EmailDraftDialog({ projectId, input, profile, leaderName, krspUr
         <div className="grid gap-2">
           <div className="flex items-baseline justify-between gap-3">
             <label htmlFor={bodyId} className="text-sm font-semibold">
-              Message{fromAi && <span className="font-normal text-muted-foreground"> · written with AI, check every line</span>}
+              Message{fromAi && <span className="font-normal text-muted-foreground"> · rough AI draft</span>}
             </label>
             <span className="text-xs text-muted-foreground">Replace everything in [brackets]</span>
           </div>
@@ -190,8 +193,28 @@ export function EmailDraftDialog({ projectId, input, profile, leaderName, krspUr
             value={draft.body}
             onChange={(e) => setDraft({ ...draft, body: e.target.value })}
             rows={14}
+            aria-describedby={fromAi || tells.length ? voiceId : undefined}
             className="min-h-72 bg-card text-base leading-relaxed md:text-sm"
           />
+          {(fromAi || tells.length > 0) && (
+            <div id={voiceId} className="grid gap-1 rounded-md bg-muted px-3 py-2.5 text-sm" aria-live="polite">
+              <p>
+                <span className="font-semibold">Put it in your own words before you send it.</span> Professors say an
+                email that sounds like AI is the fastest way to get ignored. Read it out loud and change anything you
+                wouldn&apos;t say.
+              </p>
+              {tells.length > 0 && (
+                <p className="text-muted-foreground">
+                  Sounds like AI: {tells.map((t, i) => (
+                    <span key={t}>
+                      {i > 0 && ", "}
+                      <span className="font-medium text-foreground">“{t}”</span>
+                    </span>
+                  ))}
+                </p>
+              )}
+            </div>
+          )}
         </div>
 
         <div className="flex flex-wrap items-center gap-3">

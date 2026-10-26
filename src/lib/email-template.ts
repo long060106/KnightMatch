@@ -55,16 +55,20 @@ export function buildEmailDraft(input: EmailDraftInput): EmailDraft {
       "I'm still building the skills your listing mentions, and I'm ready to put in the time to learn them quickly.";
   }
 
+  // What professors say works: ask directly, talk about yourself, ask one specific question
+  // instead of praising the project, and ask who else to contact if the team is full.
   const body = [
     `Hi ${greetingName(leaderName)},`,
     "",
-    `I'm [your name], a [year] majoring in [major] at UCF. I found “${projectTitle}” on the Knight Research Scholars Program list and would love to join the team${semester ? ` for ${semester}` : ""}.`,
+    `I'm [your name], a [year] majoring in [major] at UCF. I'd like to join your KRSP team on “${projectTitle}”${semester ? ` for ${semester}` : ""}. Do you have room for someone like me?`,
     "",
-    `${skillsLine} [One or two sentences on why this project interests you.]`,
+    `[One sentence on how you got into this field.] ${skillsLine}`,
     "",
-    "I can commit about [number] hours per week. I've attached my resume, and I'm happy to share my unofficial transcript or meet at a time that works for you.",
+    "I read the project description and wanted to ask: [one specific question about a part of the project].",
     "",
-    "Thank you for your time,",
+    "I can give about [number] hours per week, and I've attached my resume. If your team is full, is there someone else you'd suggest I reach out to?",
+    "",
+    "Thank you,",
     "[Your name]",
     "[Your UCF email]",
   ].join("\n");

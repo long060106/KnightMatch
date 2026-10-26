@@ -2,6 +2,11 @@
  * The email coach: an AI that reads one student's resume next to one KRSP listing, plans first
  * (strengths, what to do before sending, and why), then drafts an email from that plan.
  *
+ * The draft follows what professors say about cold emails: ask directly, talk about yourself, ask
+ * one specific question instead of praising the work, ask who else to contact if the team is full,
+ * and above all don't sound like AI. So the draft is a plain starting point, and findAiTells()
+ * marks phrasing the student should rewrite in their own words.
+ *
  * It only writes text the student edits and sends. It never scores or ranks anyone: matching stays
  * the fixed set arithmetic in match.ts. Shared by the route handler and the dialog, so it stays pure.
  */
@@ -32,6 +37,8 @@ export interface CoachPlan {
   /** The one idea the email is built around. */
   angle: string;
   strengths: Strength[];
+  /** 1–2 specific questions about one part of the project description, to show it was read. */
+  questions: string[];
   /** Listed asks the resume doesn't show yet, said kindly. */
   notYetShown: string[];
   nextSteps: NextStep[];
@@ -79,11 +86,35 @@ export function soften(text: string): string {
   return text.replace(GATEKEEPING, "still building toward it");
 }
 
+/**
+ * Phrases that make a cold email read as AI-written. Professors say that is the fastest way to be
+ * ignored, so the prompt bans them and the dialog flags any that remain in the student's draft.
+ */
+export const AI_TELLS = [
+  "drawn to", "aligns with", "aligns directly", "align with", "passion", "fascinating", "fascinated", "intrigued", "thrilled", "excited to",
+  "eager to contribute", "contribute to your team", "valuable addition", "would appreciate the opportunity",
+  "i would welcome the opportunity", "delve", "leverage", "honed", "hone my", "invaluable", "foster",
+  "synergy", "cutting-edge", "cutting edge", "innovative", "keen interest", "deeply interested",
+  "i hope this email finds you well", "i am writing to express", "meets your requirement", "as required",
+  "demonstrates my", "showcase", "furthermore", "moreover", "additionally,", "—",
+];
+
+/** The AI-sounding phrases in `text`, in the order they appear, each once. */
+export function findAiTells(text: string): string[] {
+  const lower = text.toLowerCase();
+  return AI_TELLS.map((tell) => ({ tell, at: lower.indexOf(tell) }))
+    .filter((t) => t.at >= 0)
+    .sort((a, b) => a.at - b.at)
+    .map((t) => (t.tell === "—" ? "— (em dash)" : t.tell));
+}
+
 const RULES = `Rules you never break:
-- Use only facts that are in the resume or the student's profile. Never invent experience, grades, awards or dates. If something is missing, write it as a [bracketed placeholder] for the student to fill in.
+- Use only facts that are in the resume or the student's profile. Never invent experience, grades, awards, dates, hours or reasons. If something is missing, write it as a [bracketed placeholder] for the student to fill in.
 - You do not judge, score, rank or screen the student. Never write "not qualified", "not a fit", "unqualified", "ineligible" or anything that gatekeeps. Missing skills are things the resume "doesn't show yet".
-- Plain English a busy postdoc can read in 30 seconds. No buzzwords ("passionate", "leverage", "synergy"), no flattery, no emoji, no markdown.
+- Plain English a busy postdoc can read in 30 seconds. No flattery, no emoji, no markdown.
 - Contact details were removed from the resume on purpose. Never ask for them and never fill them in.`;
+
+const VOICE = `Voice: write the way a real UCF undergrad writes to someone they respect. Short, plain sentences, contractions ("I'm", "I've"), first person, concrete nouns. It must not read as AI-written: professors say that is the number one reason they ignore an email. Never use these words or phrases: ${AI_TELLS.filter((t) => t !== "—").map((t) => `"${t}"`).join(", ")}. No em dashes, no "not only ... but also", no lists of three adjectives, no sentence that only praises.`;
 
 function projectBlock(p: CoachProject): string {
   const lines = [
@@ -117,7 +148,8 @@ Work it out in this order:
    - come with the reason it would make a team leader want to reply, and an honest time estimate;
    - come with one first-person sentence the student could put in the email once they have started it ("I've started ...", "I built ...").
    Never suggest paid courses, certificates, or anything that only pads a resume.
-5. Pick the single angle the email should be built around.
+5. Write 1 or 2 specific questions the student could ask about one concrete part of the project description (a method, a device, a dataset, a step), the kind only someone who read it closely would ask. Not praise, and never a name-drop of a paper or title.
+6. Pick the single angle the email should be built around.
 
 ${RULES}
 
@@ -130,18 +162,27 @@ Answer with JSON only, matching the schema.`;
 }
 
 export function draftMessages(project: CoachProject, request: CoachRequest, plan: CoachPlan, greeting: string) {
-  const system = `You write a student's first email to a KRSP team leader, from a plan another coach already made. The student will edit it and send it from their own UCF email.
+  const system = `You write a rough first draft of a student's cold email to a KRSP team leader, from a plan another coach already made. The student will rewrite it in their own words and send it from their own UCF email.
+
+What professors say works, so follow it:
+- Get to the point. Ask directly, early on, whether there's room on the team, instead of opening with praise of their work.
+- Talk about the student, not the project: how they got into this field, what they've done, what they want to learn. If the resume doesn't say how they got into it, write "[one sentence: how you got into this]".
+- Show interest with one specific question about a concrete part of the project (use the plan's question), not with compliments.
+- End by asking who else they'd suggest reaching out to if the team is full.
 
 The email:
 - Subject: short, names the project, starts with "KRSP:".
 - Starts with "Hi ${greeting}," on its own line.
-- Paragraph 1: who they are (name, year and major from the resume, or [your name], [year], [major]) and one specific thing about this project that drew them, taken from the description, not a generic compliment.
-- Paragraph 2: the plan's angle and its strongest 2 strengths, each with the concrete evidence. Connect each to what the team needs.
-- Paragraph 3: availability as "[number] hours per week", that the resume is attached, and an offer to meet.
-- Sign-off: "Thank you for your time," then the student's name (or [Your name]) on the next line.
-- 120 to 170 words in the body. Plain text with real line breaks: "\\n\\n" between paragraphs, "\\n" between the sign-off and the name.
-- Show, don't tell: describe the work and what it involved. Never write "this meets your requirement", "as required" or similar checklist language.
+- Paragraph 1: name, year and major (from the resume, or [your name], [year], [major]), then the direct ask, in words like "Do you have room on your team for someone like me?"
+- Paragraph 2: about the student. How they got into the field, then the 2 strongest concrete things from the plan, said plainly with what they actually did.
+- Paragraph 3: the plan's best question about the project, with a few words on why that part interests them (or "[why this part interests you]").
+- Paragraph 4: "I can give about [number] hours per week" (never a number), resume attached, and "If your team is full, is there someone else you'd suggest I reach out to?"
+- Sign-off: "Thank you," then the student's name (or [Your name]) on the next line.
+- 110 to 150 words in the body. Plain text with real line breaks: "\\n\\n" between paragraphs, "\\n" between the sign-off and the name.
+- Show, don't tell: describe the work. Never write "this meets your requirement", "as required" or similar checklist language.
 - Do not mention the "before you send" steps: the student adds those lines themselves once they have started them.
+
+${VOICE}
 
 ${RULES}
 
@@ -159,6 +200,7 @@ export const PLAN_SCHEMA = {
   type: "object",
   properties: {
     angle: text,
+    questions: { type: "array", items: text },
     strengths: {
       type: "array",
       items: {
@@ -179,7 +221,7 @@ export const PLAN_SCHEMA = {
       },
     },
   },
-  required: ["angle", "strengths", "not_yet_shown", "next_steps"],
+  required: ["angle", "strengths", "questions", "not_yet_shown", "next_steps"],
   additionalProperties: false,
 } as const;
 
@@ -218,6 +260,7 @@ export function readPlan(raw: unknown): CoachPlan | null {
   const plan = {
     angle: str(r.angle, 300),
     strengths,
+    questions: list(r.questions, 4).map((x) => str(x, 300)).filter(Boolean).slice(0, 2),
     notYetShown: list(r.not_yet_shown, 6).map((x) => str(x, 200)).filter(Boolean),
     nextSteps,
   };
@@ -232,7 +275,7 @@ export function paragraphs(body: string): string {
   if (body.includes("\n")) return body;
   return body
     .replace(/ {2,}/g, "\n\n")
-    .replace(/\n\n(Thank you[^\n]*,)\n\n/i, "\n\n$1\n");
+    .replace(/\n\n(Thank you[^\n]*,|Thanks[^\n]*,|Best,)\n\n/i, "\n\n$1\n");
 }
 
 const HOURS = /\b(\d{1,2}(?:\s*(?:-|–|to)\s*\d{1,2})?)(\s+hours?\s+(?:per|a|each)\s+week)/gi;
