@@ -6,6 +6,7 @@ import {
   MAX_RESUME_CHARS,
   PLAN_SCHEMA,
   draftMessages,
+  keepHoursPlaceholder,
   planMessages,
   readDraft,
   readPlan,
@@ -101,7 +102,7 @@ export async function POST(request: NextRequest) {
           }),
         );
         if (!draft) throw new AiError("empty draft", "failed");
-        send({ type: "draft", draft });
+        send({ type: "draft", draft: { ...draft, body: keepHoursPlaceholder(draft.body, req.resume) } });
       } catch (error) {
         if (!request.signal.aborted) {
           const busy = error instanceof AiError && error.kind === "busy";

@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { withinLimit } from "../server/guard";
-import { draftMessages, planMessages, readDraft, readPlan, soften, toggleStepLine, type CoachProject } from "./coach";
+import { draftMessages, keepHoursPlaceholder, planMessages, readDraft, readPlan, soften, toggleStepLine, type CoachProject } from "./coach";
 import { leaderEmailFrom } from "./krsp-contact";
 import { redactContact } from "./redact";
 
@@ -72,6 +72,15 @@ describe("reading the model's answer", () => {
       "Hi Dr. Lee,\n\nI am Avery.\n\nI built a driver.\n\nThank you for your time,\nAvery Quinlan",
     );
     expect(readDraft({ subject: "KRSP: x", body: "Hi,\n\nKeep  this." })?.body).toBe("Hi,\n\nKeep  this.");
+  });
+
+  it("keeps weekly hours a placeholder unless the resume states them", () => {
+    const body = "I can commit 10 hours per week. I can also give 8-12 hours a week in summer.";
+    expect(keepHoursPlaceholder(body, "Built a driver.")).toBe(
+      "I can commit [number] hours per week. I can also give [number] hours a week in summer.",
+    );
+    expect(keepHoursPlaceholder(body, "Available 10 hours per week")).toBe(body);
+    expect(keepHoursPlaceholder("Trained on 10,000 images over 3 weeks.", "x")).toBe("Trained on 10,000 images over 3 weeks.");
   });
 
   it("never lets gatekeeping words through", () => {

@@ -235,6 +235,16 @@ export function paragraphs(body: string): string {
     .replace(/\n\n(Thank you[^\n]*,)\n\n/i, "\n\n$1\n");
 }
 
+const HOURS = /\b(\d{1,2}(?:\s*(?:-|–|to)\s*\d{1,2})?)(\s+hours?\s+(?:per|a|each)\s+week)/gi;
+
+/**
+ * Weekly hours only the student can promise. Models like to fill in a number; unless the resume
+ * itself states one, put the placeholder back.
+ */
+export function keepHoursPlaceholder(body: string, resume: string): string {
+  return /\bhours?\s+(?:per|a|each)\s+week\b/i.test(resume) ? body : body.replace(HOURS, "[number]$2");
+}
+
 export function readDraft(raw: unknown): CoachDraft | null {
   const r = record(raw);
   const draft = { subject: str(r.subject, 200), body: paragraphs(str(r.body, 3_000)) };
