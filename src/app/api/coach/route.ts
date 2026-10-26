@@ -19,7 +19,7 @@ import { greetingName } from "@/lib/email-template";
 import { clientKey, fromThisSite, withinLimit } from "@/lib/server/guard";
 
 // Planning with a long think, then drafting, can take a while on the free tier.
-export const maxDuration = 60;
+export const maxDuration = 120;
 
 const MAX_BODY_BYTES = 64_000;
 
@@ -79,38 +79,36 @@ export async function POST(request: NextRequest) {
       const send = (event: CoachEvent) => controller.enqueue(encoder.encode(`${JSON.stringify(event)}\n`));
       try {
         send({ type: "stage", stage: "planning" });
-        const plan = readPlan(
-          await chatJson({
-            messages: planMessages(project, req),
-            schema: PLAN_SCHEMA,
-            name: "coach_plan",
-            effort: "high",
-            signal: request.signal,
-          }),
-        );
-        if (!plan) throw new AiError("empty plan", "failed");
+        const plan = await chatJson({
+          messages: planMessages(project, req),
+          schema: PLAN_SCHEMA,
+          name: "coach_plan",
+          effort: "high",
+          read: readPlan,
+          signal: request.signal,
+        });
         send({ type: "plan", plan });
 
         send({ type: "stage", stage: "drafting" });
-        const draft = readDraft(
-          await chatJson({
-            messages: draftMessages(project, req, plan, greetingName(project.leaderName)),
-            schema: DRAFT_SCHEMA,
-            name: "coach_draft",
-            effort: "medium",
-            signal: request.signal,
-          }),
-        );
-        if (!draft) throw new AiError("empty draft", "failed");
+        const draft = await chatJson({
+          messages: draftMessages(project, req, plan, greetingName(project.leaderName)),
+          schema: DRAFT_SCHEMA,
+          name: "coach_draft",
+          effort: "medium",
+          read: readDraft,
+          signal: request.signal,
+        });
         send({ type: "draft", draft: { ...draft, body: keepHoursPlaceholder(draft.body, req.resume) } });
       } catch (error) {
         if (!request.signal.aborted) {
           const busy = error instanceof AiError && error.kind === "busy";
+          const code = error instanceof AiError ? error.code : error instanceof Error ? error.name : "unknown";
+          if (!(error instanceof AiError)) console.error("coach: unexpected error", error);
           send({
             type: "error",
             message: busy
-              ? "The free AI is busy right now. Wait a minute and try again, or use the template below."
-              : "The AI couldn't finish this one. Try again, or use the template below.",
+              ? `The free AI is busy right now. Wait a minute and try again, or use the template below. (${code})`
+              : `The AI couldn't finish this one. Try again, or use the template below. (${code})`,
           });
         }
       } finally {

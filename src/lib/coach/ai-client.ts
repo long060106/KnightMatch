@@ -17,17 +17,21 @@ export class AiError extends Error {
   constructor(
     message: string,
     readonly kind: "missing-key" | "busy" | "failed",
+    /** Short reason shown to the student, so a screenshot says what went wrong. */
+    readonly code: string = kind,
   ) {
     super(message);
   }
 }
 
-interface ChatOptions {
+interface ChatOptions<T> {
   messages: { role: string; content: string }[];
   schema: object;
   name: string;
   /** How long the model may think before it answers. */
   effort: "low" | "medium" | "high";
+  /** Turns the parsed JSON into what the caller needs; null means the answer is unusable. */
+  read: (raw: unknown) => T | null;
   signal?: AbortSignal;
 }
 
@@ -47,15 +51,44 @@ async function errorText(response: Response): Promise<string> {
   return body.replace(/\s+/g, " ").slice(0, 300);
 }
 
-export async function chatJson({ messages, schema, name, effort, signal }: ChatOptions): Promise<unknown> {
+/** JSON from a model answer, even when it is wrapped in a code fence or a sentence. */
+export function parseJsonAnswer(content: string): unknown {
+  const text = content.trim().replace(/^```(?:json)?\s*|\s*```$/g, "");
+  try {
+    return JSON.parse(text);
+  } catch {
+    const from = text.indexOf("{");
+    const to = text.lastIndexOf("}");
+    if (from < 0 || to <= from) return null;
+    try {
+      return JSON.parse(text.slice(from, to + 1));
+    } catch {
+      return null;
+    }
+  }
+}
+
+/** Models that just answered 429, skipped for a minute so a busy model doesn't add a round trip to every call. */
+const coolingDown = new Map<string, number>();
+const COOL_DOWN_MS = 60_000;
+/** Busy, out of free quota or a hiccup on the provider's side: worth trying the next model. */
+const TRY_NEXT = new Set([429, 500, 502, 503, 504]);
+
+export async function chatJson<T>({ messages, schema, name, effort, read, signal }: ChatOptions<T>): Promise<T> {
   const key = process.env.GEMINI_API_KEY?.trim();
   if (!key) throw new AiError("GEMINI_API_KEY is not set", "missing-key");
   const baseUrl = (process.env.COACH_AI_BASE_URL?.trim() || DEFAULT_BASE_URL).replace(/\/$/, "");
+  const all = models();
+  const ready = all.filter((m) => (coolingDown.get(m) ?? 0) < Date.now());
   let busy = false;
+  let code = "no-answer";
 
-  for (const model of models()) {
-    // json_schema keeps the answer in shape; some endpoints reject it, so fall back to json_object once.
-    for (const format of ["json_schema", "json_object"] as const) {
+  for (const model of ready.length ? ready : all) {
+    // json_schema keeps the answer in shape; some endpoints reject it, so fall back to json_object.
+    // An unusable answer gets one more try on the same model before moving on.
+    const attempts = ["json_schema", "json_schema", "json_object"] as const;
+    for (let i = 0; i < attempts.length; i++) {
+      const format = attempts[i];
       const response = await fetch(`${baseUrl}/chat/completions`, {
         method: "POST",
         headers: { "content-type": "application/json", authorization: `Bearer ${key}` },
@@ -72,24 +105,28 @@ export async function chatJson({ messages, schema, name, effort, signal }: ChatO
         cache: "no-store",
       });
       if (response.ok) {
-        const body = await response.json();
+        const body = await response.json().catch(() => null);
         const content: unknown = body?.choices?.[0]?.message?.content;
-        if (typeof content !== "string") throw new AiError("AI answer had no content", "failed");
-        try {
-          return JSON.parse(content.replace(/^```(?:json)?\s*|\s*```$/g, ""));
-        } catch {
-          throw new AiError("AI answer was not JSON", "failed");
-        }
+        const value = typeof content === "string" ? read(parseJsonAnswer(content)) : null;
+        if (value !== null) return value;
+        code = typeof content === "string" ? "bad-answer" : "empty-answer";
+        console.error(`coach: ${model} (${format}) gave an unusable ${name} answer (${code})`);
+        if (i === 0) continue; // same model, once more
+        break;
       }
       console.error(`coach: ${model} (${format}) answered ${response.status}: ${await errorText(response)}`);
-      if (response.status === 400 && format === "json_schema") continue;
-      // Out of free quota, overloaded or no such model: try the next model.
-      if (response.status === 429 || response.status === 503 || response.status === 404) {
+      code = `http-${response.status}`;
+      if (response.status === 400 && format === "json_schema") {
+        i = attempts.length - 2; // straight to json_object
+        continue;
+      }
+      if (response.status === 429) coolingDown.set(model, Date.now() + COOL_DOWN_MS);
+      if (TRY_NEXT.has(response.status) || response.status === 404) {
         busy ||= response.status !== 404;
         break;
       }
-      throw new AiError(`AI endpoint answered ${response.status}`, "failed");
+      throw new AiError(`AI endpoint answered ${response.status}`, "failed", code);
     }
   }
-  throw new AiError("No AI model could answer", busy ? "busy" : "failed");
+  throw new AiError("No AI model could answer", busy ? "busy" : "failed", code);
 }
