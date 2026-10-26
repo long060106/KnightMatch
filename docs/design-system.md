@@ -95,6 +95,14 @@ One rule, everywhere: **anything clickable carries a signal, anything that isn't
   numbers → ticker → how it works → closing call to action ("See all N projects").
 - **`/projects` (the tool)**: page title, filters and the full list. Old links to `/?topic=…` or
   `/#projects` are forwarded here with their filters.
+- **Your list** (`/projects?list=mine`): a second tab above the list with the projects the student saved
+  or emailed, open or full, follow-ups that are due first. Stages: Saved → Emailed → Followed up →
+  Heard back → Joined / Not this time ("Not this time", never "rejected"). Set from the "Save to my
+  list" button / Progress menu under a project's title, or "Mark as emailed" after the email dialog
+  opens or copies the email (the site never marks anything on its own). Cards carry a mono chip;
+  honey only for "Follow up now" and "Joined". A week after "Emailed", step 3 of How to apply offers
+  the follow-up draft; before that, a calendar reminder (.ics, made in the browser). Stored in
+  `km.tracker.v1`, on this device only.
 - **`/about`**: "Developed by / Long Nguyen" as two lines that never wrap (sized to the 8-column
   text block, up to 84px), the portrait (340px wide) in the other 4 columns, and the four rules the site keeps (public pages
   only, fixed rules, data stays on the device, you write the email), then a Contact row (email, Instagram,

@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { DrawRule } from "@/components/draw-rule";
 import { ProjectTitle, TO_DETAIL } from "@/components/project-card";
 import { BeginnerNote, SpotsBadge } from "@/components/project-bits";
+import { ProgressControl } from "@/components/progress-tracker";
 import {
   DetailNewBadge,
   DetectedSkills,
@@ -152,6 +153,9 @@ export default async function ProjectPage({ params }: Params) {
           )}
           <SpotsBadge status={project.status} openSpots={project.open_spots} teamSize={project.team_size} />
           <BeginnerNote reason={project.beginner_reason} />
+        </div>
+        <div className="mt-5">
+          <ProgressControl projectId={project.id} />
         </div>
       </header>
 

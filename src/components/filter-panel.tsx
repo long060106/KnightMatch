@@ -22,6 +22,7 @@ interface FilterPanelProps {
   colleges: FacetOption[];
   semesters: FacetOption[];
   beginnerCount: number;
+  showOpenToggle?: boolean;
 }
 
 const SEARCH_DELAY_MS = 250;
@@ -147,7 +148,16 @@ function toggle(list: string[], value: string): string[] {
   return list.includes(value) ? list.filter((v) => v !== value) : [...list, value];
 }
 
-export function FilterPanel({ filters, onChange, topics, topicLabels, colleges, semesters, beginnerCount }: FilterPanelProps) {
+export function FilterPanel({
+  filters,
+  onChange,
+  topics,
+  topicLabels,
+  colleges,
+  semesters,
+  beginnerCount,
+  showOpenToggle = true,
+}: FilterPanelProps) {
   const openId = useId();
   const beginnerId = useId();
   const active = activeFilterCount(filters) > 0;
@@ -157,12 +167,14 @@ export function FilterPanel({ filters, onChange, topics, topicLabels, colleges, 
       <SearchField value={filters.q} onCommit={(q) => onChange({ ...filters, q })} />
 
       <div className="grid border-y">
-        <div className="flex min-h-11 items-center justify-between gap-3 border-b lg:min-h-10">
-          <Label htmlFor={openId} className="cursor-pointer text-sm font-normal">
-            Open teams only
-          </Label>
-          <Switch id={openId} checked={filters.openOnly} onCheckedChange={(openOnly) => onChange({ ...filters, openOnly })} />
-        </div>
+        {showOpenToggle && (
+          <div className="flex min-h-11 items-center justify-between gap-3 border-b lg:min-h-10">
+            <Label htmlFor={openId} className="cursor-pointer text-sm font-normal">
+              Open teams only
+            </Label>
+            <Switch id={openId} checked={filters.openOnly} onCheckedChange={(openOnly) => onChange({ ...filters, openOnly })} />
+          </div>
+        )}
         <div className="flex min-h-11 items-start gap-3 py-2.5 lg:min-h-10">
           <Checkbox
             id={beginnerId}
@@ -204,7 +216,7 @@ export function FilterPanel({ filters, onChange, topics, topicLabels, colleges, 
       {active && (
         <button
           type="button"
-          onClick={() => onChange({ ...DEFAULT_FILTERS, sort: filters.sort })}
+          onClick={() => onChange({ ...DEFAULT_FILTERS, mine: filters.mine, sort: filters.sort })}
           className="km-label inline-flex h-11 items-center gap-2 justify-self-start text-muted-foreground hover:text-foreground active:scale-[0.97]"
         >
           <RotateCcw className="size-3.5" aria-hidden="true" />

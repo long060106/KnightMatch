@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, SlidersHorizontal, X } from "lucide-react";
+import { ArrowRight, Bookmark, SlidersHorizontal, X } from "lucide-react";
 import Link from "next/link";
 import { ViewTransition, addTransitionType, startTransition, useMemo, useState, useSyncExternalStore } from "react";
 import { Button } from "@/components/ui/button";
@@ -33,7 +33,10 @@ import {
 import { compareMatches, matchProject, profileSkills, type MatchResult } from "@/lib/match";
 import { useProfile } from "@/lib/profile-store";
 import { useNow } from "@/lib/time";
+import { compareTracked, type Tracker } from "@/lib/tracker";
+import { useTracker } from "@/lib/tracker-store";
 import type { ListingProject, SkillMap } from "@/lib/types";
+import { cn } from "@/lib/utils";
 import { FilterPanel, type FacetOption } from "./filter-panel";
 import { FullTeamRow, ProjectCard } from "./project-card";
 import { StickyPanel } from "./sticky-panel";
@@ -67,8 +70,13 @@ function sortProjects(
   list: ListingProject[],
   sort: SortKey,
   matches: Map<string, MatchResult> | null,
+  /** Your list: follow-ups that are due first, then the newest change, open or full. */
+  mine: { tracker: Tracker; now: number } | null,
 ): ListingProject[] {
   const sorted = [...list];
+  if (mine) {
+    return sorted.sort((a, b) => compareTracked(mine.tracker[a.id], mine.tracker[b.id], mine.now));
+  }
   if (sort === "match" && matches) {
     sorted.sort((a, b) =>
       compareMatches(
@@ -92,6 +100,15 @@ export function ProjectExplorer({ projects, skills, courseSkills, topics, baseli
 
   const profile = useProfile();
   const now = useNow();
+  const tracker = useTracker();
+  const listCount = tracker ? projects.filter((p) => tracker[p.id]).length : null;
+
+  // Your list keeps every team you saved or emailed, including ones that have filled up since.
+  const pool = useMemo(
+    () => (filters.mine ? projects.filter((p) => tracker?.[p.id]) : projects),
+    [projects, filters.mine, tracker],
+  );
+  const applied = useMemo(() => (filters.mine ? { ...filters, openOnly: false } : filters), [filters]);
 
   const have = useMemo(
     () => (profile ? profileSkills(profile, courseSkills, skills) : null),
@@ -104,36 +121,43 @@ export function ProjectExplorer({ projects, skills, courseSkills, topics, baseli
 
   const sort: SortKey = filters.sort ?? (matches ? "match" : "newest");
   const visible = useMemo(
-    () => sortProjects(projects.filter((p) => passes(p, filters)), sort, matches),
-    [projects, filters, sort, matches],
+    () =>
+      sortProjects(
+        pool.filter((p) => passes(p, applied)),
+        sort,
+        matches,
+        // The list and the clock are both read in the browser, so `now` is set whenever `tracker` is.
+        filters.mine && tracker ? { tracker, now: now ?? 0 } : null,
+      ),
+    [pool, applied, sort, matches, filters.mine, tracker, now],
   );
 
   const topicOptions: FacetOption[] = useMemo(() => {
-    const counts = facetCounts(projects, filters, "topics");
+    const counts = facetCounts(pool, applied, "topics");
     const order = Object.keys(topics);
     return order
-      .filter((value) => projects.some((p) => p.topics.includes(value)))
+      .filter((value) => pool.some((p) => p.topics.includes(value)))
       .map((value) => ({ value, count: counts.get(value) ?? 0 }))
       .sort((a, b) => b.count - a.count || order.indexOf(a.value) - order.indexOf(b.value));
-  }, [projects, filters, topics]);
+  }, [pool, applied, topics]);
 
   const collegeOptions: FacetOption[] = useMemo(() => {
-    const counts = facetCounts(projects, filters, "colleges");
-    const all = [...new Set(projects.flatMap((p) => p.colleges))];
+    const counts = facetCounts(pool, applied, "colleges");
+    const all = [...new Set(pool.flatMap((p) => p.colleges))];
     return all
       .map((value) => ({ value, count: counts.get(value) ?? 0 }))
       .sort((a, b) => b.count - a.count || shortCollege(a.value).localeCompare(shortCollege(b.value)));
-  }, [projects, filters]);
+  }, [pool, applied]);
 
   const semesterOptions: FacetOption[] = useMemo(() => {
-    const counts = facetCounts(projects, filters, "semesters");
-    const all = [...new Set(projects.flatMap((p) => (p.semester ? [p.semester] : [])))];
+    const counts = facetCounts(pool, applied, "semesters");
+    const all = [...new Set(pool.flatMap((p) => (p.semester ? [p.semester] : [])))];
     return all
       .sort((a, b) => semesterOrder(a) - semesterOrder(b))
       .map((value) => ({ value, count: counts.get(value) ?? 0 }));
-  }, [projects, filters]);
+  }, [pool, applied]);
 
-  const beginnerCount = useMemo(() => toggleCount(projects, filters, "beginner"), [projects, filters]);
+  const beginnerCount = useMemo(() => toggleCount(pool, applied, "beginner"), [pool, applied]);
 
   function update(next: Filters) {
     // Keep the URL shareable; Next.js keeps its router in sync with replaceState.
@@ -152,6 +176,8 @@ export function ProjectExplorer({ projects, skills, courseSkills, topics, baseli
     colleges: collegeOptions,
     semesters: semesterOptions,
     beginnerCount,
+    // Your list shows full teams too, so the switch would only confuse there.
+    showOpenToggle: !filters.mine,
   };
   const activeCount = activeFilterCount(filters);
   const chips = activeChips(filters, update, topics);
@@ -165,6 +191,8 @@ export function ProjectExplorer({ projects, skills, courseSkills, topics, baseli
       </aside>
 
       <div>
+        <ListTabs mine={filters.mine} count={listCount} onChange={(mine) => update({ ...filters, mine })} />
+
         {/* Phones: [Filters] [Sort] on one row, count below. Desktop: count left, sort right. */}
         <div className="flex flex-wrap items-center gap-3">
           <div className="order-1 lg:hidden">
@@ -204,7 +232,7 @@ export function ProjectExplorer({ projects, skills, courseSkills, topics, baseli
             {visible.length === 1 ? "project" : "projects"}
           </p>
 
-          <div className="order-2 ml-auto">
+          <div className={filters.mine ? "hidden" : "order-2 ml-auto"}>
             <Label htmlFor="km-sort" className="sr-only">
               Sort projects
             </Label>
@@ -282,32 +310,66 @@ export function ProjectExplorer({ projects, skills, courseSkills, topics, baseli
                       isNew={now !== null && isNewThisWeek(p.firstSeenAt, baselineAt, now)}
                       topicLabel={topics[p.topics.find((t) => filters.topics.includes(t)) ?? ""] ?? p.topicLabel}
                       index={i}
+                      tracked={tracker?.[p.id] ?? null}
+                      now={now}
                     />
                   ) : (
-                    <FullTeamRow project={p} index={i} />
+                    <FullTeamRow project={p} index={i} tracked={tracker?.[p.id] ?? null} now={now} />
                   )}
                 </li>
               </ViewTransition>
             ))}
           </ul>
+        ) : filters.mine && listCount === 0 ? (
+          <div className="mt-4 rounded-lg border border-dashed px-6 py-10 text-center">
+            <p className="font-serif text-xl">Your list is empty.</p>
+            <p className="mx-auto mt-2 max-w-[48ch] text-sm text-muted-foreground">
+              Open a project and press “Save to my list”. After you email a team, mark it as emailed and your list
+              says when to follow up. It stays on this device.
+            </p>
+            <Button variant="outline" className="mt-5 h-11 px-4 active:scale-[0.97]" onClick={() => update({ ...filters, mine: false })}>
+              See all projects
+            </Button>
+          </div>
         ) : (
           <div className="mt-4 rounded-lg border border-dashed px-6 py-10 text-center">
             <p className="font-serif text-xl">No projects match these filters.</p>
             <p className="mx-auto mt-2 max-w-[48ch] text-sm text-muted-foreground">
-              {filters.openOnly
+              {applied.openOnly
                 ? "Full teams are hidden right now. Turn off “Open teams only” to include them, or clear the filters."
                 : "Try a shorter search or fewer filters."}
             </p>
             <Button
               variant="outline"
               className="mt-5 h-11 px-4 active:scale-[0.97]"
-              onClick={() => update({ ...DEFAULT_FILTERS, sort: filters.sort })}
+              onClick={() => update({ ...DEFAULT_FILTERS, mine: filters.mine, sort: filters.sort })}
             >
               Clear filters
             </Button>
           </div>
         )}
       </div>
+    </div>
+  );
+}
+
+/** All projects | Your list (n). The count appears once the browser has read the list. */
+function ListTabs({ mine, count, onChange }: { mine: boolean; count: number | null; onChange: (mine: boolean) => void }) {
+  const tab = (on: boolean) =>
+    cn(
+      "km-label inline-flex min-h-11 items-center gap-2 border-b-2 transition-colors duration-[var(--dur-fast)]",
+      on ? "border-foreground text-foreground" : "border-transparent text-muted-foreground hover:text-foreground",
+    );
+  return (
+    <div role="group" aria-label="Which projects" className="mb-5 flex gap-6 border-b">
+      <button type="button" aria-pressed={!mine} onClick={() => onChange(false)} className={tab(!mine)}>
+        All projects
+      </button>
+      <button type="button" aria-pressed={mine} onClick={() => onChange(true)} className={tab(mine)}>
+        <Bookmark className="size-3.5" aria-hidden="true" />
+        Your list
+        {count !== null && <span className="tabular-nums">{String(count).padStart(2, "0")}</span>}
+      </button>
     </div>
   );
 }

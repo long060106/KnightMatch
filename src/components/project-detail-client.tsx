@@ -10,8 +10,10 @@ import { matchProject, profileSkills, type MatchResult } from "@/lib/match";
 import { useProfile } from "@/lib/profile-store";
 import { scrollToElement } from "@/lib/smooth-scroll";
 import { useNow } from "@/lib/time";
+import { useTracker } from "@/lib/tracker-store";
 import type { SkillMap } from "@/lib/types";
 import { EmailDraftDialog } from "./email-draft-dialog";
+import { FollowUpStep } from "./follow-up";
 import { MatchMeter, NewBadge, SkillTag } from "./project-bits";
 import { LastCheck } from "./last-check";
 
@@ -121,6 +123,8 @@ function MatchSummary({ result, skills }: { result: MatchResult; skills: SkillMa
 export function ProjectSidebar({ data }: { data: DetailData }) {
   const match = useProjectMatch(data);
   const leader = data.leaderName?.split(",")[0] ?? "the team leader";
+  const tracked = useTracker()?.[data.id];
+  const reminderTarget = { projectId: data.id, projectTitle: data.title, krspUrl: data.url };
 
   const emailInput = useMemo(() => {
     const result = match?.result;
@@ -202,12 +206,13 @@ export function ProjectSidebar({ data }: { data: DetailData }) {
                   profile={profileLabels}
                   leaderName={data.leaderName}
                   krspUrl={data.url}
+                  quiet={tracked !== undefined && tracked.stage !== "saved"}
                 />
               </div>
             </li>
             <li className="grid grid-cols-[1.75rem_1fr] gap-x-2">
               <span className="font-serif text-lg leading-5 text-muted-foreground">3</span>
-              <p>No reply after a week? Send one polite follow-up. Teams get busy.</p>
+              <FollowUpStep target={reminderTarget} leaderName={data.leaderName} />
             </li>
           </ol>
         ) : (
@@ -223,6 +228,12 @@ export function ProjectSidebar({ data }: { data: DetailData }) {
                 <span className="sr-only">(opens in a new tab)</span>
               </a>
             </Button>
+            {/* Emailed before the team filled up: the follow-up still matters. */}
+            {(tracked?.stage === "emailed" || tracked?.stage === "followed_up") && (
+              <div className="border-t pt-3 text-foreground">
+                <FollowUpStep target={reminderTarget} leaderName={data.leaderName} />
+              </div>
+            )}
           </div>
         )}
         <p className="mt-5 border-t pt-3 text-xs text-muted-foreground">

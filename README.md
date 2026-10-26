@@ -21,7 +21,7 @@ KRSP public pages ──(hourly GitHub Action, Python)──> data/*.json ──
   hand-written dictionaries (`skills.json`, `course_skills.json`, `other-places.json`).
 - **`src/`**: Next.js 16 + Tailwind + shadcn/ui. Every page is prerendered; three small routes in
   `src/app/api` run on Vercel: the AI email coach, the team leader's email read live from KRSP, and
-  the last-check time. Your skills and courses are stored only in your browser (localStorage).
+  the last-check time. Your skills and courses, and your list of saved and emailed projects, are stored only in your browser (localStorage).
   No accounts, no database.
 
 ## Rules we follow

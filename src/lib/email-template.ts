@@ -76,6 +76,31 @@ export function buildEmailDraft(input: EmailDraftInput): EmailDraft {
   return { subject, body };
 }
 
+export interface FollowUpInput {
+  projectTitle: string;
+  leaderName: string | null;
+  /** When the first email went out, if the student marked it. */
+  emailedAt: string | null;
+  /** Formats emailedAt for the sentence, e.g. "Oct 20". */
+  formatDate: (iso: string) => string;
+}
+
+/** The one polite follow-up, about a week after the first email. Short on purpose. */
+export function buildFollowUpDraft({ projectTitle, leaderName, emailedAt, formatDate }: FollowUpInput): EmailDraft {
+  const when = emailedAt ? `on ${formatDate(emailedAt)}` : "last week";
+  const body = [
+    `Hi ${greetingName(leaderName)},`,
+    "",
+    `I wanted to follow up on the email I sent ${when} about joining your KRSP team on “${projectTitle}”. I'm still very interested, and I'm happy to send anything else that would help.`,
+    "",
+    "If the team is full right now, is there someone else you'd suggest I reach out to?",
+    "",
+    "Thank you,",
+    "[Your name]",
+  ].join("\n");
+  return { subject: `Re: KRSP: interested in joining “${projectTitle}”`, body };
+}
+
 /** mailto: link, addressed to the team leader when we have their email from KRSP. */
 export function mailtoHref(draft: EmailDraft, to: string | null = null): string {
   const recipient = to ? encodeURIComponent(to).replace(/%40/g, "@") : "";

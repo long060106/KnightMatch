@@ -1,7 +1,7 @@
 "use client";
 
-import { ArrowUpRight, Check, Copy, Mail, RotateCcw } from "lucide-react";
-import { useCallback, useEffect, useId, useMemo, useState } from "react";
+import { Check, Mail, RotateCcw } from "lucide-react";
+import { useCallback, useId, useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -14,8 +14,11 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { findAiTells, toggleStepLine, type CoachDraft } from "@/lib/coach/coach";
-import { buildEmailDraft, draftAsText, mailtoHref, type EmailDraft, type EmailDraftInput } from "@/lib/email-template";
+import { buildEmailDraft, type EmailDraft, type EmailDraftInput } from "@/lib/email-template";
+import { cn } from "@/lib/utils";
 import { EmailCoach, useEmailCoach } from "./email-coach";
+import { RecipientLine, SendActions, useLeaderEmail } from "./email-send";
+import { MarkSent } from "./progress-tracker";
 
 // From what professors say about cold emails.
 const TIPS = [
@@ -33,29 +36,12 @@ interface EmailDraftDialogProps {
   profile: string[];
   leaderName: string | null;
   krspUrl: string;
-}
-
-/** The team leader's email, read from the live KRSP page by /api/contact. Null until known. */
-function useLeaderEmail(projectId: string, wanted: boolean) {
-  const [email, setEmail] = useState<string | null>(null);
-  useEffect(() => {
-    if (!wanted || email) return;
-    let current = true;
-    fetch(`/api/contact?project=${encodeURIComponent(projectId)}`)
-      .then((r) => (r.ok ? r.json() : null))
-      .then((body) => {
-        if (current && typeof body?.email === "string") setEmail(body.email);
-      })
-      .catch(() => {});
-    return () => {
-      current = false;
-    };
-  }, [projectId, wanted, email]);
-  return email;
+  /** Already emailed: the follow-up is the main action now, so this button steps back. */
+  quiet?: boolean;
 }
 
 /** Builds a first email the student edits and sends from their own account. We never send anything. */
-export function EmailDraftDialog({ projectId, input, profile, leaderName, krspUrl }: EmailDraftDialogProps) {
+export function EmailDraftDialog({ projectId, input, profile, leaderName, krspUrl, quiet = false }: EmailDraftDialogProps) {
   const subjectId = useId();
   const bodyId = useId();
   const voiceId = useId();
@@ -63,7 +49,8 @@ export function EmailDraftDialog({ projectId, input, profile, leaderName, krspUr
   const [draft, setDraft] = useState<EmailDraft>(() => buildEmailDraft(input));
   const [fromAi, setFromAi] = useState(false);
   const [chosen, setChosen] = useState<Set<string>>(() => new Set());
-  const [copied, setCopied] = useState(false);
+  /** Opened in the email app or copied: time to ask whether it went out. */
+  const [sent, setSent] = useState(false);
   const to = useLeaderEmail(projectId, open);
   const tells = useMemo(() => findAiTells(`${draft.subject}\n${draft.body}`), [draft]);
 
@@ -91,20 +78,6 @@ export function EmailDraftDialog({ projectId, input, profile, leaderName, krspUr
     setChosen(new Set());
   }
 
-  async function copy() {
-    try {
-      await navigator.clipboard.writeText(draftAsText(draft, to));
-      setCopied(true);
-      window.setTimeout(() => setCopied(false), 2500);
-    } catch {
-      // Clipboard blocked: select the text so Ctrl+C / long-press still works.
-      const field = document.getElementById(bodyId) as HTMLTextAreaElement | null;
-      field?.select();
-    }
-  }
-
-  const leader = leaderName?.split(",")[0] ?? null;
-
   return (
     <Dialog
       open={open}
@@ -116,7 +89,10 @@ export function EmailDraftDialog({ projectId, input, profile, leaderName, krspUr
       }}
     >
       <DialogTrigger asChild>
-        <Button className="h-11 w-full gap-2 text-base font-semibold active:scale-[0.97]">
+        <Button
+          variant={quiet ? "outline" : "default"}
+          className={cn("h-11 w-full gap-2 active:scale-[0.97]", !quiet && "text-base font-semibold")}
+        >
           <Mail className="size-4" aria-hidden="true" />
           Draft my email
         </Button>
@@ -145,30 +121,7 @@ export function EmailDraftDialog({ projectId, input, profile, leaderName, krspUr
           </ul>
         )}
 
-        <div className="grid gap-1 text-sm">
-          <p className="flex flex-wrap items-baseline gap-x-2">
-            <span className="text-muted-foreground">To:</span>
-            {to ? (
-              <span className="font-medium break-all">
-                {leader ? `${leader} <${to}>` : to}
-              </span>
-            ) : (
-              <span className="text-muted-foreground">
-                {leader ? `${leader}'s email is on the KRSP listing` : "the team leader's email is on the KRSP listing"}
-              </span>
-            )}
-          </p>
-          <a
-            href={krspUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="km-link inline-flex min-h-11 items-center gap-0.5 justify-self-start text-muted-foreground md:min-h-6"
-          >
-            {to ? "Check it on the KRSP listing" : "Open the KRSP listing"}
-            <ArrowUpRight className="size-3.5" aria-hidden="true" />
-            <span className="sr-only">(opens in a new tab)</span>
-          </a>
-        </div>
+        <RecipientLine to={to} leaderName={leaderName} krspUrl={krspUrl} />
 
         <div className="grid gap-2">
           <label htmlFor={subjectId} className="text-sm font-semibold">
@@ -217,25 +170,13 @@ export function EmailDraftDialog({ projectId, input, profile, leaderName, krspUr
           )}
         </div>
 
-        <div className="flex flex-wrap items-center gap-3">
-          <Button asChild className="h-11 gap-2 px-4 font-semibold active:scale-[0.97]">
-            <a href={mailtoHref(draft, to)}>
-              <Mail className="size-4" aria-hidden="true" />
-              Open in email app
-            </a>
-          </Button>
-          <Button variant="outline" onClick={copy} className="h-11 gap-2 px-4 active:scale-[0.97]">
-            {copied ? <Check className="size-4" aria-hidden="true" /> : <Copy className="size-4" aria-hidden="true" />}
-            {copied ? "Copied" : "Copy email"}
-          </Button>
+        <SendActions draft={draft} to={to} bodyId={bodyId} onSend={() => setSent(true)}>
           <Button variant="outline" onClick={startOver} className="h-11 gap-2 px-4 active:scale-[0.97]">
             <RotateCcw className="size-4" aria-hidden="true" />
             Start over
           </Button>
-          <span aria-live="polite" className="sr-only">
-            {copied ? "Email copied to the clipboard" : ""}
-          </span>
-        </div>
+        </SendActions>
+        {sent && <MarkSent target={{ projectId, projectTitle: input.projectTitle, krspUrl }} stage="emailed" />}
       </DialogContent>
     </Dialog>
   );

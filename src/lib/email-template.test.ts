@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { findAiTells } from "./coach/coach";
-import { buildEmailDraft, draftAsText, greetingName, listToText, mailtoHref } from "./email-template";
+import { buildEmailDraft, buildFollowUpDraft, draftAsText, greetingName, listToText, mailtoHref } from "./email-template";
 
 describe("greetingName", () => {
   it("uses Dr. + surname for doctoral credentials", () => {
@@ -84,5 +84,32 @@ describe("sharing the draft", () => {
   it("copy text puts the subject first, after the recipient when known", () => {
     expect(draftAsText(draft)).toBe("Subject: Hi & welcome\n\nLine 1\nLine 2");
     expect(draftAsText(draft, "a.lee@ucf.edu")).toBe("To: a.lee@ucf.edu\nSubject: Hi & welcome\n\nLine 1\nLine 2");
+  });
+});
+
+describe("buildFollowUpDraft", () => {
+  const input = {
+    projectTitle: "Secure LLMs",
+    leaderName: "Chanhee Lee, PhD",
+    emailedAt: "2026-10-20T15:00:00Z",
+    formatDate: () => "Oct 20",
+  };
+
+  it("replies to the first subject, names the day and asks who else to contact", () => {
+    const draft = buildFollowUpDraft(input);
+    expect(draft.subject).toBe("Re: KRSP: interested in joining “Secure LLMs”");
+    expect(draft.body).toContain("Hi Dr. Lee,");
+    expect(draft.body).toContain("the email I sent on Oct 20");
+    expect(draft.body).toContain("is there someone else you'd suggest");
+  });
+
+  it("stays short and sounds like a person", () => {
+    const { subject, body } = buildFollowUpDraft(input);
+    expect(body.split(/\s+/).length).toBeLessThan(80);
+    expect(findAiTells(`${subject}\n${body}`)).toEqual([]);
+  });
+
+  it("says last week when the first email was never marked", () => {
+    expect(buildFollowUpDraft({ ...input, emailedAt: null }).body).toContain("the email I sent last week");
   });
 });

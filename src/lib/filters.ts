@@ -5,6 +5,8 @@ import type { ListingProject } from "./types";
 export type SortKey = "match" | "newest" | "spots";
 
 export interface Filters {
+  /** Show only the student's own list (saved, emailed…), kept in their browser. */
+  mine: boolean;
   q: string;
   openOnly: boolean;
   beginner: boolean;
@@ -16,6 +18,7 @@ export interface Filters {
 }
 
 export const DEFAULT_FILTERS: Filters = {
+  mine: false,
   q: "",
   openOnly: true,
   beginner: false,
@@ -31,6 +34,7 @@ export function parseFilters(search: string): Filters {
   const params = new URLSearchParams(search);
   const sort = params.get("sort") as SortKey | null;
   return {
+    mine: params.get("list") === "mine",
     q: params.get("q")?.trim() ?? "",
     openOnly: params.get("full") !== "1",
     beginner: params.get("beginner") === "1",
@@ -44,6 +48,7 @@ export function parseFilters(search: string): Filters {
 /** Only non-default values go in the URL, so the plain homepage stays "/". */
 export function serializeFilters(f: Filters): string {
   const params = new URLSearchParams();
+  if (f.mine) params.set("list", "mine");
   if (f.q.trim()) params.set("q", f.q.trim());
   if (!f.openOnly) params.set("full", "1");
   if (f.beginner) params.set("beginner", "1");
@@ -55,7 +60,7 @@ export function serializeFilters(f: Filters): string {
   return text ? `?${text}` : "";
 }
 
-/** How many filters differ from the defaults (shown on the mobile Filters button). */
+/** How many filters differ from the defaults (shown on the mobile Filters button). "Your list" is a view, not a filter. */
 export function activeFilterCount(f: Filters): number {
   return (
     (f.q.trim() ? 1 : 0) +

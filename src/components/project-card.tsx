@@ -3,10 +3,12 @@ import Link from "next/link";
 import { ViewTransition, type ReactNode } from "react";
 import { shortCollege } from "@/lib/filters";
 import type { MatchResult } from "@/lib/match";
+import type { TrackedProject } from "@/lib/tracker";
 import type { ListingProject, SkillMap } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { MatchMeter, NewBadge, SkillTag, SpotsFraction, type TagState } from "./project-bits";
 import { LastCheck } from "./last-check";
+import { TrackerChip } from "./progress-tracker";
 
 const MAX_TAGS = 4;
 
@@ -19,6 +21,12 @@ interface CardProps {
   isNew: boolean;
   /** Overrides the project's first topic, e.g. with the topic the list is filtered by. */
   topicLabel?: string | null;
+}
+
+/** Where the student is with this team (from their list), and the time for "Emailed 3 days ago". */
+interface TrackedProps {
+  tracked?: TrackedProject | null;
+  now?: number | null;
 }
 
 /** Navigation type set by card links; only these navigations morph the title. */
@@ -104,7 +112,9 @@ export function ProjectCard({
   isNew,
   topicLabel = project.topicLabel,
   index,
-}: CardProps & { index?: number }) {
+  tracked = null,
+  now = null,
+}: CardProps & TrackedProps & { index?: number }) {
   const titleId = `title-${project.id}`;
   // Known at build time, so only cards that will show a meter reserve space for it.
   const hasScoredRequirements = project.requiredSkills.some((id) => skills[id]?.counts);
@@ -140,6 +150,7 @@ export function ProjectCard({
           {number && topicLabel && <span aria-hidden="true">—</span>}
           {topicLabel && <span>{topicLabel}</span>}
           {isNew && <NewBadge />}
+          {tracked && <TrackerChip entry={tracked} now={now} />}
         </p>
         <h3 id={titleId} className="mt-4 font-serif text-[1.75rem] leading-[1.08] tracking-[-0.01em] md:text-[2.125rem]">
           <Link
@@ -203,7 +214,12 @@ export function ProjectCard({
 }
 
 /** Full teams collapse to one quiet row: you can still read them, but they don't compete. */
-export function FullTeamRow({ project, index }: { project: ListingProject; index?: number }) {
+export function FullTeamRow({
+  project,
+  index,
+  tracked = null,
+  now = null,
+}: TrackedProps & { project: ListingProject; index?: number }) {
   const titleId = `title-${project.id}`;
   const number = indexLabel(index);
   return (
@@ -212,20 +228,23 @@ export function FullTeamRow({ project, index }: { project: ListingProject; index
       className="group relative isolate grid items-baseline gap-x-10 gap-y-1 border-t py-4 before:absolute before:inset-y-0 before:-inset-x-3 before:-z-10 before:bg-foreground/[0.03] before:opacity-0 before:transition-opacity before:duration-[var(--dur-fast)] hover:before:opacity-100 has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-offset-4 has-[a:focus-visible]:outline-ring md:grid-cols-[minmax(0,1fr)_15rem]"
     >
       <HoverRule />
-      <h3 id={titleId} className="flex items-baseline gap-4 font-serif text-xl leading-snug text-foreground/70">
-        {number && <span className="km-label text-muted-foreground tabular-nums">{number}</span>}
-        <Link
-          href={`/projects/${project.id}`}
-          transitionTypes={[TO_DETAIL]}
-          className={cn(TITLE_LINK, "after:absolute after:inset-0 focus-visible:outline-none")}
-        >
-          <ProjectTitle id={project.id} title={project.title} />
-          <ArrowRight aria-hidden="true" className={TITLE_ARROW} />
-        </Link>
-      </h3>
+      <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+        <h3 id={titleId} className="flex items-baseline gap-4 font-serif text-xl leading-snug text-foreground/70">
+          {number && <span className="km-label text-muted-foreground tabular-nums">{number}</span>}
+          <Link
+            href={`/projects/${project.id}`}
+            transitionTypes={[TO_DETAIL]}
+            className={cn(TITLE_LINK, "after:absolute after:inset-0 focus-visible:outline-none")}
+          >
+            <ProjectTitle id={project.id} title={project.title} />
+            <ArrowRight aria-hidden="true" className={TITLE_ARROW} />
+          </Link>
+        </h3>
+        {tracked && <TrackerChip entry={tracked} now={now} />}
+      </div>
       <p className="km-label flex justify-between gap-4 text-muted-foreground">
         <span>{project.colleges.map(shortCollege).join(", ")}</span>
-        <span>Full team</span>
+        <span className="whitespace-nowrap">Full team</span>
       </p>
     </article>
   );

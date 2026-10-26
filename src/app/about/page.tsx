@@ -35,7 +35,7 @@ const PROMISES = [
   },
   {
     title: "Your data stays with you",
-    body: "Your skills and courses are saved only on your device, and your resume is read inside your browser. There is no account. Only if you ask the AI to write your email is your resume text sent to write it, with your email, phone and address taken out first, and it is not kept.",
+    body: "Your skills, courses and list of saved and emailed projects are kept only on your device, and your resume is read inside your browser. There is no account. Only if you ask the AI to write your email is your resume text sent to write it, with your email, phone and address taken out first, and it is not kept.",
   },
   {
     title: "You write the email",

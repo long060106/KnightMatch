@@ -49,8 +49,14 @@ describe("URL round trip", () => {
   });
 
   it("keeps every filter through serialize -> parse", () => {
-    const f = { q: "python", openOnly: false, beginner: true, topics: ["ai_ml", "health"], colleges: ["College of Sciences", "College of Medicine"], semesters: ["Fall 2026"], sort: "spots" as const };
+    const f = { mine: true, q: "python", openOnly: false, beginner: true, topics: ["ai_ml", "health"], colleges: ["College of Sciences", "College of Medicine"], semesters: ["Fall 2026"], sort: "spots" as const };
     expect(parseFilters(serializeFilters(f))).toEqual(f);
+  });
+
+  it("writes Your list as list=mine, and does not count it as a filter", () => {
+    expect(serializeFilters({ ...DEFAULT_FILTERS, mine: true })).toBe("?list=mine");
+    expect(parseFilters("?list=other").mine).toBe(false);
+    expect(activeFilterCount({ ...DEFAULT_FILTERS, mine: true })).toBe(0);
   });
 
   it("writes topics as repeated topic= params", () => {
