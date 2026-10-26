@@ -20,7 +20,7 @@ export function SiteFooter() {
           and are re-checked every hour. The original listing is always the source of truth.
         </p>
         <p>
-          <Link href="/about" className="km-link font-medium text-foreground">
+          <Link href="/about" className="km-link inline-flex min-h-11 items-center font-medium text-foreground md:min-h-6">
             Developed by Long Nguyen
           </Link>
         </p>

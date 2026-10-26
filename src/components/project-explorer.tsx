@@ -260,6 +260,7 @@ export function ProjectExplorer({ projects, skills, courseSkills, topics, baseli
           </p>
         )}
 
+        <h2 className="sr-only">Project list</h2>
         {visible.length > 0 ? (
           <ul className="mt-6 border-b">
             {visible.map((p, i) => (
