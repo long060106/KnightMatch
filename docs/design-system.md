@@ -110,6 +110,18 @@ One rule, everywhere: **anything clickable carries a signal, anything that isn't
 - `/match`, `/projects/[id]` and `/other-places` as before. Nav: Home (`/`), Projects (`/projects`),
   Match me, Other places, About; the phone tab bar has the same five.
 
+## Share images
+
+The 1200 × 630 card that link previews show (`src/lib/og-card.tsx`), drawn at build time and always
+on light paper, since previews don't follow the reader's theme. Knight mark and wordmark top left,
+a mono label top right (the project's first topic), a hairline, the title in Newsreader (70 / 62 /
+52px by length, four lines at most), then a hairline footer: college · semester on the left, "Not
+affiliated with UCF" on the right. Hairlines are 2px because previews shrink the card to about 500px.
+
+- **Open project**: "2 / 4" in its spots color with the share bar and a mono "spots open".
+- **Full team**: a quiet mono line ("Full team of 5"), no big number, no color.
+- **Every other page**: one site card with the recruiting count in honey ink (good news).
+
 ## Homepage title page
 
 One screen tall (`100svh` minus header, and minus the tab bar on phones), with only three things

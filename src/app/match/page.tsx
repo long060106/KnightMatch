@@ -6,12 +6,14 @@ import { MatchWorkbench } from "@/components/match-workbench";
 import { RisingWords } from "@/components/rising-words";
 import type { SkillGroup } from "@/components/skill-picker";
 import { courseSkills, courses, meta, projects, skillCategories, skills, toListing } from "@/lib/data";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Match me",
   description:
     "Add the skills and UCF courses you already have and see how each open Knight Research Scholars project lines up.",
-};
+  path: "/match",
+});
 
 /** Soft skills and after-joining training never count toward a match, so they are not offered. */
 const HIDDEN_CATEGORIES = new Set(["soft", "training"]);

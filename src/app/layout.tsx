@@ -7,6 +7,7 @@ import { SiteHeader } from "@/components/site-header";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import { ThemeProvider } from "@/components/theme-provider";
 import { HEAD_SCRIPT } from "@/lib/profile-key";
+import { DEFAULT_TITLE, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/seo";
 import "./globals.css";
 
 // Display serif: headlines, big numbers, project titles. Variable weight plus optical size, so
@@ -32,13 +33,14 @@ const plexMono = IBM_Plex_Mono({
   display: "swap",
 });
 
+// Each page sets its own description, canonical address and preview fields (pageMetadata).
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "KnightMatch: UCF research projects you can join",
-    template: "%s | KnightMatch",
+    default: DEFAULT_TITLE,
+    template: `%s | ${SITE_NAME}`,
   },
-  description:
-    "Search the Knight Research Scholars Program projects, see which ones match the skills and courses you already have, and find out when new teams open.",
+  description: SITE_DESCRIPTION,
 };
 
 export const viewport: Viewport = {

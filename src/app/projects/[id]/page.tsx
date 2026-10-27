@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { DrawRule } from "@/components/draw-rule";
+import { JsonLd } from "@/components/json-ld";
 import { ProjectTitle, TO_DETAIL } from "@/components/project-card";
 import { BeginnerNote, SpotsBadge } from "@/components/project-bits";
 import { ProgressControl } from "@/components/progress-tracker";
@@ -16,6 +17,7 @@ import { Scramble } from "@/components/scramble";
 import { StickyPanel } from "@/components/sticky-panel";
 import { courseSkills, getProject, meta, projects, skills, topics } from "@/lib/data";
 import { shortCollege } from "@/lib/filters";
+import { absoluteUrl, pageMetadata, projectDescription } from "@/lib/seo";
 import type { Project, SkillMap } from "@/lib/types";
 
 // One prerendered page per project on the KRSP list, nothing generated on demand.
@@ -30,11 +32,13 @@ type Params = { params: Promise<{ id: string }> };
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const project = getProject((await params).id);
   if (!project) return {};
-  const where = [project.affiliation && shortCollege(project.affiliation), project.semester].filter(Boolean).join(", ");
-  return {
+  // The card comes from ./opengraph-image.tsx.
+  return pageMetadata({
     title: project.title,
-    description: `${where ? `${where}. ` : ""}${project.description.slice(0, 150).trim()}…`,
-  };
+    description: projectDescription(project),
+    path: `/projects/${project.id}`,
+    siteImage: false,
+  });
 }
 
 /** Only the skills this project mentions, plus their parents. */
@@ -101,6 +105,15 @@ export default async function ProjectPage({ params }: Params) {
 
   return (
     <article aria-labelledby="project-title" className="mx-auto max-w-[1200px] px-4 pt-4 pb-16 md:px-6 md:pt-6">
+      <JsonLd
+        data={{
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "All projects", item: absoluteUrl("/projects") },
+            { "@type": "ListItem", position: 2, name: project.title, item: absoluteUrl(`/projects/${project.id}`) },
+          ],
+        }}
+      />
       <Link
         href="/projects"
         transitionTypes={[TO_DETAIL]}

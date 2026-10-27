@@ -6,11 +6,13 @@ import { ProjectExplorer } from "@/components/project-explorer";
 import { LastCheck } from "@/components/last-check";
 import { RisingWords } from "@/components/rising-words";
 import { courseSkills, meta, projects, skillsUsedBy, toListing, topics } from "@/lib/data";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "All projects",
   description: "Every Knight Research Scholars project at UCF, with filters for topic, college, semester and open spots.",
-};
+  path: "/projects",
+});
 
 /** The tool itself: filters and the full list. The home page only introduces it. */
 export default function ProjectsPage() {

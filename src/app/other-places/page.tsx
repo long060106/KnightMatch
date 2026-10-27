@@ -7,14 +7,16 @@ import { RisingWords } from "@/components/rising-words";
 import { Scramble } from "@/components/scramble";
 import { Button } from "@/components/ui/button";
 import { otherPlaces } from "@/lib/data";
+import { pageMetadata } from "@/lib/seo";
 import type { PlaceLink, PlaceSection } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Other places to look",
   description:
     "Official UCF pages for finding undergraduate research beyond KRSP: the Office of Undergraduate Research, course credit, paid positions, college labs and summer programs.",
-};
+  path: "/other-places",
+});
 
 function host(url: string): string {
   return new URL(url).hostname.replace(/^www\./, "");

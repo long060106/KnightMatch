@@ -7,12 +7,14 @@ import { FloatingShapes } from "@/components/floating-shapes";
 import { Portrait } from "@/components/portrait";
 import { Scramble } from "@/components/scramble";
 import { Button } from "@/components/ui/button";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "About",
   description:
     "KnightMatch is a student-built guide to UCF's Knight Research Scholars projects, developed by Long Nguyen. What it does, and the rules it keeps with your data.",
-};
+  path: "/about",
+});
 
 const REPO = "https://github.com/long060106/KnightMatch";
 

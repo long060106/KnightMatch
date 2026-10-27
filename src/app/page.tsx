@@ -1,14 +1,19 @@
 import { ArrowRight } from "lucide-react";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { DrawRule } from "@/components/draw-rule";
 import { Hero, RecruitingNow } from "@/components/hero";
 import { HowItWorks } from "@/components/how-it-works";
+import { JsonLd } from "@/components/json-ld";
 import { LegacyListRedirect } from "@/components/legacy-list-redirect";
 import { OpenTicker } from "@/components/open-ticker";
 import { Button } from "@/components/ui/button";
 import { WireSphere } from "@/components/wire-sphere";
 import { meta, projects, toListing } from "@/lib/data";
 import { shortCollege } from "@/lib/filters";
+import { absoluteUrl, DEFAULT_TITLE, pageMetadata, SITE_DESCRIPTION, SITE_NAME } from "@/lib/seo";
+
+export const metadata: Metadata = pageMetadata({ description: SITE_DESCRIPTION, path: "/" });
 
 /**
  * The introduction: what KnightMatch is for, the proof that teams are recruiting, and how it works.
@@ -20,6 +25,9 @@ export default function HomePage() {
 
   return (
     <>
+      <JsonLd
+        data={{ "@type": "WebSite", name: SITE_NAME, alternateName: DEFAULT_TITLE, url: absoluteUrl("/"), description: SITE_DESCRIPTION }}
+      />
       <LegacyListRedirect />
       <Hero totalCount={listing.length} lastRunAt={meta.last_run_at} />
       <RecruitingNow
