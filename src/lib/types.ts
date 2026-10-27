@@ -96,6 +96,10 @@ export interface PlaceLink {
   url: string;
   description: string;
   robots_blocks_check?: boolean;
+  /** Labs only: shown before the host, e.g. "Psychology". */
+  department?: string;
+  /** Labs only: a phrase from the page that the weekly link check must still find (not shown). */
+  still_says?: string;
 }
 
 export interface PlaceSection {
@@ -104,6 +108,8 @@ export interface PlaceSection {
   label: string;
   title: string;
   intro: string;
+  /** When someone last read these pages by hand (the labs section). */
+  checked_on?: string;
   links: PlaceLink[];
   callout?: {
     title: string;

@@ -107,7 +107,11 @@ One rule, everywhere: **anything clickable carries a signal, anything that isn't
   text block, up to 84px), the portrait (340px wide) in the other 4 columns, and the four rules the site keeps (public pages
   only, fixed rules, data stays on the device, you write the email), then a Contact row (email, Instagram,
   GitHub). Last item in the nav and the tab bar, and linked from the footer.
-- `/match`, `/projects/[id]` and `/other-places` as before. Nav: Home (`/`), Projects (`/projects`),
+- **`/other-places`**: second section is **Labs**, the labs whose own pages say undergraduates can join
+  (plus Psychology's RA Match), as ordinary ruled link rows with the department before the host
+  ("Psychology · sciences.ucf.edu") and "Read by hand on …" under the intro. No status badges: the
+  description says in plain words what the page says ("Says it is hiring … now", "Occasionally takes …").
+- `/match` and `/projects/[id]` as before. Nav: Home (`/`), Projects (`/projects`),
   Match me, Other places, About; the phone tab bar has the same five.
 
 ## Share images

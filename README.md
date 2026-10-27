@@ -104,7 +104,7 @@ plan only deploys commits by the account owner and no personal email gets publis
 | `scrape.yml` | hourly at :17 (best-effort), from `/api/refresh`, or by hand | tests, list check; on a change (or daily) full scrape, privacy check, commit `data/`, optional deploy hook |
 | `probe.yml` | hourly at :41 | logs how often the list changes; never commits |
 | `ci.yml` | every push / PR | scraper tests, lint, unit tests, build |
-| `links.yml` | Mondays, or by hand | checks every Other places link |
+| `links.yml` | Mondays, or by hand | checks every Other places link, and that each listed lab's page still has its `still_says` phrase |
 
 ## Known quirk: building on Windows
 
@@ -115,5 +115,8 @@ Navigation still works. Builds on Linux (Vercel, GitHub Actions) are not affecte
 ## More
 
 - Design decisions and tokens: [`docs/design-system.md`](docs/design-system.md)
-- Phase 2 ideas: email alerts from `data/events.json`, more public sources (lab pages),
-  application tracking, plain-language project summaries, GPA / class-standing fields.
+- Lab pages: [`docs/lab-pages-pilot.md`](docs/lab-pages-pilot.md) shows why we list a few hand-checked
+  labs instead of crawling them. To add a lab, read its page, then add it to the `labs` section of
+  `data/other-places.json` with a `department` and a short `still_says` phrase copied from the page.
+- Phase 2 ideas: email alerts from `data/events.json`, plain-language project summaries,
+  GPA / class-standing fields.

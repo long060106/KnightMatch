@@ -1,6 +1,6 @@
 {
-  "checked_on": "2026-10-18",
-  "note": "Links only. Descriptions are written by KnightMatch; each site is the source of truth. Re-check with: python -m knightmatch_scraper.check_links",
+  "checked_on": "2026-10-27",
+  "note": "Links only. Descriptions are written by KnightMatch; each site is the source of truth. Lab links carry still_says, a short phrase from the lab's page that the weekly check must still find. Re-check with: python -m knightmatch_scraper.check_links",
   "sections": [
     {
       "id": "our",
@@ -48,6 +48,78 @@
           }
         ]
       }
+    },
+    {
+      "id": "labs",
+      "label": "Labs",
+      "title": "Labs that say they take undergraduates",
+      "intro": "Most labs never post openings. These pages say, in the lab's own words, that undergraduates can join and how to apply. We read each one by hand, and a weekly check flags any page that stops saying so. The lab's page always has the final word.",
+      "checked_on": "2026-10-27",
+      "links": [
+        {
+          "title": "Psychology RA Match",
+          "department": "Psychology",
+          "url": "https://sciences.ucf.edu/psychology/ramatch/",
+          "description": "One form for the department's labs: pick the labs you'd like, and faculty pull applications when a spot opens. Most spots are volunteer, the wait can be long, and every research assistant needs CITI training.",
+          "still_says": "placed on a waiting list for future openings"
+        },
+        {
+          "title": "Attention and Memory Lab",
+          "department": "Psychology",
+          "url": "https://sciences.ucf.edu/psychology/amlab/contact/",
+          "description": "Says it is hiring undergraduate research assistants now, on a rolling basis, through an online application. Asks for a 3.0 GPA, 10 hours a week and at least a year.",
+          "still_says": "currently hiring undergraduate research assistants"
+        },
+        {
+          "title": "Adult Development & Decision Lab",
+          "department": "Psychology",
+          "url": "https://sciences.ucf.edu/psychology/lighthalllab/join/",
+          "description": "Aging and decision-making. Has research openings for undergraduates: send the lab manager a letter of interest to get the application link.",
+          "still_says": "research opportunities for undergraduates"
+        },
+        {
+          "title": "Virtual Avatar & Agent Interaction Lab",
+          "department": "Psychology",
+          "url": "https://sciences.ucf.edu/psychology/vaail/",
+          "description": "Virtual and augmented reality. Regularly takes undergraduate research assistants: fill out the lab's form, then email the director. Asks for a year.",
+          "still_says": "opportunities to join VAAIL as a research assistant"
+        },
+        {
+          "title": "Technology, Humans and Environments Lab",
+          "department": "Psychology",
+          "url": "https://sciences.ucf.edu/psychology/thelab/technology-humans-environments-lab/",
+          "description": "Eye tracking, virtual reality and how people search and interpret complex information. Has an undergraduate research assistant application on its home page.",
+          "still_says": "Apply for an Undergraduate Research Assistant Position"
+        },
+        {
+          "title": "Law, Applied Memory, and Psychology Lab",
+          "department": "Psychology",
+          "url": "https://sciences.ucf.edu/psychology/lamplab/",
+          "description": "Psychology and the law, such as eyewitness memory. Undergraduate research assistants apply through an online form.",
+          "still_says": "Research Assistants play an active role"
+        },
+        {
+          "title": "DREAM Lab",
+          "department": "Psychology",
+          "url": "https://sciences.ucf.edu/psychology/dreamlab/prospective-students/",
+          "description": "Addiction research. Occasionally takes volunteer research assistants; start with the lab's survey.",
+          "still_says": "occasionally accepts students for volunteer research assistant"
+        },
+        {
+          "title": "ISUE Lab",
+          "department": "Computer Science",
+          "url": "https://cs.ucf.edu/icerc/isuelab/",
+          "description": "3D user interfaces, human-AI interaction and tutoring systems. Says it is always looking for undergraduates; contact the lab director.",
+          "still_says": "always looking for undergraduate"
+        },
+        {
+          "title": "Aquatic Biogeochemistry Lab",
+          "department": "Biology",
+          "url": "https://sciences.ucf.edu/biology/abl/prospective-students/undergraduate-students/",
+          "description": "Chemical cycling where soil meets water. Takes undergraduates as volunteers, paid staff, independent study and honors students; start with the lab's online survey.",
+          "still_says": "routinely employ UCF undergraduates"
+        }
+      ]
     },
     {
       "id": "credit-pay",

@@ -36,6 +36,19 @@ def test_other_places_links_are_clean():
     assert "password" not in str(data).lower()
 
 
+def test_lab_links_say_where_they_are_and_what_to_look_for():
+    from knightmatch_scraper.check_links import OTHER_PLACES_FILE
+
+    data = store.read_json(store.data_path(OTHER_PLACES_FILE), None)
+    labs = next(s for s in data["sections"] if s["id"] == "labs")
+    assert re.match(r"^\d{4}-\d{2}-\d{2}$", labs["checked_on"])
+    assert labs["links"]
+    for link in labs["links"]:
+        assert link["department"].strip(), link["url"]
+        # A short phrase copied from the page; the weekly check fails when it disappears.
+        assert 2 <= len(link["still_says"].split()) <= 10, link["url"]
+
+
 def test_projects_only_use_known_skills():
     dictionary = SkillDictionary.load(store.data_path(store.SKILLS_FILE))
     for project in store.read_json(store.data_path(store.PROJECTS_FILE), []):

@@ -14,7 +14,7 @@ import { cn } from "@/lib/utils";
 export const metadata: Metadata = pageMetadata({
   title: "Other places to look",
   description:
-    "Official UCF pages for finding undergraduate research beyond KRSP: the Office of Undergraduate Research, course credit, paid positions, college labs and summer programs.",
+    "Official UCF pages for finding undergraduate research beyond KRSP: the Office of Undergraduate Research, labs that say they take undergraduates, course credit, paid positions and summer programs.",
   path: "/other-places",
 });
 
@@ -46,7 +46,7 @@ function PlaceRow({ link, compact }: { link: PlaceLink; compact?: boolean }) {
         </span>
         <span className="text-sm text-muted-foreground">
           {!compact && <span className="block max-w-[60ch]">{link.description}</span>}
-          <span className="text-xs">{host(link.url)}</span>
+          <span className="text-xs">{[link.department, host(link.url)].filter(Boolean).join(" · ")}</span>
         </span>
         <span className="sr-only">(opens in a new tab)</span>
       </a>
@@ -107,8 +107,8 @@ export default function OtherPlacesPage() {
           className="km-page-in mt-4 max-w-[62ch] text-base leading-relaxed text-muted-foreground md:text-lg"
           style={{ "--d": "300ms" } as CSSProperties}
         >
-          KRSP is one way in. These official pages cover the rest: advice, course credit, paid positions, college labs
-          and summer programs. We only link to them, so each site always has the latest details.
+          KRSP is one way in. These official pages cover the rest: advice, labs that take undergraduates, course credit,
+          paid positions and summer programs. We only link to them, so each site always has the latest details.
         </p>
         <p className="km-page-in mt-3 text-sm text-muted-foreground" style={{ "--d": "380ms" } as CSSProperties}>
           Links checked on {checkedOn(otherPlaces.checked_on)}.</p>
@@ -135,6 +135,9 @@ export default function OtherPlacesPage() {
                     {section.title}
                   </h2>
                   <p className="mt-2 text-muted-foreground">{section.intro}</p>
+                  {section.checked_on && (
+                    <p className="mt-3 text-sm text-muted-foreground">Read by hand on {checkedOn(section.checked_on)}.</p>
+                  )}
                 </div>
                 <div>
                   <ul className={cn("-mx-3 grid", compact ? "gap-0 sm:grid-cols-2" : "gap-1")}>
