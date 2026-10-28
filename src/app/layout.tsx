@@ -1,11 +1,13 @@
 import type { Metadata, Viewport } from "next";
 import { IBM_Plex_Mono, Newsreader, Public_Sans } from "next/font/google";
+import { AccountSync } from "@/components/account-sync";
 import { BackgroundGrid } from "@/components/background-grid";
 import { BottomTabs } from "@/components/main-nav";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import { ThemeProvider } from "@/components/theme-provider";
+import { ACCOUNTS_ON } from "@/lib/accounts";
 import { HEAD_SCRIPT } from "@/lib/profile-key";
 import { DEFAULT_TITLE, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/seo";
 import "./globals.css";
@@ -76,6 +78,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <SiteFooter />
           <BottomTabs />
           <SmoothScroll />
+          {ACCOUNTS_ON && <AccountSync />}
         </ThemeProvider>
       </body>
     </html>

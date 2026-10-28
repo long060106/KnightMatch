@@ -5,6 +5,7 @@ import { FloatingShapes } from "@/components/floating-shapes";
 import { MatchWorkbench } from "@/components/match-workbench";
 import { RisingWords } from "@/components/rising-words";
 import type { SkillGroup } from "@/components/skill-picker";
+import { ACCOUNTS_ON } from "@/lib/accounts";
 import { courseSkills, courses, meta, projects, skillCategories, skills, toListing } from "@/lib/data";
 import { pageMetadata } from "@/lib/seo";
 
@@ -62,7 +63,10 @@ export default function MatchPage() {
           style={{ "--d": "300ms" } as CSSProperties}
         >
           Tick your skills and the UCF courses you&apos;ve finished. Each open project then shows how many of its listed
-          requirements you meet, using the team&apos;s own words. Nothing leaves this browser: no account, no email.
+          requirements you meet, using the team&apos;s own words.{" "}
+          {ACCOUNTS_ON
+            ? "It stays in this browser, unless you sign in to keep it on your other devices."
+            : "Nothing leaves this browser: no account, no email."}
         </p>
       </header>
       <DrawRule />

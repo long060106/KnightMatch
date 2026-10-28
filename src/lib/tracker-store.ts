@@ -1,7 +1,8 @@
 "use client";
 
 /**
- * The student's list (saved, emailed, followed up…), kept only in this browser like the profile.
+ * The student's list (saved, emailed, followed up…), kept in this browser like the profile, and in
+ * their account too when they sign in.
  * Storage can be blocked; the list then lasts for this page view.
  */
 
@@ -9,7 +10,7 @@ import { useSyncExternalStore } from "react";
 import { TRACKER_KEY } from "./profile-key";
 import { parseTracker, serializeTracker, withStage, type Stage, type TrackedProject, type Tracker } from "./tracker";
 
-const CHANGE_EVENT = "km-tracker-change";
+export const TRACKER_CHANGE_EVENT = "km-tracker-change";
 
 /** Used when storage is blocked, so marks still work until the page closes. */
 let memory: string | null = null;
@@ -30,7 +31,7 @@ function writeRaw(raw: string | null): void {
   } catch {
     // Storage unavailable: `memory` keeps it for this page view.
   }
-  window.dispatchEvent(new Event(CHANGE_EVENT));
+  window.dispatchEvent(new Event(TRACKER_CHANGE_EVENT));
 }
 
 function write(tracker: Tracker): void {
@@ -51,12 +52,22 @@ export function restoreEntry(id: string, entry: TrackedProject | undefined): voi
   write(tracker);
 }
 
+/** The list as stored right now, outside React (for syncing with the account). */
+export function readTracker(): Tracker {
+  return parseTracker(readRaw());
+}
+
+/** Replaces the whole list (from the student's account, or empty after signing out). */
+export function replaceTracker(tracker: Tracker): void {
+  write(tracker);
+}
+
 function subscribe(onChange: () => void): () => void {
   window.addEventListener("storage", onChange); // other tabs
-  window.addEventListener(CHANGE_EVENT, onChange); // this tab
+  window.addEventListener(TRACKER_CHANGE_EVENT, onChange); // this tab
   return () => {
     window.removeEventListener("storage", onChange);
-    window.removeEventListener(CHANGE_EVENT, onChange);
+    window.removeEventListener(TRACKER_CHANGE_EVENT, onChange);
   };
 }
 

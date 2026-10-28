@@ -19,10 +19,14 @@ KRSP public pages ──(hourly GitHub Action, Python)──> data/*.json ──
   and diffs against the last run (new, became full, spots changed, removed).
 - **`data/`**: the committed output (`projects.json`, `events.json`, `meta.json`) plus the
   hand-written dictionaries (`skills.json`, `course_skills.json`, `other-places.json`).
-- **`src/`**: Next.js 16 + Tailwind + shadcn/ui. Every page is prerendered; three small routes in
-  `src/app/api` run on Vercel: the AI email coach, the team leader's email read live from KRSP, and
-  the last-check time. Your skills and courses, and your list of saved and emailed projects, are stored only in your browser (localStorage).
-  No accounts, no database.
+- **`src/`**: Next.js 16 + Tailwind + shadcn/ui. Every page is prerendered; a few small routes in
+  `src/app/api` run on Vercel: the AI email coach, the team leader's email read live from KRSP, the
+  last-check time, the hourly refresh nudge, and (when accounts are on) sign-in and sync. Your skills
+  and courses, and your list of saved and emailed projects, are stored in your browser (localStorage).
+- **Accounts are optional** (`NEXT_PUBLIC_ACCOUNTS=on`). Signing in with Google (Better Auth) keeps
+  the same profile and list on every device: the account holds the email address and those two
+  things (`db/schema.sql`), nothing from Google's profile, no resume, no drafted emails. Deleting the
+  account removes it all.
 
 ## Rules we follow
 
@@ -93,6 +97,17 @@ Only add a course to `data/course_skills.json` after checking its code on a UCF 
      once every 50 minutes, and "Last check" asks for it whenever the time it shows is over an hour old.
    - At cron-job.org (free) create a job: URL `https://<your site>/api/refresh`, every hour.
      The URL needs no secret: calling it more often changes nothing.
+7. **Accounts (optional, free)**:
+   - Vercel → Storage → add **Neon** (Free) to this project. It sets `DATABASE_URL`.
+   - Google Cloud Console → OAuth consent screen: External, app name "KnightMatch", scopes
+     `openid`, `email`, `profile` only, then publish it. Credentials → OAuth client (Web) with the
+     redirect URIs `https://<your site>/api/auth/callback/google` and
+     `http://localhost:3000/api/auth/callback/google`.
+   - In Vercel add `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `BETTER_AUTH_SECRET`
+     (`openssl rand -base64 32`) and `BETTER_AUTH_URL` (`https://<your site>`).
+   - Create the tables once: `vercel env pull .env.local`, then `npm run db:migrate` (safe to repeat).
+   - Last, add `NEXT_PUBLIC_ACCOUNTS=on` and redeploy. Until then nothing about accounts shows.
+     Preview deployments can't sign in with Google: their addresses are not redirect URIs.
 
 Data commits are authored with the repo owner's GitHub noreply address, because Vercel's Hobby
 plan only deploys commits by the account owner and no personal email gets published.

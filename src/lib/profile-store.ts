@@ -1,16 +1,18 @@
 "use client";
 
 /**
- * The student's skills and courses, kept only in this browser (localStorage, no account).
+ * The student's skills and courses, kept in this browser (localStorage), and in their account too
+ * when they sign in (account-sync.tsx copies changes up and down).
  * Every read/write is wrapped in try/catch: storage can be blocked (private mode, strict settings)
  * and the site must still work, just without remembering.
  */
 
 import { useSyncExternalStore } from "react";
+import { parseProfile } from "./profile";
 import { PROFILE_KEY } from "./profile-key";
 import type { Profile } from "./types";
 
-const CHANGE_EVENT = "km-profile-change";
+export const PROFILE_CHANGE_EVENT = "km-profile-change";
 
 function readRaw(): string | null {
   try {
@@ -20,17 +22,9 @@ function readRaw(): string | null {
   }
 }
 
-export function parseProfile(raw: string | null): Profile | null {
-  if (!raw) return null;
-  try {
-    const value = JSON.parse(raw);
-    if (!Array.isArray(value?.skills) || !Array.isArray(value?.courses)) return null;
-    const strings = (list: unknown[]) => list.filter((x): x is string => typeof x === "string");
-    const profile = { skills: strings(value.skills), courses: strings(value.courses), updatedAt: String(value.updatedAt ?? "") };
-    return profile.skills.length || profile.courses.length ? profile : null;
-  } catch {
-    return null;
-  }
+/** The profile as stored right now, outside React (for syncing with the account). */
+export function readProfile(): Profile | null {
+  return parseProfile(readRaw());
 }
 
 export function saveProfile(profile: Profile | null): void {
@@ -45,15 +39,15 @@ export function saveProfile(profile: Profile | null): void {
   } catch {
     // Storage unavailable: the profile lives only for this page view.
   }
-  window.dispatchEvent(new Event(CHANGE_EVENT));
+  window.dispatchEvent(new Event(PROFILE_CHANGE_EVENT));
 }
 
 function subscribe(onChange: () => void): () => void {
   window.addEventListener("storage", onChange); // other tabs
-  window.addEventListener(CHANGE_EVENT, onChange); // this tab
+  window.addEventListener(PROFILE_CHANGE_EVENT, onChange); // this tab
   return () => {
     window.removeEventListener("storage", onChange);
-    window.removeEventListener(CHANGE_EVENT, onChange);
+    window.removeEventListener(PROFILE_CHANGE_EVENT, onChange);
   };
 }
 

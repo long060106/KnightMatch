@@ -1,6 +1,7 @@
 /**
  * The student's own list: which projects they saved or emailed, and how far each one got.
- * Pure functions here; the browser storage lives in tracker-store.ts. Nothing leaves the device.
+ * Pure functions here; the browser storage lives in tracker-store.ts. It leaves the device only when
+ * the student signs in to keep the same list on their other devices (src/lib/sync.ts).
  */
 
 export const STAGES = ["saved", "emailed", "followed_up", "heard_back", "joined", "not_this_time"] as const;
@@ -37,22 +38,26 @@ const isTime = (value: unknown): value is string => typeof value === "string" &&
 export function parseTracker(raw: string | null): Tracker {
   if (!raw) return {};
   try {
-    const value = JSON.parse(raw)?.projects;
-    if (!value || typeof value !== "object") return {};
-    const tracker: Tracker = {};
-    for (const [id, entry] of Object.entries(value as Record<string, Record<string, unknown>>)) {
-      if (!entry || !isStage(entry.stage) || !isTime(entry.updatedAt)) continue;
-      tracker[id] = {
-        stage: entry.stage,
-        updatedAt: entry.updatedAt,
-        ...(isTime(entry.emailedAt) && { emailedAt: entry.emailedAt }),
-        ...(isTime(entry.followedUpAt) && { followedUpAt: entry.followedUpAt }),
-      };
-    }
-    return tracker;
+    return trackerFrom(JSON.parse(raw)?.projects);
   } catch {
     return {};
   }
+}
+
+/** Keeps only well-formed entries of a `{ [projectId]: entry }` object, from storage or the network. */
+export function trackerFrom(value: unknown): Tracker {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return {};
+  const tracker: Tracker = {};
+  for (const [id, entry] of Object.entries(value as Record<string, Record<string, unknown>>)) {
+    if (!entry || !isStage(entry.stage) || !isTime(entry.updatedAt)) continue;
+    tracker[id] = {
+      stage: entry.stage,
+      updatedAt: entry.updatedAt,
+      ...(isTime(entry.emailedAt) && { emailedAt: entry.emailedAt }),
+      ...(isTime(entry.followedUpAt) && { followedUpAt: entry.followedUpAt }),
+    };
+  }
+  return tracker;
 }
 
 export function serializeTracker(tracker: Tracker): string {

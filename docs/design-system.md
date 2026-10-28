@@ -102,7 +102,16 @@ One rule, everywhere: **anything clickable carries a signal, anything that isn't
   opens or copies the email (the site never marks anything on its own). Cards carry a mono chip;
   honey only for "Follow up now" and "Joined". A week after "Emailed", step 3 of How to apply offers
   the follow-up draft; before that, a calendar reminder (.ics, made in the browser). Stored in
-  `km.tracker.v1`, on this device only.
+  `km.tracker.v1`, and in the student's account too when they sign in.
+- **Accounts** (optional; only shown when `NEXT_PUBLIC_ACCOUNTS=on`): a mono km-label "Sign in" in
+  the header next to the theme toggle, at every width (the tab bar keeps its five items; from 768 to
+  1023px the header nav drops Home to make room, since the logo links home). Signed in,
+  it becomes a 28px outlined circle with the first letter of the email, linking to `/account`. The
+  sign-in dialog has one outlined "Continue with Google" button with Google's "G" (their guidelines),
+  one sentence on what is kept and a link to `/about#your-data`. `/account`: email, three serif
+  counts (skills, courses, projects on the list), Sign out (outline) and Delete my account
+  (destructive, with a confirm dialog). The only nudge is one muted line, "On another device? Sign in
+  to keep this in sync", shown signed out and only once there is a profile or a list.
 - **`/about`**: "Developed by / Long Nguyen" as two lines that never wrap (sized to the 8-column
   text block, up to 84px), the portrait (340px wide) in the other 4 columns, and the four rules the site keeps (public pages
   only, fixed rules, data stays on the device, you write the email), then a Contact row (email, Instagram,

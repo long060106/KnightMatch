@@ -3,6 +3,7 @@
 import { Compass, House, Info, LayoutList, ListChecks, type LucideIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { ACCOUNTS_ON } from "@/lib/accounts";
 import { cn } from "@/lib/utils";
 import { HoverScramble } from "./hover-scramble";
 
@@ -33,7 +34,8 @@ export function HeaderNav() {
         {ITEMS.map((item) => {
           const active = isActive(pathname, item.href);
           return (
-            <li key={item.href}>
+            // With "Sign in" in the header there is no room for Home below 1024px; the logo goes home.
+            <li key={item.href} className={cn(ACCOUNTS_ON && item.href === "/" && "hidden lg:block")}>
               <Link
                 href={item.href}
                 aria-current={active ? "page" : undefined}

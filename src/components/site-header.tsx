@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { ACCOUNTS_ON } from "@/lib/accounts";
+import { AccountButton } from "./account-button";
 import { DrawRule } from "./draw-rule";
 import { Logo } from "./logo";
 import { HeaderNav } from "./main-nav";
@@ -13,6 +15,7 @@ export function SiteHeader() {
         </Link>
         <div className="flex items-center gap-1">
           <HeaderNav />
+          {ACCOUNTS_ON && <AccountButton />}
           <ThemeToggle />
         </div>
       </div>

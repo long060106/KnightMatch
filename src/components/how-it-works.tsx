@@ -2,6 +2,7 @@
 
 import { CalendarDays, Check, ChevronDown, Mail, Users } from "lucide-react";
 import { useEffect, useRef, useState, useSyncExternalStore, type CSSProperties, type ReactNode, type RefObject } from "react";
+import { ACCOUNTS_ON } from "@/lib/accounts";
 import { useInView } from "@/lib/use-in-view";
 import { cn } from "@/lib/utils";
 import { SpotsFraction } from "./project-bits";
@@ -10,7 +11,9 @@ import { Scramble } from "./scramble";
 const STEPS = [
   {
     title: "Add what you already know",
-    body: "Tick the skills you have and the UCF courses you've finished. It stays in this browser: no account, no email.",
+    body: ACCOUNTS_ON
+      ? "Tick the skills you have and the UCF courses you've finished. It stays in this browser; an account is optional."
+      : "Tick the skills you have and the UCF courses you've finished. It stays in this browser: no account, no email.",
   },
   {
     title: "See where you fit",

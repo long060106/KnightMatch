@@ -7,6 +7,7 @@ import { FloatingShapes } from "@/components/floating-shapes";
 import { Portrait } from "@/components/portrait";
 import { Scramble } from "@/components/scramble";
 import { Button } from "@/components/ui/button";
+import { ACCOUNTS_ON } from "@/lib/accounts";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -26,7 +27,7 @@ const CONTACT = [
   { label: "GitHub", value: "long060106", href: "https://github.com/long060106", external: true },
 ];
 
-const PROMISES = [
+const PROMISES: { id?: string; title: string; body: string }[] = [
   {
     title: "Public pages only",
     body: "KnightMatch checks the public Knight Research Scholars list once an hour, reads project pages only when something changed (and once a day anyway), slowly, and says who is asking. It never copies the OUR database. It only points you to it and tells you how to get access.",
@@ -36,8 +37,11 @@ const PROMISES = [
     body: "Your match is simple counting: the skills you have against the skills a project lists. Nothing decides it while you click. An AI model helps sort project wording during the updates and can help word your email, but it never decides your match, and the original text on KRSP is what counts.",
   },
   {
+    id: "your-data",
     title: "Your data stays with you",
-    body: "Your skills, courses and list of saved and emailed projects are kept only on your device, and your resume is read inside your browser. There is no account. Only if you ask the AI to write your email is your resume text sent to write it, with your email, phone and address taken out first, and it is not kept.",
+    body: ACCOUNTS_ON
+      ? "Your skills, courses and list of saved and emailed projects stay on your device. An account is optional: if you sign in with Google, KnightMatch keeps your email address and those three things so they show up on your other devices, nothing more, and deleting the account removes them. Your resume is read inside your browser and never saved. Only if you ask the AI to write your email is your resume text sent to write it, with your email, phone and address taken out first, and it is not kept."
+      : "Your skills, courses and list of saved and emailed projects are kept only on your device, and your resume is read inside your browser. There is no account. Only if you ask the AI to write your email is your resume text sent to write it, with your email, phone and address taken out first, and it is not kept.",
   },
   {
     title: "You write the email",
@@ -138,7 +142,7 @@ export default function AboutPage() {
           </div>
           <ol className="lg:col-span-8">
             {PROMISES.map((promise, i) => (
-              <li key={promise.title}>
+              <li key={promise.title} id={promise.id} className="scroll-mt-6">
                 {i > 0 && <DrawRule />}
                 <div className="grid gap-x-8 gap-y-2 py-7 md:grid-cols-[3rem_minmax(0,14rem)_minmax(0,1fr)]">
                   <span className="km-label text-muted-foreground md:pt-2">{String(i + 1).padStart(2, "0")}</span>

@@ -15,6 +15,7 @@ import { DrawRule } from "./draw-rule";
 import { ProjectCard } from "./project-card";
 import type { ResumePicks } from "./resume-review";
 import { ResumeUpload } from "./resume-upload";
+import { SavedWhere, SyncNudge } from "./sync-nudge";
 import { Scramble } from "./scramble";
 import { SkillPicker, type SkillGroup } from "./skill-picker";
 import { StickyPanel } from "./sticky-panel";
@@ -149,7 +150,7 @@ export function MatchWorkbench({ projects, skills, groups, popular, courses, cou
               <h2 id="profile-heading" className="text-sm font-medium text-muted-foreground">
                 <Scramble text="Your profile" />
               </h2>
-              <p className="text-xs text-muted-foreground">Saved in this browser only</p>
+              <SavedWhere />
             </div>
 
             <ResumeUpload
@@ -196,6 +197,7 @@ export function MatchWorkbench({ projects, skills, groups, popular, courses, cou
                 )}
               </div>
             )}
+            <SyncNudge show={hasProfile} className="-mt-6" />
           </StickyPanel>
         </section>
 

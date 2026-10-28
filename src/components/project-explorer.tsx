@@ -30,6 +30,7 @@ import {
   type Filters,
   type SortKey,
 } from "@/lib/filters";
+import { ACCOUNTS_ON } from "@/lib/accounts";
 import { compareMatches, matchProject, profileSkills, type MatchResult } from "@/lib/match";
 import { useProfile } from "@/lib/profile-store";
 import { useNow } from "@/lib/time";
@@ -40,6 +41,7 @@ import { cn } from "@/lib/utils";
 import { FilterPanel, type FacetOption } from "./filter-panel";
 import { FullTeamRow, ProjectCard } from "./project-card";
 import { StickyPanel } from "./sticky-panel";
+import { SyncNudge } from "./sync-nudge";
 
 interface ExplorerProps {
   projects: ListingProject[];
@@ -192,6 +194,7 @@ export function ProjectExplorer({ projects, skills, courseSkills, topics, baseli
 
       <div>
         <ListTabs mine={filters.mine} count={listCount} onChange={(mine) => update({ ...filters, mine })} />
+        <SyncNudge show={filters.mine && Boolean(listCount)} className="-mt-2 mb-2" />
 
         {/* Phones: [Filters] [Sort] on one row, count below. Desktop: count left, sort right. */}
         <div className="flex flex-wrap items-center gap-3">
@@ -325,7 +328,7 @@ export function ProjectExplorer({ projects, skills, courseSkills, topics, baseli
             <p className="font-serif text-xl">Your list is empty.</p>
             <p className="mx-auto mt-2 max-w-[48ch] text-sm text-muted-foreground">
               Open a project and press “Save to my list”. After you email a team, mark it as emailed and your list
-              says when to follow up. It stays on this device.
+              says when to follow up. {ACCOUNTS_ON ? "It stays on this device, and in your account if you sign in." : "It stays on this device."}
             </p>
             <Button variant="outline" className="mt-5 h-11 px-4 active:scale-[0.97]" onClick={() => update({ ...filters, mine: false })}>
               See all projects
