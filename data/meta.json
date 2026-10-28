@@ -1,25 +1,25 @@
 {
   "scraper_version": "0.2.0",
   "source_url": "https://knight.research.ucf.edu/project-list/",
-  "last_run_at": "2026-10-28T16:04:04Z",
-  "list_fingerprint": "d4957276298c9d82",
+  "last_run_at": "2026-10-28T21:05:54Z",
+  "list_fingerprint": "4c3d53982b5fb874",
   "baseline_at": "2026-10-17T22:19:03Z",
   "counts": {
-    "listed": 42,
-    "open": 14,
-    "full": 28
+    "listed": 45,
+    "open": 16,
+    "full": 29
   },
-  "request_count": 44,
+  "request_count": 47,
   "errors": [],
   "ai": {
     "status": "ok",
     "model": "gemini-3.5-flash-lite",
-    "requests": 0,
-    "answered": 0,
+    "requests": 4,
+    "answered": 3,
     "cached": 42,
     "failed": 0,
     "waiting": 0,
-    "response_format": null,
+    "response_format": "json_object",
     "message": null
   }
 }

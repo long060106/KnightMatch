@@ -330,5 +330,39 @@
         "text": "trauma or AI"
       }
     ]
+  },
+  {
+    "project_id": "krsp-1106",
+    "title": "3D/2D Hybrid Animated Short Film – Soul Ties",
+    "unmatched": [
+      {
+        "bucket": "required",
+        "text": "texturing"
+      },
+      {
+        "bucket": "required",
+        "text": "surfacing"
+      }
+    ]
+  },
+  {
+    "project_id": "krsp-1108",
+    "title": "Development of a Bilingual Digital Health Intervention to Support Healthy Aging in Hispanic/Latino Older Adults",
+    "unmatched": [
+      {
+        "bucket": "preferred",
+        "text": "Spanish-English bilingual skills are very helpful"
+      }
+    ]
+  },
+  {
+    "project_id": "krsp-1110",
+    "title": "Improving Older Adult Mobility through the Development and Evaluation of Ambient Assistive Devices",
+    "unmatched": [
+      {
+        "bucket": "required",
+        "text": "Team members must exhibit an eagerness to learn"
+      }
+    ]
   }
 ]

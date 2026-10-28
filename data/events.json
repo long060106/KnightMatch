@@ -1,1 +1,32 @@
-[]
+[
+  {
+    "at": "2026-10-28T21:05:54Z",
+    "project_id": "krsp-1108",
+    "type": "new",
+    "before": null,
+    "after": {
+      "status": "open",
+      "open_spots": 3
+    }
+  },
+  {
+    "at": "2026-10-28T21:05:54Z",
+    "project_id": "krsp-1106",
+    "type": "new",
+    "before": null,
+    "after": {
+      "status": "open",
+      "open_spots": 5
+    }
+  },
+  {
+    "at": "2026-10-28T21:05:54Z",
+    "project_id": "krsp-1110",
+    "type": "new",
+    "before": null,
+    "after": {
+      "status": "full",
+      "open_spots": 0
+    }
+  }
+]

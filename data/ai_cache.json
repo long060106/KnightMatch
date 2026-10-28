@@ -502,6 +502,142 @@
       "hci"
     ]
   },
+  "krsp-1106": {
+    "key": "35f7682c6e8fd2f8",
+    "text_key": "57bcf9cd3609269a",
+    "model": "gemini-3.5-flash-lite",
+    "at": "2026-10-28T21:05:54Z",
+    "items": [
+      {
+        "kind": "skill",
+        "skills": [
+          "animation"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "maya",
+          "substance_painter"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "animation"
+        ]
+      },
+      {
+        "kind": "other",
+        "skills": []
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "three_d_modeling"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": []
+      },
+      {
+        "kind": "other",
+        "skills": []
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "teamwork"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "git"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": []
+      }
+    ],
+    "topics": [
+      "arts"
+    ]
+  },
+  "krsp-1108": {
+    "key": "116a81261c9730e4",
+    "text_key": "343706e1fc1971fa",
+    "model": "gemini-3.5-flash-lite",
+    "at": "2026-10-28T21:05:54Z",
+    "items": [
+      {
+        "kind": "interest",
+        "skills": []
+      },
+      {
+        "kind": "interest",
+        "skills": []
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "biology",
+          "psychology",
+          "health_sciences"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "communication",
+          "teamwork"
+        ]
+      },
+      {
+        "kind": "skill",
+        "skills": []
+      }
+    ],
+    "topics": [
+      "health",
+      "hci",
+      "psychology"
+    ]
+  },
+  "krsp-1110": {
+    "key": "2cc56c59bb7d5bc5",
+    "text_key": "92909f1910ff560b",
+    "model": "gemini-3.5-flash-lite",
+    "at": "2026-10-28T21:05:54Z",
+    "items": [
+      {
+        "kind": "other",
+        "skills": []
+      },
+      {
+        "kind": "logistics",
+        "skills": []
+      },
+      {
+        "kind": "interest",
+        "skills": []
+      },
+      {
+        "kind": "skill",
+        "skills": [
+          "cad",
+          "circuits"
+        ]
+      }
+    ],
+    "topics": [
+      "devices_robotics",
+      "health",
+      "hci"
+    ]
+  },
   "krsp-534": {
     "key": "3eb2bc4985838b06",
     "text_key": "d0b89370c4b18fa1",

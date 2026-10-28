@@ -861,5 +861,116 @@
         "kind": "logistics"
       }
     ]
+  },
+  {
+    "project_id": "krsp-1106",
+    "title": "3D/2D Hybrid Animated Short Film – Soul Ties",
+    "filled": [
+      {
+        "bucket": "required",
+        "text": "geometric modeling",
+        "ai": [
+          "three_d_modeling"
+        ]
+      },
+      {
+        "bucket": "required",
+        "text": "file management",
+        "ai": [
+          "git"
+        ]
+      }
+    ],
+    "differs": [
+      {
+        "bucket": "required",
+        "text": "3D environment",
+        "word_list": [
+          "three_d_modeling"
+        ],
+        "ai": [],
+        "kind": "other"
+      },
+      {
+        "bucket": "preferred",
+        "text": "Familiarity with 2D animation production pipeline and basic knowledge of Maxon’s Redshift preferred",
+        "word_list": [
+          "animation"
+        ],
+        "ai": [],
+        "kind": "skill"
+      }
+    ]
+  },
+  {
+    "project_id": "krsp-1108",
+    "title": "Development of a Bilingual Digital Health Intervention to Support Healthy Aging in Hispanic/Latino Older Adults",
+    "filled": [],
+    "differs": [
+      {
+        "bucket": "required",
+        "text": "Applicants should be UCF undergraduate students with an interest in health-related research, a willingness to learn, and the ability to work collaboratively",
+        "word_list": [
+          "teamwork"
+        ],
+        "ai": [],
+        "kind": "interest"
+      },
+      {
+        "bucket": "preferred",
+        "text": "Strong communication, teamwork, and organizational skills are preferred",
+        "word_list": [
+          "communication",
+          "teamwork",
+          "time_management"
+        ],
+        "ai": [
+          "communication",
+          "teamwork"
+        ],
+        "kind": "skill"
+      }
+    ]
+  },
+  {
+    "project_id": "krsp-1110",
+    "title": "Improving Older Adult Mobility through the Development and Evaluation of Ambient Assistive Devices",
+    "filled": [],
+    "differs": [
+      {
+        "bucket": "required",
+        "text": "Team members applying to this project are expected to have interest in one or more of the following areas: Electrical Engineering, Mechanical Engineering, Biomedical Engineering, or a related field",
+        "word_list": [
+          "electrical_engineering",
+          "mechanical_engineering",
+          "biomedical_engineering"
+        ],
+        "ai": [],
+        "kind": "other"
+      },
+      {
+        "bucket": "required",
+        "text": "Team members must consistently demonstrate timely and responsive communication",
+        "word_list": [
+          "reliability",
+          "communication"
+        ],
+        "ai": [],
+        "kind": "logistics"
+      },
+      {
+        "bucket": "preferred",
+        "text": "Experience with Computer-Aided Design (CAD) and/or electronics",
+        "word_list": [
+          "cad",
+          "electrical_engineering"
+        ],
+        "ai": [
+          "cad",
+          "circuits"
+        ],
+        "kind": "skill"
+      }
+    ]
   }
 ]
