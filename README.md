@@ -24,7 +24,7 @@ KRSP public pages ──(hourly GitHub Action, Python)──> data/*.json ──
   last-check time, the hourly refresh nudge, and (when accounts are on) sign-in and sync. Your skills
   and courses, and your list of saved and emailed projects, are stored in your browser (localStorage).
 - **Accounts are optional** (`NEXT_PUBLIC_ACCOUNTS=on`). Signing in with Google (Better Auth) keeps
-  the same profile and list on every device: the account holds the email address and those two
+  the same profile and list on every device: the account holds the email address, Google's account id and those two
   things (`db/schema.sql`), nothing from Google's profile, no resume, no drafted emails. Deleting the
   account removes it all.
 

@@ -64,7 +64,7 @@ export function SignInDialog({ trigger, returnTo }: { trigger: ReactNode; return
         <p className="text-sm text-muted-foreground">
           We keep your email address and what you add here, not your resume or the emails you write. Delete it any
           time.{" "}
-          <Link href="/about#your-data" className="km-link font-medium text-foreground">
+          <Link href="/privacy" className="km-link font-medium text-foreground">
             What we keep
           </Link>
         </p>

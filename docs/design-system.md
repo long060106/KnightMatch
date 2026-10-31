@@ -108,7 +108,7 @@ One rule, everywhere: **anything clickable carries a signal, anything that isn't
   1023px the header nav drops Home to make room, since the logo links home). Signed in,
   it becomes a 28px outlined circle with the first letter of the email, linking to `/account`. The
   sign-in dialog has one outlined "Continue with Google" button with Google's "G" (their guidelines),
-  one sentence on what is kept and a link to `/about#your-data`. `/account`: email, three serif
+  one sentence on what is kept and a link to `/privacy`. `/account`: email, three serif
   counts (skills, courses, projects on the list), Sign out (outline) and Delete my account
   (destructive, with a confirm dialog). The only nudge is one muted line, "On another device? Sign in
   to keep this in sync", shown signed out and only once there is a profile or a list.
@@ -116,6 +116,8 @@ One rule, everywhere: **anything clickable carries a signal, anything that isn't
   text block, up to 84px), the portrait (340px wide) in the other 4 columns, and the four rules the site keeps (public pages
   only, fixed rules, data stays on the device, you write the email), then a Contact row (email, Instagram,
   GitHub). Last item in the nav and the tab bar, and linked from the footer.
+- **`/privacy`**: serif title, the last-updated date, then ruled rows (heading on the left, text on the right).
+  Linked from the footer, About and the sign-in dialog. Change the date when the wording changes.
 - **`/other-places`**: second section is **Labs**, the labs whose own pages say undergraduates can join
   (plus Psychology's RA Match), as ordinary ruled link rows with the department before the host
   ("Psychology · sciences.ucf.edu") and "Read by hand on …" under the intro. No status badges: the

@@ -4,7 +4,7 @@ import { absoluteUrl } from "@/lib/seo";
 
 // Rebuilt with every data commit, so lastModified follows the hourly KRSP check.
 export default function sitemap(): MetadataRoute.Sitemap {
-  const pages = ["/", "/projects", "/match", "/other-places", "/about"].map((path) => ({
+  const pages = ["/", "/projects", "/match", "/other-places", "/about", "/privacy"].map((path) => ({
     url: absoluteUrl(path),
     lastModified: path === "/" || path === "/projects" ? meta.last_run_at : undefined,
   }));

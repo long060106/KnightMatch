@@ -1,6 +1,7 @@
 /**
  * Accounts, with Better Auth. Students sign in with Google; KnightMatch keeps their email address
- * and nothing else from Google (no name, no photo), and asks only for the basic sign-in scopes.
+ * and Google's account id, nothing else (no name, no photo, no tokens), and asks only for the basic
+ * sign-in scopes.
  *
  * Created on first use and null until DATABASE_URL, BETTER_AUTH_SECRET and the Google client are
  * all set, so the site builds and runs without accounts.
@@ -20,6 +21,15 @@ import { getPool } from "./db";
  */
 export const TEST_SIGN_IN = process.env.KM_TEST_AUTH === "1" && !process.env.VERCEL;
 export const TEST_CODE_FILE = join(tmpdir(), "knightmatch-test-sign-in.json");
+
+/** Google's tokens are never used after sign-in, and its id token carries the name and photo. */
+const NO_TOKENS = {
+  accessToken: null,
+  refreshToken: null,
+  idToken: null,
+  accessTokenExpiresAt: null,
+  refreshTokenExpiresAt: null,
+};
 
 function createAuth() {
   const pool = getPool();
@@ -45,13 +55,16 @@ function createAuth() {
           },
         }
       : {},
-    account: { encryptOAuthTokens: true },
     user: { deleteUser: { enabled: true } },
     session: { cookieCache: { enabled: true, maxAge: 5 * 60 } },
     databaseHooks: {
       // Sessions are stored without the IP address or browser details (rate limits still read the IP
       // from each request; it is just not kept).
       session: { create: { before: async (session) => ({ data: { ...session, ipAddress: null, userAgent: null } }) } },
+      account: {
+        create: { before: async (account) => ({ data: { ...account, ...NO_TOKENS } }) },
+        update: { before: async (account) => ({ data: { ...account, ...NO_TOKENS } }) },
+      },
     },
     // Serverless instances share no memory, so the counts live in the database.
     rateLimit: { enabled: true, storage: "database" },

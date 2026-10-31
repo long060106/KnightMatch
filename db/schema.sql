@@ -3,7 +3,7 @@
 -- The first five tables are Better Auth's own (generated with `npx auth@1.7.8 generate` for the
 -- options in src/lib/server/auth.ts). "user" keeps the email address; name stays empty and image
 -- null because the Google profile is not copied. Sessions are stored without IP or browser details.
--- Google tokens in "account" are encrypted by Better Auth before they are written.
+-- Google tokens are dropped before they are written (src/lib/server/auth.ts), so those columns stay empty.
 
 create table if not exists "user" ("id" text not null primary key, "name" text not null, "email" text not null unique, "emailVerified" boolean not null, "image" text, "createdAt" timestamptz default CURRENT_TIMESTAMP not null, "updatedAt" timestamptz default CURRENT_TIMESTAMP not null);
 

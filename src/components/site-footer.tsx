@@ -23,6 +23,10 @@ export function SiteFooter() {
           <Link href="/about" className="km-link inline-flex min-h-11 items-center font-medium text-foreground md:min-h-6">
             Developed by Long Nguyen
           </Link>
+          <span aria-hidden="true"> · </span>
+          <Link href="/privacy" className="km-link inline-flex min-h-11 items-center font-medium text-foreground md:min-h-6">
+            Privacy
+          </Link>
         </p>
       </div>
     </footer>
