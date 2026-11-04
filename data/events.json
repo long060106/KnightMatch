@@ -28,5 +28,19 @@
       "status": "full",
       "open_spots": 0
     }
+  },
+  {
+    "at": "2026-11-04T23:40:55Z",
+    "project_id": "krsp-1102",
+    "type": "became_full",
+    "before": "open",
+    "after": "full"
+  },
+  {
+    "at": "2026-11-04T23:40:55Z",
+    "project_id": "krsp-1102",
+    "type": "spots_changed",
+    "before": 5,
+    "after": 0
   }
 ]
