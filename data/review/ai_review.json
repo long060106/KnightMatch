@@ -277,16 +277,27 @@
   {
     "project_id": "krsp-836",
     "title": "Accent Processing as Parallel Phonological Systems and Cognitive Dissonance",
-    "filled": [],
-    "differs": [
+    "filled": [
       {
         "bucket": "preferred",
-        "text": "Reliable attendance is critical as sessions involve human participants and specialized equipment",
+        "text": "GSR and ECG",
+        "ai": [
+          "sensors"
+        ]
+      }
+    ],
+    "differs": [
+      {
+        "bucket": "required",
+        "text": "CITI training on human subjects research, Social/behavioral research investigators and key personnel and research and HIPPA Privacy Protections",
         "word_list": [
-          "reliability"
+          "citi_training"
         ],
-        "ai": [],
-        "kind": "logistics"
+        "ai": [
+          "citi_training",
+          "human_subjects"
+        ],
+        "kind": "skill"
       }
     ]
   },

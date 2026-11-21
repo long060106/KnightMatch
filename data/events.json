@@ -42,5 +42,12 @@
     "type": "spots_changed",
     "before": 5,
     "after": 0
+  },
+  {
+    "at": "2026-11-21T02:16:02Z",
+    "project_id": "krsp-836",
+    "type": "quals_changed",
+    "before": null,
+    "after": null
   }
 ]

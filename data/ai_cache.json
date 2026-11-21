@@ -1242,56 +1242,29 @@
     ]
   },
   "krsp-836": {
-    "key": "1ea0e00b5992ab9e",
-    "text_key": "5eab60b5b2ae9811",
+    "key": "7b1ed259781ccdff",
+    "text_key": "12b484c090c052a4",
     "model": "gemini-3.5-flash-lite",
-    "at": "2026-10-19T17:31:45Z",
+    "at": "2026-11-21T02:16:02Z",
     "items": [
       {
         "kind": "skill",
         "skills": [
-          "citi_training"
+          "citi_training",
+          "human_subjects"
         ]
       },
       {
-        "kind": "logistics",
-        "skills": []
+        "kind": "skill",
+        "skills": [
+          "eeg"
+        ]
       },
       {
-        "kind": "logistics",
-        "skills": []
-      },
-      {
-        "kind": "logistics",
-        "skills": []
-      },
-      {
-        "kind": "other",
-        "skills": []
-      },
-      {
-        "kind": "other",
-        "skills": []
-      },
-      {
-        "kind": "interest",
-        "skills": []
-      },
-      {
-        "kind": "interest",
-        "skills": []
-      },
-      {
-        "kind": "other",
-        "skills": []
-      },
-      {
-        "kind": "other",
-        "skills": []
-      },
-      {
-        "kind": "other",
-        "skills": []
+        "kind": "skill",
+        "skills": [
+          "sensors"
+        ]
       }
     ],
     "topics": [
